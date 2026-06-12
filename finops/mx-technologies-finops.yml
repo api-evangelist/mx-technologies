@@ -1,0 +1,92 @@
+name: MX Technologies FinOps Framework
+description: >
+  FOCUS-aligned FinOps cost and usage tracking framework for MX Technologies API consumption.
+  MX Technologies uses a custom enterprise pricing model negotiated per contract, with costs
+  driven primarily by connected members (users with linked financial institution accounts),
+  monthly active users, and selected product modules. This framework provides structure for
+  monitoring, allocating, and optimizing MX API spend.
+specificationVersion: '1.0'
+url: https://www.mx.com/company/
+
+billing:
+  model: Enterprise Contract
+  cycle: Annual
+  currency: USD
+  invoicing: Net 30
+  minimumContract: true
+  selfService: false
+  contactSales: https://www.mx.com/company/
+
+costDrivers:
+
+  - name: Connected Members
+    description: >
+      Primary cost driver — the number of users with active financial institution connections
+      (Members) established through the MX Platform. Each member represents a linked account
+      at a financial institution.
+    unit: per member per month
+    notes: Volume discounts apply at scale; negotiate tier breakpoints in contract
+
+  - name: Monthly Active Users (MAU)
+    description: >
+      Active end users interacting with MX-powered widgets or API data within a billing month.
+    unit: per MAU per month
+    notes: Define MAU clearly in contract to avoid unexpected overages
+
+  - name: Premium Aggregation Jobs
+    description: >
+      Extended history pulls, real-time balance checks, statement retrieval, and instant
+      account verification (IAV) are billed separately from standard aggregation. These
+      bypass standard throttling.
+    unit: per job or per batch
+    notes: Negotiate bundle rates for high-volume IAV use cases
+
+  - name: Data Access API (FDX/Open Banking)
+    description: >
+      Open finance API usage for permissioned data sharing. Billed based on connection volume
+      and OAuth flow completions.
+    unit: per connection or per OAuth grant
+    notes: Over 500K connections processed; volume pricing available
+
+  - name: Connect Widget
+    description: >
+      Pre-built UI widget for account linking. May be bundled or priced separately depending
+      on the contract.
+    unit: per widget session or bundled
+    notes: Clarify whether widget sessions count toward MAU billing
+
+  - name: Support Tier
+    description: >
+      Level of dedicated support, SLA guarantees, and implementation assistance. Higher tiers
+      add to annual contract value.
+    unit: flat fee or percentage of contract
+    notes: Enterprise support tiers negotiated separately
+
+costAllocation:
+  tags:
+    - environment (development, staging, production)
+    - product_module (connectivity, data, experience)
+    - client_id
+    - institution_type (bank, credit_union, fintech)
+    - use_case (aggregation, verification, open_banking, pfm)
+
+optimization:
+  recommendations:
+    - Audit connected members monthly and deprovision stale connections to reduce billable member count
+    - Use standard aggregation (3-hour throttle) instead of premium jobs where real-time data is not required
+    - Cache aggregated data responses to reduce redundant API calls within the throttle window
+    - Negotiate committed-use discounts for predictable member volume at contract renewal
+    - Monitor balance check usage closely (limited to 5 per member per 2 hours) to avoid throttling and rearchitect polling patterns
+    - Use the development sandbox (free, 100 users) for all pre-production testing to avoid production API costs
+    - Align MAU counting methodology with MX's definition in the contract to avoid billing surprises
+    - Evaluate FDX/Data Access API volume vs. traditional aggregation costs for open banking use cases
+
+benchmarks:
+  averageAnnualContract:
+    low: 15000
+    high: 90000
+    currency: USD
+    source: Vendr buyer intelligence (2025)
+  notes: >
+    Pricing varies significantly based on member volume, selected modules, and negotiating leverage.
+    Large banks and credit unions may see significantly higher contract values.

@@ -1,0 +1,57 @@
+name: MX Technologies Plans and Pricing
+description: >
+  MX Technologies offers enterprise-grade financial data connectivity APIs with pricing negotiated
+  directly with their sales team. There are no self-service public pricing tiers; costs are
+  based on volume, number of connected users/members, and selected product modules. Average
+  annual contract values range from approximately $15,000 to $90,000 based on third-party
+  buyer intelligence. A development sandbox environment is available for integration testing.
+specificationVersion: '0.1'
+
+plans:
+
+  - name: Development Sandbox
+    description: >
+      Free sandbox environment for development and integration testing. Includes access to the
+      MX Platform API with a limited set of test financial institutions (top 15 institutions).
+      Production capabilities are restricted.
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+    free: true
+    rateLimits:
+      - type: Users
+        limit: 100
+        unit: total
+      - type: Members per User
+        limit: 25
+        unit: total
+    features:
+      - Platform API access
+      - Top 15 financial institutions
+      - Development base URL (int-api.mx.com)
+      - Data cleansing and categorization
+      - SDK support
+
+  - name: Enterprise
+    description: >
+      Full production access to MX's financial data connectivity platform. Pricing is custom
+      and negotiated based on connected users, monthly active members, selected modules
+      (Connectivity, Data, Experience), and support tier. Includes access to all financial
+      institutions (16,000+) and premium aggregation features.
+    url: https://www.mx.com/company/
+    free: false
+    contact: https://www.mx.com/company/
+    features:
+      - Full financial institution coverage (16,000+)
+      - Platform API production access
+      - Data Access API (FDX-compliant)
+      - Account aggregation and verification
+      - Transaction categorization and cleansing
+      - Webhooks and event monitoring
+      - Balance checks
+      - Instant Account Verification (IAV)
+      - OAuth and open banking support
+      - Connect Widget
+      - Dedicated support and SLAs
+      - IP whitelisting
+      - Premium aggregation jobs (bypass throttling)
+      - Extended transaction history
+      - Statements retrieval

@@ -1,0 +1,73 @@
+name: MX Technologies API Rate Limits
+description: >
+  MX Technologies applies rate limits per client on the MX Platform API. Requests exceeding
+  these thresholds receive a 429 Too Many Requests HTTP response. Aggregation jobs have a
+  default three-hour throttle period between requests per member; premium aggregation jobs
+  bypass this throttle. All API access requires HTTPS (TLS 1.2+) and requests must originate
+  from whitelisted IP addresses.
+specificationVersion: '0.1'
+url: https://docs.mx.com/api-reference/platform-api/overview/
+
+limits:
+
+  - type: GET Requests
+    description: Maximum GET requests per second per client
+    limit: 2000
+    unit: requests per second
+    scope: per client
+
+  - type: POST Requests
+    description: Maximum POST requests per second per client
+    limit: 750
+    unit: requests per second
+    scope: per client
+
+  - type: PUT Requests
+    description: Maximum PUT requests per second per client
+    limit: 750
+    unit: requests per second
+    scope: per client
+
+  - type: DELETE Requests
+    description: Maximum DELETE requests per second per client
+    limit: 150
+    unit: requests per second
+    scope: per client
+
+  - type: Balance Requests
+    description: Balance check requests per member
+    limit: 5
+    unit: requests per 2 hours
+    scope: per member
+
+  - type: Standard Aggregation Throttle
+    description: >
+      Default throttle period between standard aggregation job requests for the same member.
+      Premium jobs (extended history, verification, statements, balance checks) bypass this throttle.
+    limit: 1
+    unit: requests per 3 hours
+    scope: per member
+
+  - type: Development Environment Users
+    description: Maximum number of users in the development/sandbox environment
+    limit: 100
+    unit: total users
+    scope: per client
+
+  - type: Development Environment Members per User
+    description: Maximum members per user in the production environment
+    limit: 25
+    unit: members per user
+    scope: per user
+
+errorHandling:
+  - code: 429
+    message: Too Many Requests
+    description: Returned when rate limit thresholds are exceeded. Clients should implement exponential backoff.
+
+notes:
+  - Limits are applied per client (client_id)
+  - DDoS protection is provided via Akamai
+  - All requests must originate from whitelisted IP CIDR ranges
+  - JWE encrypted responses are supported using ECDH
+  - Premium aggregation jobs bypass the standard 3-hour throttle period
