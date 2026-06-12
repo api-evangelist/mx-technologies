@@ -1,0 +1,2348 @@
+vocabulary: mx-technologies
+title: MX Technologies API Vocabulary
+description: Terms and field definitions extracted from the MX Platform API OpenAPI
+  specification
+version: '20250224'
+source: https://github.com/mxenabled/openapi
+terms:
+- term: scope
+  type: string
+  description: ''
+  nullable: true
+  source_schema: AuthorizationCodeRequest
+- term: authorization_code
+  type: string
+  description: ''
+  nullable: false
+  source_schema: AuthorizationCodeRequestBody
+- term: code
+  type: string
+  description: ''
+  nullable: true
+  source_schema: AuthorizationCodeResponse
+- term: account_guid
+  type: string
+  description: The unique identifier for an account. Defined by MX.
+  nullable: false
+  source_schema: ACHResponse
+- term: account_number_last_four
+  type: string
+  description: The last 4 digits of the account number used for the transaction by
+    the Originating Depository Financial Institution (ODFI).
+  nullable: true
+  source_schema: ACHResponse
+- term: account_type
+  type: string
+  description: The type of account. Some account types may include subtypes.
+  nullable: true
+  source_schema: ACHResponse
+- term: ach_initiated_at
+  type: string
+  description: The date and time when the transaction was initiated by the Originating
+    Depository Financial Institution (ODFI) in ISO 8601 format without timestamp.
+  nullable: true
+  source_schema: ACHResponse
+- term: client_guid
+  type: string
+  description: The unique identifier for the client associated with the insight. Defined
+    by MX.
+  nullable: false
+  source_schema: ACHResponse
+- term: corrected_account_number
+  type: string
+  description: The account number correction reported by the RDFI. Populate only if
+    the `resolution_code` is `NOTICE_OF_CHANGE`.
+  nullable: true
+  source_schema: ACHResponse
+- term: corrected_routing_number
+  type: string
+  description: The routing number correction reported by the RDFI. Populated only
+    if the `resolution_code` is `NOTICE_OF_CHANGE`. Must be a valid 9-digit routing
+    number format.
+  nullable: true
+  source_schema: ACHResponse
+- term: created_at
+  type: string
+  description: The date and time the ACH return was created, represented in ISO 8601
+    format with a timestamp.
+  nullable: false
+  source_schema: ACHResponse
+- term: guid
+  type: string
+  description: The unique identifier for the ACH return record. Defined by MX.
+  nullable: false
+  source_schema: ACHResponse
+- term: id
+  type: string
+  description: Client-defined identifier for this specific return submission. Allows
+    you to track and reference your requests.
+  nullable: false
+  source_schema: ACHResponse
+- term: institution_guid
+  type: string
+  description: The unique identifier for an institution. Defined by MX.
+  nullable: false
+  source_schema: ACHResponse
+- term: investigation_notes
+  type: string
+  description: Notes added by Product Support during investigation of the ACH return.
+  nullable: true
+  source_schema: ACHResponse
+- term: member_guid
+  type: string
+  description: The unique identifier for the member. Defined by MX.
+  nullable: false
+  source_schema: ACHResponse
+- term: processing_errors
+  type: string
+  description: Any errors that occurred during processing.
+  nullable: true
+  source_schema: ACHResponse
+- term: resolution_code
+  type: string
+  description: A short, machine-readable code that categorizes the type of resolution
+    or reason for the status. See [Resolution Codes](/api-reference/platform-api/reference/ach-return-fields#resolution-codes)
+    for a complete list.
+  nullable: true
+  source_schema: ACHResponse
+- term: resolution_detail
+  type: string
+  description: A more detailed, human-readable message providing context and next
+    steps related to the `return_status` and `resolution_code`.
+  nullable: true
+  source_schema: ACHResponse
+- term: resolved_status_at
+  type: string
+  description: Date and time when the return was marked as resolved.
+  nullable: true
+  source_schema: ACHResponse
+- term: return_code
+  type: string
+  description: The associated ACH return codes and notice of change codes (for example,
+    R02, R03, R04, R05, R20, NOC). See [Return Codes](/api-reference/platform-api/reference/ach-return-fields#return-codes)
+    for a complete list
+  nullable: false
+  source_schema: ACHResponse
+- term: return_notes
+  type: string
+  description: Notes that you set to inform MX on internal ACH processing.
+  nullable: true
+  source_schema: ACHResponse
+- term: return_account_number
+  type: string
+  description: Incorrect account number used in the ACH transaction.
+  nullable: true
+  source_schema: ACHResponse
+- term: return_routing_number
+  type: string
+  description: Incorrect routing number used in the ACH transaction.
+  nullable: true
+  source_schema: ACHResponse
+- term: return_status
+  type: string
+  description: The current processing status of the ACH return. See [Return Status](/api-reference/platform-api/reference/ach-return-fields#return-status)
+    for a complete list of statuses.
+  nullable: true
+  source_schema: ACHResponse
+- term: returned_at
+  type: string
+  description: The date and time when the return was reported by the Receiving Financial
+    Depository Institution (RDFI) in ISO 8601 format without timestamp.
+  nullable: true
+  source_schema: ACHResponse
+- term: sec_code
+  type: string
+  description: The three-letter SEC code (Standard Entry Class Code) describing how
+    a payment was authorized (for example, `WEB`). See [SEC Codes](/api-reference/platform-api/reference/ach-return-fields#sec-codes)
+    for a complete list.
+  nullable: true
+  source_schema: ACHResponse
+- term: started_processing_at
+  type: string
+  description: Date and time when MX started processing the return.
+  nullable: true
+  source_schema: ACHResponse
+- term: submitted_at
+  type: string
+  description: Date and time when the record was submitted through the API.
+  nullable: true
+  source_schema: ACHResponse
+- term: transaction_amount
+  type: number
+  description: The amount of the transaction.
+  nullable: true
+  source_schema: ACHResponse
+- term: updated_at
+  type: string
+  description: Date and time when the ACH return record was last updated.
+  nullable: false
+  source_schema: ACHResponse
+- term: user_guid
+  type: string
+  description: The unique identifier for the user. Defined by MX.
+  nullable: false
+  source_schema: ACHResponse
+- term: ach_return
+  type: string
+  description: ''
+  nullable: false
+  source_schema: ACHReturnResponseBody
+- term: current_page
+  type: integer
+  description: The page delivered by the current response.
+  nullable: false
+  source_schema: PaginationResponse
+- term: per_page
+  type: integer
+  description: The number of records delivered with each page.
+  nullable: false
+  source_schema: PaginationResponse
+- term: total_entries
+  type: integer
+  description: The total number of records available.
+  nullable: false
+  source_schema: PaginationResponse
+- term: total_pages
+  type: integer
+  description: The total number of pages available.
+  nullable: false
+  source_schema: PaginationResponse
+- term: ach_returns
+  type: array
+  description: ''
+  nullable: false
+  source_schema: ACHReturnsResponseBody
+- term: pagination
+  type: string
+  description: ''
+  nullable: false
+  source_schema: ACHReturnsResponseBody
+- term: transaction_amount_range
+  type: number
+  description: The transaction amount range, used for impact assessment.
+  nullable: false
+  source_schema: ACHReturnCreateRequest
+- term: is_default
+  type: boolean
+  description: Indicates whether the category is an MX-created default category. This
+    will always be `false` for custom categories.
+  nullable: true
+  source_schema: CategoryResponse
+- term: is_income
+  type: boolean
+  description: Indicates whether the transaction is income.
+  nullable: true
+  source_schema: CategoryResponse
+- term: metadata
+  type: string
+  description: Additional information you stored on the `category`.
+  nullable: true
+  source_schema: CategoryResponse
+- term: name
+  type: string
+  description: The name of the category.
+  nullable: true
+  source_schema: CategoryResponse
+- term: parent_guid
+  type: string
+  description: The unique identifier for the parent category. Defined by MX.
+  nullable: true
+  source_schema: CategoryResponse
+- term: categories
+  type: array
+  description: ''
+  nullable: false
+  source_schema: CategoriesResponseBody
+- term: category
+  type: string
+  description: ''
+  nullable: false
+  source_schema: CategoryResponseBody
+- term: forgot_password_url
+  type: string
+  description: URL for the forgot password page of the institution.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: forgot_username_url
+  type: string
+  description: URL for the forgot username page of the institution.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: instructional_text
+  type: string
+  description: Render this text when end users are asked for their credentials, as
+    it helps end users provide the correct credentials when creating a new member.
+    May contain `<a></a>` tags to link to explanatory material.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: instructional_text_steps
+  type: array
+  description: An array of instructional steps that may contain html elements.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: is_disabled_by_client
+  type: boolean
+  description: Indicates whether the institution is disabled by the client.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: is_hidden
+  type: boolean
+  description: If the institution is available for creating new member connections,
+    this field will be `false`. Otherwise, this field will be `true`.
+  nullable: false
+  source_schema: InstitutionResponse
+- term: iso_country_code
+  type: string
+  description: The ISO country code associated with the institution.
+  nullable: false
+  source_schema: InstitutionResponse
+- term: medium_logo_url
+  type: string
+  description: The URL for a 100px X 100px logo for each `institution`. A generic
+    logo is returned for institutions that don't have one.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: small_logo_url
+  type: string
+  description: The URL for a 50px X 50px logo for each `institution`. A generic logo
+    is returned for institutions that don't have one.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: supported_products
+  type: string
+  description: ''
+  nullable: false
+  source_schema: InstitutionResponse
+- term: supports_oauth
+  type: boolean
+  description: 'If true, this indicates that the institution supports OAuth and that
+    you have been properly registered for OAuth with that institution.
+
+    '
+  nullable: true
+  source_schema: InstitutionResponse
+- term: supports_tax_document
+  type: boolean
+  description: This indicates whether the institution supports tax documents.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: trouble_signing_in_url
+  type: string
+  description: The URL of the institution for helping users troubleshoot any other
+    sign-in issue.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: url
+  type: string
+  description: The URL for an institution's website.
+  nullable: true
+  source_schema: InstitutionResponse
+- term: institutions
+  type: array
+  description: ''
+  nullable: false
+  source_schema: InstitutionsResponseBody
+- term: institution
+  type: string
+  description: ''
+  nullable: false
+  source_schema: InstitutionResponseBody
+- term: display_order
+  type: integer
+  description: ''
+  nullable: true
+  source_schema: CredentialResponse
+- term: field_name
+  type: string
+  description: ''
+  nullable: true
+  source_schema: CredentialResponse
+- term: field_type
+  type: string
+  description: ''
+  nullable: true
+  source_schema: CredentialResponse
+- term: label
+  type: string
+  description: ''
+  nullable: true
+  source_schema: CredentialResponse
+- term: type
+  type: string
+  description: ''
+  nullable: true
+  source_schema: CredentialResponse
+- term: credentials
+  type: array
+  description: ''
+  nullable: false
+  source_schema: CredentialsResponseBody
+- term: city
+  type: string
+  description: The city name.
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: country
+  type: string
+  description: The country name.
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: latitude
+  type: number
+  description: The latitude of the location where the transaction occurred. The number
+    is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and
+    Tokyo's latitude is 35.689488).
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: longitude
+  type: number
+  description: The longitude of the location where the transaction occurred. The number
+    is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and
+    Tokyo's longitude is 139.691706).
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: merchant_guid
+  type: string
+  description: The unique identifier for the merchant. Defined by MX.
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: phone_number
+  type: string
+  description: The phone number of the merchant location.
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: postal_code
+  type: string
+  description: The postal code of the merchant location.
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: state
+  type: string
+  description: The state abbreviation of the merchant location.
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: street_address
+  type: string
+  description: The street address of the merchant location.
+  nullable: true
+  source_schema: MerchantLocationResponse
+- term: merchant_location
+  type: string
+  description: ''
+  nullable: false
+  source_schema: MerchantLocationResponseBody
+- term: logo_url
+  type: string
+  description: The URL for a 100px X 100px logo for the merchant.
+  nullable: true
+  source_schema: MerchantResponse
+- term: website_url
+  type: string
+  description: URL to the merchant's website.
+  nullable: true
+  source_schema: MerchantResponse
+- term: merchants
+  type: array
+  description: ''
+  nullable: false
+  source_schema: MerchantsResponseBody
+- term: merchant
+  type: string
+  description: ''
+  nullable: false
+  source_schema: MerchantResponseBody
+- term: amount
+  type: number
+  description: The monetary amount of the `transaction`.
+  nullable: true
+  source_schema: EnhanceTransactionsRequest
+- term: description
+  type: string
+  description: The description of the `transaction` to be enhanced.
+  nullable: false
+  source_schema: EnhanceTransactionsRequest
+- term: extended_transaction_type
+  type: string
+  description: The transaction type assigned by the partner.
+  nullable: false
+  source_schema: EnhanceTransactionsRequest
+- term: memo
+  type: string
+  description: This field contains additional descriptive information about the `transaction`.
+  nullable: false
+  source_schema: EnhanceTransactionsRequest
+- term: merchant_category_code
+  type: integer
+  description: The ISO 18245 category code for the `transaction`.
+  nullable: false
+  source_schema: EnhanceTransactionsRequest
+- term: transactions
+  type: array
+  description: ''
+  nullable: false
+  source_schema: EnhanceTransactionsRequestBody
+- term: categorized_by
+  type: integer
+  description: The method used to determine the category assigned to the transaction.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: category_guid
+  type: string
+  description: The unique identifier for the category. Defined by MX.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: described_by
+  type: integer
+  description: The method used to describe the `transaction`.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: is_bill_pay
+  type: boolean
+  description: Indicates whether the transaction is a bill payment.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: is_direct_deposit
+  type: boolean
+  description: Indicates whether the transaction is a direct deposit.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: is_expense
+  type: boolean
+  description: Indicates whether the transaction is an expense.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: is_fee
+  type: boolean
+  description: Indicates whether the transaction is a fee.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: is_international
+  type: boolean
+  description: Indicates whether the transaction is international. If the data provider
+    determines it isn't international then it will be `false`. It will be `null` if
+    the data provider does not have this information.
+  nullable: false
+  source_schema: EnhanceTransactionResponse
+- term: is_overdraft_fee
+  type: boolean
+  description: Indicates whether the transaction is an overdraft fee.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: is_payroll_advance
+  type: boolean
+  description: Indicates whether the transaction is a payroll advance.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: is_subscription
+  type: boolean
+  description: Indicates whether the transaction is a subscription payment.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: merchant_location_guid
+  type: string
+  description: The unique identifier for the `merchant_location` associated with this
+    `transaction`. Defined by MX.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: original_description
+  type: string
+  description: The original description of the `transaction` as provided by our data
+    feed.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: top_level_category_guid
+  type: string
+  description: The unique identifier for the `top_level_category` associated with
+    this `transaction`. Defined by MX.
+  nullable: true
+  source_schema: EnhanceTransactionResponse
+- term: email
+  type: string
+  description: The email address associated with the account.
+  nullable: false
+  source_schema: UserResponse
+- term: is_disabled
+  type: boolean
+  description: Indicates whether the user has been disabled. Defaults to `false`.
+  nullable: true
+  source_schema: UserResponse
+- term: users
+  type: array
+  description: ''
+  nullable: false
+  source_schema: UsersResponseBody
+- term: user
+  type: string
+  description: ''
+  nullable: false
+  source_schema: UserCreateRequestBody
+- term: account_number
+  type: string
+  description: The account number associated with the account. This will typically
+    be a masked or partial account number.
+  nullable: true
+  source_schema: AccountResponse
+- term: account_ownership
+  type: string
+  description: The type of ownership associated with the account. `NULL` is returned
+    if not received in the data feed.
+  nullable: true
+  source_schema: AccountResponse
+- term: annuity_policy_to_date
+  type: string
+  description: The date until which the policy is in effect.
+  nullable: true
+  source_schema: AccountResponse
+- term: annuity_provider
+  type: string
+  description: The provider of the insurance policy.
+  nullable: true
+  source_schema: AccountResponse
+- term: annuity_term_year
+  type: integer
+  description: The effective duration of an insurance policy (one year, five years,
+    etc.).
+  nullable: true
+  source_schema: AccountResponse
+- term: apr
+  type: number
+  description: The annual percentage rate associated with the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: apy
+  type: number
+  description: The annual percentage yield associated with the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: available_balance
+  type: number
+  description: 'The balance that is available for use in asset accounts like checking
+    and savings.
+
+
+    `PENDING` transactions are typically (not always) taken into account with the
+    available balance.
+
+
+    `available_balance` will usually be a positive value for all account types, determined
+    in the same way as the balance field.
+
+    '
+  nullable: true
+  source_schema: AccountResponse
+- term: available_credit
+  type: number
+  description: 'The amount of credit available for use in liability accounts like
+    credit cards and lines of credit.
+
+
+    `PENDING` transactions are typically (not always) taken into account with available
+    credit.
+
+
+    `available_credit` will usually be a positive value for all account types, determined
+    in the same way as the `balance` field.
+
+    '
+  nullable: true
+  source_schema: AccountResponse
+- term: balance
+  type: number
+  description: "The current balance of the account.\n\n`PENDING` transactions are\
+    \ typically not taken into account with the current balance, but this may not\
+    \ always be the case.\n    \nThe balance will usually be a positive value for\
+    \ all account types. Asset-type accounts (`CHECKING`, `SAVINGS`, `INVESTMENT`)\
+    \ may have a negative balance if they are in overdraft.\n\nDebt-type accounts\
+    \ (`CREDIT_CARD`, `LOAN`, `LINE_OF_CREDIT`, `MORTGAGE`) may have a negative balance\
+    \ if they are overpaid.\n"
+  nullable: true
+  source_schema: AccountResponse
+- term: cash_balance
+  type: number
+  description: The cash balance of the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: cash_surrender_value
+  type: number
+  description: The sum of money paid to the policyholder or annuity holder in the
+    event the policy is voluntarily terminated before it matures, or the insured event
+    occurs.
+  nullable: true
+  source_schema: AccountResponse
+- term: credit_limit
+  type: number
+  description: The credit limit associated with the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: currency_code
+  type: string
+  description: The three-character ISO 4217 currency code, for example, `USD`.
+  nullable: true
+  source_schema: AccountResponse
+- term: day_payment_is_due
+  type: integer
+  description: The day of the month the payment is due. For example, the 14th is passed
+    as `14`.
+  nullable: true
+  source_schema: AccountResponse
+- term: death_benefit
+  type: integer
+  description: The amount paid to the beneficiary of the account upon death of the
+    account owner.
+  nullable: true
+  source_schema: AccountResponse
+- term: federal_insurance_status
+  type: string
+  description: 'The federal insurance status of the account. Indicates whether the
+    account is insured by the FDIC (banks) or NCUA (credit unions).
+
+
+    Returns an integer (`UNKNOWN_INSURED` = 0, `INSURED` = 1, `NOT_INSURED` = 2).
+
+    '
+  nullable: true
+  source_schema: AccountResponse
+- term: imported_at
+  type: string
+  description: The date and time at which the `account` was last successfully aggregated
+    and received data.
+  nullable: true
+  source_schema: AccountResponse
+- term: interest_rate
+  type: number
+  description: The interest rate associated with the account.
+  nullable: true
+  source_schema: AccountResponse
+- term: institution_code
+  type: string
+  description: The code identifying a financial institution.
+  nullable: true
+  source_schema: AccountResponse
+- term: insured_name
+  type: string
+  description: The name of the insured person.
+  nullable: true
+  source_schema: AccountResponse
+- term: is_closed
+  type: boolean
+  description: Indicates whether an account has been closed. Closed accounts will
+    no longer update balance or transaction information.
+  nullable: false
+  source_schema: AccountResponse
+- term: is_manual
+  type: boolean
+  description: Indicates whether the transaction was manually created or belongs to
+    a manual account.
+  nullable: true
+  source_schema: AccountResponse
+- term: last_payment
+  type: number
+  description: The amount of the most recent payment on the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: last_payment_at
+  type: string
+  description: The date and time when the last payment was made, represented in ISO
+    8601 format with a timestamp.
+  nullable: true
+  source_schema: AccountResponse
+- term: loan_amount
+  type: number
+  description: The amount of the loan associated with the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: margin_balance
+  type: number
+  description: Represents the amount of debt the investor owes to the broker for the
+    use of margin. It can be positive or negative, depending on the performance of
+    the investments made with the borrowed funds. A positive margin balance indicates
+    that the securities purchased on margin have increased in value, whereas a negative
+    margin balance signifies that the securities have decreased in value.
+  nullable: true
+  source_schema: AccountResponse
+- term: matures_on
+  type: string
+  description: The date on which the `account` matures.
+  nullable: true
+  source_schema: AccountResponse
+- term: member_id
+  type: string
+  description: The unique, partner-defined, identifier for the member associated with
+    this `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: member_is_managed_by_user
+  type: boolean
+  description: This indicates whether the member is managed by the user or the MX
+    partner. Members created with the managed member feature will have this field
+    set to `false`.
+  nullable: true
+  source_schema: AccountResponse
+- term: minimum_balance
+  type: number
+  description: The minimum balance associated with the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: minimum_payment
+  type: number
+  description: The minimum payment required for an account. This can apply to any
+    debt account.
+  nullable: true
+  source_schema: AccountResponse
+- term: nickname
+  type: string
+  description: An alternate name for the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: original_balance
+  type: number
+  description: The original balance associated with the `account`. This will always
+    be positive.
+  nullable: true
+  source_schema: AccountResponse
+- term: pay_out_amount
+  type: number
+  description: The amount paid out to the insured individual or beneficiary under
+    the conditions of the insurance policy.
+  nullable: true
+  source_schema: AccountResponse
+- term: payment_due_at
+  type: string
+  description: The date and time at which the next payment is due on the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: payoff_balance
+  type: number
+  description: The payoff balance for a debt `account`. This will normally be a positive
+    number.
+  nullable: true
+  source_schema: AccountResponse
+- term: premium_amount
+  type: number
+  description: The insurance policy's premium amount.
+  nullable: true
+  source_schema: AccountResponse
+- term: property_type
+  type: string
+  description: Subtype if the account type is `PROPERTY`. This field should be ignored
+    unless the type is set to PROPERTY.
+  nullable: true
+  source_schema: AccountResponse
+- term: routing_number
+  type: string
+  description: The routing number for the `account`.
+  nullable: true
+  source_schema: AccountResponse
+- term: started_on
+  type: string
+  description: The date on which the loan from a debt account started.
+  nullable: true
+  source_schema: AccountResponse
+- term: statement_balance
+  type: number
+  description: The balance at the end of the account's last statement period.
+  nullable: true
+  source_schema: AccountResponse
+- term: subtype
+  type: string
+  description: The account's subtype, for example, `PLAN_401_K`, `MONEY_MARKET`, or
+    `HOME_EQUITY`. Each subtype belongs to an account `type`. For a full list of account
+    subtypes and types, see [Accounts](/api-reference/platform-api/reference/accounts).
+  nullable: true
+  source_schema: AccountResponse
+- term: today_ugl_amount
+  type: number
+  description: The unrealized gain/loss amount for the day for the account.
+  nullable: true
+  source_schema: AccountResponse
+- term: today_ugl_percentage
+  type: number
+  description: The unrealized gain/loss percentage for the date for the account.
+  nullable: true
+  source_schema: AccountResponse
+- term: total_account_value
+  type: number
+  description: The sum of the long and short positions, the sweep account and/or cash
+    balance, and any margin debt associated with a particular account. This amount
+    includes the market value of all positions held in the account and is reduced
+    by any debit balance and the amount of short options positions that are "in the
+    money". This may sum to a negative value, and it does not represent an account
+    balance.
+  nullable: true
+  source_schema: AccountResponse
+- term: total_account_value_ugl
+  type: number
+  description: The unrealized gains and losses represent the amount the account has
+    gained or lost based on the purchase price. This is calculated by subtracting
+    the purchase price from the current market value. It does not affect the account
+    until the positions are sold and "realized". This may sum to a negative value,
+    and it does not represent an account balance.
+  nullable: true
+  source_schema: AccountResponse
+- term: user_id
+  type: string
+  description: The unique partner-defined identifier for the user.
+  nullable: true
+  source_schema: AccountResponse
+- term: accounts
+  type: array
+  description: ''
+  nullable: false
+  source_schema: AccountsResponseBody
+- term: account_subtype
+  type: string
+  description: The account's subtype, for example, `PLAN_401_K`, `MONEY_MARKET`, or
+    `HOME_EQUITY`. Each subtype belongs to an account `type`. For a full list of account
+    subtypes and types, see [Accounts](/api-reference/platform-api/reference/account-types).
+  nullable: true
+  source_schema: AccountCreateRequest
+- term: is_business
+  type: boolean
+  description: Indicates whether the account is a business account.
+  nullable: false
+  source_schema: AccountCreateRequest
+- term: skip_webhook
+  type: boolean
+  description: If set to `true`, prevents sending an account webhook for the update
+    if that webhook type is enabled for you.
+  nullable: false
+  source_schema: AccountCreateRequest
+- term: account
+  type: string
+  description: ''
+  nullable: false
+  source_schema: AccountCreateRequestBody
+- term: institution_number
+  type: string
+  description: The three-digit number identifying a Canadian banking institution.
+  nullable: true
+  source_schema: AccountNumberResponse
+- term: loan_guarantor
+  type: string
+  description: The guarantor of the student loan.
+  nullable: true
+  source_schema: AccountNumberResponse
+- term: loan_reference_number
+  type: string
+  description: The reference number of the student loan.
+  nullable: true
+  source_schema: AccountNumberResponse
+- term: passed_validation
+  type: boolean
+  description: This indicates whether the account and routing numbers passed MX's
+    internal validity checks. If true, the account and routing/transit numbers are
+    likely (but not guaranteed) to be valid. If false, either the account number,
+    routing/transit number, or both are likely invalid.
+  nullable: true
+  source_schema: AccountNumberResponse
+- term: sequence_number
+  type: string
+  description: The sequence number of the student loan.
+  nullable: true
+  source_schema: AccountNumberResponse
+- term: transit_number
+  type: string
+  description: The five-digit number identifying the branch of a Canadian financial
+    institution.
+  nullable: true
+  source_schema: AccountNumberResponse
+- term: account_numbers
+  type: array
+  description: ''
+  nullable: false
+  source_schema: AccountNumbersResponseBody
+- term: active_at
+  type: string
+  description: The date and time when the insight was activated, represented in ISO
+    8601 format with a timestamp.
+  nullable: true
+  source_schema: InsightResponse
+- term: cta_clicked_at
+  type: string
+  description: The date and time when a call-to-action was clicked, represented in
+    ISO 8601 format with a timestamp.
+  nullable: true
+  source_schema: InsightResponse
+- term: has_associated_accounts
+  type: boolean
+  description: Indicates whether there are accounts associated with the insight.
+  nullable: true
+  source_schema: InsightResponse
+- term: has_associated_categories
+  type: boolean
+  description: Indicates whether there are categories associated with the insight.
+  nullable: true
+  source_schema: InsightResponse
+- term: has_associated_merchants
+  type: boolean
+  description: Indicates whether there are merchants associated with the insight.
+  nullable: true
+  source_schema: InsightResponse
+- term: has_associated_scheduled_payments
+  type: boolean
+  description: Indicates whether there are scheduled payments associated with the
+    insight.
+  nullable: true
+  source_schema: InsightResponse
+- term: has_associated_transactions
+  type: boolean
+  description: Indicates whether there are transactions associated with the insight.
+  nullable: true
+  source_schema: InsightResponse
+- term: has_been_displayed
+  type: boolean
+  description: Indicates whether the insight has been shown to the end user.
+  nullable: true
+  source_schema: InsightResponse
+- term: is_dismissed
+  type: boolean
+  description: Indicates whether the insight has been dismissed by the user.
+  nullable: true
+  source_schema: InsightResponse
+- term: micro_call_to_action
+  type: string
+  description: A short call-to-action text for prompting user engagement.
+  nullable: true
+  source_schema: InsightResponse
+- term: micro_description
+  type: string
+  description: A condensed description of the insight.
+  nullable: true
+  source_schema: InsightResponse
+- term: micro_title
+  type: string
+  description: A shorter version of title. For example, `Price Increase` or `Paycheck
+    Deposit`.
+  nullable: true
+  source_schema: InsightResponse
+- term: template
+  type: string
+  description: A short label for the type of `insight` being delivered, for example,
+    `SubscriptionPriceIncrease` or `MonthlyCategoryTotal`.
+  nullable: true
+  source_schema: InsightResponse
+- term: title
+  type: string
+  description: The title for the specific `insight`, for example, `Price Increase`
+    or `Paycheck Deposit`.
+  nullable: true
+  source_schema: InsightResponse
+- term: insights
+  type: array
+  description: ''
+  nullable: false
+  source_schema: InsightsResponseBody
+- term: account_guids
+  type: array
+  description: A list of account GUIDs to merge. Must include at least two GUIDs belonging
+    to the same user.
+  nullable: false
+  source_schema: AccountsMergeRequest
+- term: account_id
+  type: string
+  description: The unique client-defined identifier for the account.
+  nullable: true
+  source_schema: TransactionResponse
+- term: check_number_string
+  type: string
+  description: The check number for the `transaction`.
+  nullable: true
+  source_schema: TransactionResponse
+- term: date
+  type: string
+  description: The date on which the transaction took place. This is the field used
+    when searching for transactions by date and is generally the same as `transacted_at`,
+    but uses `posted_at` as a fallback.
+  nullable: true
+  source_schema: TransactionResponse
+- term: is_recurring
+  type: boolean
+  description: Deprecated. If required, reach out to MX to discuss an alternative.
+  nullable: true
+  source_schema: TransactionResponse
+- term: localized_description
+  type: string
+  description: A human-readable description of the transaction, provided in a local
+    language.
+  nullable: true
+  source_schema: TransactionResponse
+- term: localized_memo
+  type: string
+  description: Additional descriptive information about the transaction, provided
+    in a local language.
+  nullable: true
+  source_schema: TransactionResponse
+- term: posted_at
+  type: string
+  description: The date and time the transaction was posted to the account.
+  nullable: true
+  source_schema: TransactionResponse
+- term: status
+  type: string
+  description: 'The status of the transaction.
+
+
+    All transaction data on our systems represent what we get through our data feed
+    which depends what institutions make available for aggregation. Many institutions
+    do not provide data for pending transactions; transactions from those accounts
+    always have a status of `POSTED`.
+
+
+    When we do receive data for pending transactions, a single transaction may be
+    updated from `PENDING` to `POSTED` and keep the same `guid`. This is done through
+    various matching methods performed automatically by MX.
+
+
+    If a single transaction can''t be updated, the `PENDING` transaction will often
+    be deleted and replaced with a new `POSTED` transaction (with a new `guid`) when
+    it is sent to us; this is the most common scenario when pending data is available.
+
+
+    In unusual circumstances, there may be separate `PENDING` and `POSTED` transactions
+    on MX systems for up to 14 days. All `PENDING` transactions are deleted after
+    14 days as a failsafe.
+
+    '
+  nullable: true
+  source_schema: TransactionResponse
+- term: top_level_category
+  type: string
+  description: The parent category assigned to this transaction's category.
+  nullable: true
+  source_schema: TransactionResponse
+- term: transacted_at
+  type: string
+  description: The date and time the transaction took place.
+  nullable: true
+  source_schema: TransactionResponse
+- term: has_been_viewed
+  type: boolean
+  description: Indicates whether the transaction has been viewed.
+  nullable: false
+  source_schema: TransactionCreateRequest
+- term: transaction
+  type: string
+  description: ''
+  nullable: false
+  source_schema: TransactionCreateRequestBody
+- term: is_completed
+  type: boolean
+  description: Indicates whether the `scheduled_payment` has been paid or not. This
+    field is only applicable to one-time transactions.
+  nullable: false
+  source_schema: ScheduledPaymentResponse
+- term: occurs_on
+  type: string
+  description: The date on which the payment is scheduled to occur, given in ISO 8601
+    format without a timestamp.
+  nullable: false
+  source_schema: ScheduledPaymentResponse
+- term: recurrence_day
+  type: integer
+  description: The day of the month where the next payment is expected to occur.
+  nullable: false
+  source_schema: ScheduledPaymentResponse
+- term: recurrence_type
+  type: string
+  description: The type of recurrence schedule.
+  nullable: false
+  source_schema: ScheduledPaymentResponse
+- term: transaction_type
+  type: string
+  description: The type of transaction.
+  nullable: false
+  source_schema: ScheduledPaymentResponse
+- term: scheduled_payments
+  type: array
+  description: ''
+  nullable: false
+  source_schema: ScheduledPaymentsResponseBody
+- term: insight
+  type: string
+  description: ''
+  nullable: false
+  source_schema: InsightResponseBody
+- term: aggregated_at
+  type: string
+  description: 'The date and time the most recent aggregation-type job was started,
+    given in ISO 8601 format with a time component.
+
+
+    A job will automatically be started when a member is created or its credentials
+    are updated, unless the `skip_aggregation` parameter is used.
+
+
+    Jobs can also be started via manual aggregations, background aggregations, API
+    endpoints, or when opening an MX widget.
+
+
+    A job can be a normal aggregation, or a premium job such as identification, verification,
+    fetching statements, or fetching an extended transaction history.
+
+
+    If a member is deleted and then re-created with the `skip_aggregation` parameter
+    set to `true` or if it is re-created within the throttle window (typically three
+    hours), the previous value will be returned.
+
+    '
+  nullable: true
+  source_schema: MemberResponse
+- term: background_aggregation_is_disabled
+  type: boolean
+  description: Indicates whether background aggregation is disabled for the `member`.
+  nullable: false
+  source_schema: MemberResponse
+- term: connection_status
+  type: string
+  description: The status of a user's connection to an institution. See [Member Connection
+    Status](/api-reference/platform-api/reference/member-connection-statuses).
+  nullable: true
+  source_schema: MemberResponse
+- term: connection_status_message
+  type: string
+  description: A human-readable message describing the connection status. See [Member
+    Connection Status](/api-reference/platform-api/reference/member-connection-statuses).
+  nullable: true
+  source_schema: MemberResponse
+- term: is_being_aggregated
+  type: boolean
+  description: Indicates whether the member was being aggregated at the time of the
+    request.
+  nullable: true
+  source_schema: MemberResponse
+- term: is_managed_by_user
+  type: boolean
+  description: Indicates whether the member is managed by the user or the MX partner.
+    Members created with the managed member feature will have this field set to `false`.
+  nullable: true
+  source_schema: MemberResponse
+- term: is_oauth
+  type: boolean
+  description: Indicates whether the member uses OAuth to authenticate. Defaults to
+    `false`.
+  nullable: true
+  source_schema: MemberResponse
+- term: most_recent_job_detail_code
+  type: integer
+  description: (Deprecated) This field is no longer used and will be removed at a
+    future date.
+  nullable: true
+  source_schema: MemberResponse
+- term: most_recent_job_detail_text
+  type: boolean
+  description: (Deprecated) This field is no longer used and will be removed at a
+    future date.
+  nullable: true
+  source_schema: MemberResponse
+- term: most_recent_job_guid
+  type: string
+  description: The unique identifier for the most recent job. Defined by MX.
+  nullable: true
+  source_schema: MemberResponse
+- term: needs_updated_credentials
+  type: boolean
+  description: Internal field used by MX in some circumstances. When set to `true`,
+    MX will not attempt to aggregate the member. It will be set to `false` automatically
+    when the member's credentials are updated.
+  nullable: true
+  source_schema: MemberResponse
+- term: oauth_window_uri
+  type: string
+  description: When connecting a member using OAuth, this field will contain the URL
+    to send the user to in order to authenticate, otherwise it will be blank.
+  nullable: true
+  source_schema: MemberResponse
+- term: successfully_aggregated_at
+  type: string
+  description: The date and time when the member was last successfully aggregated,
+    represented in ISO 8601 format with a timestamp.
+  nullable: true
+  source_schema: MemberResponse
+- term: use_cases
+  type: array
+  description: The use case associated with the member. Valid values are `PFM` and/or
+    `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using
+    this field.
+  nullable: false
+  source_schema: MemberResponse
+- term: members
+  type: array
+  description: ''
+  nullable: false
+  source_schema: MembersResponseBody
+- term: member
+  type: string
+  description: ''
+  nullable: false
+  source_schema: ManagedMemberCreateRequestBody
+- term: products
+  type: array
+  description: Contains the products you want to aggregate upon a successful connection.
+    For accepted products, see [Defining Products](/products/connectivity/overview/intro-to-unified-product-ordering/#defining-products).
+  nullable: false
+  source_schema: DataRequest
+- term: value
+  type: string
+  description: ''
+  nullable: false
+  source_schema: CredentialRequest
+- term: client_redirect_url
+  type: string
+  description: 'This determines the redirect destination at the end of OAuth when
+    used with `is_mobile_webview: true` or `oauth_referral_source: ''APP''`.
+
+    '
+  nullable: false
+  source_schema: MemberCreateRequestBody
+- term: data_request
+  type: object
+  description: ''
+  nullable: false
+  source_schema: MemberCreateRequestBody
+- term: enable_app2app
+  type: boolean
+  description: 'This indicates whether OAuth app2app behavior is enabled for institutions
+    that support it. Defaults to `true`. When set to `false`, any `oauth_window_uri`
+    generated will **not** direct the end user to the institution''s mobile application.
+    This setting is not persistent. This setting currently only affects Chase institutions.
+
+    '
+  nullable: false
+  source_schema: MemberCreateRequestBody
+- term: referral_source
+  type: string
+  description: ''
+  nullable: false
+  source_schema: MemberCreateRequestBody
+- term: ui_message_webview_url_scheme
+  type: string
+  description: A client-defined scheme used in OAuth redirects in WebViews. Defaults
+    to `mx`.
+  nullable: false
+  source_schema: MemberCreateRequestBody
+- term: address
+  type: string
+  description: The account owner's street address.
+  nullable: true
+  source_schema: AccountOwnerResponse
+- term: first_name
+  type: string
+  description: The account owner's first name. This may also include a middle name.
+    This field will be `null` unless name splitting has been enabled. Contact MX to
+    have this feature enabled.
+  nullable: true
+  source_schema: AccountOwnerResponse
+- term: last_name
+  type: string
+  description: The last name of the account holder.
+  nullable: true
+  source_schema: AccountOwnerResponse
+- term: owner_name
+  type: string
+  description: The account owner's name.
+  nullable: true
+  source_schema: AccountOwnerResponse
+- term: phone
+  type: string
+  description: The account owner's phone number.
+  nullable: true
+  source_schema: AccountOwnerResponse
+- term: account_owners
+  type: array
+  description: ''
+  nullable: false
+  source_schema: AccountOwnersResponseBody
+- term: data_uri
+  type: string
+  description: ''
+  nullable: true
+  source_schema: ImageOptionResponse
+- term: image_data
+  type: string
+  description: ''
+  nullable: true
+  source_schema: ChallengeResponse
+- term: image_options
+  type: array
+  description: ''
+  nullable: false
+  source_schema: ChallengeResponse
+- term: options
+  type: array
+  description: ''
+  nullable: false
+  source_schema: ChallengeResponse
+- term: challenges
+  type: array
+  description: ''
+  nullable: false
+  source_schema: ChallengesResponseBody
+- term: cost_basis
+  type: number
+  description: The original value of an asset for tax purposes, usually the purchase
+    price, used to calculate capital gains or losses. Accumulated price.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: coupon_yield
+  type: string
+  description: The rate of return the bonds coupon rate generates.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: current_price
+  type: number
+  description: The present market price of a single unit of the holding (for example,
+    stock price per share).
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: daily_change
+  type: number
+  description: The daily change in the `current_price` of the holding since the previous
+    trading day.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: expiration
+  type: string
+  description: The expiration date associated with the holding.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: face_value
+  type: number
+  description: The nominal value of a bond or fixed-income security, paid to the holder
+    at maturity.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: frequency
+  type: string
+  description: The frequency of the interest paid on the bond (i.e. Annually, Monthly,
+    etc.)
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: market_value
+  type: number
+  description: The current market value of the holding, calculated as the current
+    price times the number of units (shares) owned.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: maturity_date
+  type: string
+  description: The maturity date associated with the holding.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: percentage_change
+  type: number
+  description: The percent change in the `current_price` of the holding compared to
+    a previous time period. It is the percentage change that reflects the `daily_change`.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: purchase_price
+  type: number
+  description: The average price paid for the holding.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: quantity
+  type: string
+  description: The number of units of the holding owned (for example, number of shares
+    of stock).
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: rate
+  type: number
+  description: The interest on the bond, subject to determining the payout amount
+    of the bond.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: strike_price
+  type: number
+  description: The strike price associated to the option.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: symbol
+  type: string
+  description: The ticker symbol or unique identifier of the holding, used in stock
+    exchanges.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: term
+  type: string
+  description: The length of time until the bond's principal amount is due to be repaid.
+    It is the period from when the bond is issued until it reaches its maturity date.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: total_ugl_amount
+  type: number
+  description: The total unrealized gain/loss amount for an investment.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: total_ugl_percentage
+  type: number
+  description: The total unrealized gain/loss for the holding since it was acquired.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: unvested_quantity
+  type: number
+  description: The number of units (for example, shares) of the holding that are not
+    yet vested or owned outright by the holder.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: unvested_value
+  type: number
+  description: The value of the portion of the holding that is unvested.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: vested_quantity
+  type: number
+  description: The number of units (for example, shares) of the holding that are vested
+    and fully owned by the holder.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: vested_value
+  type: number
+  description: The value of the portion of the holding that is vested and fully owned
+    by the holder.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: current_price_as_of
+  type: string
+  description: The date and time when the current price was last updated, represented
+    in ISO 8601 format with a timestamp.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: issue_date
+  type: string
+  description: The date on which a security was issued or made available for sale.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: vesting_start_date
+  type: string
+  description: The date from which the vesting schedule for a holding begins.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: vesting_end_date
+  type: string
+  description: The date from which the vesting schedule for a holding ends.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: put_or_call
+  type: string
+  description: States whether the option is a `PUT` or `CALL`.
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: holding_type
+  type: string
+  description: The type of investment (e.g., equity, fixed income, mutual fund, etc.)
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: term_unit
+  type: string
+  description: The unit type of the term associated to the bond. (Year, Month, etc.)
+  nullable: true
+  source_schema: InvestmentHoldingResponse
+- term: investment_holdings
+  type: array
+  description: ''
+  nullable: false
+  source_schema: InvestmentHoldingsResponseBody
+- term: investment_holding
+  type: string
+  description: ''
+  nullable: false
+  source_schema: InvestmentHoldingResponseBody
+- term: message
+  type: string
+  description: ''
+  nullable: false
+  source_schema: InvestmentHoldingsDeactivation
+- term: content_hash
+  type: string
+  description: An SHA-256 hash value of the statement's byte payload.
+  nullable: true
+  source_schema: StatementResponse
+- term: uri
+  type: string
+  description: A URI for accessing the byte payload of the `statement`.
+  nullable: true
+  source_schema: StatementResponse
+- term: statements
+  type: array
+  description: ''
+  nullable: false
+  source_schema: StatementsResponseBody
+- term: statement
+  type: string
+  description: ''
+  nullable: false
+  source_schema: StatementResponseBody
+- term: has_processed_account_numbers
+  type: boolean
+  description: Indicates whether the member has processed account numbers.
+  nullable: true
+  source_schema: MemberStatusResponse
+- term: has_processed_accounts
+  type: boolean
+  description: Indicates whether the member has processed accounts.
+  nullable: true
+  source_schema: MemberStatusResponse
+- term: has_processed_transactions
+  type: boolean
+  description: Indicates whether the member has processed transactions.
+  nullable: true
+  source_schema: MemberStatusResponse
+- term: is_authenticated
+  type: boolean
+  description: ''
+  nullable: true
+  source_schema: MemberStatusResponse
+- term: actual_amount
+  type: number
+  description: The sum of the transactions associated with the spending plan `iteration_item`.
+  nullable: true
+  source_schema: SpendingPlanIterationItemResponse
+- term: item_type
+  type: integer
+  description: The type of transaction grouping for the spending plan `iteration_item`
+    (0 = `RECURRING_EXPENSE`, 1 = `PLANNED_EXPENSE`, 2 = `OTHER_EXPENSE`, 3 = `INCOME`).
+  nullable: true
+  source_schema: SpendingPlanIterationItemResponse
+- term: planned_amount
+  type: number
+  description: The total amount planned for a spending plan `iteration_item`.
+  nullable: true
+  source_schema: SpendingPlanIterationItemResponse
+- term: scheduled_payment_guid
+  type: string
+  description: The unique identifier for the `scheduled_payment_guid` associated with
+    the spending plan `iteration_item`. Defined by MX.
+  nullable: true
+  source_schema: SpendingPlanIterationItemResponse
+- term: spending_plan_iteration_guid
+  type: string
+  description: The unique identifier for the spending plan `iteration_item`. Defined
+    by MX.
+  nullable: true
+  source_schema: SpendingPlanIterationItemResponse
+- term: transaction_guids
+  type: array
+  description: An array of transaction GUIDs that are relevant to the spending plan
+    `iteration_item`. Defined by MX.
+  nullable: false
+  source_schema: SpendingPlanIterationItemResponse
+- term: iteration_items
+  type: array
+  description: ''
+  nullable: false
+  source_schema: SpendingPlanIterationItemsResponseBody
+- term: current_iteration_number
+  type: integer
+  description: The current active associated `spending_plan_iteration` number for
+    a given `spending_plan`.
+  nullable: true
+  source_schema: SpendingPlanResponse
+- term: spending_plans
+  type: array
+  description: ''
+  nullable: false
+  source_schema: SpendingPlansResponseBody
+- term: spending_plan_guid
+  type: string
+  description: The unique identifier for the spending plan. Defined by MX.
+  nullable: false
+  source_schema: SpendingPlanAccountResponse
+- term: spending_plan_accounts
+  type: array
+  description: ''
+  nullable: false
+  source_schema: SpendingPlanAccountsResponse
+- term: end_on
+  type: string
+  description: The date on which the spending plan iteration ends.
+  nullable: true
+  source_schema: SpendingPlanIterationResponse
+- term: iteration_number
+  type: integer
+  description: The current iteration number for the spending plan iteration.
+  nullable: true
+  source_schema: SpendingPlanIterationResponse
+- term: start_on
+  type: string
+  description: The date on which the spending plan iteration starts.
+  nullable: true
+  source_schema: SpendingPlanIterationResponse
+- term: iterations
+  type: array
+  description: ''
+  nullable: false
+  source_schema: SpendingPlanIterationsResponse
+- term: tag_guid
+  type: string
+  description: The unique identifier for the tag. Defined by MX.
+  nullable: true
+  source_schema: TaggingResponse
+- term: transaction_guid
+  type: string
+  description: The unique identifier for the transaction. Defined by MX.
+  nullable: true
+  source_schema: TaggingResponse
+- term: taggings
+  type: array
+  description: ''
+  nullable: false
+  source_schema: TaggingsResponseBody
+- term: tagging
+  type: string
+  description: ''
+  nullable: false
+  source_schema: TaggingCreateRequestBody
+- term: tags
+  type: array
+  description: ''
+  nullable: false
+  source_schema: TagsResponseBody
+- term: tag
+  type: string
+  description: ''
+  nullable: false
+  source_schema: TagCreateRequestBody
+- term: match_description
+  type: string
+  description: A string used to find a transaction to which the rule will be applied.
+    Transaction matching is based on a comparison of `match_description` to a transaction's
+    cleansed description.
+  nullable: true
+  source_schema: TransactionRuleResponse
+- term: transaction_rules
+  type: array
+  description: ''
+  nullable: false
+  source_schema: TransactionRulesResponseBody
+- term: transaction_rule
+  type: string
+  description: ''
+  nullable: false
+  source_schema: TransactionRuleCreateRequestBody
+- term: launch_integration
+  type: string
+  description: Launches a deep link integration. Valid value is `direct-deposit`.
+  nullable: false
+  source_schema: DeepLinkParams
+- term: font_name
+  type: string
+  description: Sets the widget's font. Pass any Google font to change it.
+  nullable: false
+  source_schema: Style
+- term: color_scheme
+  type: string
+  description: 'This option can be passed to any `widget_type` but will not affect
+    [legacy PFM widgets](/products/experience/pfm/legacy-widget-overviews/).
+
+
+    Load the widget with the specified `color_scheme`; options are `light`, `dark`,
+    and `browser` (respects user''s browser setting). Defaults to `light`.
+
+    '
+  nullable: true
+  source_schema: WidgetRequest
+- term: current_institution_code
+  type: string
+  description: 'Only use this option if the `widget_type` is set to `connect_widget`.
+
+
+    Load the widget into the credential view for the specified institution.
+
+    '
+  nullable: true
+  source_schema: WidgetRequest
+- term: current_institution_guid
+  type: string
+  description: 'Only use this option if the `widget_type` is set to `connect_widget`.
+
+
+    Load the widget into the credential view for the specified institution.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: current_member_guid
+  type: string
+  description: 'Only use this option if the `widget_type` is set to `connect_widget`.
+
+
+    Load the widget into a specific member that contains an error or requires multifactor
+    authentication. The widget will determine the best view to load based on the member''s
+    current state.
+
+
+    This option takes precedence over `current_institution_code` and `current_institution_guid`.
+
+    '
+  nullable: true
+  source_schema: WidgetRequest
+- term: current_microdeposit_guid
+  type: string
+  description: Only use this option if the `widget_type` is set to `connect_widget`.
+    This loads the Connect Widget to whichever step the microdeposit process is currently
+    in, which may be the verify amounts step, an error state, and so on. This field
+    is required if attempting to load a specific microdeposit for end users to enter
+    amounts.
+  nullable: false
+  source_schema: WidgetRequest
+- term: deep_link_params
+  type: object
+  description: ''
+  nullable: false
+  source_schema: WidgetRequest
+- term: disable_background_agg
+  type: boolean
+  description: 'Only use this option if the `widget_type` is set to `connect_widget`.
+    This determines whether background aggregation is enabled or disabled for the
+    `member` created by the Connect Widget. Defaults to `false` in `aggregation` mode
+    and `true` in `verification` mode. A global default for all members can be set
+    by reaching out to MX.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: disable_institution_search
+  type: boolean
+  description: 'Only use this option if the `widget_type` is set to `connect_widget`.
+
+
+    When set to `true`, the institution search feature in the Connect Widget will
+    be disabled and end users will not be able to navigate to it. Defaults to `false`.
+
+
+    This option must be used with `current_institution_code`, `current_institution_guid`,
+    or `current_member_guid`.
+
+    '
+  nullable: true
+  source_schema: WidgetRequest
+- term: include_identity
+  type: boolean
+  description: 'You should use `data_request.products` instead to set your products.
+
+
+    Only use this option if the `widget_type` is set to `connect_widget`. This determines
+    whether an account owner identification (AOI, previously called identity verification)
+    is run in addition to the process specified by the mode. Defaults to `false`.
+    This can be set in either `aggregation` or `verification` mode. The AOI runs after
+    the primary process is complete.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: include_transactions
+  type: boolean
+  description: 'You should use `data_request.products` instead to set your products.
+
+
+    Only use this option if the `widget_type` is set to `connect_widget`. This determines
+    whether transaction data are retrieved. Defaults to `true` in `aggregation` mode
+    and `false` in `verification` mode. This can be set in either aggregation or verification
+    mode. This option does not affect future foreground or background aggregations.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: insight_guid
+  type: string
+  description: 'Only use this option if the `widget_type` is set to `pulse_widget`.
+    Set this to the insight guid you want to appear at the top of the insights feed.
+
+    '
+  nullable: true
+  source_schema: WidgetRequest
+- term: is_mobile_webview
+  type: boolean
+  description: 'This option is for every `widget_type`. This configures the widget
+    to render in a mobile WebView. JavaScript event postMessages are replaced with
+    URL updates.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: microwidget_instance_id
+  type: string
+  description: 'Only use this option if the `widget_type` is set to `micro_pulse_carousel_widget`.
+    Set this to a unique value for each instance of the Micro Widget. This lets us
+    collect unique data for each instance of the widget.
+
+    '
+  nullable: true
+  source_schema: WidgetRequest
+- term: locale
+  type: string
+  description: "Sets the language of the widget. \n\nIf you're requesting the Connect\
+    \ or Connections Widgets, you must use the Accept-Language header.\n"
+  nullable: false
+  source_schema: WidgetRequest
+- term: mode
+  type: string
+  description: 'Only use this option if the `widget_type` is set to `connect_widget`.
+    `mode` is the most important option for the Connect Widget. This determines what
+    kind of process Connect will run, which affects how you should set many other
+    options. Defaults to `aggregation`. `aggregation` mode retrieves account and transaction
+    data; in other words, this runs a standard aggregation. `verification` mode retrieves
+    account numbers and routing/transit numbers; in other words, it runs an Instant
+    Account Verification (IAV). By default, verification mode does not retrieve transaction
+    data; this default can be modified with secondary options. By default, background
+    aggregation is disabled for all members created in verification mode; this default
+    can be modified with secondary options.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: oauth_referral_source
+  type: string
+  description: 'Only use this option if the `widget_type` is set to `connect_widget`.
+    This determines how MX will respond to the result of an OAuth flow. When set to
+    `APP`, MX will redirect to the URI specified in the `ui_message_webview_url_scheme`.
+    When set to `BROWSER`, MX will send a postMessage but not redirect. If `is_mobile_webview`
+    is `true`, this defaults to `APP`. If false, it defaults to `BROWSER`.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: style
+  type: string
+  description: ''
+  nullable: false
+  source_schema: WidgetRequest
+- term: ui_message_version
+  type: integer
+  description: 'This option is for all `widget_type`s. This determines which version
+    of postMessage events are triggered. Defaults to 4. All new implementations must
+    use version 4. Prior versions are deprecated.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: update_credentials
+  type: boolean
+  description: 'Only use this option if the `widget_type` is set to `connect_widget`.
+    Load the widget into a view that allows them to update the current member. Optionally
+    used with `current_member_guid`. This option should be used sparingly. The best
+    practice is to use `current_member_guid` and let the widget resolve the issue.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: widget_type
+  type: string
+  description: 'This determines which widget URL you''ll receive.
+
+
+    See [Widget Types](https://docs.mx.com/api-reference/platform-api/reference/widgets)
+    for a list of potential values. Additional request parameters may only apply to
+    some widget types.
+
+    '
+  nullable: false
+  source_schema: WidgetRequest
+- term: widget_url
+  type: string
+  description: ''
+  nullable: false
+  source_schema: WidgetResponseBody
+- term: is_exceeded
+  type: boolean
+  description: If the budget has been exceeded, this field will be true. Otherwise,
+    this field will be false.
+  nullable: false
+  source_schema: BudgetResponse
+- term: is_off_track
+  type: boolean
+  description: If the budget is off track, this field will be true. Otherwise, this
+    field will be false.
+  nullable: false
+  source_schema: BudgetResponse
+- term: off_track_percentage
+  type: number
+  description: The percentage amount of off track spending. (Deprecated).
+  nullable: true
+  source_schema: BudgetResponse
+- term: percent_spent
+  type: number
+  description: The percentage of a budget that has been spent during the current calendar
+    month Calculated as the transaction total divided by the amount and then multiplied
+    by 100.A value of zero will be returned when `amount` is zero.
+  nullable: true
+  source_schema: BudgetResponse
+- term: projected_spending
+  type: number
+  description: The projected amount of spending for the budget.
+  nullable: false
+  source_schema: BudgetResponse
+- term: revision
+  type: integer
+  description: The revision number of this budget record.
+  nullable: false
+  source_schema: BudgetResponse
+- term: transaction_total
+  type: string
+  description: The cumulative amount of all transactions under the budget.
+  nullable: false
+  source_schema: BudgetResponse
+- term: budget
+  type: string
+  description: ''
+  nullable: false
+  source_schema: BudgetResponseBody
+- term: current_amount
+  type: number
+  description: The current amount of the `goal`.
+  nullable: false
+  source_schema: GoalsResponse
+- term: goal_type_name
+  type: string
+  description: The type of goal.
+  nullable: true
+  source_schema: GoalsResponse
+- term: meta_type_name
+  type: string
+  description: The category of the goal.
+  nullable: false
+  source_schema: GoalsResponse
+- term: completed_at
+  type: string
+  description: Date and time the `goal` was completed, represented in ISO 8601 format
+    with a timestamp.
+  nullable: false
+  source_schema: GoalsResponse
+- term: has_been_spent
+  type: boolean
+  description: Determines if the goal has been spent.
+  nullable: false
+  source_schema: GoalsResponse
+- term: is_complete
+  type: boolean
+  description: Determines if the goal is complete.
+  nullable: false
+  source_schema: GoalsResponse
+- term: position
+  type: integer
+  description: The priority of the goal in relation to multiple goals.
+  nullable: false
+  source_schema: GoalsResponse
+- term: projected_to_complete_at
+  type: string
+  description: The date on which the project was completed.
+  nullable: false
+  source_schema: GoalsResponse
+- term: targeted_to_complete_at
+  type: string
+  description: Date and time the goal is to complete, represented in ISO 8601 format
+    with timestamp. Intended for users to set their own goal completion dates.
+  nullable: false
+  source_schema: GoalsResponse
+- term: track_type_name
+  type: string
+  description: The track of the goal.
+  nullable: false
+  source_schema: GoalsResponse
+- term: goals
+  type: array
+  description: ''
+  nullable: false
+  source_schema: GoalsResponseBody
+- term: goal
+  type: string
+  description: ''
+  nullable: false
+  source_schema: GoalRequestBody
+- term: channel
+  type: string
+  description: 'The way the notification will be delivered to the user.
+
+
+    All notifications created through the API will be of notification type `API_NOTIFICATION`,
+    channel `PUSH`, and will not be associated to an entity. No other channels are
+    supported.
+
+    '
+  nullable: true
+  source_schema: NotificationResponse
+- term: content
+  type: string
+  description: The main body of the notification text sent to the user.
+  nullable: false
+  source_schema: NotificationResponse
+- term: deep_link_guid
+  type: string
+  description: The unique identifier for objects that directly trigger a notification.
+    For example, `TRANSACTION_FEE_CHARGE` and `TRANSACTION_EXPENSE_LARGE` notification
+    types will have a transaction guid in this field.
+  nullable: false
+  source_schema: NotificationResponse
+- term: delivered_at
+  type: string
+  description: Date and time the notification was delivered, represented in ISO 8601
+    format with timestamp.
+  nullable: false
+  source_schema: NotificationResponse
+- term: entity_guid
+  type: string
+  description: The unique identifier of the entity that the notification is attached
+    to.
+  nullable: false
+  source_schema: NotificationResponse
+- term: has_been_delivered
+  type: string
+  description: Indicates if the notification has been delivered to the user.
+  nullable: false
+  source_schema: NotificationResponse
+- term: notification_type
+  type: string
+  description: The type of notification. See [Notification Types](/api-reference/platform-api/reference/notifications-fields#notification-types).
+  nullable: false
+  source_schema: NotificationResponse
+- term: subject
+  type: string
+  description: The notification summary text. Usually the same text used for “in-app”
+    or SMS notifications.
+  nullable: false
+  source_schema: NotificationResponse
+- term: threshold
+  type: string
+  description: ''
+  nullable: false
+  source_schema: NotificationResponse
+- term: notifications
+  type: string
+  description: ''
+  nullable: false
+  source_schema: NotificationsResponseBody
+- term: notification
+  type: string
+  description: ''
+  nullable: false
+  source_schema: NotificationRequestBody
+- term: last_posted_date
+  type: string
+  description: Last occurrence date.
+  nullable: false
+  source_schema: RepeatingTransactionResponse
+- term: predicted_occurs_on
+  type: string
+  description: Predicted next occurrence.
+  nullable: false
+  source_schema: RepeatingTransactionResponse
+- term: repeating_transaction_type
+  type: string
+  description: The type of repeating transaction. This field appears on transaction
+    endpoints where the optional query parameter is defined.
+  nullable: false
+  source_schema: RepeatingTransactionResponse
+- term: repeating_transactions
+  type: array
+  description: ''
+  nullable: false
+  source_schema: RepeatingTransactionsResponseBody
+- term: budgeted_income
+  type: number
+  description: The amount of the budgeted income for the user.
+  nullable: false
+  source_schema: MonthlyCashFlowResponse
+- term: budgeted_expenses
+  type: number
+  description: The amount of the budgeted expenses for the user.
+  nullable: false
+  source_schema: MonthlyCashFlowResponse
+- term: goals_contribution
+  type: number
+  description: The monthly dollar amount allocated for goals.
+  nullable: false
+  source_schema: MonthlyCashFlowResponse
+- term: estimated_goals_contribution
+  type: number
+  description: The estimated monthly dollar amount allocated for goals calculated
+    from income and budgets.
+  nullable: true
+  source_schema: MonthlyCashFlowResponse
+- term: uses_estimated_goals_contribution
+  type: boolean
+  description: Indicates if the user uses estimated goals contribution.
+  nullable: false
+  source_schema: MonthlyCashFlowResponse
+- term: monthly_cash_flow_profile
+  type: string
+  description: ''
+  nullable: false
+  source_schema: MonthlyCashFlowResponseBody
+- term: payment_processor_guid
+  type: string
+  description: The unique identifier for the payment processor. Defined by MX.
+  nullable: false
+  source_schema: TokenResponse
+- term: expires_at
+  type: string
+  description: The date and time the access token expires in ISO 8601 format with
+    a timestamp.
+  nullable: false
+  source_schema: TokenResponse
+- term: access_token
+  type: string
+  description: The access token you'll use to retrieve data. Every `access_token`
+    expires after 60 days. To get a new token after an old one has expired, you must
+    get a new code from the client. See [How-to Guide for Processors](https://docs.mx.com/products/connectivity/instant-account-verification/processor-token/processor-guide/#1-request-an-access-token).
+  nullable: true
+  source_schema: TokenResponse
+- term: active
+  type: boolean
+  description: Indicates whether the token is active.
+  nullable: false
+  source_schema: TokenResponse
+- term: tokens
+  type: string
+  description: ''
+  nullable: false
+  source_schema: TokenResponseBody
+- term: account_name
+  type: string
+  description: The human-readable name for the account.
+  nullable: false
+  source_schema: PaymentAccount
+- term: payment_account
+  type: string
+  description: ''
+  nullable: false
+  source_schema: PaymentAccountBody
+- term: error_message
+  type: string
+  description: A message describing an error that occurred.
+  nullable: true
+  source_schema: MicrodepositResponse
+- term: institution_name
+  type: string
+  description: An easy-to-read name for an institution. May be `null` for institutions
+    that are not in the MX system.
+  nullable: false
+  source_schema: MicrodepositResponse
+- term: verified_at
+  type: string
+  description: The date and time at which the microdeposit status changed from `DEPOSITED`
+    to `VERIFIED`.
+  nullable: true
+  source_schema: MicrodepositResponse
+- term: micro_deposits
+  type: array
+  description: ''
+  nullable: false
+  source_schema: MicrodepositsResponseBody
+- term: micro_deposit
+  type: string
+  description: ''
+  nullable: false
+  source_schema: MicrodepositRequestBody
+- term: deposit_amount_1
+  type: number
+  description: The amount of the first microdeposit sent for account verification.
+  nullable: false
+  source_schema: MicrodepositVerifyRequest
+- term: deposit_amount_2
+  type: number
+  description: The amount of the second microdeposit sent for account verification.
+  nullable: false
+  source_schema: MicrodepositVerifyRequest
+- term: balance_type
+  type: string
+  description: The type of balance associated with the reward, for example, `BALANCE_TO_LEVEL`,
+    or `TOTAL_BALANCE`.
+  nullable: false
+  source_schema: RewardElements
+- term: expires_on
+  type: string
+  description: The date on which the balance expires.
+  nullable: false
+  source_schema: RewardElements
+- term: unit_type
+  type: string
+  description: The units in which the balance is given, for example, `MILES` or `POINTS`.
+  nullable: false
+  source_schema: RewardElements
+- term: rewards
+  type: array
+  description: ''
+  nullable: false
+  source_schema: RewardsResponseBody
+- term: reward
+  type: string
+  description: ''
+  nullable: false
+  source_schema: RewardResponseBody
+- term: annual_fee
+  type: number
+  description: The annual fee associated with the `credit_card_product`.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: duration_of_introductory_rate_on_balance_transfer
+  type: integer
+  description: The duration of an introductory rate on balance transfers, given in
+    months.
+  nullable: true
+  source_schema: CreditCardProduct
+- term: duration_of_introductory_rate_on_purchases
+  type: integer
+  description: ''
+  nullable: true
+  source_schema: CreditCardProduct
+- term: has_cashback_rewards
+  type: boolean
+  description: Indicates if the credit card product has cashback rewards.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: has_other_rewards
+  type: boolean
+  description: This indicates whether the credit card offers a rewards system that
+    is different than standard cashback or travel rewards.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: has_travel_rewards
+  type: boolean
+  description: This indicates whether the credit card offers travel rewards.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: has_zero_introductory_annual_fee
+  type: boolean
+  description: This indicates whether the credit card offers a limited time period
+    where a membership fee is waived.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: has_zero_percent_introductory_rate
+  type: boolean
+  description: This indicates whether the credit card offers a zero percent introductory
+    rate.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: has_zero_percent_introductory_rate_on_balance_transfer
+  type: boolean
+  description: This indicates that the credit card offers a zero percent rate when
+    transferring a balance from a different credit card.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: is_accepting_applicants
+  type: boolean
+  description: This indicates whether the financial institution is still accepting
+    applicants for the credit card.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: is_active_credit_card_product
+  type: boolean
+  description: This indicates whether the credit card is still supported by the financial
+    institution.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: is_small_business_card
+  type: boolean
+  description: This indicates whether the credit card is associated with a small business.
+  nullable: false
+  source_schema: CreditCardProduct
+- term: credit_card_product
+  type: string
+  description: ''
+  nullable: false
+  source_schema: CreditCardProductResponse
+- term: verifiableCredential
+  type: string
+  description: The MX-issued verifiable credential.
+  nullable: false
+  source_schema: VCResponse

@@ -1,0 +1,70 @@
+{
+  "listInstitutions": {
+    "path": "/institutions",
+    "method": "GET",
+    "summary": "List institutions",
+    "parameters": [],
+    "tags": [
+      "institutions"
+    ],
+    "response_schema": "InstitutionsResponseBody",
+    "response_fields": [
+      "institutions",
+      "pagination"
+    ]
+  },
+  "createUser": {
+    "path": "/users",
+    "method": "POST",
+    "summary": "Create user",
+    "parameters": [],
+    "tags": [
+      "users"
+    ],
+    "response_schema": "UserResponseBody",
+    "response_fields": [
+      "user"
+    ]
+  },
+  "listUserAccounts": {
+    "path": "/users/{user_identifier}/accounts",
+    "method": "GET",
+    "summary": "List accounts",
+    "parameters": [],
+    "tags": [
+      "accounts"
+    ],
+    "response_schema": "AccountsResponseBody",
+    "response_fields": [
+      "accounts",
+      "pagination"
+    ]
+  },
+  "readMember": {
+    "path": "/users/{user_identifier}/members/{member_identifier}",
+    "method": "GET",
+    "summary": "Read member",
+    "parameters": [],
+    "tags": [
+      "members"
+    ],
+    "response_schema": "MemberResponseBody",
+    "response_fields": [
+      "member"
+    ]
+  },
+  "readTransaction": {
+    "path": "/users/{user_guid}/transactions/{transaction_guid}",
+    "method": "GET",
+    "summary": "Read transaction",
+    "parameters": [],
+    "tags": [
+      "transactions"
+    ],
+    "response_schema": "TransactionsResponseBodyIncludes",
+    "response_fields": [
+      "transactions",
+      "pagination"
+    ]
+  }
+}

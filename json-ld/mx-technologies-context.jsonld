@@ -1,0 +1,93 @@
+{
+  "@context": {
+    "@vocab": "https://api.mx.com/vocab/",
+    "mx": "https://api.mx.com/vocab/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Account": "mx:Account",
+    "Transaction": "mx:Transaction",
+    "Member": "mx:Member",
+    "User": "mx:User",
+    "Institution": "mx:Institution",
+    "Budget": "mx:Budget",
+    "Category": "mx:Category",
+    "Goal": "mx:Goal",
+    "Statement": "mx:Statement",
+    "guid": {
+      "@id": "mx:guid",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name"
+    },
+    "account_number": {
+      "@id": "mx:account_number",
+      "@type": "xsd:string"
+    },
+    "account_type": {
+      "@id": "mx:account_type",
+      "@type": "xsd:string"
+    },
+    "available_balance": {
+      "@id": "mx:available_balance",
+      "@type": "xsd:decimal"
+    },
+    "balance": {
+      "@id": "mx:balance",
+      "@type": "xsd:decimal"
+    },
+    "currency_code": {
+      "@id": "mx:currency_code",
+      "@type": "xsd:string"
+    },
+    "user_guid": {
+      "@id": "mx:user_guid",
+      "@type": "xsd:string"
+    },
+    "member_guid": {
+      "@id": "mx:member_guid",
+      "@type": "xsd:string"
+    },
+    "amount": {
+      "@id": "mx:amount",
+      "@type": "xsd:decimal"
+    },
+    "category": {
+      "@id": "mx:category",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description"
+    },
+    "date": {
+      "@id": "mx:date",
+      "@type": "xsd:date"
+    },
+    "status": {
+      "@id": "mx:status",
+      "@type": "xsd:string"
+    },
+    "institution_code": {
+      "@id": "mx:institution_code",
+      "@type": "xsd:string"
+    },
+    "aggregated_at": {
+      "@id": "mx:aggregated_at",
+      "@type": "xsd:dateTime"
+    },
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "email": {
+      "@id": "schema:email"
+    },
+    "url": {
+      "@id": "schema:url"
+    }
+  }
+}

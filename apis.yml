@@ -47,6 +47,14 @@ apis:
         url: https://docs.mx.com/api-reference/platform-api/overview/
       - type: OpenAPI
         url: https://github.com/mxenabled/openapi/blob/master/openapi/mx_platform_api.yml
+      - type: OpenAPI
+        url: openapi/mx-technologies-platform-openapi.yml
+      - type: OpenAPI
+        url: openapi/mx-technologies-platform-v20250224-openapi.yml
+      - type: JSONSchema
+        url: json-schema/mx-technologies-platform-api.json
+      - type: Examples
+        url: examples/mx-technologies-platform-api-examples.json
 
   - name: MX Atrium API
     description: >
@@ -163,6 +171,12 @@ common:
 
   - type: FinOps
     url: finops/mx-technologies-finops.yml
+
+  - type: Vocabulary
+    url: vocabulary/mx-technologies-vocabulary.yml
+
+  - type: JSONLDContext
+    url: json-ld/mx-technologies-context.jsonld
 
 maintainers:
   - FN: Kin Lane
