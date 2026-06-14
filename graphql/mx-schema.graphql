@@ -1,0 +1,1394 @@
+"""
+MX Technologies GraphQL Schema
+Conceptual GraphQL representation of the MX Platform API covering account aggregation,
+financial data connectivity, open banking, widgets, and analytics.
+MX Technologies does not publish a native GraphQL API; this schema is derived from
+their REST API surface (docs.mx.com/api-reference/platform-api).
+"""
+
+scalar DateTime
+scalar Date
+scalar Decimal
+scalar JSON
+
+# ─────────────────────────────────────────────
+# Root Operations
+# ─────────────────────────────────────────────
+
+type Query {
+  # Users
+  user(guid: ID!): User
+  users(page: Int, recordsPerPage: Int): UserPage
+
+  # Members
+  member(userGuid: ID!, memberGuid: ID!): Member
+  members(userGuid: ID!, page: Int, recordsPerPage: Int): MemberPage
+  memberCredentials(userGuid: ID!, memberGuid: ID!): [MemberCredential!]!
+  memberStatus(userGuid: ID!, memberGuid: ID!): MemberStatus
+
+  # Institutions
+  institution(institutionCode: String!): Institution
+  institutions(name: String, supportsOauth: Boolean, page: Int, recordsPerPage: Int): InstitutionPage
+  institutionCredentials(institutionCode: String!): [InstitutionCredential!]!
+
+  # Accounts
+  account(userGuid: ID!, accountGuid: ID!): Account
+  accounts(userGuid: ID!, page: Int, recordsPerPage: Int): AccountPage
+  accountNumbers(userGuid: ID!, accountGuid: ID!): [AccountNumber!]!
+  accountOwners(userGuid: ID!, accountGuid: ID!): [AccountOwner!]!
+  userAccounts(userGuid: ID!, page: Int, recordsPerPage: Int): AccountPage
+  managedAccounts(userGuid: ID!, memberGuid: ID!): [Account!]!
+
+  # Balances
+  accountBalances(userGuid: ID!, accountGuid: ID!, fromDate: Date, toDate: Date): [Balance!]!
+
+  # Transactions
+  transaction(userGuid: ID!, transactionGuid: ID!): Transaction
+  transactions(userGuid: ID!, accountGuid: ID, fromDate: Date, toDate: Date, page: Int, recordsPerPage: Int): TransactionPage
+  transactionRule(userGuid: ID!, transactionRuleGuid: ID!): TransactionRule
+  transactionRules(userGuid: ID!): [TransactionRule!]!
+
+  # Categories
+  category(guid: ID!): TransactionCategory
+  categories(isDefault: Boolean): [TransactionCategory!]!
+
+  # Merchants
+  merchant(guid: ID!): Merchant
+  merchantLocations(merchantGuid: ID!, page: Int): [MerchantLocation!]!
+
+  # Statements
+  statement(userGuid: ID!, memberGuid: ID!, statementGuid: ID!): Statement
+  statements(userGuid: ID!, memberGuid: ID!): [Statement!]!
+  statementPDF(userGuid: ID!, memberGuid: ID!, statementGuid: ID!): StatementDownload
+
+  # Tax Documents
+  taxDocument(userGuid: ID!, memberGuid: ID!, taxDocumentGuid: ID!): TaxDocument
+  taxDocuments(userGuid: ID!, memberGuid: ID!): [TaxDocument!]!
+
+  # Holdings
+  holding(userGuid: ID!, holdingGuid: ID!): Holding
+  holdings(userGuid: ID!, page: Int, recordsPerPage: Int): HoldingPage
+  memberHoldings(userGuid: ID!, memberGuid: ID!): [Holding!]!
+
+  # Identity & Verification
+  identity(userGuid: ID!, memberGuid: ID!): Identity
+  verificationStatus(userGuid: ID!, memberGuid: ID!): VerificationStatus
+  accountVerification(userGuid: ID!, accountGuid: ID!): AccountVerification
+
+  # Budgets
+  budget(userGuid: ID!, budgetGuid: ID!): Budget
+  budgets(userGuid: ID!): [Budget!]!
+  budgetCategories(userGuid: ID!): [BudgetCategory!]!
+
+  # Goals
+  goal(userGuid: ID!, goalGuid: ID!): Goal
+  goals(userGuid: ID!): [Goal!]!
+
+  # Analytics & Insights
+  monthlyExpenses(userGuid: ID!, month: Int!, year: Int!): MonthlyExpense
+  monthlyIncome(userGuid: ID!, month: Int!, year: Int!): MonthlyIncome
+  cashFlowProfile(userGuid: ID!): CashFlowProfile
+  netWorthComponents(userGuid: ID!): [NetWorthComponent!]!
+  portfolio(userGuid: ID!): Portfolio
+  spendingAnalytics(userGuid: ID!, fromDate: Date, toDate: Date): SpendingAnalytics
+  dataPoints(userGuid: ID!, type: DataPointType): [DataPoint!]!
+
+  # Microdeposits
+  microdeposit(guid: ID!): Microdeposit
+  microdepositTransactions(microdepositGuid: ID!): [MicrodepositTransaction!]!
+
+  # OAuth & Connect Widgets
+  oauthWindow(userGuid: ID!, memberGuid: ID!): OAuthWindow
+  connectToken(userGuid: ID!): ConnectToken
+  widgetUrl(userGuid: ID!, widgetType: WidgetType!, config: WidgetConfigInput): WidgetUrl
+
+  # API Keys
+  apiKey(guid: ID!): APIKey
+  apiKeys: [APIKey!]!
+}
+
+type Mutation {
+  # Users
+  createUser(input: CreateUserInput!): User!
+  updateUser(guid: ID!, input: UpdateUserInput!): User!
+  deleteUser(guid: ID!): DeleteResult!
+
+  # Members
+  createMember(userGuid: ID!, input: CreateMemberInput!): Member!
+  updateMember(userGuid: ID!, memberGuid: ID!, input: UpdateMemberInput!): Member!
+  deleteMember(userGuid: ID!, memberGuid: ID!): DeleteResult!
+  aggregateMember(userGuid: ID!, memberGuid: ID!): Member!
+  resumeAggregation(userGuid: ID!, memberGuid: ID!, input: ResumeAggregationInput!): Member!
+  checkBalances(userGuid: ID!, memberGuid: ID!): Member!
+  identifyMember(userGuid: ID!, memberGuid: ID!): Member!
+  verifyMember(userGuid: ID!, memberGuid: ID!): Member!
+  extendHistory(userGuid: ID!, memberGuid: ID!): Member!
+
+  # Accounts
+  createManagedAccount(userGuid: ID!, memberGuid: ID!, input: CreateAccountInput!): Account!
+  updateManagedAccount(userGuid: ID!, memberGuid: ID!, accountGuid: ID!, input: UpdateAccountInput!): Account!
+  deleteManagedAccount(userGuid: ID!, memberGuid: ID!, accountGuid: ID!): DeleteResult!
+
+  # Transactions
+  createManualTransaction(userGuid: ID!, accountGuid: ID!, input: CreateTransactionInput!): Transaction!
+  updateTransaction(userGuid: ID!, transactionGuid: ID!, input: UpdateTransactionInput!): Transaction!
+  splitTransaction(userGuid: ID!, transactionGuid: ID!, splits: [SplitInput!]!): [Transaction!]!
+
+  # Transaction Rules
+  createTransactionRule(userGuid: ID!, input: CreateTransactionRuleInput!): TransactionRule!
+  updateTransactionRule(userGuid: ID!, ruleGuid: ID!, input: UpdateTransactionRuleInput!): TransactionRule!
+  deleteTransactionRule(userGuid: ID!, ruleGuid: ID!): DeleteResult!
+
+  # Categories
+  createCategory(userGuid: ID!, input: CreateCategoryInput!): TransactionCategory!
+  updateCategory(userGuid: ID!, guid: ID!, input: UpdateCategoryInput!): TransactionCategory!
+  deleteCategory(userGuid: ID!, guid: ID!): DeleteResult!
+
+  # Budgets
+  createBudget(userGuid: ID!, input: CreateBudgetInput!): Budget!
+  updateBudget(userGuid: ID!, budgetGuid: ID!, input: UpdateBudgetInput!): Budget!
+  deleteBudget(userGuid: ID!, budgetGuid: ID!): DeleteResult!
+
+  # Goals
+  createGoal(userGuid: ID!, input: CreateGoalInput!): Goal!
+  updateGoal(userGuid: ID!, goalGuid: ID!, input: UpdateGoalInput!): Goal!
+  deleteGoal(userGuid: ID!, goalGuid: ID!): DeleteResult!
+
+  # Microdeposits
+  createMicrodeposit(input: CreateMicrodepositInput!): Microdeposit!
+  verifyMicrodeposit(guid: ID!, input: VerifyMicrodepositInput!): Microdeposit!
+
+  # API Keys
+  createAPIKey(input: CreateAPIKeyInput!): APIKey!
+  deleteAPIKey(guid: ID!): DeleteResult!
+}
+
+# ─────────────────────────────────────────────
+# User & Authentication
+# ─────────────────────────────────────────────
+
+type User {
+  guid: ID!
+  id: String
+  isDisabled: Boolean!
+  metadata: String
+  email: String
+  members(page: Int, recordsPerPage: Int): MemberPage
+  accounts(page: Int, recordsPerPage: Int): AccountPage
+  transactions(fromDate: Date, toDate: Date, page: Int): TransactionPage
+  categories: [TransactionCategory!]!
+  budgets: [Budget!]!
+  goals: [Goal!]!
+  holdings(page: Int): HoldingPage
+  netWorthComponents: [NetWorthComponent!]!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type UserPage {
+  users: [User!]!
+  pagination: Pagination!
+}
+
+input CreateUserInput {
+  id: String
+  isDisabled: Boolean
+  metadata: String
+  email: String
+}
+
+input UpdateUserInput {
+  id: String
+  isDisabled: Boolean
+  metadata: String
+  email: String
+}
+
+# ─────────────────────────────────────────────
+# Members & Credentials
+# ─────────────────────────────────────────────
+
+type Member {
+  guid: ID!
+  id: String
+  institutionCode: String!
+  institution: Institution
+  name: String
+  aggregatedAt: DateTime
+  connectionStatus: ConnectionStatus!
+  successfullyAggregatedAt: DateTime
+  isBeingAggregated: Boolean!
+  isOauth: Boolean!
+  isManagedByUser: Boolean!
+  oauthWindowUri: String
+  metadata: String
+  credentials: [MemberCredential!]!
+  accounts(page: Int): AccountPage
+  transactions(fromDate: Date, toDate: Date, page: Int): TransactionPage
+  statements: [Statement!]!
+  holdings: [Holding!]!
+  identity: Identity
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type MemberPage {
+  members: [Member!]!
+  pagination: Pagination!
+}
+
+type MemberStatus {
+  guid: ID!
+  connectionStatus: ConnectionStatus!
+  aggregatedAt: DateTime
+  isBeingAggregated: Boolean!
+  successfullyAggregatedAt: DateTime
+  challenges: [MFAChallenge!]!
+}
+
+type MemberCredential {
+  guid: ID!
+  label: String!
+  value: String
+  fieldType: CredentialFieldType!
+  displayOrder: Int
+  options: [CredentialOption!]!
+}
+
+type Credential {
+  guid: ID!
+  fieldName: String!
+  fieldType: CredentialFieldType!
+  label: String!
+  displayOrder: Int
+  isRequired: Boolean!
+  options: [CredentialOption!]!
+}
+
+type CredentialOption {
+  label: String!
+  value: String!
+}
+
+type MFAChallenge {
+  guid: ID!
+  type: MFAChallengeType!
+  label: String!
+  fieldType: CredentialFieldType!
+  imageData: String
+  imageOptions: [MFAImageOption!]!
+  options: [CredentialOption!]!
+  externalLinkText: String
+  externalLinkUrl: String
+}
+
+type MFAImageOption {
+  label: String!
+  value: String!
+  dataUri: String!
+}
+
+input CreateMemberInput {
+  institutionCode: String!
+  credentials: [CredentialInput!]!
+  metadata: String
+  id: String
+  isManagedByUser: Boolean
+}
+
+input UpdateMemberInput {
+  credentials: [CredentialInput!]
+  metadata: String
+  id: String
+}
+
+input CredentialInput {
+  guid: ID!
+  value: String!
+}
+
+input ResumeAggregationInput {
+  challenges: [ChallengeResponseInput!]!
+}
+
+input ChallengeResponseInput {
+  guid: ID!
+  value: String
+  values: [String!]
+}
+
+# ─────────────────────────────────────────────
+# Institutions
+# ─────────────────────────────────────────────
+
+type Institution {
+  code: String!
+  name: String!
+  url: String
+  smallLogoUrl: String
+  mediumLogoUrl: String
+  instructionalText: String
+  forgotPasswordSubmitText: String
+  forgotUsernameSubmitText: String
+  supportsAccountIdentification: Boolean!
+  supportsAccountStatement: Boolean!
+  supportsAccountVerification: Boolean!
+  supportsBalanceCheck: Boolean!
+  supportsHistoryAggregation: Boolean!
+  supportsOauth: Boolean!
+  supportsTransactionHistory: Boolean!
+  isSuspended: Boolean!
+  credentials: [InstitutionCredential!]!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type InstitutionPage {
+  institutions: [Institution!]!
+  pagination: Pagination!
+}
+
+type InstitutionCredential {
+  guid: ID!
+  fieldName: String!
+  fieldType: CredentialFieldType!
+  label: String!
+  displayOrder: Int
+  isRequired: Boolean!
+  options: [CredentialOption!]!
+}
+
+# ─────────────────────────────────────────────
+# Accounts
+# ─────────────────────────────────────────────
+
+type Account {
+  guid: ID!
+  id: String
+  memberGuid: ID!
+  member: Member
+  userGuid: ID!
+  institutionCode: String
+  name: String!
+  nickname: String
+  type: AccountType!
+  subtype: String
+  accountNumber: String
+  routingNumber: String
+  apr: Decimal
+  apy: Decimal
+  availableBalance: Decimal
+  availableCredit: Decimal
+  balance: Decimal
+  cashSurrenderValue: Decimal
+  creditLimit: Decimal
+  currencyCode: String
+  dayPaymentIsDue: Int
+  deathBenefit: Decimal
+  holdingsValue: Decimal
+  insuredName: String
+  interestRate: Decimal
+  isClosed: Boolean!
+  isHidden: Boolean!
+  isManual: Boolean!
+  lastPayment: Decimal
+  lastPaymentAt: DateTime
+  loanAmount: Decimal
+  maturesOn: Date
+  minimumBalance: Decimal
+  minimumPayment: Decimal
+  monthlyPayment: Decimal
+  metadata: String
+  originalBalance: Decimal
+  paymentDueAt: DateTime
+  payoffBalance: Decimal
+  premiumAmount: Decimal
+  propertyType: String
+  startedOn: Date
+  term: String
+  totalAccountValue: Decimal
+  owners: [AccountOwner!]!
+  numbers: [AccountNumber!]!
+  balanceHistory(fromDate: Date, toDate: Date): [Balance!]!
+  transactions(fromDate: Date, toDate: Date, page: Int): TransactionPage
+  statements: [Statement!]!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type AccountPage {
+  accounts: [Account!]!
+  pagination: Pagination!
+}
+
+type AccountNumber {
+  accountGuid: ID!
+  accountNumber: String
+  routingNumber: String
+  type: AccountNumberType
+  transitNumber: String
+  institutionNumber: String
+  bban: String
+  iban: String
+  swiftBic: String
+  passportNumber: String
+}
+
+type AccountOwner {
+  accountGuid: ID!
+  address: String
+  city: String
+  country: String
+  email: String
+  firstName: String
+  lastName: String
+  memberGuid: ID!
+  ownerName: String
+  phone: String
+  postalCode: String
+  state: String
+  userGuid: ID!
+}
+
+type AccountVerification {
+  accountGuid: ID!
+  accountNumber: String
+  routingNumber: String
+  status: VerificationStatusValue!
+  type: VerificationType!
+  micro_deposit_guid: ID
+}
+
+input CreateAccountInput {
+  name: String!
+  type: AccountType!
+  subtype: String
+  balance: Decimal
+  availableBalance: Decimal
+  creditLimit: Decimal
+  currencyCode: String
+  isoCurrencyCode: String
+  metadata: String
+  id: String
+  accountNumber: String
+  routingNumber: String
+  institutionCode: String
+}
+
+input UpdateAccountInput {
+  name: String
+  nickname: String
+  isHidden: Boolean
+  metadata: String
+  balance: Decimal
+  availableBalance: Decimal
+  creditLimit: Decimal
+}
+
+# ─────────────────────────────────────────────
+# Balances
+# ─────────────────────────────────────────────
+
+type Balance {
+  accountGuid: ID!
+  balance: Decimal
+  date: Date!
+  currencyCode: String
+}
+
+# ─────────────────────────────────────────────
+# Transactions
+# ─────────────────────────────────────────────
+
+type Transaction {
+  guid: ID!
+  id: String
+  accountGuid: ID!
+  account: Account
+  userGuid: ID!
+  memberGuid: ID!
+  amount: Decimal!
+  currencyCode: String
+  date: Date!
+  postedAt: DateTime
+  transactedAt: DateTime
+  description: String!
+  originalDescription: String
+  memo: String
+  checkNumberString: String
+  type: TransactionType!
+  isBillPay: Boolean
+  isDirectDeposit: Boolean
+  isExpense: Boolean
+  isFee: Boolean
+  isIncome: Boolean
+  isInternational: Boolean
+  isManual: Boolean
+  isManualTransaction: Boolean
+  isOverdraftFee: Boolean
+  isPayrollAdvance: Boolean
+  isRecurring: Boolean
+  isSubscription: Boolean
+  categoryGuid: ID
+  category: TransactionCategory
+  topLevelCategory: String
+  categoryId: String
+  merchantCategoryCode: String
+  merchantGuid: ID
+  merchant: Merchant
+  latitude: Decimal
+  longitude: Decimal
+  metadata: String
+  status: TransactionStatus!
+  isSplit: Boolean
+  parentGuid: ID
+  updatedAt: DateTime
+  createdAt: DateTime
+}
+
+type TransactionPage {
+  transactions: [Transaction!]!
+  pagination: Pagination!
+}
+
+type TransactionRule {
+  guid: ID!
+  userGuid: ID!
+  description: String
+  matchDescription: String!
+  categoryGuid: ID!
+  category: TransactionCategory
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input CreateTransactionInput {
+  date: Date!
+  description: String!
+  amount: Decimal!
+  categoryGuid: ID
+  currencyCode: String
+  id: String
+  memo: String
+  metadata: String
+  type: TransactionType
+}
+
+input UpdateTransactionInput {
+  description: String
+  amount: Decimal
+  categoryGuid: ID
+  memo: String
+  metadata: String
+  isManual: Boolean
+}
+
+input SplitInput {
+  description: String!
+  amount: Decimal!
+  categoryGuid: ID
+}
+
+input CreateTransactionRuleInput {
+  matchDescription: String!
+  categoryGuid: ID!
+  description: String
+}
+
+input UpdateTransactionRuleInput {
+  matchDescription: String
+  categoryGuid: ID
+  description: String
+}
+
+# ─────────────────────────────────────────────
+# Categories
+# ─────────────────────────────────────────────
+
+type TransactionCategory {
+  guid: ID!
+  name: String!
+  isDefault: Boolean!
+  isIncome: Boolean!
+  metadata: String
+  parentGuid: ID
+  parent: TransactionCategory
+  children: [TransactionCategory!]!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input CreateCategoryInput {
+  name: String!
+  metadata: String
+  parentGuid: ID
+}
+
+input UpdateCategoryInput {
+  name: String
+  metadata: String
+}
+
+# ─────────────────────────────────────────────
+# Merchants & Locations
+# ─────────────────────────────────────────────
+
+type Merchant {
+  guid: ID!
+  name: String!
+  logoUrl: String
+  websiteUrl: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  locations(page: Int): [MerchantLocation!]!
+}
+
+type MerchantLocation {
+  guid: ID!
+  merchantGuid: ID!
+  merchant: Merchant
+  name: String
+  address: String
+  city: String
+  state: String
+  postalCode: String
+  country: String
+  latitude: Decimal
+  longitude: Decimal
+  phone: String
+  storeNumber: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+# ─────────────────────────────────────────────
+# Statements & Tax Documents
+# ─────────────────────────────────────────────
+
+type Statement {
+  guid: ID!
+  accountGuid: ID!
+  memberGuid: ID!
+  userGuid: ID!
+  uri: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type StatementDownload {
+  guid: ID!
+  content: String
+  contentType: String
+}
+
+type TaxDocument {
+  guid: ID!
+  contentHash: String
+  documentType: String!
+  issuedOn: Date
+  memberGuid: ID!
+  taxYear: String
+  uri: String
+  userGuid: ID!
+}
+
+type TaxRecord {
+  guid: ID!
+  taxDocumentGuid: ID!
+  name: String!
+  value: String
+  category: String
+}
+
+# ─────────────────────────────────────────────
+# Holdings & Investments
+# ─────────────────────────────────────────────
+
+type Holding {
+  guid: ID!
+  accountGuid: ID!
+  memberGuid: ID!
+  userGuid: ID!
+  costBasis: Decimal
+  createdAt: DateTime
+  currencyCode: String
+  cusip: String
+  dailyChange: Decimal
+  dailyChangePercent: Decimal
+  description: String
+  holdingType: HoldingType!
+  id: String
+  isin: String
+  marketValue: Decimal
+  marketValueDate: Date
+  metadata: String
+  purchaseDate: Date
+  purchasePrice: Decimal
+  shares: Decimal
+  symbol: String!
+  updatedAt: DateTime
+}
+
+type HoldingPage {
+  holdings: [Holding!]!
+  pagination: Pagination!
+}
+
+type InvestmentHolding {
+  holding: Holding!
+  account: Account
+  member: Member
+  unrealizedGain: Decimal
+  unrealizedGainPercent: Decimal
+}
+
+type Portfolio {
+  userGuid: ID!
+  totalValue: Decimal!
+  totalCostBasis: Decimal
+  totalGain: Decimal
+  totalGainPercent: Decimal
+  holdings: [InvestmentHolding!]!
+  assetAllocation: [AssetAllocation!]!
+}
+
+type AssetAllocation {
+  holdingType: HoldingType!
+  value: Decimal!
+  percent: Decimal!
+}
+
+# ─────────────────────────────────────────────
+# Loans & Real Estate
+# ─────────────────────────────────────────────
+
+type LoanDetail {
+  accountGuid: ID!
+  originalLoanAmount: Decimal
+  loanAmount: Decimal
+  payoffBalance: Decimal
+  interestRate: Decimal
+  apr: Decimal
+  monthlyPayment: Decimal
+  paymentDueAt: DateTime
+  maturesOn: Date
+  term: String
+  startedOn: Date
+}
+
+type Mortgage {
+  accountGuid: ID!
+  propertyAddress: String
+  propertyType: String
+  loanType: String
+  originalLoanAmount: Decimal
+  principalBalance: Decimal
+  interestRate: Decimal
+  monthlyPayment: Decimal
+  nextPaymentDueDate: Date
+  maturityDate: Date
+}
+
+type Vehicle {
+  accountGuid: ID!
+  makeModel: String
+  year: Int
+  vin: String
+  estimatedValue: Decimal
+  loanBalance: Decimal
+}
+
+type RealEstate {
+  accountGuid: ID!
+  address: String
+  city: String
+  state: String
+  postalCode: String
+  estimatedValue: Decimal
+  mortgageBalance: Decimal
+}
+
+# ─────────────────────────────────────────────
+# Identity & Verification
+# ─────────────────────────────────────────────
+
+type Identity {
+  guid: ID!
+  memberGuid: ID!
+  userGuid: ID!
+  addresses: [IdentityAddress!]!
+  emailAddresses: [String!]!
+  names: [String!]!
+  phoneNumbers: [IdentityPhone!]!
+}
+
+type IdentityAddress {
+  city: String
+  country: String
+  line1: String
+  line2: String
+  postalCode: String
+  state: String
+  type: String
+}
+
+type IdentityPhone {
+  number: String!
+  type: String
+}
+
+type VerificationStatus {
+  guid: ID!
+  memberGuid: ID!
+  userGuid: ID!
+  status: VerificationStatusValue!
+  verifiedAt: DateTime
+  accounts: [AccountVerification!]!
+}
+
+# ─────────────────────────────────────────────
+# Microdeposits
+# ─────────────────────────────────────────────
+
+type Microdeposit {
+  guid: ID!
+  accountName: String
+  accountNumber: String
+  accountType: AccountType
+  email: String
+  firstName: String
+  guid: ID!
+  institutionName: String
+  lastName: String
+  routingNumber: String
+  status: MicrodepositStatus!
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type MicrodepositTransaction {
+  guid: ID!
+  microdepositGuid: ID!
+  amount: Decimal!
+  status: MicrodepositStatus!
+  depositedAt: DateTime
+}
+
+input CreateMicrodepositInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  routingNumber: String!
+  accountNumber: String!
+  accountType: AccountType!
+  institutionName: String
+  accountName: String
+}
+
+input VerifyMicrodepositInput {
+  depositAmount1: Decimal!
+  depositAmount2: Decimal!
+}
+
+# ─────────────────────────────────────────────
+# Budgets & Goals
+# ─────────────────────────────────────────────
+
+type Budget {
+  guid: ID!
+  userGuid: ID!
+  categoryGuid: ID!
+  category: TransactionCategory
+  amount: Decimal!
+  currencyCode: String
+  parentGuid: ID
+  isSystemGenerated: Boolean!
+  percentSpent: Decimal
+  amountSpent: Decimal
+  projectedSpending: Decimal
+  metadata: String
+  createdAt: DateTime
+  updatedAt: DateTime
+  periods: [BudgetPeriod!]!
+}
+
+type BudgetCategory {
+  guid: ID!
+  name: String!
+  amount: Decimal!
+  amountSpent: Decimal
+  percentSpent: Decimal
+  isIncome: Boolean!
+  transactions: [Transaction!]!
+}
+
+type BudgetPeriod {
+  budgetGuid: ID!
+  month: Int!
+  year: Int!
+  amount: Decimal!
+  amountSpent: Decimal
+  percentSpent: Decimal
+  projectedSpending: Decimal
+}
+
+input CreateBudgetInput {
+  categoryGuid: ID!
+  amount: Decimal!
+  currencyCode: String
+  metadata: String
+}
+
+input UpdateBudgetInput {
+  amount: Decimal
+  metadata: String
+}
+
+type Goal {
+  guid: ID!
+  userGuid: ID!
+  accountGuid: ID
+  name: String!
+  type: GoalType!
+  amount: Decimal!
+  currentAmount: Decimal
+  percentCompleted: Decimal
+  projectedToCompleteAt: Date
+  targetDate: Date
+  hasBeenSpent: Boolean!
+  isComplete: Boolean!
+  metadata: String
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input CreateGoalInput {
+  name: String!
+  type: GoalType!
+  amount: Decimal!
+  accountGuid: ID
+  targetDate: Date
+  metadata: String
+}
+
+input UpdateGoalInput {
+  name: String
+  amount: Decimal
+  accountGuid: ID
+  targetDate: Date
+  metadata: String
+}
+
+# ─────────────────────────────────────────────
+# Analytics & Insights
+# ─────────────────────────────────────────────
+
+type MonthlyExpense {
+  userGuid: ID!
+  month: Int!
+  year: Int!
+  totalExpenses: Decimal!
+  averageExpenses: Decimal
+  categories: [ExpenseCategory!]!
+}
+
+type MonthlyIncome {
+  userGuid: ID!
+  month: Int!
+  year: Int!
+  totalIncome: Decimal!
+  averageIncome: Decimal
+  sources: [IncomeSource!]!
+}
+
+type ExpenseCategory {
+  categoryGuid: ID!
+  categoryName: String!
+  amount: Decimal!
+  percentOfTotal: Decimal
+  transactionCount: Int
+}
+
+type IncomeSource {
+  description: String!
+  amount: Decimal!
+  frequency: String
+  isDirectDeposit: Boolean
+}
+
+type CashFlowProfile {
+  userGuid: ID!
+  averageMonthlyIncome: Decimal
+  averageMonthlyExpenses: Decimal
+  averageMonthlySavings: Decimal
+  estimatedNextIncomeDate: Date
+  estimatedNextIncomeAmount: Decimal
+  dataPoints: [DataPoint!]!
+}
+
+type NetWorthComponent {
+  guid: ID!
+  userGuid: ID!
+  name: String!
+  type: NetWorthComponentType!
+  value: Decimal!
+  accountGuid: ID
+  account: Account
+  date: Date
+}
+
+type SpendingAnalytics {
+  userGuid: ID!
+  fromDate: Date!
+  toDate: Date!
+  totalSpending: Decimal!
+  categoryBreakdown: [ExpenseCategory!]!
+  merchantBreakdown: [MerchantSpending!]!
+  weeklyAverages: [WeeklySpending!]!
+}
+
+type MerchantSpending {
+  merchantGuid: ID
+  merchantName: String!
+  totalAmount: Decimal!
+  transactionCount: Int!
+}
+
+type WeeklySpending {
+  weekStartDate: Date!
+  amount: Decimal!
+}
+
+type DataPoint {
+  type: DataPointType!
+  value: Decimal!
+  date: Date!
+  metadata: JSON
+}
+
+type Aggregation {
+  memberGuid: ID!
+  userGuid: ID!
+  startedAt: DateTime
+  completedAt: DateTime
+  status: AggregationStatus!
+  accountsAggregated: Int
+  transactionsAdded: Int
+  transactionsUpdated: Int
+}
+
+type Analytics {
+  userGuid: ID!
+  generatedAt: DateTime!
+  monthlyExpenses: MonthlyExpense
+  monthlyIncome: MonthlyIncome
+  cashFlow: CashFlowProfile
+  netWorth: Decimal
+  netWorthComponents: [NetWorthComponent!]!
+  portfolio: Portfolio
+}
+
+# ─────────────────────────────────────────────
+# Widgets
+# ─────────────────────────────────────────────
+
+type ConnectWidget {
+  url: String!
+  type: WidgetType!
+  expiresAt: DateTime
+  userGuid: ID!
+}
+
+type SpendingWidget {
+  url: String!
+  expiresAt: DateTime
+  userGuid: ID!
+}
+
+type NetWorthWidget {
+  url: String!
+  expiresAt: DateTime
+  userGuid: ID!
+}
+
+type CashFlowWidget {
+  url: String!
+  expiresAt: DateTime
+  userGuid: ID!
+}
+
+type BillerWidget {
+  url: String!
+  expiresAt: DateTime
+  userGuid: ID!
+}
+
+type RewardWidget {
+  url: String!
+  expiresAt: DateTime
+  userGuid: ID!
+}
+
+type PulseWidget {
+  url: String!
+  expiresAt: DateTime
+  userGuid: ID!
+}
+
+type GoalWidget {
+  url: String!
+  goalGuid: ID
+  expiresAt: DateTime
+  userGuid: ID!
+}
+
+type WidgetUrl {
+  url: String!
+  type: WidgetType!
+  expiresAt: DateTime
+}
+
+input WidgetConfigInput {
+  colorScheme: String
+  isMobileWebview: Boolean
+  uiMessageWebviewUrlScheme: String
+  waitForFullAggregation: Boolean
+  mode: String
+  memberGuid: ID
+}
+
+# ─────────────────────────────────────────────
+# OAuth & Connect
+# ─────────────────────────────────────────────
+
+type MXConnect {
+  userGuid: ID!
+  widgetUrl: String!
+  oauthReferralSource: String
+}
+
+type OAuthWindow {
+  guid: ID!
+  memberGuid: ID!
+  oauthWindowUri: String!
+  requestUri: String
+  expiresAt: DateTime
+}
+
+type ConnectToken {
+  guid: ID!
+  expiresAt: DateTime!
+  userGuid: ID!
+  createdAt: DateTime
+}
+
+type RefreshToken {
+  guid: ID!
+  accessToken: String!
+  expiresAt: DateTime!
+  tokenType: String!
+}
+
+# ─────────────────────────────────────────────
+# API Keys
+# ─────────────────────────────────────────────
+
+type APIKey {
+  guid: ID!
+  label: String
+  createdAt: DateTime
+  lastUsedAt: DateTime
+  isActive: Boolean!
+}
+
+input CreateAPIKeyInput {
+  label: String
+}
+
+# ─────────────────────────────────────────────
+# Pagination & Utility
+# ─────────────────────────────────────────────
+
+type Pagination {
+  currentPage: Int!
+  perPage: Int!
+  totalEntries: Int!
+  totalPages: Int!
+}
+
+type DeleteResult {
+  success: Boolean!
+  guid: ID
+}
+
+# ─────────────────────────────────────────────
+# Enums
+# ─────────────────────────────────────────────
+
+enum ConnectionStatus {
+  CONNECTED
+  CREATED
+  DEGRADED
+  DELAYED
+  DENIED
+  DISABLED
+  DISCONNECTED
+  EXPIRED
+  FAILED
+  IMPEDED
+  IMPORTED
+  INHIBITED
+  PENDING
+  RECONNECTED
+  RESUMED
+  SYNCED
+  UPDATED
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  INVESTMENT
+  CREDIT_CARD
+  LOAN
+  MORTGAGE
+  PROPERTY
+  CASH
+  INSURANCE
+  PREPAID
+  LINE_OF_CREDIT
+  MONEY_MARKET
+  CERTIFICATE_OF_DEPOSIT
+  BROKERAGE
+  IRA
+  FOUR_HUNDRED_ONE_K
+  FOUR_HUNDRED_THREE_B
+  FOUR_HUNDRED_FIFTY_SEVEN
+  PENSION
+  ANNUITY
+  HEALTH_SAVINGS
+  UGMA_UTMA
+  PAYABLE_ON_DEATH
+  TRUST
+  UNKNOWN
+}
+
+enum AccountNumberType {
+  CHECKING
+  SAVINGS
+  LOAN
+  INVESTMENT
+}
+
+enum TransactionType {
+  CREDIT
+  DEBIT
+}
+
+enum TransactionStatus {
+  POSTED
+  PENDING
+}
+
+enum CredentialFieldType {
+  LOGIN
+  PASSWORD
+  TEXT
+  OPTIONS
+  LOGIN_MULTI_OPTION
+  SELECT
+}
+
+enum MFAChallengeType {
+  QUESTION
+  IMAGE_CAPTCHA
+  IMAGE_OPTIONS
+  OPTIONS
+  CODE
+  EXTERNAL_LINK
+}
+
+enum HoldingType {
+  EQUITY
+  ETF
+  MUTUAL_FUND
+  FIXED_INCOME
+  MONEY_MARKET_FUND
+  OPTION
+  CURRENCY
+  COMMODITY
+  REAL_ESTATE
+  UNKNOWN
+}
+
+enum GoalType {
+  SAVINGS
+  DEBT_PAYOFF
+  EMERGENCY_FUND
+  RETIREMENT
+  EDUCATION
+  HOME_PURCHASE
+  VEHICLE_PURCHASE
+  VACATION
+  OTHER
+}
+
+enum VerificationStatusValue {
+  INITIATED
+  REQUESTED
+  FAILED
+  VERIFIED
+}
+
+enum VerificationType {
+  ACH
+  MICRO_DEPOSIT
+}
+
+enum MicrodepositStatus {
+  INITIATED
+  REQUESTED
+  FAILED
+  VERIFIED
+}
+
+enum AggregationStatus {
+  STARTED
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum NetWorthComponentType {
+  ASSET
+  LIABILITY
+}
+
+enum DataPointType {
+  NET_WORTH
+  MONTHLY_SPENDING
+  MONTHLY_INCOME
+  CASH_FLOW
+  ACCOUNT_BALANCE
+  INVESTMENT_VALUE
+  DEBT_BALANCE
+}
+
+enum WidgetType {
+  CONNECT_WIDGET
+  SPENDING_WIDGET
+  NET_WORTH_WIDGET
+  CASH_FLOW_WIDGET
+  DEBTS_WIDGET
+  BILLER_WIDGET
+  REWARDS_WIDGET
+  PULSE_WIDGET
+  GOALS_WIDGET
+  CONNECT_CHECK_WIDGET
+  MINI_CONNECT_WIDGET
+  ATTRIBUTION_WIDGET
+  BUDGET_WIDGET
+  TRENDS_WIDGET
+  FINANCIAL_STRENGTH_WIDGET
+  ALERT_WIDGET
+}

@@ -6,178 +6,171 @@ url: https://raw.githubusercontent.com/api-evangelist/mx-technologies/refs/heads
 created: 2026-06-12
 modified: 2026-06-12
 specificationVersion: '0.19'
-description: >
-  MX Technologies is a financial data connectivity platform that provides REST APIs for account aggregation,
-  data cleansing, transaction categorization, and open banking connectivity across more than 16,000 financial
-  institutions. The platform powers money experiences for over 2,000 banks, credit unions, and fintechs by
-  turning raw, unstructured financial data into actionable intelligence. MX offers a suite of APIs including
-  the Platform API for core aggregation and data services, the Atrium legacy API, SSO and authentication APIs,
-  and a Data Access API built to FDX standards for permissioned open banking data sharing. Developers have
-  access to OpenAPI specifications, SDKs in Node.js, Python, Java, Ruby, and Go, plus a hosted Connect Widget
-  for rapid integration.
+description: 'MX Technologies is a financial data connectivity platform that provides
+  REST APIs for account aggregation, data cleansing, transaction categorization, and
+  open banking connectivity across more than 16,000 financial institutions. The platform
+  powers money experiences for over 2,000 banks, credit unions, and fintechs by turning
+  raw, unstructured financial data into actionable intelligence. MX offers a suite
+  of APIs including the Platform API for core aggregation and data services, the Atrium
+  legacy API, SSO and authentication APIs, and a Data Access API built to FDX standards
+  for permissioned open banking data sharing. Developers have access to OpenAPI specifications,
+  SDKs in Node.js, Python, Java, Ruby, and Go, plus a hosted Connect Widget for rapid
+  integration.
+
+  '
 tags:
-  - Financial Data
-  - Account Aggregation
-  - Open Banking
-  - Data Connectivity
-  - Fintech
-  - Transaction Categorization
-  - Data Enhancement
-  - FDX
-  - Account Verification
-  - Personal Finance
-
+- Financial Data
+- Account Aggregation
+- Open Banking
+- Data Connectivity
+- Fintech
+- Transaction Categorization
+- Data Enhancement
+- FDX
+- Account Verification
+- Personal Finance
 apis:
+- name: MX Platform API
+  description: 'The primary REST API for MX platform integration, providing access
+    to users, members, accounts, transactions, institutions, statements, microdeposits,
+    budgets, categories, goals, and insights. Supports account aggregation across
+    16,000+ financial institutions with data cleansing and categorization.
 
-  - name: MX Platform API
-    description: >
-      The primary REST API for MX platform integration, providing access to users, members, accounts,
-      transactions, institutions, statements, microdeposits, budgets, categories, goals, and insights.
-      Supports account aggregation across 16,000+ financial institutions with data cleansing and categorization.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.mx.com/api-reference/platform-api/overview/
-    baseURL: https://api.mx.com
-    tags:
-      - Account Aggregation
-      - Financial Data
-      - Transactions
-      - Budgets
-    properties:
-      - type: Documentation
-        url: https://docs.mx.com/api-reference/platform-api/overview/
-      - type: OpenAPI
-        url: https://github.com/mxenabled/openapi/blob/master/openapi/mx_platform_api.yml
-      - type: OpenAPI
-        url: openapi/mx-technologies-platform-openapi.yml
-      - type: OpenAPI
-        url: openapi/mx-technologies-platform-v20250224-openapi.yml
-      - type: JSONSchema
-        url: json-schema/mx-technologies-platform-api.json
-      - type: Examples
-        url: examples/mx-technologies-platform-api-examples.json
+    '
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - Account Aggregation
+  - Financial Data
+  - Transactions
+  - Budgets
+  properties:
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: OpenAPI
+    url: https://github.com/mxenabled/openapi/blob/master/openapi/mx_platform_api.yml
+  - type: OpenAPI
+    url: openapi/mx-technologies-platform-openapi.yml
+  - type: OpenAPI
+    url: openapi/mx-technologies-platform-v20250224-openapi.yml
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - url: graphql/mx-graphql.md
+    type: GraphQL
+- name: MX Atrium API
+  description: 'The legacy MX financial data connectivity API supporting over 48,000
+    data connections to thousands of financial institutions. Provides secure access
+    to user accounts and transactions with industry-leading cleansing, categorization,
+    and classification. Available for existing integrations.
 
-  - name: MX Atrium API
-    description: >
-      The legacy MX financial data connectivity API supporting over 48,000 data connections to thousands
-      of financial institutions. Provides secure access to user accounts and transactions with industry-leading
-      cleansing, categorization, and classification. Available for existing integrations.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.mx.com/api-reference/atrium/
-    baseURL: https://atrium.mx.com
-    tags:
-      - Account Aggregation
-      - Legacy
-      - Transactions
-      - Financial Data
-    properties:
-      - type: Documentation
-        url: https://docs.mx.com/api-reference/atrium/
+    '
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mx.com/api-reference/atrium/
+  baseURL: https://atrium.mx.com
+  tags:
+  - Account Aggregation
+  - Legacy
+  - Transactions
+  - Financial Data
+  properties:
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/atrium/
+- name: MX SSO API
+  description: 'A RESTful authentication API used to authenticate users on the MX
+    Platform and generate widget URLs for Personal Finance Management and Financial
+    Insights widgets. Supports both XML and JSON encoding.
 
-  - name: MX SSO API
-    description: >
-      A RESTful authentication API used to authenticate users on the MX Platform and generate widget URLs
-      for Personal Finance Management and Financial Insights widgets. Supports both XML and JSON encoding.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.mx.com/api-reference/sso/v3/
-    baseURL: https://api.mx.com
-    tags:
-      - Authentication
-      - SSO
-      - Widgets
-    properties:
-      - type: Documentation
-        url: https://docs.mx.com/api-reference/sso/v3/
+    '
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mx.com/api-reference/sso/v3/
+  baseURL: https://api.mx.com
+  tags:
+  - Authentication
+  - SSO
+  - Widgets
+  properties:
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/sso/v3/
+- name: MX Data Access API
+  description: 'An open finance API built to FDX standards enabling permissioned data
+    sharing with consumer consent management. Supports Account Owner Identity, statements,
+    transaction history, account verifications, and OAuth-based data sharing. Processes
+    over 500K connections with 70% through OAuth APIs.
 
-  - name: MX Data Access API
-    description: >
-      An open finance API built to FDX standards enabling permissioned data sharing with consumer consent
-      management. Supports Account Owner Identity, statements, transaction history, account verifications,
-      and OAuth-based data sharing. Processes over 500K connections with 70% through OAuth APIs.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.mx.com/products/data/data-access/
-    baseURL: https://api.mx.com
-    tags:
-      - Open Banking
-      - FDX
-      - OAuth
-      - Data Sharing
-      - Account Verification
-    properties:
-      - type: Documentation
-        url: https://docs.mx.com/products/data/data-access/
+    '
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mx.com/products/data/data-access/
+  baseURL: https://api.mx.com
+  tags:
+  - Open Banking
+  - FDX
+  - OAuth
+  - Data Sharing
+  - Account Verification
+  properties:
+  - type: Documentation
+    url: https://docs.mx.com/products/data/data-access/
+- name: MX Batch API
+  description: 'Enables processing of bulk operations and batch requests on the MX
+    platform, supporting large-scale data operations for financial institutions and
+    fintech partners.
 
-  - name: MX Batch API
-    description: >
-      Enables processing of bulk operations and batch requests on the MX platform, supporting large-scale
-      data operations for financial institutions and fintech partners.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.mx.com/
-    baseURL: https://api.mx.com
-    tags:
-      - Batch Processing
-      - Bulk Operations
-    properties:
-      - type: Documentation
-        url: https://docs.mx.com/
-
-  - name: MX Reporting API
-    description: >
-      Supports reporting functionality and analytics for financial institutions and fintech partners
-      integrating with the MX platform.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.mx.com/
-    baseURL: https://api.mx.com
-    tags:
-      - Reporting
-      - Analytics
-    properties:
-      - type: Documentation
-        url: https://docs.mx.com/
-
-common:
-
-  - type: Website
-    url: https://www.mx.com/
-
+    '
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mx.com/
+  baseURL: https://api.mx.com
+  tags:
+  - Batch Processing
+  - Bulk Operations
+  properties:
   - type: Documentation
     url: https://docs.mx.com/
+- name: MX Reporting API
+  description: 'Supports reporting functionality and analytics for financial institutions
+    and fintech partners integrating with the MX platform.
 
-  - type: GitHubOrganization
-    url: https://github.com/mxenabled
-
-  - type: OpenAPI
-    url: https://github.com/mxenabled/openapi
-
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/mxenabled
-
-  - type: X
-    url: https://x.com/mX
-
-  - type: Blog
-    url: https://www.mx.com/blog/
-
-  - type: Pricing
-    url: https://www.mx.com/company/
-
-  - type: StatusPage
-    url: https://status.mx.com
-
-  - type: Plans
-    url: plans/mx-technologies-plans-pricing.yml
-
-  - type: RateLimits
-    url: rate-limits/mx-technologies-rate-limits.yml
-
-  - type: FinOps
-    url: finops/mx-technologies-finops.yml
-
-  - type: Vocabulary
-    url: vocabulary/mx-technologies-vocabulary.yml
-
-  - type: JSONLDContext
-    url: json-ld/mx-technologies-context.jsonld
-
+    '
+  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.mx.com/
+  baseURL: https://api.mx.com
+  tags:
+  - Reporting
+  - Analytics
+  properties:
+  - type: Documentation
+    url: https://docs.mx.com/
+common:
+- type: Website
+  url: https://www.mx.com/
+- type: Documentation
+  url: https://docs.mx.com/
+- type: GitHubOrganization
+  url: https://github.com/mxenabled
+- type: OpenAPI
+  url: https://github.com/mxenabled/openapi
+- type: LinkedIn
+  url: https://www.linkedin.com/company/mxenabled
+- type: X
+  url: https://x.com/mX
+- type: Blog
+  url: https://www.mx.com/blog/
+- type: Pricing
+  url: https://www.mx.com/company/
+- type: StatusPage
+  url: https://status.mx.com
+- type: Plans
+  url: plans/mx-technologies-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/mx-technologies-rate-limits.yml
+- type: FinOps
+  url: finops/mx-technologies-finops.yml
+- type: Vocabulary
+  url: vocabulary/mx-technologies-vocabulary.yml
+- type: JSONLDContext
+  url: json-ld/mx-technologies-context.jsonld
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
