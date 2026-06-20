@@ -1,7 +1,7 @@
 aid: mx-technologies
 name: MX Technologies
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/mx-technologies/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -37,7 +37,7 @@ apis:
     16,000+ financial institutions with data cleansing and categorization.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
@@ -67,7 +67,7 @@ apis:
     and classification. Available for existing integrations.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/api-reference/atrium/
   baseURL: https://atrium.mx.com
   tags:
@@ -84,7 +84,7 @@ apis:
     Insights widgets. Supports both XML and JSON encoding.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/api-reference/sso/v3/
   baseURL: https://api.mx.com
   tags:
@@ -101,7 +101,7 @@ apis:
     over 500K connections with 70% through OAuth APIs.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/products/data/data-access/
   baseURL: https://api.mx.com
   tags:
@@ -119,7 +119,7 @@ apis:
     fintech partners.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/
   baseURL: https://api.mx.com
   tags:
@@ -133,7 +133,7 @@ apis:
     and fintech partners integrating with the MX platform.
 
     '
-  image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/
   baseURL: https://api.mx.com
   tags:
