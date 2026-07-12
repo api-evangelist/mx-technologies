@@ -143,6 +143,14 @@ apis:
   - type: Documentation
     url: https://docs.mx.com/
 common:
+- type: TrustCenter
+  url: security/mx-technologies-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/mx-technologies-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/mx-technologies-domain-security.yml
+- type: Authentication
+  url: authentication/mx-technologies-authentication.yml
 - type: Website
   url: https://www.mx.com/
 - type: Documentation

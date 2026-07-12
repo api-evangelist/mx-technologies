@@ -1,0 +1,19 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/mx-technologies-platform-openapi.yml, openapi/mx-technologies-platform-v20250224-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/mx-technologies-platform-openapi.yml
+  - openapi/mx-technologies-platform-v20250224-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/mx-technologies-platform-openapi.yml
+  - openapi/mx-technologies-platform-v20250224-openapi.yml

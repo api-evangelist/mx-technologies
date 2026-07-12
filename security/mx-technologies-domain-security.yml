@@ -1,0 +1,34 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.mx.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 31 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: docs.mx.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 18:59:47 2026 GMT
+  hsts: true
+  hsts_max_age: 63072000
+- host: api.mx.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb 16 23:59:59 2027 GMT
+  hsts: null
+domains:
+- domain: mx.com
+  dnssec: false
+  caa:
+  - 0 iodef "mailto:domains@mx.com"
+  - 0 issue "awstrust.com"
+  - 0 issue "amazon.com"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "digicert.com"
+  - 0 issue "amazonaws.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
