@@ -2,13 +2,21 @@
   "repo": "mx-technologies",
   "feeds": [
     {
-      "source": "https://www.mx.com/blog/",
-      "feed_url": "",
+      "source": "https://www.mx.com/blog/feed/",
+      "feed_url": "https://www.mx.com/blog/feed/",
+      "title": "",
       "saved": 0,
-      "method": "agent-scrape"
+      "method": "none"
+    },
+    {
+      "source": "https://x.com/mX",
+      "feed_url": "https://x.com/mX",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-27T12:56:07Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "agent_pulled": "2026-06-27"
 }
