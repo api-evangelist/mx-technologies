@@ -143,6 +143,8 @@ apis:
   - type: Documentation
     url: https://docs.mx.com/
 common:
+- type: AgenticAccess
+  url: agentic-access/mx-technologies-agentic-access.yml
 - type: TrustCenter
   url: security/mx-technologies-trust-center.yml
 - type: VulnerabilityDisclosure
