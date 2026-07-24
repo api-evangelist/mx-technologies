@@ -1,0 +1,477 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
+
+
+    Just getting started? See our [use case guides](/use-cases/).
+
+    '
+  title: MX Platform accounts processor token API
+  version: '20111101'
+servers:
+- url: https://int-api.mx.com
+- url: https://api.mx.com
+security:
+- basicAuth: []
+tags:
+- name: processor token
+paths:
+  /authorization_code:
+    post:
+      description: Clients use this endpoint to request an authorization code according to the parameters specified in the scope. Clients then pass this code to processors. Processor access is scoped only to the GUIDs and features specified in this request. Before requesting an authorization code which includes a member in the scope, clients must have verified that member.
+      operationId: requestAuthorizationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizationCodeRequestBody'
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationCodeResponseBody'
+          description: OK
+      summary: Request an authorization code
+      tags:
+      - processor token
+  /payment_processor_authorization_code:
+    post:
+      description: (This endpoint is deprecated. Clients should use `/authorization_code`.) Clients use this endpoint to request an authorization_code according to a user, member, and account specified in the request body. Clients then pass this code to processors. Processor access is scoped only to the user/member/account specified in this request. Before requesting an authorization_code, clients must have verified the specified member.
+      operationId: deprecatedRequestPaymentProcessorAuthorizationCode
+      deprecated: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentProcessorAuthorizationCodeRequestBody'
+        description: The scope for the authorization code.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/PaymentProcessorAuthorizationCodeResponseBody'
+          description: OK
+      summary: (Deprecated) Request an authorization code
+      tags:
+      - processor token
+  /tokens:
+    parameters:
+    - $ref: '#/components/parameters/acceptVersion'
+    get:
+      tags:
+      - processor token
+      operationId: listTokens
+      summary: View a List of Tokens
+      description: View a list of tokens that exist for a user, member, or account.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequestBody'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/TokenResponseBody'
+          description: OK
+  /account/account_numbers:
+    parameters:
+    - $ref: '#/components/parameters/acceptVersion'
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+      - processor token
+      operationId: requestAccountNumber
+      summary: Request an account number (Processors Only)
+      description: Get account information such as routing number and account number, scoped to your access token.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessorAccountNumberBody'
+  /account/check_balance:
+    parameters:
+    - $ref: '#/components/parameters/acceptVersion'
+    post:
+      security:
+      - bearerAuth: []
+      tags:
+      - processor token
+      operationId: checkRealTimeAccountBalance
+      summary: Check Real Time Account Balance (Processors Only)
+      description: Check the real-time account balance using your access token.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberResponseBody'
+  /payment_account:
+    parameters:
+    - $ref: '#/components/parameters/acceptVersion'
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+      - processor token
+      operationId: readAccountBalance
+      summary: Read the account balance (Processors Only)
+      description: Read the account balance (Processors Only)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentAccountBody'
+  /account/transactions:
+    parameters:
+    - $ref: '#/components/parameters/acceptVersion'
+    get:
+      security:
+      - bearerAuth: []
+      tags:
+      - processor token
+      operationId: getAccountOwnerInfo
+      summary: Get account owner information (Processors Only)
+      description: Get account owner information (Processors Only)
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessorOwnerBody'
+components:
+  schemas:
+    PaymentAccountBody:
+      properties:
+        payment_account:
+          allOf:
+          - $ref: '#/components/schemas/MemberElements'
+          - $ref: '#/components/schemas/PaymentAccount'
+      type: object
+    PaymentProcessorAuthorizationCodeRequestBody:
+      properties:
+        payment_processor_authorization_code:
+          $ref: '#/components/schemas/PaymentProcessorAuthorizationCodeRequest'
+      type: object
+    PaymentProcessorAuthorizationCodeResponseBody:
+      properties:
+        payment_processor_authorization_code:
+          $ref: '#/components/schemas/PaymentProcessorAuthorizationCodeResponse'
+      type: object
+    ProcessorOwner:
+      properties:
+        guid:
+          example: ACO-a06b74ec-6a58-4c0b-b437-8de5e03194ac
+        owner_name:
+          example: Janita Pollich
+        address:
+          example: 3541 Adrian Street
+        city:
+          example: North Kishaberg
+        state:
+          example: Maine
+        postal_code:
+          example: 45054-7764
+        country:
+          example: null
+        email:
+          example: janita.pollich823@beerpowlowski.ca
+        phone:
+          example: 676-932-5861
+    AuthorizationCodeRequest:
+      properties:
+        scope:
+          example: user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected
+          nullable: true
+          type: string
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
+    TokenRequestBody:
+      properties:
+        scope:
+          $ref: '#/components/schemas/MemberElements'
+      type: object
+    MemberElements:
+      properties:
+        account_guid:
+          example: ACT-283132a4-1401-486a-909e-1605f1623d11
+          type: string
+        member_guid:
+          example: MBR-54feffb9-8474-47bd-8442-de003910113a
+          type: string
+        user_guid:
+          example: USR-101ad774-288b-44ed-ad16-da87d522ea20
+          type: string
+    ProcessorOwnerBody:
+      properties:
+        account_owners:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/MemberElements'
+            - $ref: '#/components/schemas/ProcessorOwner'
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    PaymentProcessorAuthorizationCodeRequest:
+      properties:
+        account_guid:
+          example: ACT-4d4c0068-33bc-4d06-bbd6-cd270fd0135c
+          type: string
+        member_guid:
+          example: MBR-46637bc5-942d-4229-9370-ddd858bf805e
+          type: string
+        user_guid:
+          example: USR-f12b1f5a-7cbe-467c-aa30-0a10d0b2f549
+          type: string
+      required:
+      - account_guid
+      - member_guid
+      - user_guid
+      type: object
+    MemberResponse:
+      properties:
+        aggregated_at:
+          example: '2016-10-13T18:07:57.000Z'
+          nullable: true
+          type: string
+        background_aggregation_is_disabled:
+          example: false
+          type: boolean
+        connection_status:
+          example: CONNECTED
+          nullable: true
+          type: string
+        connection_status_message:
+          example: Connected to MX Bank
+          nullable: true
+          type: string
+        guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        id:
+          example: unique_id
+          nullable: true
+          type: string
+        institution_code:
+          example: mxbank
+          nullable: true
+          type: string
+        institution_guid:
+          example: INST-12345678-90ab-cdef-1234-567890abcdef
+          nullable: false
+          type: string
+        is_being_aggregated:
+          example: false
+          nullable: true
+          type: boolean
+        is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        is_oauth:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\'
+          nullable: true
+          type: string
+        most_recent_job_detail_code:
+          example: null
+          nullable: true
+          type: integer
+        most_recent_job_detail_text:
+          example: null
+          nullable: true
+          type: boolean
+        most_recent_job_guid:
+          example: JOB-12345678-90ab-cdef-1234-567890abcdef
+          nullable: true
+          type: boolean
+        name:
+          example: MX Bank
+          nullable: true
+          type: string
+        needs_updated_credentials:
+          example: false
+          nullable: true
+          type: boolean
+        oauth_window_uri:
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
+          nullable: true
+          type: string
+        successfully_aggregated_at:
+          example: '2016-10-13T17:57:38.000Z'
+          nullable: true
+          type: string
+        use_cases:
+          type: array
+          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
+          items:
+            type: string
+            enum:
+            - MONEY_MOVEMENT
+            - PFM
+          example:
+          - PFM
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    ProcessorAccountNumberBody:
+      properties:
+        account_numbers:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/MemberElements'
+            - $ref: '#/components/schemas/ProcessorAccountNumber'
+      type: object
+    ProcessorAccountNumber:
+      properties:
+        account_number:
+          example: 6366816006
+          type: integer
+        guid:
+          example: ACN-68c0b681-78c2-4731-9b41-d6e8ae2846cf
+          type: string
+        institution_number:
+          example: null
+        loan_guarantor:
+          example: null
+        loan_reference_number:
+          example: null
+        passed_validation:
+          example: true
+        routing_number:
+          example: 242564563
+          type: integer
+        sequence_number:
+          example: null
+        transit_number:
+          example: null
+    TokenResponseBody:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/TokenResponse'
+      type: object
+    AuthorizationCodeResponseBody:
+      properties:
+        authorization_code:
+          $ref: '#/components/schemas/AuthorizationCodeResponse'
+      type: object
+    PaymentProcessorAuthorizationCodeResponse:
+      properties:
+        authorization_code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          nullable: true
+          type: string
+      type: object
+    MemberResponseBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/MemberResponse'
+      type: object
+    AuthorizationCodeRequestBody:
+      properties:
+        authorization_code:
+          $ref: '#/components/schemas/AuthorizationCodeRequest'
+      type: object
+    TokenResponse:
+      properties:
+        payment_processor_guid:
+          example: PPR-084aa709-8218-4b5a-b3ab-70ffc7483daf
+          type: string
+        expires_at:
+          example: 2023-04-19T15:38:2800:00
+          type: string
+        access_token:
+          example: i8FnF...
+          type: string
+        active:
+          example: true
+          type: boolean
+    AuthorizationCodeResponse:
+      properties:
+        code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          nullable: true
+          type: string
+      type: object
+    PaymentAccount:
+      properties:
+        account_name:
+          example: MX Bank Checking
+        account_number:
+          example: 6366816006
+        account_type:
+          example: CHECKING
+        available_balance:
+          example: 1000
+        balance:
+          example: 1000
+        created_at:
+          example: '2022-03-17T20:38:58Z'
+        routing_number:
+          example: 242722023
+        transit_number:
+          example: null
+        updated_at:
+          example: '2022-11-29T08:02:07Z'
+  parameters:
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    basicAuth:
+      scheme: basic
+      type: http

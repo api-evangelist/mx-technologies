@@ -1,0 +1,366 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
+
+
+    Just getting started? See our [use case guides](/use-cases/).
+
+    '
+  title: MX Platform accounts institutions API
+  version: '20111101'
+servers:
+- url: https://int-api.mx.com
+- url: https://api.mx.com
+security:
+- basicAuth: []
+tags:
+- name: institutions
+paths:
+  /institutions:
+    get:
+      description: This endpoint returns a list of institutions based on the specified search term or parameter.
+      operationId: listInstitutions
+      parameters:
+      - $ref: '#/components/parameters/institutionName'
+      - $ref: '#/components/parameters/isoCountryCode'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      - $ref: '#/components/parameters/supportsAccountIdentification'
+      - $ref: '#/components/parameters/supportsAccountStatement'
+      - $ref: '#/components/parameters/supportsAccountVerification'
+      - $ref: '#/components/parameters/supportsTransactionHistory'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InstitutionsResponseBody'
+          description: OK
+      summary: List institutions
+      tags:
+      - institutions
+  /institutions/favorites:
+    get:
+      description: This endpoint returns a paginated list containing institutions that have been set as the partner’s favorites, sorted by popularity. Please contact MX to set a list of favorites.
+      operationId: listFavoriteInstitutions
+      parameters:
+      - $ref: '#/components/parameters/isoCountryCode'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InstitutionsResponseBody'
+          description: OK
+      summary: List favorite institutions
+      tags:
+      - institutions
+  /institutions/{institution_code}:
+    get:
+      description: This endpoint returns information about the institution specified by `institution_code`.
+      operationId: readInstitution
+      parameters:
+      - $ref: '#/components/parameters/institutionCode'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InstitutionResponseBody'
+          description: OK
+      summary: Read institution
+      tags:
+      - institutions
+  /institutions/{institution_code}/credentials:
+    get:
+      description: 'Use this endpoint to see which credentials will be needed to create a member for a specific institution.
+
+
+        Passing an invalid `institution_code` returns a `404`.
+
+        '
+      operationId: listInstitutionCredentials
+      parameters:
+      - $ref: '#/components/parameters/institutionCode'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/CredentialsResponseBody'
+          description: OK
+      summary: List institution credentials
+      tags:
+      - institutions
+  /institutions/{institution_identifier}/credentials:
+    get:
+      description: 'Use this endpoint to see which credentials will be needed to create a member for a specific institution.
+
+
+        Passing an invalid `institution_identifier` returns a `404`.
+
+        '
+      operationId: listInstitutionCredentials
+      parameters:
+      - $ref: '#/components/parameters/acceptVersion'
+      - $ref: '#/components/parameters/institutionIdentifier'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CredentialsResponseBody'
+          description: OK
+      summary: List institution credentials
+      tags:
+      - institutions
+components:
+  parameters:
+    supportsAccountIdentification:
+      description: Filter only institutions which support account identification.
+      example: true
+      in: query
+      name: supports_account_identification
+      schema:
+        type: boolean
+    institutionCode:
+      description: The institution_code of the institution.
+      example: mxbank
+      in: path
+      name: institution_code
+      required: true
+      schema:
+        type: string
+    supportsTransactionHistory:
+      description: Filter only institutions which support extended transaction history.
+      example: true
+      in: query
+      name: supports_transaction_history
+      schema:
+        type: boolean
+    institutionName:
+      description: This will list only institutions in which the appended string appears.
+      example: mxbank
+      in: query
+      name: name
+      schema:
+        type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    supportsAccountStatement:
+      description: Filter only institutions which support account statements.
+      example: true
+      in: query
+      name: supports_account_statement
+      schema:
+        type: boolean
+    isoCountryCode:
+      description: An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
+      required: false
+      in: query
+      name: iso_country_code
+      example:
+      - US
+      - CA
+      schema:
+        type: array
+        items:
+          type: string
+    institutionIdentifier:
+      description: The identifier for the institution. For this identifier, use either the `institution_code` or the institution `guid`.
+      example: mxbank
+      in: path
+      name: institution_identifier
+      required: true
+      schema:
+        type: string
+    supportsAccountVerification:
+      description: Filter only institutions which support account verification.
+      example: true
+      in: query
+      name: supports_account_verification
+      schema:
+        type: boolean
+  schemas:
+    InstitutionResponseBody:
+      properties:
+        institution:
+          $ref: '#/components/schemas/InstitutionResponse'
+      type: object
+    CredentialsResponseBody:
+      properties:
+        credentials:
+          items:
+            $ref: '#/components/schemas/CredentialResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    InstitutionResponse:
+      properties:
+        code:
+          example: mxbank
+          nullable: true
+          type: string
+        forgot_password_url:
+          example: https://example.url.mxbank.com/forgot-password
+          nullable: true
+          type: string
+        forgot_username_url:
+          example: https://example.url.mxbank.com/forgot-username
+          nullable: true
+          type: string
+        instructional_text:
+          description: Render this text when end users are asked for their credentials, as it helps end users provide the correct credentials when creating a new member. May contain `<a></a>` tags to link to explanatory material.
+          example: Some instructional text <a href="https://example.url.mxbank.com/instructions" id="instructional_text">for end users</a>.
+          nullable: true
+          type: string
+        instructional_text_steps:
+          type: array
+          items:
+            type: string
+          description: An array of instructional steps that may contain html elements.
+          example:
+          - 'Step 1: Do this.'
+          - 'Step 2: Do that.'
+          nullable: true
+        is_disabled_by_client:
+          example: false
+          nullable: true
+          type: boolean
+        iso_country_code:
+          example: US
+          type: string
+        medium_logo_url:
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
+          nullable: true
+          type: string
+        name:
+          example: MX Bank
+          nullable: true
+          type: string
+        small_logo_url:
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
+          nullable: true
+          type: string
+        supports_account_identification:
+          example: true
+          nullable: true
+          type: boolean
+        supports_account_statement:
+          example: true
+          nullable: true
+          type: boolean
+        supports_account_verification:
+          example: true
+          nullable: true
+          type: boolean
+        supports_oauth:
+          example: true
+          nullable: true
+          type: boolean
+        supports_tax_document:
+          example: true
+          nullable: true
+          type: boolean
+        supports_transaction_history:
+          example: true
+          nullable: true
+          type: boolean
+        trouble_signing_in_url:
+          example: https://example.url.mxbank.com/login-trouble
+          nullable: true
+          type: string
+        url:
+          example: https://www.mxbank.com
+          nullable: true
+          type: string
+      type: object
+    InstitutionsResponseBody:
+      properties:
+        institutions:
+          items:
+            $ref: '#/components/schemas/InstitutionResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
+    CredentialResponse:
+      properties:
+        display_order:
+          example: 1
+          nullable: true
+          type: integer
+        field_name:
+          example: LOGIN
+          nullable: true
+          type: string
+        field_type:
+          example: TEXT
+          nullable: true
+          type: string
+        guid:
+          example: CRD-1ec152cd-e628-e81a-e852-d1e7104624da
+          nullable: true
+          type: string
+        label:
+          example: Username
+          nullable: true
+          type: string
+        type:
+          example: TEXT
+          nullable: true
+          type: string
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    basicAuth:
+      scheme: basic
+      type: http

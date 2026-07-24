@@ -1,0 +1,1217 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
+
+
+    Just getting started? See our [use case guides](/use-cases/).
+
+    '
+  title: MX Platform accounts insights API
+  version: '20111101'
+servers:
+- url: https://int-api.mx.com
+- url: https://api.mx.com
+security:
+- basicAuth: []
+tags:
+- name: insights
+paths:
+  /users/{user_guid}/accounts/{account_guid}/insights:
+    get:
+      description: Use this endpoint to list all insights associated with an account GUID.
+      operationId: listInsightsByAccount
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InsightsResponseBody'
+          description: OK
+      summary: List insights by account
+      tags:
+      - insights
+  /users/{user_guid}/insights:
+    get:
+      description: Use this endpoint to list all the insights associated with the user.
+      operationId: listInsightsUser
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InsightsResponseBody'
+          description: OK
+      summary: List all insights for a user
+      tags:
+      - insights
+  /users/{user_guid}/insights/{insight_guid}/categories:
+    get:
+      description: Use this endpoint to list all the categories associated with the insight.
+      operationId: listCategoriesInsight
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/insightGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/CategoriesResponseBody'
+          description: OK
+      summary: List all categories associated with an insight
+      tags:
+      - insights
+  /users/{user_guid}/insights/{insight_guid}/accounts:
+    get:
+      description: Use this endpoint to list all the accounts associated with the insight.
+      operationId: listAccountsInsight
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/insightGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccountsResponseBody'
+          description: OK
+      summary: List all accounts associated with an insight
+      tags:
+      - insights
+  /users/{user_guid}/insights/{insight_guid}/merchants:
+    get:
+      description: Use this endpoint to list all the merchants associated with the insight.
+      operationId: listMerchantsInsight
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/insightGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/MerchantsResponseBody'
+          description: OK
+      summary: List all merchants associated with an insight
+      tags:
+      - insights
+  /users/{user_guid}/insights/{insight_guid}/scheduled_payments:
+    get:
+      description: Use this endpoint to list all the scheduled payments associated with the insight.
+      operationId: listScheduledPaymentsInsight
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/insightGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/ScheduledPaymentsResponseBody'
+          description: OK
+      summary: List all scheduled payments associated with an insight
+      tags:
+      - insights
+  /users/{user_guid}/insights/{insight_guid}/transactions:
+    get:
+      description: Use this endpoint to list all the transactions associated with the insight.
+      operationId: listTransactionsInsight
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/insightGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/TransactionsResponseBody'
+          description: OK
+      summary: List all transactions associated with an insight
+      tags:
+      - insights
+  /users/{user_guid}/insights/{insight_guid}:
+    get:
+      description: Use this endpoint to read the attributes of an insight according to its unique GUID.
+      operationId: readInsightUser
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/insightGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InsightResponseBody'
+          description: OK
+      summary: Read insight
+      tags:
+      - insights
+    put:
+      description: Use this endpoint to update the attributes of an insight according to its unique GUID.
+      operationId: updateInsight
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/insightGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InsightUpdateRequestBody'
+        description: The insight to be updated (None of these parameters are required, but the user object cannot be empty.)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InsightResponse'
+          description: OK
+      summary: Update insight
+      tags:
+      - insights
+  /users/{user_guid}/transactions/{transaction_guid}/insights:
+    get:
+      description: Use this endpoint to list all insights associated with a transaction GUID.
+      operationId: listInsightsByTransaction
+      parameters:
+      - $ref: '#/components/parameters/transactionGuid'
+      - $ref: '#/components/parameters/userGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPage'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InsightsResponseBody'
+          description: OK
+      summary: List insights by transaction
+      tags:
+      - insights
+components:
+  parameters:
+    recordsPerPage:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    accountGuid:
+      description: The unique id for an `account`.
+      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+      in: path
+      name: account_guid
+      required: true
+      schema:
+        type: string
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    insightGuid:
+      description: The unique identifier for the insight. Defined by MX.
+      example: BET-1234-abcd
+      in: path
+      name: insight_guid
+      required: true
+      schema:
+        type: string
+    transactionGuid:
+      description: The unique id for a `transaction`.
+      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+      in: path
+      name: transaction_guid
+      required: true
+      schema:
+        type: string
+  schemas:
+    MerchantResponse:
+      properties:
+        created_at:
+          example: '2017-04-20T19:30:12.000Z'
+          nullable: true
+          type: string
+        guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          nullable: true
+          type: string
+        logo_url:
+          example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
+          nullable: true
+          type: string
+        name:
+          example: Comcast
+          nullable: true
+          type: string
+        updated_at:
+          example: '2018-09-28T21:13:53.000Z'
+          nullable: true
+          type: string
+        website_url:
+          example: https://www.xfinity.com
+          nullable: true
+          type: string
+      type: object
+    InsightsResponseBody:
+      properties:
+        insights:
+          items:
+            $ref: '#/components/schemas/InsightResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
+    AccountResponse:
+      properties:
+        account_number:
+          example: '5366'
+          nullable: true
+          type: string
+        account_number_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        account_ownership:
+          example: INDIVIDUAL
+          nullable: true
+          type: string
+        annuity_policy_to_date:
+          example: '2016-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        annuity_provider:
+          example: Metlife
+          nullable: true
+          type: string
+        annuity_term_year:
+          example: 2048
+          nullable: true
+          type: integer
+        apr:
+          example: 1
+          nullable: true
+          type: number
+        apr_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        apy:
+          example: 1
+          nullable: true
+          type: number
+        apy_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        available_balance:
+          example: 1000
+          nullable: true
+          type: number
+        available_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        available_credit:
+          example: 1000
+          nullable: true
+          type: number
+        available_credit_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        balance:
+          example: 10000
+          nullable: true
+          type: number
+        balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        calculated_apr:
+          example: 21.66409
+          nullable: true
+          type: number
+        cash_balance:
+          example: 1000
+          nullable: true
+          type: number
+        cash_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        cash_surrender_value:
+          example: 1000
+          nullable: true
+          type: number
+        cash_surrender_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        created_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: false
+          type: string
+        credit_limit:
+          example: 100
+          nullable: true
+          type: number
+        credit_limit_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        currency_code_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        day_payment_is_due_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        death_benefit_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        federal_insurance_status:
+          example: INSURED
+          nullable: true
+          type: string
+        feed_account_number:
+          example: '5366'
+          nullable: true
+          type: string
+        feed_account_subtype:
+          example: 1
+          nullable: true
+          type: integer
+        feed_account_type:
+          example: 1
+          nullable: true
+          type: integer
+        feed_apr:
+          example: 1
+          nullable: true
+          type: number
+        feed_apy:
+          example: 1
+          nullable: true
+          type: number
+        feed_available_balance:
+          example: 1000
+          nullable: true
+          type: number
+        feed_balance:
+          example: 1000
+          nullable: true
+          type: number
+        feed_cash_balance:
+          example: 1000
+          nullable: true
+          type: number
+        feed_cash_surrender_value:
+          example: 1000
+          nullable: true
+          type: number
+        feed_credit_limit:
+          example: 100
+          nullable: true
+          type: number
+        feed_currency_code:
+          example: USD
+          nullable: true
+          type: string
+        feed_day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        feed_death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        feed_holdings_value:
+          example: 1000
+          nullable: true
+          type: number
+        feed_interest_rate:
+          example: 1
+          nullable: true
+          type: number
+        feed_is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        feed_last_payment:
+          example: 100
+          nullable: true
+          type: number
+        feed_last_payment_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: true
+          type: string
+        feed_loan_amount:
+          example: 1000
+          nullable: true
+          type: number
+        feed_matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        feed_minimum_balance:
+          example: 100
+          nullable: true
+          type: number
+        feed_minimum_payment:
+          example: 10
+          nullable: true
+          type: number
+        feed_name:
+          example: Test account 2
+          nullable: true
+          type: string
+        feed_nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        feed_original_balance:
+          example: 10
+          nullable: true
+          type: number
+        feed_payment_due_at:
+          example: '2025-02-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        feed_payoff_balance:
+          example: 10
+          nullable: true
+          type: number
+        feed_routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        feed_started_on:
+          example: '2020-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        feed_statement_balance:
+          example: 100
+          nullable: true
+          type: number
+        feed_total_account_value:
+          example: 100
+          nullable: true
+          type: number
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        holdings_value:
+          example: 1000
+          nullable: true
+          type: number
+        holdings_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        id:
+          example: '1040434698'
+          nullable: true
+          type: string
+        imported_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        institution_code:
+          example: 3af3685e-05d9-7060-359f-008d0755e993
+          nullable: true
+          type: string
+        institution_guid:
+          example: INS-12a3b-4c5dd6-1349-008d0755e993
+          nullable: true
+          type: string
+        insured_name:
+          example: Tommy Shelby
+          nullable: true
+          type: string
+        interest_rate:
+          example: 1
+          nullable: true
+          type: number
+        interest_rate_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        is_closed_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        last_payment:
+          example: 100
+          nullable: true
+          type: number
+        last_payment_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        last_payment_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: true
+          type: string
+        last_payment_at_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        loan_amount:
+          example: 1000
+          nullable: true
+          type: number
+        loan_amount_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        margin_balance:
+          example: 1000
+          nullable: true
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        matures_on_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        member_id:
+          example: member123
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        minimum_balance:
+          example: 100
+          nullable: true
+          type: number
+        minimum_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        minimum_payment:
+          example: 10
+          nullable: true
+          type: number
+        minimum_payment_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        name:
+          example: Test account 2
+          nullable: true
+          type: string
+        name_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        nickname_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        original_balance:
+          example: 10
+          nullable: true
+          type: number
+        original_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        pay_out_amount:
+          example: 10
+          nullable: true
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        payment_due_at_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        payoff_balance:
+          example: 10
+          nullable: true
+          type: number
+        payoff_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        premium_amount:
+          example: 3900
+          nullable: true
+          type: number
+        property_type:
+          example: VEHICLE
+          nullable: true
+          type: string
+        routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        started_on_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        statement_balance:
+          example: 1000.5
+          nullable: true
+          type: number
+        statement_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        subtype:
+          example: NONE
+          nullable: true
+          type: string
+        subtype_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        today_ugl_amount:
+          example: 1000.5
+          nullable: true
+          type: number
+        today_ugl_percentage:
+          example: 6.9
+          nullable: true
+          type: number
+        total_account_value:
+          example: 1
+          nullable: true
+          type: number
+        total_account_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        total_account_value_ugl:
+          example: 1
+          nullable: true
+          type: number
+        type:
+          example: SAVINGS
+          nullable: true
+          type: string
+        type_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        updated_at:
+          example: '2016-10-13T18:08:00.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    MerchantsResponseBody:
+      properties:
+        merchants:
+          items:
+            $ref: '#/components/schemas/MerchantResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    ScheduledPaymentsResponseBody:
+      properties:
+        scheduled_payments:
+          items:
+            $ref: '#/components/schemas/ScheduledPaymentResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    InsightUpdateRequest:
+      properties:
+        has_been_displayed:
+          example: false
+          type: boolean
+        is_dismissed:
+          example: false
+          type: boolean
+    CategoryResponse:
+      properties:
+        created_at:
+          description: Category creation date-time.
+          example: '2015-04-13T18:01:23.000Z'
+          nullable: true
+          type: string
+        guid:
+          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+          nullable: true
+          type: string
+        is_default:
+          example: true
+          nullable: true
+          type: boolean
+        is_income:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        name:
+          example: Auto Insurance
+          nullable: true
+          type: string
+        parent_guid:
+          example: CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874
+          nullable: true
+          type: string
+        updated_at:
+          example: '2015-05-13T18:01:23.000Z'
+          nullable: true
+          type: string
+      type: object
+    InsightResponse:
+      properties:
+        active_at:
+          example: '2022-01-07T12:00:00Z'
+          nullable: true
+          type: string
+        client_guid:
+          example: CLT-abcd-1234
+          nullable: true
+          type: string
+        created_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        cta_clicked_at:
+          example: '2022-01-13T18:13:51Z'
+          nullable: true
+          type: string
+        description:
+          example: Gold's Gym charged you $36.71 more this month than normal. Did you upgrade your service?
+          nullable: true
+          type: string
+        guid:
+          example: BET-abcd-1234
+          nullable: true
+          type: string
+        has_associated_accounts:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_categories:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_merchants:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_scheduled_payments:
+          example: false
+          nullable: true
+          type: boolean
+        has_associated_transactions:
+          example: true
+          nullable: true
+          type: boolean
+        has_been_displayed:
+          example: true
+          nullable: true
+          type: boolean
+        is_dismissed:
+          example: false
+          nullable: true
+          type: boolean
+        micro_call_to_action:
+          example: Learn more
+          nullable: true
+          type: string
+        micro_description:
+          example: Netflix charged you $5.00 more this month than normal.
+          nullable: true
+          type: string
+        micro_title:
+          example: Price increase
+          nullable: true
+          type: string
+        template:
+          example: SubscriptionPriceIncrease
+          nullable: true
+          type: string
+        title:
+          example: Price increase
+          nullable: true
+          type: string
+        updated_at:
+          example: '2022-01-12T18:16:51Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-1234-abcd
+          type: string
+        user_id:
+          example: user-partner-defined-1234
+      type: object
+    InsightResponseBody:
+      properties:
+        insight:
+          $ref: '#/components/schemas/InsightResponse'
+      type: object
+    TransactionResponse:
+      properties:
+        account_guid:
+          example: ACT-0af29528-bb91-447f-b5de-85c1c42593e5
+          nullable: true
+          type: string
+        account_id:
+          example: FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw
+          nullable: true
+          type: string
+        amount:
+          example: 5003.9
+          nullable: true
+          type: number
+        category:
+          example: Paycheck
+          nullable: true
+          type: string
+        category_guid:
+          example: CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819
+          nullable: true
+          type: string
+        check_number_string:
+          example: null
+          nullable: true
+          type: string
+        created_at:
+          example: '2024-12-20T18:52:36Z'
+          nullable: true
+          type: string
+        currency_code:
+          example: null
+          nullable: true
+          type: string
+        date:
+          example: '2024-12-20'
+          nullable: true
+          type: string
+        description:
+          example: MX Technologies
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: null
+          nullable: true
+          type: string
+        guid:
+          example: TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1
+          nullable: true
+          type: string
+        id:
+          example: 1734681600000-178fa8095c154a55b9172f977b4c5f9a-0
+          nullable: true
+          type: string
+        is_bill_pay:
+          example: false
+          nullable: true
+          type: boolean
+        is_direct_deposit:
+          example: false
+          nullable: true
+          type: boolean
+        is_expense:
+          example: false
+          nullable: true
+          type: boolean
+        is_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_income:
+          example: true
+          nullable: true
+          type: boolean
+        is_international:
+          example: null
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        is_overdraft_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_payroll_advance:
+          example: false
+          nullable: true
+          type: boolean
+        is_recurring:
+          example: null
+          nullable: true
+          type: boolean
+        is_subscription:
+          example: false
+          nullable: true
+          type: boolean
+        latitude:
+          example: null
+          nullable: true
+          type: number
+        localized_description:
+          example: null
+          nullable: true
+          type: string
+        localized_memo:
+          example: null
+          nullable: true
+          type: string
+        longitude:
+          example: null
+          nullable: true
+          type: number
+        member_guid:
+          example: MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: true
+          nullable: true
+          type: boolean
+        memo:
+          example: Transactions
+          nullable: true
+          type: string
+        merchant_category_code:
+          example: null
+          nullable: true
+          type: integer
+        merchant_guid:
+          example: MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1
+          nullable: true
+          type: string
+        merchant_location_guid:
+          example: null
+          nullable: true
+          type: string
+        metadata:
+          example: null
+          nullable: true
+          type: string
+        original_description:
+          example: MX TECHNOLOGIES PAYMENT
+          nullable: true
+          type: string
+        posted_at:
+          example: '2024-12-20T12:00:00Z'
+          nullable: true
+          type: string
+        status:
+          example: POSTED
+          nullable: true
+          type: string
+        top_level_category:
+          example: Income
+          nullable: true
+          type: string
+        transacted_at:
+          example: '2024-12-20T12:00:00Z'
+          nullable: true
+          type: string
+        type:
+          example: CREDIT
+          nullable: true
+          type: string
+        updated_at:
+          example: '2024-12-20T18:52:38Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e
+          nullable: true
+          type: string
+        user_id:
+          example: null
+          nullable: true
+          type: string
+      type: object
+    InsightUpdateRequestBody:
+      properties:
+        insight:
+          $ref: '#/components/schemas/InsightUpdateRequest'
+      type: object
+    TransactionsResponseBody:
+      properties:
+        transactions:
+          items:
+            $ref: '#/components/schemas/TransactionResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+    CategoriesResponseBody:
+      properties:
+        categories:
+          items:
+            $ref: '#/components/schemas/CategoryResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    ScheduledPaymentResponse:
+      properties:
+        amount:
+          example: 13.54
+          type: number
+        created_at:
+          example: '2023-04-27T23:14:16Z'
+          type: string
+        description:
+          example: Netflix
+          type: string
+        guid:
+          example: SPA-c76e4a85-b2c4-4335-82b7-8f8b8f28c35a
+          type: string
+        is_completed:
+          example: false
+          type: boolean
+        is_recurring:
+          example: true
+          type: boolean
+        merchant_guid:
+          example: MCH-b8a2624c-2176-59ec-c150-37854bc38aa8
+          type: string
+        occurs_on:
+          example: '2022-01-15'
+          type: string
+        recurrence_day:
+          example: 15
+          type: integer
+        recurrence_type:
+          example: EVERY_MONTH
+          type: string
+        transaction_type:
+          example: DEBIT
+          type: string
+        updated_at:
+          example: '2023-04-27T23:14:16Z'
+          type: string
+        user_guid:
+          example: USR-72086f59-6684-4adf-8f29-c4d32db43cd7
+          type: string
+      type: object
+    AccountsResponseBody:
+      properties:
+        accounts:
+          items:
+            $ref: '#/components/schemas/AccountResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    basicAuth:
+      scheme: basic
+      type: http

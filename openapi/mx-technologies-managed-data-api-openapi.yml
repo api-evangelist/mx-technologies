@@ -1,0 +1,1718 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
+
+
+    Just getting started? See our [use case guides](/use-cases/).
+
+    '
+  title: MX Platform accounts managed data API
+  version: '20111101'
+servers:
+- url: https://int-api.mx.com
+- url: https://api.mx.com
+security:
+- basicAuth: []
+tags:
+- name: managed data
+paths:
+  /managed_institutions:
+    get:
+      description: This endpoint returns a list of institutions which can be used to create partner-managed members.
+      operationId: listManagedInstitutions
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/InstitutionsResponseBody'
+          description: OK
+      summary: List managed institutions
+      tags:
+      - managed data
+  /users/{user_guid}/managed_members:
+    get:
+      description: This endpoint returns a list of all the partner-managed members associated with the specified `user`.
+      operationId: listManagedMembers
+      parameters:
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/MembersResponseBody'
+          description: OK
+      summary: List managed members
+      tags:
+      - managed data
+    post:
+      description: Use this endpoint to create a new partner-managed `member`.
+      operationId: createManagedMember
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedMemberCreateRequestBody'
+        description: Managed member to be created.
+        required: true
+      responses:
+        '202':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/MemberResponseBody'
+          description: OK
+      summary: Create managed member
+      tags:
+      - managed data
+  /users/{user_guid}/managed_members/{member_guid}:
+    delete:
+      description: Use this endpoint to delete the specified partner-managed `member`. The endpoint will respond with a status of `204 No Content` without a resource.
+      operationId: deleteManagedMember
+      parameters:
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/acceptHeader'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '204':
+          description: No Content
+      summary: Delete managed member
+      tags:
+      - managed data
+    get:
+      description: This endpoint returns the attributes of the specified partner-managed`member`.
+      operationId: readManagedMember
+      parameters:
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/MemberResponseBody'
+          description: OK
+      summary: Read managed member
+      tags:
+      - managed data
+    put:
+      description: Use this endpoint to update the attributes of the specified partner_managed `member`.
+      operationId: updateManagedMember
+      parameters:
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/userGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedMemberUpdateRequestBody'
+        description: Managed member object to be updated (While no single parameter is required, the request body can't be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/MemberResponseBody'
+          description: OK
+      summary: Update managed member
+      tags:
+      - managed data
+  /users/{user_guid}/managed_members/{member_guid}/accounts:
+    get:
+      description: Use this endpoint to retrieve a list of all the partner-managed accounts associated with the given partner-managed member.
+      operationId: listManagedAccounts
+      parameters:
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccountsResponseBody'
+          description: OK
+      summary: List managed accounts
+      tags:
+      - managed data
+    post:
+      description: Use this endpoint to create a partner-managed account.
+      operationId: createManagedAccount
+      parameters:
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/userGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedAccountCreateRequestBody'
+        description: Managed account to be created.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccountResponseBody'
+          description: OK
+      summary: Create managed account
+      tags:
+      - managed data
+  /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}:
+    delete:
+      description: Use this endpoint to delete a partner-managed account according to its unique GUID. If successful, the API will respond with a status of `204 No Content`.
+      operationId: deleteManagedAccount
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '204':
+          description: No Content
+      summary: Delete managed account
+      tags:
+      - managed data
+    get:
+      description: Use this endpoint to read the attributes of a partner-managed account according to its unique guid.
+      operationId: readManagedAccount
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccountResponseBody'
+          description: OK
+      summary: Read managed account
+      tags:
+      - managed data
+    put:
+      description: Use this endpoint to update the attributes of a partner-managed account according to its unique GUID.
+      operationId: updateManagedAccount
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/userGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedAccountUpdateRequestBody'
+        description: Managed account object to be updated (While no single parameter is required, the request body can't be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/AccountResponseBody'
+          description: OK
+      summary: Update managed account
+      tags:
+      - managed data
+  /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions:
+    get:
+      description: This endpoint returns a list of all the partner-managed transactions associated with the specified `account`, scoped through a `user` and a `member`.
+      operationId: listManagedTransactions
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/fromDate'
+      - $ref: '#/components/parameters/toDate'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/TransactionsResponseBody'
+          description: OK
+      summary: List managed transactions
+      tags:
+      - managed data
+    post:
+      description: Use this endpoint to create a new partner-managed `transaction`.
+      operationId: createManagedTransaction
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/userGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedTransactionCreateRequestBody'
+        description: Managed transaction to be created.
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponseBody'
+          description: OK
+      summary: Create managed transaction
+      tags:
+      - managed data
+  /users/{user_guid}/managed_members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}:
+    delete:
+      description: Use this endpoint to delete the specified partner-managed `transaction`. The endpoint will respond with a status of `204 No Content` without a resource.
+      operationId: deleteManagedTransaction
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/transactionGuid'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '204':
+          description: No Content
+      summary: Delete managed transaction
+      tags:
+      - managed data
+    get:
+      description: Requests to this endpoint will return the attributes of the specified partner-managed `transaction`.
+      operationId: readManagedTransaction
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/transactionGuid'
+      - $ref: '#/components/parameters/userGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponseBody'
+          description: OK
+      summary: Read managed transaction
+      tags:
+      - managed data
+    put:
+      description: Use this endpoint to update the attributes of the specified partner_managed `transaction`.
+      operationId: updateManagedTransaction
+      parameters:
+      - $ref: '#/components/parameters/accountGuid'
+      - $ref: '#/components/parameters/memberGuid'
+      - $ref: '#/components/parameters/transactionGuid'
+      - $ref: '#/components/parameters/userGuid'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ManagedTransactionUpdateRequestBody'
+        description: Managed transaction object to be updated (While no single parameter is required, the request body can't be empty)
+        required: true
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/TransactionResponseBody'
+          description: OK
+      summary: Update managed transaction
+      tags:
+      - managed data
+components:
+  schemas:
+    ManagedMemberCreateRequest:
+      properties:
+        id:
+          example: member123
+          type: string
+        institution_code:
+          example: mxbank
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: MX Bank
+          type: string
+      required:
+      - institution_code
+      type: object
+    ManagedMemberCreateRequestBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/ManagedMemberCreateRequest'
+      type: object
+    TransactionResponseBody:
+      properties:
+        transaction:
+          $ref: '#/components/schemas/TransactionResponse'
+      type: object
+    ManagedTransactionCreateRequestBody:
+      properties:
+        transaction:
+          $ref: '#/components/schemas/ManagedTransactionCreateRequest'
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
+    ManagedAccountUpdateRequestBody:
+      properties:
+        account:
+          $ref: '#/components/schemas/ManagedAccountUpdateRequest'
+      type: object
+    AccountResponse:
+      properties:
+        account_number:
+          example: '5366'
+          nullable: true
+          type: string
+        account_number_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        account_ownership:
+          example: INDIVIDUAL
+          nullable: true
+          type: string
+        annuity_policy_to_date:
+          example: '2016-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        annuity_provider:
+          example: Metlife
+          nullable: true
+          type: string
+        annuity_term_year:
+          example: 2048
+          nullable: true
+          type: integer
+        apr:
+          example: 1
+          nullable: true
+          type: number
+        apr_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        apy:
+          example: 1
+          nullable: true
+          type: number
+        apy_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        available_balance:
+          example: 1000
+          nullable: true
+          type: number
+        available_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        available_credit:
+          example: 1000
+          nullable: true
+          type: number
+        available_credit_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        balance:
+          example: 10000
+          nullable: true
+          type: number
+        balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        calculated_apr:
+          example: 21.66409
+          nullable: true
+          type: number
+        cash_balance:
+          example: 1000
+          nullable: true
+          type: number
+        cash_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        cash_surrender_value:
+          example: 1000
+          nullable: true
+          type: number
+        cash_surrender_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        created_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: false
+          type: string
+        credit_limit:
+          example: 100
+          nullable: true
+          type: number
+        credit_limit_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        currency_code:
+          example: USD
+          nullable: true
+          type: string
+        currency_code_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        day_payment_is_due_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        death_benefit_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        federal_insurance_status:
+          example: INSURED
+          nullable: true
+          type: string
+        feed_account_number:
+          example: '5366'
+          nullable: true
+          type: string
+        feed_account_subtype:
+          example: 1
+          nullable: true
+          type: integer
+        feed_account_type:
+          example: 1
+          nullable: true
+          type: integer
+        feed_apr:
+          example: 1
+          nullable: true
+          type: number
+        feed_apy:
+          example: 1
+          nullable: true
+          type: number
+        feed_available_balance:
+          example: 1000
+          nullable: true
+          type: number
+        feed_balance:
+          example: 1000
+          nullable: true
+          type: number
+        feed_cash_balance:
+          example: 1000
+          nullable: true
+          type: number
+        feed_cash_surrender_value:
+          example: 1000
+          nullable: true
+          type: number
+        feed_credit_limit:
+          example: 100
+          nullable: true
+          type: number
+        feed_currency_code:
+          example: USD
+          nullable: true
+          type: string
+        feed_day_payment_is_due:
+          example: 20
+          nullable: true
+          type: integer
+        feed_death_benefit:
+          example: 1000
+          nullable: true
+          type: integer
+        feed_holdings_value:
+          example: 1000
+          nullable: true
+          type: number
+        feed_interest_rate:
+          example: 1
+          nullable: true
+          type: number
+        feed_is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        feed_last_payment:
+          example: 100
+          nullable: true
+          type: number
+        feed_last_payment_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: true
+          type: string
+        feed_loan_amount:
+          example: 1000
+          nullable: true
+          type: number
+        feed_matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        feed_minimum_balance:
+          example: 100
+          nullable: true
+          type: number
+        feed_minimum_payment:
+          example: 10
+          nullable: true
+          type: number
+        feed_name:
+          example: Test account 2
+          nullable: true
+          type: string
+        feed_nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        feed_original_balance:
+          example: 10
+          nullable: true
+          type: number
+        feed_payment_due_at:
+          example: '2025-02-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        feed_payoff_balance:
+          example: 10
+          nullable: true
+          type: number
+        feed_routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        feed_started_on:
+          example: '2020-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        feed_statement_balance:
+          example: 100
+          nullable: true
+          type: number
+        feed_total_account_value:
+          example: 100
+          nullable: true
+          type: number
+        guid:
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          nullable: true
+          type: string
+        holdings_value:
+          example: 1000
+          nullable: true
+          type: number
+        holdings_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        id:
+          example: '1040434698'
+          nullable: true
+          type: string
+        imported_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        institution_code:
+          example: 3af3685e-05d9-7060-359f-008d0755e993
+          nullable: true
+          type: string
+        institution_guid:
+          example: INS-12a3b-4c5dd6-1349-008d0755e993
+          nullable: true
+          type: string
+        insured_name:
+          example: Tommy Shelby
+          nullable: true
+          type: string
+        interest_rate:
+          example: 1
+          nullable: true
+          type: number
+        interest_rate_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        is_closed:
+          example: false
+          nullable: true
+          type: boolean
+        is_closed_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        is_hidden:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        last_payment:
+          example: 100
+          nullable: true
+          type: number
+        last_payment_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        last_payment_at:
+          example: '2023-07-25T17:14:46Z'
+          nullable: true
+          type: string
+        last_payment_at_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        loan_amount:
+          example: 1000
+          nullable: true
+          type: number
+        loan_amount_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        margin_balance:
+          example: 1000
+          nullable: true
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        matures_on_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        member_id:
+          example: member123
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: some metadata
+          nullable: true
+          type: string
+        minimum_balance:
+          example: 100
+          nullable: true
+          type: number
+        minimum_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        minimum_payment:
+          example: 10
+          nullable: true
+          type: number
+        minimum_payment_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        name:
+          example: Test account 2
+          nullable: true
+          type: string
+        name_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        nickname:
+          example: My Checking
+          nullable: true
+          type: string
+        nickname_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        original_balance:
+          example: 10
+          nullable: true
+          type: number
+        original_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        pay_out_amount:
+          example: 10
+          nullable: true
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        payment_due_at_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        payoff_balance:
+          example: 10
+          nullable: true
+          type: number
+        payoff_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        premium_amount:
+          example: 3900
+          nullable: true
+          type: number
+        property_type:
+          example: VEHICLE
+          nullable: true
+          type: string
+        routing_number:
+          example: '68899990000000'
+          nullable: true
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          nullable: true
+          type: string
+        started_on_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        statement_balance:
+          example: 1000.5
+          nullable: true
+          type: number
+        statement_balance_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        subtype:
+          example: NONE
+          nullable: true
+          type: string
+        subtype_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        today_ugl_amount:
+          example: 1000.5
+          nullable: true
+          type: number
+        today_ugl_percentage:
+          example: 6.9
+          nullable: true
+          type: number
+        total_account_value:
+          example: 1
+          nullable: true
+          type: number
+        total_account_value_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        total_account_value_ugl:
+          example: 1
+          nullable: true
+          type: number
+        type:
+          example: SAVINGS
+          nullable: true
+          type: string
+        type_set_by:
+          example: 1
+          nullable: true
+          type: integer
+        updated_at:
+          example: '2016-10-13T18:08:00.000Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    ManagedAccountCreateRequestBody:
+      properties:
+        account:
+          $ref: '#/components/schemas/ManagedAccountCreateRequest'
+      type: object
+    ManagedTransactionUpdateRequestBody:
+      properties:
+        transaction:
+          $ref: '#/components/schemas/ManagedTransactionUpdateRequest'
+      type: object
+    MemberResponse:
+      properties:
+        aggregated_at:
+          example: '2016-10-13T18:07:57.000Z'
+          nullable: true
+          type: string
+        background_aggregation_is_disabled:
+          example: false
+          type: boolean
+        connection_status:
+          example: CONNECTED
+          nullable: true
+          type: string
+        connection_status_message:
+          example: Connected to MX Bank
+          nullable: true
+          type: string
+        guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          nullable: true
+          type: string
+        id:
+          example: unique_id
+          nullable: true
+          type: string
+        institution_code:
+          example: mxbank
+          nullable: true
+          type: string
+        institution_guid:
+          example: INST-12345678-90ab-cdef-1234-567890abcdef
+          nullable: false
+          type: string
+        is_being_aggregated:
+          example: false
+          nullable: true
+          type: boolean
+        is_managed_by_user:
+          example: false
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        is_oauth:
+          example: false
+          nullable: true
+          type: boolean
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\'
+          nullable: true
+          type: string
+        most_recent_job_detail_code:
+          example: null
+          nullable: true
+          type: integer
+        most_recent_job_detail_text:
+          example: null
+          nullable: true
+          type: boolean
+        most_recent_job_guid:
+          example: JOB-12345678-90ab-cdef-1234-567890abcdef
+          nullable: true
+          type: boolean
+        name:
+          example: MX Bank
+          nullable: true
+          type: string
+        needs_updated_credentials:
+          example: false
+          nullable: true
+          type: boolean
+        oauth_window_uri:
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
+          nullable: true
+          type: string
+        successfully_aggregated_at:
+          example: '2016-10-13T17:57:38.000Z'
+          nullable: true
+          type: string
+        use_cases:
+          type: array
+          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
+          items:
+            type: string
+            enum:
+            - MONEY_MOVEMENT
+            - PFM
+          example:
+          - PFM
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          nullable: true
+          type: string
+        user_id:
+          example: user123
+          nullable: true
+          type: string
+      type: object
+    AccountResponseBody:
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountResponse'
+      type: object
+    MembersResponseBody:
+      properties:
+        members:
+          items:
+            $ref: '#/components/schemas/MemberResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    ManagedAccountCreateRequest:
+      properties:
+        account_number:
+          example: '5366'
+          type: string
+        apr:
+          example: 1
+          type: number
+        apy:
+          example: 1
+          type: number
+        available_balance:
+          example: 1000
+          type: number
+        available_credit:
+          example: 1000
+          type: number
+        balance:
+          example: 1000
+          type: number
+        cash_surrender_value:
+          example: 1000
+          type: number
+        credit_limit:
+          example: 100
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        day_payment_is_due:
+          example: 20
+          type: integer
+        death_benefit:
+          example: 1000
+          type: integer
+        id:
+          example: '1040434698'
+          type: string
+        interest_rate:
+          example: 1
+          type: number
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        last_payment:
+          example: 100
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        loan_amount:
+          example: 1000
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        minimum_balance:
+          example: 100
+          type: number
+        minimum_payment:
+          example: 10
+          type: number
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          example: 10
+          type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        subtype:
+          example: NONE
+          type: string
+        type:
+          example: SAVINGS
+          type: string
+      required:
+      - balance
+      - id
+      - name
+      - type
+      type: object
+    TransactionResponse:
+      properties:
+        account_guid:
+          example: ACT-0af29528-bb91-447f-b5de-85c1c42593e5
+          nullable: true
+          type: string
+        account_id:
+          example: FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw
+          nullable: true
+          type: string
+        amount:
+          example: 5003.9
+          nullable: true
+          type: number
+        category:
+          example: Paycheck
+          nullable: true
+          type: string
+        category_guid:
+          example: CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819
+          nullable: true
+          type: string
+        check_number_string:
+          example: null
+          nullable: true
+          type: string
+        created_at:
+          example: '2024-12-20T18:52:36Z'
+          nullable: true
+          type: string
+        currency_code:
+          example: null
+          nullable: true
+          type: string
+        date:
+          example: '2024-12-20'
+          nullable: true
+          type: string
+        description:
+          example: MX Technologies
+          nullable: true
+          type: string
+        extended_transaction_type:
+          example: null
+          nullable: true
+          type: string
+        guid:
+          example: TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1
+          nullable: true
+          type: string
+        id:
+          example: 1734681600000-178fa8095c154a55b9172f977b4c5f9a-0
+          nullable: true
+          type: string
+        is_bill_pay:
+          example: false
+          nullable: true
+          type: boolean
+        is_direct_deposit:
+          example: false
+          nullable: true
+          type: boolean
+        is_expense:
+          example: false
+          nullable: true
+          type: boolean
+        is_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_income:
+          example: true
+          nullable: true
+          type: boolean
+        is_international:
+          example: null
+          nullable: true
+          type: boolean
+        is_manual:
+          example: false
+          nullable: true
+          type: boolean
+        is_overdraft_fee:
+          example: false
+          nullable: true
+          type: boolean
+        is_payroll_advance:
+          example: false
+          nullable: true
+          type: boolean
+        is_recurring:
+          example: null
+          nullable: true
+          type: boolean
+        is_subscription:
+          example: false
+          nullable: true
+          type: boolean
+        latitude:
+          example: null
+          nullable: true
+          type: number
+        localized_description:
+          example: null
+          nullable: true
+          type: string
+        localized_memo:
+          example: null
+          nullable: true
+          type: string
+        longitude:
+          example: null
+          nullable: true
+          type: number
+        member_guid:
+          example: MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8
+          nullable: true
+          type: string
+        member_is_managed_by_user:
+          example: true
+          nullable: true
+          type: boolean
+        memo:
+          example: Transactions
+          nullable: true
+          type: string
+        merchant_category_code:
+          example: null
+          nullable: true
+          type: integer
+        merchant_guid:
+          example: MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1
+          nullable: true
+          type: string
+        merchant_location_guid:
+          example: null
+          nullable: true
+          type: string
+        metadata:
+          example: null
+          nullable: true
+          type: string
+        original_description:
+          example: MX TECHNOLOGIES PAYMENT
+          nullable: true
+          type: string
+        posted_at:
+          example: '2024-12-20T12:00:00Z'
+          nullable: true
+          type: string
+        status:
+          example: POSTED
+          nullable: true
+          type: string
+        top_level_category:
+          example: Income
+          nullable: true
+          type: string
+        transacted_at:
+          example: '2024-12-20T12:00:00Z'
+          nullable: true
+          type: string
+        type:
+          example: CREDIT
+          nullable: true
+          type: string
+        updated_at:
+          example: '2024-12-20T18:52:38Z'
+          nullable: true
+          type: string
+        user_guid:
+          example: USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e
+          nullable: true
+          type: string
+        user_id:
+          example: null
+          nullable: true
+          type: string
+      type: object
+    ManagedMemberUpdateRequestBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/ManagedMemberUpdateRequest'
+      type: object
+    ManagedMemberUpdateRequest:
+      properties:
+        id:
+          example: member123
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: MX Bank
+          type: string
+      type: object
+    InstitutionsResponseBody:
+      properties:
+        institutions:
+          items:
+            $ref: '#/components/schemas/InstitutionResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    MemberResponseBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/MemberResponse'
+      type: object
+    TransactionsResponseBody:
+      properties:
+        transactions:
+          items:
+            $ref: '#/components/schemas/TransactionResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+    ManagedAccountUpdateRequest:
+      properties:
+        account_number:
+          example: '5366'
+          type: string
+        apr:
+          example: 1
+          type: number
+        apy:
+          example: 1
+          type: number
+        available_balance:
+          example: 1000
+          type: number
+        available_credit:
+          example: 1000
+          type: number
+        balance:
+          example: 1000
+          type: number
+        cash_surrender_value:
+          example: 1000
+          type: number
+        credit_limit:
+          example: 100
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        day_payment_is_due:
+          example: 20
+          type: integer
+        death_benefit:
+          example: 1000
+          type: integer
+        id:
+          example: '1040434698'
+          type: string
+        interest_rate:
+          example: 1
+          type: number
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        last_payment:
+          example: 100
+          type: number
+        last_payment_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        loan_amount:
+          example: 1000
+          type: number
+        matures_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        minimum_balance:
+          example: 100
+          type: number
+        minimum_payment:
+          example: 10
+          type: number
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10
+          type: number
+        payment_due_at:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          example: 10
+          type: number
+        routing_number:
+          example: '68899990000000'
+          type: string
+        started_on:
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        subtype:
+          example: NONE
+          type: string
+        type:
+          example: SAVINGS
+          type: string
+      type: object
+    InstitutionResponse:
+      properties:
+        code:
+          example: mxbank
+          nullable: true
+          type: string
+        forgot_password_url:
+          example: https://example.url.mxbank.com/forgot-password
+          nullable: true
+          type: string
+        forgot_username_url:
+          example: https://example.url.mxbank.com/forgot-username
+          nullable: true
+          type: string
+        instructional_text:
+          description: Render this text when end users are asked for their credentials, as it helps end users provide the correct credentials when creating a new member. May contain `<a></a>` tags to link to explanatory material.
+          example: Some instructional text <a href="https://example.url.mxbank.com/instructions" id="instructional_text">for end users</a>.
+          nullable: true
+          type: string
+        instructional_text_steps:
+          type: array
+          items:
+            type: string
+          description: An array of instructional steps that may contain html elements.
+          example:
+          - 'Step 1: Do this.'
+          - 'Step 2: Do that.'
+          nullable: true
+        is_disabled_by_client:
+          example: false
+          nullable: true
+          type: boolean
+        iso_country_code:
+          example: US
+          type: string
+        medium_logo_url:
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
+          nullable: true
+          type: string
+        name:
+          example: MX Bank
+          nullable: true
+          type: string
+        small_logo_url:
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
+          nullable: true
+          type: string
+        supports_account_identification:
+          example: true
+          nullable: true
+          type: boolean
+        supports_account_statement:
+          example: true
+          nullable: true
+          type: boolean
+        supports_account_verification:
+          example: true
+          nullable: true
+          type: boolean
+        supports_oauth:
+          example: true
+          nullable: true
+          type: boolean
+        supports_tax_document:
+          example: true
+          nullable: true
+          type: boolean
+        supports_transaction_history:
+          example: true
+          nullable: true
+          type: boolean
+        trouble_signing_in_url:
+          example: https://example.url.mxbank.com/login-trouble
+          nullable: true
+          type: string
+        url:
+          example: https://www.mxbank.com
+          nullable: true
+          type: string
+      type: object
+    ManagedTransactionUpdateRequest:
+      properties:
+        amount:
+          example: '61.11'
+          type: string
+        category:
+          example: Groceries
+          type: string
+        check_number_string:
+          example: '6812'
+          type: string
+        currency_code:
+          example: USD
+          type: string
+        description:
+          example: Whole foods
+          type: string
+        id:
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          type: string
+        is_international:
+          example: false
+          type: boolean
+        latitude:
+          example: -43.2075
+          type: number
+        localized_description:
+          example: This is a localized_description
+          type: string
+        localized_memo:
+          example: This is a localized_memo
+          type: string
+        longitude:
+          example: 139.691706
+          type: number
+        memo:
+          example: This is a memo
+          type: string
+        merchant_category_code:
+          example: 5411
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        posted_at:
+          example: '2016-10-07T06:00:00.000Z'
+          type: string
+        status:
+          example: POSTED
+          type: string
+        transacted_at:
+          example: '2016-10-06T13:00:00.000Z'
+          type: string
+        type:
+          example: DEBIT
+          type: string
+      type: object
+    ManagedTransactionCreateRequest:
+      properties:
+        amount:
+          example: '61.11'
+          type: string
+        category:
+          example: Groceries
+          type: string
+        check_number_string:
+          example: '6812'
+          type: string
+        currency_code:
+          example: USD
+          type: string
+        description:
+          example: Whole foods
+          type: string
+        id:
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          type: string
+        is_international:
+          example: false
+          type: boolean
+        latitude:
+          example: -43.2075
+          type: number
+        localized_description:
+          example: This is a localized_description
+          type: string
+        localized_memo:
+          example: This is a localized_memo
+          type: string
+        longitude:
+          example: 139.691706
+          type: number
+        memo:
+          example: This is a memo
+          type: string
+        merchant_category_code:
+          example: 5411
+          type: integer
+        merchant_guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          example: some metadata
+          type: string
+        posted_at:
+          example: '2016-10-07T06:00:00.000Z'
+          type: string
+        status:
+          example: POSTED
+          type: string
+        transacted_at:
+          example: '2016-10-06T13:00:00.000Z'
+          type: string
+        type:
+          example: DEBIT
+          type: string
+      required:
+      - amount
+      - description
+      - status
+      - posted_at
+      - transacted_at
+      - type
+      type: object
+    AccountsResponseBody:
+      properties:
+        accounts:
+          items:
+            $ref: '#/components/schemas/AccountResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+  parameters:
+    accountGuid:
+      description: The unique id for an `account`.
+      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+      in: path
+      name: account_guid
+      required: true
+      schema:
+        type: string
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    memberGuid:
+      description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    fromDate:
+      description: Filter transactions from this date. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 120 days ago if not provided.
+      example: '2024-01-01'
+      in: query
+      name: from_date
+      schema:
+        type: string
+    acceptHeader:
+      description: Specifies the media type expected in the response.
+      in: header
+      name: Accept
+      required: true
+      schema:
+        type: string
+        example: application/vnd.mx.api.v1+json
+    toDate:
+      description: Filter transactions to this date (at midnight). This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 5 days forward from the day the request is made to capture pending transactions.
+      example: '2024-03-31'
+      in: query
+      name: to_date
+      schema:
+        type: string
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    transactionGuid:
+      description: The unique id for a `transaction`.
+      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+      in: path
+      name: transaction_guid
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    basicAuth:
+      scheme: basic
+      type: http

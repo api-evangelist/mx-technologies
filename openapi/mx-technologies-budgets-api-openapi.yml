@@ -1,0 +1,265 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
+
+
+    Just getting started? See our [use case guides](/use-cases/).
+
+    '
+  title: MX Platform accounts budgets API
+  version: '20111101'
+servers:
+- url: https://int-api.mx.com
+- url: https://api.mx.com
+security:
+- basicAuth: []
+tags:
+- name: budgets
+paths:
+  /users/{user_guid}/budgets/generate:
+    post:
+      tags:
+      - budgets
+      operationId: autoGenerateBudgets
+      summary: Auto-generate budgets
+      parameters:
+      - $ref: '#/components/parameters/userGuid'
+      description: This endpoint will automatically create budgets for several categories based on existing transactions; these budgets are returned as an array. Specifically, budgets will only be generated if the `user` has at least one `transaction` in a given category during each of the two previous calendar months. For example, if the request is made on March 6, and there is at least one "Bills & Utilities" `transaction` in both January and February, a budget will be generated for "Bills & Utilities." If there are two "Bills & Utilities" transactions in February but none in January, no budget will be generated for that category. If budgets already exist for particular categories, new budgets will be generated and returned based on the available transactions. If one or more budgets remain unchanged, they will nevertheless be returned in the response. If no transaction data for the `user` meet the above criteria, a `422 Unprocessable Entity` error will be returned with status code 4221 along with the message, `There aren't enough transactions to automatically create any budgets`.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+  /users/{user_guid}/budgets:
+    parameters:
+    - $ref: '#/components/parameters/userGuid'
+    post:
+      tags:
+      - budgets
+      operationId: createBudget
+      summary: Create a budget
+      description: Create a budget. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter. You cannot create a duplicate budget. For example, if you attempt to create a budget for "Gas", but that budget already exist, the request will fail. You can retrieve a list of all existing categories by using the List Categories endpoint.
+      requestBody:
+        required: true
+        content:
+          application/vnd.mx.api.v1+json:
+            schema:
+              $ref: '#/components/schemas/BudgetCreateRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    get:
+      tags:
+      - budgets
+      operationId: listAllBudgets
+      summary: List all budgets
+      description: List all budgets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+  /users/{user_guid}/budgets/{budget_guid}:
+    parameters:
+    - $ref: '#/components/parameters/userGuid'
+    - $ref: '#/components/parameters/budgetGuid'
+    get:
+      tags:
+      - budgets
+      operationId: readSpecificBudget
+      summary: Read a specific budget
+      description: Read a specific budget.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    put:
+      tags:
+      - budgets
+      operationId: updateSpecificBudget
+      summary: Update a specific budget
+      description: Update a specific budget.
+      requestBody:
+        required: false
+        content:
+          application/vnd.mx.api.v1+json:
+            schema:
+              $ref: '#/components/schemas/BudgetUpdateRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BudgetResponseBody'
+    delete:
+      tags:
+      - budgets
+      operationId: deleteBudget
+      summary: Delete a budget
+      description: Delete a budget.
+      responses:
+        '204':
+          description: No content
+components:
+  schemas:
+    BudgetUpdateRequestBody:
+      properties:
+        budget:
+          $ref: '#/components/schemas/BudgetUpdateRequest'
+      type: object
+    BudgetCreateRequest:
+      properties:
+        category_guid:
+          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
+          description: Unique identifier of the category.
+          type: string
+        parent_guid:
+          example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
+          description: Unique identifier of the parent budget. This is only required when creating a budget on a sub-category.
+          type: string
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      required:
+      - category_guid
+      - parent_guid
+      type: object
+    BudgetResponse:
+      properties:
+        amount:
+          description: A goal amount set by the user for a category's transaction total during a month.
+          example: 153
+          type: number
+        category_guid:
+          description: Unique identifier for the budget category. Defined by MX.
+          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
+          type: string
+          nullable: false
+        created_at:
+          description: Date and time the budget was created, represented in ISO 8601 format with timestamp.
+          example: '2018-10-18T19:51:26+00:00'
+          type: string
+        guid:
+          description: Unique identifier for the budget. Defined by MX.
+          example: BGT-6ca0e3ef-c65e-4655-8b5a-275a3c19c21d
+          type: string
+        is_exceeded:
+          description: If the budget has been exceeded, this field will be true. Otherwise, this field will be false.
+          example: true
+          type: boolean
+        is_off_track:
+          description: If the budget is off track, this field will be true. Otherwise, this field will be false.
+          example: true
+          type: boolean
+        metadata:
+          description: Additional information a partner can store on the budget.
+          example: some metadata
+          nullable: true
+          type: string
+        name:
+          description: The name of the budget that is visible to the user (ie "Food", "Bills", "Entertainment", etc).
+          example: Food & Dining
+          type: string
+          nullable: true
+        off_track_percentage:
+          description: The percentage amount of off track spending. (Deprecated).
+          nullable: true
+          type: number
+        parent_guid:
+          description: Unique identifier for the parent budget. Defined by MX.
+          nullable: true
+          type: string
+        percent_spent:
+          description: The percentage of a budget that has been spent during the current calendar month Calculated as the transaction total divided by the amount and then multiplied by 100.A value of zero will be returned when `amount` is zero.
+          example: 1276.34
+          nullable: true
+          type: number
+        projected_spending:
+          description: The projected amount of spending for the budget.
+          example: 3562.4
+          type: number
+        revision:
+          description: The revision number of this budget record.
+          example: 561
+          type: integer
+        transaction_total:
+          description: The cumulative amount of all transactions under the budget.
+          example: 1952.8
+        updated_at:
+          description: Date and time the budget was updated, represented in ISO 8601 format with timestamp.
+          example: '2022-06-14T21:17:11+00:00'
+        user_guid:
+          description: Unique identifier for the user. Defined by MX.
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+    BudgetUpdateRequest:
+      properties:
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      type: object
+    BudgetCreateRequestBody:
+      properties:
+        budget:
+          $ref: '#/components/schemas/BudgetCreateRequest'
+      type: object
+    BudgetResponseBody:
+      properties:
+        budget:
+          $ref: '#/components/schemas/BudgetResponse'
+      type: object
+  parameters:
+    budgetGuid:
+      name: budget_guid
+      description: The unique identifier for the budget. Defined by MX.
+      required: true
+      in: path
+      schema:
+        type: string
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    basicAuth:
+      scheme: basic
+      type: http

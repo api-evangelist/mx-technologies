@@ -1,0 +1,191 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
+
+
+    Just getting started? See our [use case guides](/use-cases/).
+
+    '
+  title: MX Platform accounts monthly cash flow profile API
+  version: '20111101'
+servers:
+- url: https://int-api.mx.com
+- url: https://api.mx.com
+security:
+- basicAuth: []
+tags:
+- name: monthly cash flow profile
+paths:
+  /users/{user_guid}/monthly_cash_flow_profile:
+    parameters:
+    - $ref: '#/components/parameters/userGuid'
+    get:
+      tags:
+      - monthly cash flow profile
+      operationId: readMonthlyCashFlowProfile
+      summary: Read monthly cash flow profile
+      description: Read monthly cash flow profile.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+    put:
+      tags:
+      - monthly cash flow profile
+      operationId: updateMonthlyCashFlowProfile
+      summary: Update monthly cash flow profile
+      description: Use this endpoint to update the attributes of a `monthly_cash_flow_profile`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MonthlyCashFlowProfileRequestBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+  /users/{user_identifier}/monthly_cash_flow_profile:
+    parameters:
+    - $ref: '#/components/parameters/userIdentifier'
+    - $ref: '#/components/parameters/acceptVersion'
+    get:
+      tags:
+      - monthly cash flow profile
+      operationId: readMonthlyCashFlowProfile
+      summary: Read monthly cash flow profile
+      description: Read monthly cash flow profile.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+    put:
+      tags:
+      - monthly cash flow profile
+      operationId: updateMonthlyCashFlowProfile
+      summary: Update monthly cash flow profile
+      description: Use this endpoint to update the attributes of a `monthly_cash_flow_profile`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MonthlyCashFlowProfileRequestBody_2'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+components:
+  schemas:
+    MonthlyCashFlowProfileRequestBody_2:
+      properties:
+        monthly_cash_flow_profile:
+          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest_2'
+      type: object
+    MonthlyCashFlowResponse:
+      properties:
+        guid:
+          example: MCF-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+          description: Unique identifier for the monthly cash flow profile. Defined by MX.
+        user_guid:
+          example: USR-6c83f63c-efcc-0189-3f14-100f0bad378a
+          type: string
+          description: Unique identifier for the user the monthly cash flow profile is attached to. Defined by MX.
+        budgeted_income:
+          example: 1200.12
+          type: number
+          description: The amount of the budgeted income for the user.
+        budgeted_expenses:
+          example: 1000
+          type: number
+          description: The amount of the budgeted expenses for the user.
+        goals_contribution:
+          example: 150
+          type: number
+          description: The monthly dollar amount allocated for goals.
+        estimated_goals_contribution:
+          example: null
+          nullable: true
+          type: number
+          description: The estimated monthly dollar amount allocated for goals calculated from income and budgets.
+        uses_estimated_goals_contribution:
+          example: false
+          type: boolean
+    MonthlyCashFlowProfileRequest_2:
+      properties:
+        goals_contribution:
+          description: The monthly dollar amount allocated for goals.
+          example: 500
+          type: number
+        uses_estimated_goals_contribution:
+          example: false
+          type: boolean
+          description: Determines if the user uses estimated goals contribution.
+    MonthlyCashFlowProfileRequestBody:
+      properties:
+        institution:
+          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest'
+      type: object
+    MonthlyCashFlowResponseBody:
+      properties:
+        monthly_cash_flow_profile:
+          $ref: '#/components/schemas/MonthlyCashFlowResponse'
+      type: object
+    MonthlyCashFlowProfileRequest:
+      properties:
+        goals_contribution:
+          example: 150.01
+          type: number
+          description: The monthly dollar amount allocated for goals.
+        uses_estimated_goals_contribution:
+          example: false
+          type: boolean
+          description: Determines if the user uses estimated goals contribution.
+  parameters:
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    userIdentifier:
+      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      in: path
+      required: true
+      name: user_identifier
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    basicAuth:
+      scheme: basic
+      type: http

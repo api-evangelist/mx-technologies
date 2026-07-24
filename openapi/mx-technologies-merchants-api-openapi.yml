@@ -1,0 +1,230 @@
+openapi: 3.0.0
+info:
+  contact:
+    name: MX Platform API
+    url: https://www.mx.com/products/platform-api
+  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
+
+
+    Just getting started? See our [use case guides](/use-cases/).
+
+    '
+  title: MX Platform accounts merchants API
+  version: '20111101'
+servers:
+- url: https://int-api.mx.com
+- url: https://api.mx.com
+security:
+- basicAuth: []
+tags:
+- name: merchants
+paths:
+  /merchant_locations/{merchant_location_guid}:
+    get:
+      description: This endpoint returns the specified `merchant_location` resource. The `merchant_location_guid` can be found on `transaction` objects.
+      operationId: readMerchantLocation
+      parameters:
+      - $ref: '#/components/parameters/merchantLocationGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/MerchantLocationResponseBody'
+          description: OK
+      summary: Read merchant location
+      tags:
+      - merchants
+  /merchants:
+    get:
+      description: This endpoint returns a paginated list of all the merchants in the MX system.
+      operationId: listMerchants
+      parameters:
+      - $ref: '#/components/parameters/merchantName'
+      - $ref: '#/components/parameters/page'
+      - $ref: '#/components/parameters/recordsPerPageMax1000'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/MerchantsResponseBody'
+          description: OK
+      summary: List merchants
+      tags:
+      - merchants
+  /merchants/{merchant_guid}:
+    get:
+      description: Returns information about a particular merchant, such as a logo, name, and website.
+      operationId: readMerchant
+      parameters:
+      - $ref: '#/components/parameters/merchantGuid'
+      responses:
+        '200':
+          content:
+            application/vnd.mx.api.v1+json:
+              schema:
+                $ref: '#/components/schemas/MerchantResponseBody'
+          description: OK
+      summary: Read merchant
+      tags:
+      - merchants
+components:
+  schemas:
+    MerchantsResponseBody:
+      properties:
+        merchants:
+          items:
+            $ref: '#/components/schemas/MerchantResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    MerchantLocationResponseBody:
+      properties:
+        merchant_location:
+          $ref: '#/components/schemas/MerchantLocationResponse'
+      type: object
+    MerchantResponse:
+      properties:
+        created_at:
+          example: '2017-04-20T19:30:12.000Z'
+          nullable: true
+          type: string
+        guid:
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          nullable: true
+          type: string
+        logo_url:
+          example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
+          nullable: true
+          type: string
+        name:
+          example: Comcast
+          nullable: true
+          type: string
+        updated_at:
+          example: '2018-09-28T21:13:53.000Z'
+          nullable: true
+          type: string
+        website_url:
+          example: https://www.xfinity.com
+          nullable: true
+          type: string
+      type: object
+    MerchantLocationResponse:
+      properties:
+        city:
+          example: Greenwood Village
+          nullable: true
+          type: string
+        country:
+          example: US
+          nullable: true
+          type: string
+        created_at:
+          example: '2020-04-13 21:05:09.000000000 Z'
+          nullable: true
+          type: string
+        guid:
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          nullable: true
+          type: string
+        latitude:
+          example: 39.5963005
+          nullable: true
+          type: number
+        longitude:
+          example: -104.89158799999998
+          nullable: true
+          type: number
+        merchant_guid:
+          example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+          nullable: true
+          type: string
+        phone_number:
+          example: (303) 689-0728
+          nullable: true
+          type: string
+        postal_code:
+          example: '801121436'
+          nullable: true
+          type: string
+        state:
+          example: CO
+          nullable: true
+          type: string
+        street_address:
+          example: 8547 E Arapahoe Rd, Ste 1
+          nullable: true
+          type: string
+        updated_at:
+          example: '2020-04-13 21:05:09.000000000 Z'
+          nullable: true
+          type: string
+      type: object
+    MerchantResponseBody:
+      properties:
+        merchant:
+          $ref: '#/components/schemas/MerchantResponse'
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
+  parameters:
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    merchantGuid:
+      description: The unique id for a `merchant`.
+      example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+      in: path
+      name: merchant_guid
+      required: true
+      schema:
+        type: string
+    merchantName:
+      description: This will list only merchants in which the appended string appears.
+      example: Comcast
+      in: query
+      name: name
+      schema:
+        type: string
+    merchantLocationGuid:
+      description: The unique id for a `merchant_location`.
+      example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+      in: path
+      name: merchant_location_guid
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+    basicAuth:
+      scheme: basic
+      type: http
