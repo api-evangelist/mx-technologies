@@ -1,7 +1,20 @@
 aid: mx-technologies
 name: MX Technologies
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mx-technologies.png
 url: https://raw.githubusercontent.com/api-evangelist/mx-technologies/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -30,43 +43,11 @@ tags:
 - Account Verification
 - Personal Finance
 apis:
-- name: MX Platform API
-  description: 'The primary REST API for MX platform integration, providing access
-    to users, members, accounts, transactions, institutions, statements, microdeposits,
-    budgets, categories, goals, and insights. Supports account aggregation across
-    16,000+ financial institutions with data cleansing and categorization.
-
-    '
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
-  baseURL: https://api.mx.com
-  tags:
-  - Account Aggregation
-  - Financial Data
-  - Transactions
-  - Budgets
-  properties:
-  - type: Documentation
-    url: https://docs.mx.com/api-reference/platform-api/overview/
-  - type: OpenAPI
-    url: https://github.com/mxenabled/openapi/blob/master/openapi/mx_platform_api.yml
-  - type: OpenAPI
-    url: openapi/mx-technologies-platform-openapi.yml
-  - type: OpenAPI
-    url: openapi/mx-technologies-platform-v20250224-openapi.yml
-  - type: JSONSchema
-    url: json-schema/mx-technologies-platform-api.json
-  - type: Examples
-    url: examples/mx-technologies-platform-api-examples.json
-  - url: graphql/mx-graphql.md
-    type: GraphQL
 - name: MX Atrium API
-  description: 'The legacy MX financial data connectivity API supporting over 48,000
-    data connections to thousands of financial institutions. Provides secure access
-    to user accounts and transactions with industry-leading cleansing, categorization,
-    and classification. Available for existing integrations.
-
-    '
+  description: >
+    The legacy MX financial data connectivity API supporting over 48,000 data connections to thousands
+    of financial institutions. Provides secure access to user accounts and transactions with industry-leading
+    cleansing, categorization, and classification. Available for existing integrations.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/api-reference/atrium/
   baseURL: https://atrium.mx.com
@@ -79,11 +60,9 @@ apis:
   - type: Documentation
     url: https://docs.mx.com/api-reference/atrium/
 - name: MX SSO API
-  description: 'A RESTful authentication API used to authenticate users on the MX
-    Platform and generate widget URLs for Personal Finance Management and Financial
-    Insights widgets. Supports both XML and JSON encoding.
-
-    '
+  description: >
+    A RESTful authentication API used to authenticate users on the MX Platform and generate widget URLs
+    for Personal Finance Management and Financial Insights widgets. Supports both XML and JSON encoding.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/api-reference/sso/v3/
   baseURL: https://api.mx.com
@@ -95,12 +74,10 @@ apis:
   - type: Documentation
     url: https://docs.mx.com/api-reference/sso/v3/
 - name: MX Data Access API
-  description: 'An open finance API built to FDX standards enabling permissioned data
-    sharing with consumer consent management. Supports Account Owner Identity, statements,
-    transaction history, account verifications, and OAuth-based data sharing. Processes
-    over 500K connections with 70% through OAuth APIs.
-
-    '
+  description: >
+    An open finance API built to FDX standards enabling permissioned data sharing with consumer consent
+    management. Supports Account Owner Identity, statements, transaction history, account verifications,
+    and OAuth-based data sharing. Processes over 500K connections with 70% through OAuth APIs.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/products/data/data-access/
   baseURL: https://api.mx.com
@@ -114,11 +91,9 @@ apis:
   - type: Documentation
     url: https://docs.mx.com/products/data/data-access/
 - name: MX Batch API
-  description: 'Enables processing of bulk operations and batch requests on the MX
-    platform, supporting large-scale data operations for financial institutions and
-    fintech partners.
-
-    '
+  description: >
+    Enables processing of bulk operations and batch requests on the MX platform, supporting large-scale
+    data operations for financial institutions and fintech partners.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/
   baseURL: https://api.mx.com
@@ -129,10 +104,9 @@ apis:
   - type: Documentation
     url: https://docs.mx.com/
 - name: MX Reporting API
-  description: 'Supports reporting functionality and analytics for financial institutions
-    and fintech partners integrating with the MX platform.
-
-    '
+  description: >
+    Supports reporting functionality and analytics for financial institutions and fintech partners integrating
+    with the MX platform.
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/
   baseURL: https://api.mx.com
@@ -142,6 +116,478 @@ apis:
   properties:
   - type: Documentation
     url: https://docs.mx.com/
+- aid: mx-technologies:mx-technologies-accounts-api
+  name: MX Technologies accounts API
+  description: The accounts API from MX Technologies — 13 operation(s) for accounts.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-ach-return-api
+  name: MX Technologies ach return API
+  description: The ach return API from MX Technologies — 2 operation(s) for ach return.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - ach return
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-ach-return-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-budgets-api
+  name: MX Technologies budgets API
+  description: The budgets API from MX Technologies — 3 operation(s) for budgets.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - budgets
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-budgets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-categories-api
+  name: MX Technologies categories API
+  description: The categories API from MX Technologies — 5 operation(s) for categories.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - categories
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-goals-api
+  name: MX Technologies goals API
+  description: The goals API from MX Technologies — 3 operation(s) for goals.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - goals
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-goals-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-insights-api
+  name: MX Technologies insights API
+  description: The insights API from MX Technologies — 9 operation(s) for insights.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - insights
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-insights-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-institutions-api
+  name: MX Technologies institutions API
+  description: The institutions API from MX Technologies — 5 operation(s) for institutions.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - institutions
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-institutions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-investment-holdings-api
+  name: MX Technologies investment holdings API
+  description: >-
+    The investment holdings API from MX Technologies — 5 operation(s) for investment holdings.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - investment holdings
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-investment-holdings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-managed-data-api
+  name: MX Technologies managed data API
+  description: The managed data API from MX Technologies — 7 operation(s) for managed data.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - managed data
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-managed-data-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-managed-data-deprecated-api
+  name: MX Technologies managed data [deprecated] API
+  description: >-
+    The managed data [deprecated] API from MX Technologies — 7 operation(s) for managed data [deprecated].
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - managed data [deprecated]
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-managed-data-deprecated-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-members-api
+  name: MX Technologies members API
+  description: The members API from MX Technologies — 20 operation(s) for members.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - members
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-members-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-merchants-api
+  name: MX Technologies merchants API
+  description: The merchants API from MX Technologies — 3 operation(s) for merchants.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - merchants
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-merchants-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-microdeposits-api
+  name: MX Technologies microdeposits API
+  description: The microdeposits API from MX Technologies — 4 operation(s) for microdeposits.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - microdeposits
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-microdeposits-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-monthly-cash-flow-profile-api
+  name: MX Technologies monthly cash flow profile API
+  description: >-
+    The monthly cash flow profile API from MX Technologies — 2 operation(s) for monthly cash flow profile.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - monthly cash flow profile
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-monthly-cash-flow-profile-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-notifications-api
+  name: MX Technologies notifications API
+  description: The notifications API from MX Technologies — 2 operation(s) for notifications.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-notifications-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-processor-token-api
+  name: MX Technologies processor token API
+  description: The processor token API from MX Technologies — 7 operation(s) for processor token.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - processor token
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-processor-token-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-rewards-api
+  name: MX Technologies rewards API
+  description: The rewards API from MX Technologies — 5 operation(s) for rewards.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-rewards-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-spending-plan-api
+  name: MX Technologies spending plan API
+  description: The spending plan API from MX Technologies — 9 operation(s) for spending plan.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - spending plan
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-spending-plan-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-statements-api
+  name: MX Technologies statements API
+  description: The statements API from MX Technologies — 5 operation(s) for statements.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - statements
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-statements-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-taggings-api
+  name: MX Technologies taggings API
+  description: The taggings API from MX Technologies — 2 operation(s) for taggings.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - taggings
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-taggings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-tags-api
+  name: MX Technologies tags API
+  description: The tags API from MX Technologies — 2 operation(s) for tags.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-transaction-rules-api
+  name: MX Technologies transaction rules API
+  description: The transaction rules API from MX Technologies — 2 operation(s) for transaction rules.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - transaction rules
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-transaction-rules-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-transactions-api
+  name: MX Technologies transactions API
+  description: The transactions API from MX Technologies — 19 operation(s) for transactions.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-users-api
+  name: MX Technologies users API
+  description: The users API from MX Technologies — 3 operation(s) for users.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-verifiable-credentials-api
+  name: MX Technologies verifiable credentials API
+  description: >-
+    The verifiable credentials API from MX Technologies — 3 operation(s) for verifiable credentials.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - verifiable credentials
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-verifiable-credentials-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
+- aid: mx-technologies:mx-technologies-widgets-api
+  name: MX Technologies widgets API
+  description: The widgets API from MX Technologies — 4 operation(s) for widgets.
+  humanURL: https://docs.mx.com/api-reference/platform-api/overview/
+  baseURL: https://api.mx.com
+  tags:
+  - widgets
+  properties:
+  - type: OpenAPI
+    url: openapi/mx-technologies-widgets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.mx.com/api-reference/platform-api/overview/
+  - type: JSONSchema
+    url: json-schema/mx-technologies-platform-api.json
+  - type: Examples
+    url: examples/mx-technologies-platform-api-examples.json
+  - type: GraphQL
+    url: graphql/mx-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/mx-technologies-agentic-access.yml
