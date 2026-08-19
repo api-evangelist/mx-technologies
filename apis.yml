@@ -18,7 +18,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mx-technol
 url: https://raw.githubusercontent.com/api-evangelist/mx-technologies/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 description: 'MX Technologies is a financial data connectivity platform that provides
   REST APIs for account aggregation, data cleansing, transaction categorization, and
   open banking connectivity across more than 16,000 financial institutions. The platform
