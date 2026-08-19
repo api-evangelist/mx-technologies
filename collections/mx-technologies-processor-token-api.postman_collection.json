@@ -1,0 +1,752 @@
+{
+  "item": [
+    {
+      "id": "9c2895f5-dc22-41a4-a28c-072712ae66e0",
+      "name": "processor token",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2211566c-c7ac-458d-8e21-e036b691ef7b",
+          "name": "Request an authorization code",
+          "request": {
+            "name": "Request an authorization code",
+            "description": {
+              "content": "Clients use this endpoint to request an authorization code according to the parameters specified in the scope. Clients then pass this code to processors. Processor access is scoped only to the GUIDs and features specified in this request. Before requesting an authorization code which includes a member in the scope, clients must have verified that member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "authorization_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authorization_code\": {\n    \"scope\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "173cfb3a-532c-4127-b88e-07026c95e685",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "authorization_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorization_code\": {\n    \"scope\": \"user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"authorization_code\": {\n    \"code\": \"9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d89fe012-f1fe-4cfd-acda-f04b956428f2",
+          "name": "(Deprecated) Request an authorization code",
+          "request": {
+            "name": "(Deprecated) Request an authorization code",
+            "description": {
+              "content": "(This endpoint is deprecated. Clients should use `/authorization_code`.) Clients use this endpoint to request an authorization_code according to a user, member, and account specified in the request body. Clients then pass this code to processors. Processor access is scoped only to the user/member/account specified in this request. Before requesting an authorization_code, clients must have verified the specified member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment_processor_authorization_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payment_processor_authorization_code\": {\n    \"account_guid\": \"<string>\",\n    \"member_guid\": \"<string>\",\n    \"user_guid\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "705b7a91-4592-4a2c-8358-56145de9c93c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_processor_authorization_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payment_processor_authorization_code\": {\n    \"account_guid\": \"ACT-4d4c0068-33bc-4d06-bbd6-cd270fd0135c\",\n    \"member_guid\": \"MBR-46637bc5-942d-4229-9370-ddd858bf805e\",\n    \"user_guid\": \"USR-f12b1f5a-7cbe-467c-aa30-0a10d0b2f549\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"payment_processor_authorization_code\": {\n    \"authorization_code\": \"9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a54b626-6f29-4010-b3d2-af6536c88ee0",
+          "name": "View a List of Tokens",
+          "request": {
+            "name": "View a List of Tokens",
+            "description": {
+              "content": "View a list of tokens that exist for a user, member, or account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scope\": {\n    \"account_guid\": \"<string>\",\n    \"member_guid\": \"<string>\",\n    \"user_guid\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9ec2f5a6-5188-43c3-80fb-ef74298320f8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scope\": {\n    \"account_guid\": \"ACT-283132a4-1401-486a-909e-1605f1623d11\",\n    \"member_guid\": \"MBR-54feffb9-8474-47bd-8442-de003910113a\",\n    \"user_guid\": \"USR-101ad774-288b-44ed-ad16-da87d522ea20\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"tokens\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "84f1fba8-aee7-4676-b0b0-0f68a43ba8cf",
+          "name": "Request an account number (Processors Only)",
+          "request": {
+            "name": "Request an account number (Processors Only)",
+            "description": {
+              "content": "Get account information such as routing number and account number, scoped to your access token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account",
+                "account_numbers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "225ea1bd-ba57-422d-a4dd-188eca451a70",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account",
+                    "account_numbers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"account_numbers\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dafdddb5-c962-4aa7-a10c-fd27ec7f7c2e",
+          "name": "Check Real Time Account Balance (Processors Only)",
+          "request": {
+            "name": "Check Real Time Account Balance (Processors Only)",
+            "description": {
+              "content": "Check the real-time account balance using your access token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account",
+                "check_balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "501d0d94-a9d6-4ade-ba68-10526f959087",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account",
+                    "check_balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07d17ee1-81f6-4c22-9071-5bdc7bb8f3ec",
+          "name": "Read the account balance (Processors Only)",
+          "request": {
+            "name": "Read the account balance (Processors Only)",
+            "description": {
+              "content": "Read the account balance (Processors Only)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "payment_account"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0a79bbab-ed05-438d-9a31-3466fbd82176",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payment_account"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"payment_account\": {\n    \"account_guid\": \"ACT-283132a4-1401-486a-909e-1605f1623d11\",\n    \"member_guid\": \"MBR-54feffb9-8474-47bd-8442-de003910113a\",\n    \"user_guid\": \"USR-101ad774-288b-44ed-ad16-da87d522ea20\",\n    \"account_name\": {},\n    \"account_number\": {},\n    \"account_type\": {},\n    \"available_balance\": {},\n    \"balance\": {},\n    \"created_at\": {},\n    \"routing_number\": {},\n    \"transit_number\": {},\n    \"updated_at\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a5b8020-68a4-40ce-9aca-b350d5ed4562",
+          "name": "Get account owner information (Processors Only)",
+          "request": {
+            "name": "Get account owner information (Processors Only)",
+            "description": {
+              "content": "Get account owner information (Processors Only)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "account",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d3c2045e-5566-43c7-964e-e7f1a41a0e40",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "account",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"account_owners\": {},\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://int-api.mx.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1b43bc9b-9800-4d00-86c3-b3e6eb2dd3d3",
+    "name": "MX Platform accounts processor token API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.\n\nJust getting started? See our [use case guides](/use-cases/).\n\n\nContact Support:\n Name: MX Platform API",
+      "type": "text/plain"
+    }
+  }
+}

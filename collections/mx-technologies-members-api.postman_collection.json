@@ -1,0 +1,3651 @@
+{
+  "item": [
+    {
+      "id": "374d3bba-c387-4eff-879d-fe6a9239e9cf",
+      "name": "members",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d5ab7c3-fc36-454b-876c-8a36bf6cdb36",
+          "name": "List members",
+          "request": {
+            "name": "List members",
+            "description": {
+              "content": "This endpoint returns an array which contains information on every member associated with a specific user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                },
+                {
+                  "disabled": false,
+                  "key": "use_case",
+                  "value": "<string>",
+                  "description": "The use case associated with the member. Valid values are `PFM` and `MONEY_MOVEMENT`. For example, you can append either `?use_case=PFM` or `?use_case=MONEY_MOVEMENT`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85e88cfe-c656-4b95-bff9-c0600294487b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "use_case",
+                      "value": "MONEY_MOVEMENT"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n      \"background_aggregation_is_disabled\": false,\n      \"connection_status\": \"CONNECTED\",\n      \"connection_status_message\": \"Connected to MX Bank\",\n      \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n      \"id\": \"unique_id\",\n      \"institution_code\": \"mxbank\",\n      \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n      \"is_being_aggregated\": false,\n      \"is_managed_by_user\": false,\n      \"is_manual\": false,\n      \"is_oauth\": false,\n      \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n      \"most_recent_job_detail_code\": null,\n      \"most_recent_job_detail_text\": null,\n      \"most_recent_job_guid\": true,\n      \"name\": \"MX Bank\",\n      \"needs_updated_credentials\": false,\n      \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n      \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n      \"use_cases\": [\n        \"PFM\"\n      ],\n      \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n      \"user_id\": \"user123\"\n    },\n    {\n      \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n      \"background_aggregation_is_disabled\": false,\n      \"connection_status\": \"CONNECTED\",\n      \"connection_status_message\": \"Connected to MX Bank\",\n      \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n      \"id\": \"unique_id\",\n      \"institution_code\": \"mxbank\",\n      \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n      \"is_being_aggregated\": false,\n      \"is_managed_by_user\": false,\n      \"is_manual\": false,\n      \"is_oauth\": false,\n      \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n      \"most_recent_job_detail_code\": null,\n      \"most_recent_job_detail_text\": null,\n      \"most_recent_job_guid\": false,\n      \"name\": \"MX Bank\",\n      \"needs_updated_credentials\": false,\n      \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n      \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n      \"use_cases\": [\n        \"PFM\"\n      ],\n      \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n      \"user_id\": \"user123\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "058cba19-2dc3-4716-98b5-aeddd21912e4",
+          "name": "Create member",
+          "request": {
+            "name": "Create member",
+            "description": {
+              "content": "This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters id and metadata. When creating a member, youll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials` endpoint. If successful, the MX Platform API will respond with the newly-created member object. Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_redirect_url\": \"<string>\",\n  \"enable_app2app\": \"<boolean>\",\n  \"member\": {\n    \"credentials\": [\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"institution_code\": \"<string>\",\n    \"background_aggregation_is_disabled\": \"<boolean>\",\n    \"id\": \"<string>\",\n    \"is_oauth\": \"<boolean>\",\n    \"metadata\": \"<string>\",\n    \"skip_aggregation\": \"<boolean>\",\n    \"use_cases\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"referral_source\": \"<string>\",\n  \"ui_message_webview_url_scheme\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "af7240ef-6196-47ad-a2d1-68fa0b2b4c55",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_redirect_url\": \"https://{yoursite.com}\",\n  \"enable_app2app\": false,\n  \"member\": {\n    \"credentials\": [\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      },\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      }\n    ],\n    \"institution_code\": \"mxbank\",\n    \"background_aggregation_is_disabled\": false,\n    \"id\": \"unique_id\",\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"skip_aggregation\": false,\n    \"use_cases\": [\n      \"PFM\"\n    ]\n  },\n  \"referral_source\": \"APP\",\n  \"ui_message_webview_url_scheme\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61c80d75-3de5-41a5-b877-ae5db9e2e28c",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_redirect_url\": \"https://{yoursite.com}\",\n  \"enable_app2app\": false,\n  \"member\": {\n    \"credentials\": [\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      },\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      }\n    ],\n    \"institution_code\": \"mxbank\",\n    \"background_aggregation_is_disabled\": false,\n    \"id\": \"unique_id\",\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"skip_aggregation\": false,\n    \"use_cases\": [\n      \"PFM\"\n    ]\n  },\n  \"referral_source\": \"APP\",\n  \"ui_message_webview_url_scheme\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "527c4edd-d265-4ce2-a858-e14b8b6a4efa",
+          "name": "Delete member",
+          "request": {
+            "name": "Delete member",
+            "description": {
+              "content": "Accessing this endpoint will permanently delete a member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a6673c67-3e93-4343-9c65-66a2f1a033a4",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac4137db-c981-402b-96a0-6d818e29f624",
+          "name": "Read member",
+          "request": {
+            "name": "Read member",
+            "description": {
+              "content": "Use this endpoint to read the attributes of a specific member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b2a6ec1-99a7-4a7c-ad16-606e6ce1d388",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d57d556-71ab-4ad1-a86c-7bce393f550f",
+          "name": "Update member",
+          "request": {
+            "name": "Update member",
+            "description": {
+              "content": "Use this endpoint to update a members attributes. Only the credentials, id, and metadata parameters can be updated. To get a list of the required credentials for the member, use the list member credentials endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member\": {\n    \"background_aggregation_is_disabled\": \"<boolean>\",\n    \"credentials\": [\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\",\n    \"metadata\": \"<string>\",\n    \"skip_aggregation\": \"<boolean>\",\n    \"use_cases\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5bab612e-2ef5-4ba7-a89b-a44532b6cea1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member\": {\n    \"background_aggregation_is_disabled\": false,\n    \"credentials\": [\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      },\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      }\n    ],\n    \"id\": \"unique_id\",\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"skip_aggregation\": false,\n    \"use_cases\": [\n      \"PFM\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10de578c-518c-41b7-b9e5-8a0468c13e77",
+          "name": "Aggregate member",
+          "request": {
+            "name": "Aggregate member",
+            "description": {
+              "content": "Calling this endpoint initiates an aggregation event for the member. This brings in the latest account and transaction data from the connected institution. If this data has recently been updated, MX may not initiate an aggregation event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "aggregate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include_holdings",
+                  "value": "<boolean>",
+                  "description": "When set to `false`, the aggregation will not gather holdings data. Defaults to `true`."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_transactions",
+                  "value": "<boolean>",
+                  "description": "When set to `false`, the aggregation will not gather transactions data. Defaults to `true`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d41da3c1-6635-4c2e-89cf-8f133e950d82",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "aggregate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include_holdings",
+                      "value": "false"
+                    },
+                    {
+                      "key": "include_transactions",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72ff7e2d-25ac-42a6-b994-e529c9437c34",
+          "name": "List member challenges",
+          "request": {
+            "name": "List member challenges",
+            "description": {
+              "content": "Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member. If the aggregation is not challenged, i.e., the member does not have a connection status of `CHALLENGED`, then code `204 No Content` will be returned. If the aggregation has been challenged, i.e., the member does have a connection status of `CHALLENGED`, then code `200 OK` will be returned - along with the corresponding credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "challenges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c5bcb58-e720-490a-9527-99151c5dcb1f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "challenges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"challenges\": [\n    {\n      \"field_name\": \"Who is this guy?\",\n      \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n      \"image_data\": \"Who is this guy?\",\n      \"image_options\": [\n        {\n          \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        },\n        {\n          \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        }\n      ],\n      \"label\": \"Who is this guy?\",\n      \"options\": [\n        {\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        },\n        {\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        }\n      ],\n      \"type\": \"IMAGE_DATA\"\n    },\n    {\n      \"field_name\": \"Who is this guy?\",\n      \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n      \"image_data\": \"Who is this guy?\",\n      \"image_options\": [\n        {\n          \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        },\n        {\n          \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        }\n      ],\n      \"label\": \"Who is this guy?\",\n      \"options\": [\n        {\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        },\n        {\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        }\n      ],\n      \"type\": \"IMAGE_DATA\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66d00497-f72f-4196-bb87-e01d5d4fd8eb",
+          "name": "Check balances",
+          "request": {
+            "name": "Check balances",
+            "description": {
+              "content": "This endpoint operates much like the aggregate member endpoint except that it gathers only account balance information; it does not gather any transaction data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "check_balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "217fee7e-ca67-4f52-8c39-2dda3236db8b",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "check_balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fd000c9-3e3f-46f2-ab00-ef9efaf82af9",
+          "name": "List member credentials",
+          "request": {
+            "name": "List member credentials",
+            "description": {
+              "content": "This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37eaef88-4d55-481e-9603-966ab23099dc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"credentials\": [\n    {\n      \"display_order\": 1,\n      \"field_name\": \"LOGIN\",\n      \"field_type\": \"TEXT\",\n      \"guid\": \"CRD-1ec152cd-e628-e81a-e852-d1e7104624da\",\n      \"label\": \"Username\",\n      \"type\": \"TEXT\"\n    },\n    {\n      \"display_order\": 1,\n      \"field_name\": \"LOGIN\",\n      \"field_type\": \"TEXT\",\n      \"guid\": \"CRD-1ec152cd-e628-e81a-e852-d1e7104624da\",\n      \"label\": \"Username\",\n      \"type\": \"TEXT\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e6bf672-76f0-4afb-ba29-f23f08198f6b",
+          "name": "Identify member",
+          "request": {
+            "name": "Identify member",
+            "description": {
+              "content": "The identify endpoint begins an identification process for an already-existing member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "identify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "035470c6-55a3-43a0-8657-44ea9be70a22",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00847d82-3228-40e4-b647-7eecf7361a89",
+          "name": "Resume aggregation",
+          "request": {
+            "name": "Resume aggregation",
+            "description": {
+              "content": "This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member\": {\n    \"challenges\": [\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cfdb9c0c-d14e-4551-b886-418cdc5ff785",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member\": {\n    \"challenges\": [\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      },\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62361cfe-89e9-4e7d-bc05-8a433b2bd1d7",
+          "name": "Read member status",
+          "request": {
+            "name": "Read member status",
+            "description": {
+              "content": "This endpoint provides the status of the members most recent aggregation event. This is an important step in the aggregation process, and the results returned by this endpoint should determine what you do next in order to successfully aggregate a member. MX has introduced new, more detailed information on the current status of a members connection to a financial institution and the state of its aggregation - the connection_status field. These are intended to replace and expand upon the information provided in the status field, which will soon be deprecated; support for the status field remains for the time being.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4825085a-4361-4225-afe6-1e742d3e3882",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"challenges\": [\n      {\n        \"field_name\": \"Who is this guy?\",\n        \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n        \"image_data\": \"Who is this guy?\",\n        \"image_options\": [\n          {\n            \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          },\n          {\n            \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          }\n        ],\n        \"label\": \"Who is this guy?\",\n        \"options\": [\n          {\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          },\n          {\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          }\n        ],\n        \"type\": \"IMAGE_DATA\"\n      },\n      {\n        \"field_name\": \"Who is this guy?\",\n        \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n        \"image_data\": \"Who is this guy?\",\n        \"image_options\": [\n          {\n            \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          },\n          {\n            \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          }\n        ],\n        \"label\": \"Who is this guy?\",\n        \"options\": [\n          {\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          },\n          {\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          }\n        ],\n        \"type\": \"IMAGE_DATA\"\n      }\n    ],\n    \"connection_status\": \"CONNECTED\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"has_processed_account_numbers\": true,\n    \"has_processed_accounts\": true,\n    \"has_processed_transactions\": false,\n    \"is_authenticated\": false,\n    \"is_being_aggregated\": false,\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "74b3aa01-e54b-447c-9c5b-569b95f27881",
+          "name": "Verify member",
+          "request": {
+            "name": "Verify member",
+            "description": {
+              "content": "The verify endpoint begins a verification process for a member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38cb274f-be64-48fc-b338-14a8c7a83abc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dcfa7a8-70a4-4e68-9680-600cdb324f5e",
+          "name": "List members",
+          "request": {
+            "name": "List members",
+            "description": {
+              "content": "This endpoint returns an array which contains information on every member associated with a specific user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                },
+                {
+                  "disabled": false,
+                  "key": "use_case",
+                  "value": "<string>",
+                  "description": "The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "040973e5-5ab4-446c-b8ab-e46df755d4a1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "use_case",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n      \"background_aggregation_is_disabled\": false,\n      \"connection_status\": \"CONNECTED\",\n      \"connection_status_message\": \"Connected to MX Bank\",\n      \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n      \"id\": \"unique_id\",\n      \"institution_code\": \"mxbank\",\n      \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n      \"is_being_aggregated\": false,\n      \"is_managed_by_user\": false,\n      \"is_manual\": false,\n      \"is_oauth\": false,\n      \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n      \"most_recent_job_detail_code\": null,\n      \"most_recent_job_detail_text\": null,\n      \"most_recent_job_guid\": false,\n      \"name\": \"MX Bank\",\n      \"needs_updated_credentials\": false,\n      \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n      \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n      \"use_cases\": [\n        \"PFM\"\n      ],\n      \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n      \"user_id\": \"user123\"\n    },\n    {\n      \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n      \"background_aggregation_is_disabled\": false,\n      \"connection_status\": \"CONNECTED\",\n      \"connection_status_message\": \"Connected to MX Bank\",\n      \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n      \"id\": \"unique_id\",\n      \"institution_code\": \"mxbank\",\n      \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n      \"is_being_aggregated\": false,\n      \"is_managed_by_user\": false,\n      \"is_manual\": false,\n      \"is_oauth\": false,\n      \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n      \"most_recent_job_detail_code\": null,\n      \"most_recent_job_detail_text\": null,\n      \"most_recent_job_guid\": false,\n      \"name\": \"MX Bank\",\n      \"needs_updated_credentials\": false,\n      \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n      \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n      \"use_cases\": [\n        \"PFM\"\n      ],\n      \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n      \"user_id\": \"user123\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e707e4cc-be4e-43c3-bff0-a5107161d077",
+          "name": "Create member",
+          "request": {
+            "name": "Create member",
+            "description": {
+              "content": "This endpoint allows you to create a new member. Members are created with the required parameters credentials and institution_code, and the optional parameters id and metadata. When creating a member, you'll need to include the correct type of credential required by the financial institution and provided by the user. You can find out which credential type is required with the `/institutions/{institution_code}/credentials` endpoint. If successful, the MX Platform API will respond with the newly-created member object. Once you successfully create a member, MX will immediately validate the provided credentials and attempt to aggregate data for accounts and transactions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"client_redirect_url\": \"<string>\",\n  \"data_request\": {\n    \"products\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"enable_app2app\": \"<boolean>\",\n  \"member\": {\n    \"credentials\": [\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"institution_code\": \"<string>\",\n    \"background_aggregation_is_disabled\": \"<boolean>\",\n    \"id\": \"<string>\",\n    \"is_oauth\": \"<boolean>\",\n    \"metadata\": \"<string>\",\n    \"use_cases\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"referral_source\": \"<string>\",\n  \"ui_message_webview_url_scheme\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91dd0973-eb3a-4c43-b377-228b725b9cd8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_redirect_url\": \"https://{yoursite.com}\",\n  \"data_request\": {\n    \"products\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"enable_app2app\": false,\n  \"member\": {\n    \"credentials\": [\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      },\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      }\n    ],\n    \"institution_code\": \"mxbank\",\n    \"background_aggregation_is_disabled\": false,\n    \"id\": \"unique_id\",\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"use_cases\": [\n      \"PFM\"\n    ]\n  },\n  \"referral_source\": \"APP\",\n  \"ui_message_webview_url_scheme\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eed52b95-828b-487b-a392-ae821453a416",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"client_redirect_url\": \"https://{yoursite.com}\",\n  \"data_request\": {\n    \"products\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  \"enable_app2app\": false,\n  \"member\": {\n    \"credentials\": [\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      },\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      }\n    ],\n    \"institution_code\": \"mxbank\",\n    \"background_aggregation_is_disabled\": false,\n    \"id\": \"unique_id\",\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"use_cases\": [\n      \"PFM\"\n    ]\n  },\n  \"referral_source\": \"APP\",\n  \"ui_message_webview_url_scheme\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20cf313e-3d72-4a16-863a-6fb3a2cc0afc",
+          "name": "Delete member",
+          "request": {
+            "name": "Delete member",
+            "description": {
+              "content": "Accessing this endpoint will permanently delete a member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1c032f99-6e1c-4efe-bfad-632c4d3cdfdb",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "231cac87-3835-4f5a-8c57-f808e5687d1f",
+          "name": "Read member",
+          "request": {
+            "name": "Read member",
+            "description": {
+              "content": "Use this endpoint to read the attributes of a specific member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d50f380-e622-49ac-a1ef-d607384c5dcf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e7220512-1b96-4b12-bfcd-bdb383577d87",
+          "name": "Update member",
+          "request": {
+            "name": "Update member",
+            "description": {
+              "content": "Use this endpoint to update a members attributes. Only the credentials, id, and metadata parameters can be updated. To get a list of the required credentials for the member, use the list member credentials endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member\": {\n    \"background_aggregation_is_disabled\": \"<boolean>\",\n    \"credentials\": [\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"id\": \"<string>\",\n    \"metadata\": \"<string>\",\n    \"skip_aggregation\": \"<boolean>\",\n    \"use_cases\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a88ccf0-85a9-492d-870c-73aec0bf87ee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member\": {\n    \"background_aggregation_is_disabled\": false,\n    \"credentials\": [\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      },\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      }\n    ],\n    \"id\": \"unique_id\",\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"skip_aggregation\": false,\n    \"use_cases\": [\n      \"PFM\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "06b54953-c553-4194-980b-e649579479d1",
+          "name": "Aggregate member",
+          "request": {
+            "name": "Aggregate member",
+            "description": {
+              "content": "Calling this endpoint initiates an aggregation event for the member. This brings in the latest account and transaction data from the connected institution. If this data has recently been updated, MX may not initiate an aggregation event.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "aggregate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfd01f82-42be-466a-a14f-0b682a8547c8",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "aggregate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30147d4a-d442-4464-a040-1006f54cfff2",
+          "name": "List member challenges",
+          "request": {
+            "name": "List member challenges",
+            "description": {
+              "content": "Use this endpoint for information on what multi-factor authentication challenges need to be answered in order to aggregate a member. If the aggregation is not challenged, i.e., the member does not have a connection status of `CHALLENGED`, then code `204 No Content` will be returned. If the aggregation has been challenged, i.e., the member does have a connection status of `CHALLENGED`, then code `200 OK` will be returned - along with the corresponding credentials.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "challenges"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "811d7ead-87b5-490c-91f4-f34641ad2811",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "challenges"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"challenges\": [\n    {\n      \"field_name\": \"Who is this guy?\",\n      \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n      \"image_data\": \"Who is this guy?\",\n      \"image_options\": [\n        {\n          \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        },\n        {\n          \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        }\n      ],\n      \"label\": \"Who is this guy?\",\n      \"options\": [\n        {\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        },\n        {\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        }\n      ],\n      \"type\": \"IMAGE_DATA\"\n    },\n    {\n      \"field_name\": \"Who is this guy?\",\n      \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n      \"image_data\": \"Who is this guy?\",\n      \"image_options\": [\n        {\n          \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        },\n        {\n          \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        }\n      ],\n      \"label\": \"Who is this guy?\",\n      \"options\": [\n        {\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        },\n        {\n          \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n          \"label\": \"IMAGE_1\",\n          \"value\": \"image_data\"\n        }\n      ],\n      \"type\": \"IMAGE_DATA\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "226f78b2-6a5a-4af8-b238-6badbed2a25c",
+          "name": "Check balances",
+          "request": {
+            "name": "Check balances",
+            "description": {
+              "content": "This endpoint operates much like the aggregate member endpoint except that it gathers only account balance information; it does not gather any transaction data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "check_balance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e3a7d4e-d088-4af3-afb3-c415793c0ba1",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "check_balance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bd3840bd-c447-4f2e-92bc-35c4e0e108b2",
+          "name": "List member credentials",
+          "request": {
+            "name": "List member credentials",
+            "description": {
+              "content": "This endpoint returns an array which contains information on every non-MFA credential associated with a specific member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a5abfada-63b2-41a9-b2c4-843ae5abb2b1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credentials\": [\n    {\n      \"display_order\": 1,\n      \"field_name\": \"LOGIN\",\n      \"field_type\": \"TEXT\",\n      \"guid\": \"CRD-1ec152cd-e628-e81a-e852-d1e7104624da\",\n      \"label\": \"Username\",\n      \"type\": \"TEXT\"\n    },\n    {\n      \"display_order\": 1,\n      \"field_name\": \"LOGIN\",\n      \"field_type\": \"TEXT\",\n      \"guid\": \"CRD-1ec152cd-e628-e81a-e852-d1e7104624da\",\n      \"label\": \"Username\",\n      \"type\": \"TEXT\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19b64e36-63c7-4ed3-9395-37ccdc92067a",
+          "name": "Identify member",
+          "request": {
+            "name": "Identify member",
+            "description": {
+              "content": "The identify endpoint begins an identification process for an already-existing member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "identify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9f3a3030-0fd9-4fee-8790-20b654ff0270",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "identify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcdef8b4-b993-4c91-bc81-4b2cf14a14af",
+          "name": "Resume aggregation",
+          "request": {
+            "name": "Resume aggregation",
+            "description": {
+              "content": "This endpoint answers the challenges needed when a member has been challenged by multi-factor authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "resume"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member\": {\n    \"challenges\": [\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"guid\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d70ff62f-fcc3-49e9-bd60-9f991ada28ed",
+              "name": "Accepted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "resume"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member\": {\n    \"challenges\": [\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      },\n      {\n        \"guid\": \"CRD-27d0edb8-1d50-5b90-bcbc-be270ca42b9f\",\n        \"value\": \"password\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e925a527-196a-4e37-9740-1fa935d320b2",
+          "name": "Read member status",
+          "request": {
+            "name": "Read member status",
+            "description": {
+              "content": "This endpoint provides the status of the members most recent aggregation event. The results returned by this endpoint should determine what you do next in order to successfully aggregate a member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ee3aa02-8a58-4f29-9a2f-050fbe8daaf0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "status"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"challenges\": [\n      {\n        \"field_name\": \"Who is this guy?\",\n        \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n        \"image_data\": \"Who is this guy?\",\n        \"image_options\": [\n          {\n            \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          },\n          {\n            \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          }\n        ],\n        \"label\": \"Who is this guy?\",\n        \"options\": [\n          {\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          },\n          {\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          }\n        ],\n        \"type\": \"IMAGE_DATA\"\n      },\n      {\n        \"field_name\": \"Who is this guy?\",\n        \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n        \"image_data\": \"Who is this guy?\",\n        \"image_options\": [\n          {\n            \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          },\n          {\n            \"data_uri\": \"data:image/png;base64,iVBORw0KGgoAAAANSUh ... more image data ...\",\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          }\n        ],\n        \"label\": \"Who is this guy?\",\n        \"options\": [\n          {\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          },\n          {\n            \"guid\": \"CRD-ce76d2e3-86bd-ec4a-ec52-eb53b5194bf5\",\n            \"label\": \"IMAGE_1\",\n            \"value\": \"image_data\"\n          }\n        ],\n        \"type\": \"IMAGE_DATA\"\n      }\n    ],\n    \"connection_status\": \"CONNECTED\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"has_processed_account_numbers\": true,\n    \"has_processed_accounts\": true,\n    \"has_processed_transactions\": false,\n    \"is_authenticated\": false,\n    \"is_being_aggregated\": false,\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61952af5-6628-4e0e-8620-8b8a2225cc3e",
+          "name": "Verify member",
+          "request": {
+            "name": "Verify member",
+            "description": {
+              "content": "The verify endpoint begins a verification process for a member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "verify"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "316cbdf7-1fab-4426-84ef-e5af252c37c0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "verify"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](https://docs.mx.com/resources/webhooks/member/) and [Member Data Updated](https://docs.mx.com/resources/webhooks/member/#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": false,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://int-api.mx.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "5c4dea8e-08d2-43f7-b531-c120219fed7a",
+    "name": "MX Platform accounts members API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.\n\nJust getting started? See our [use case guides](/use-cases/).\n\n\nContact Support:\n Name: MX Platform API",
+      "type": "text/plain"
+    }
+  }
+}

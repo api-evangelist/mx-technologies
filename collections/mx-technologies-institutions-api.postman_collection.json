@@ -1,0 +1,685 @@
+{
+  "item": [
+    {
+      "id": "379f78ef-177a-46e2-8bfd-4914596a9ebd",
+      "name": "institutions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1e444ab8-ec2a-4098-8765-2d89a022109e",
+          "name": "List institutions",
+          "request": {
+            "name": "List institutions",
+            "description": {
+              "content": "This endpoint returns a list of institutions based on the specified search term or parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "institutions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "This will list only institutions in which the appended string appears."
+                },
+                {
+                  "disabled": false,
+                  "key": "iso_country_code",
+                  "value": "<string>",
+                  "description": "An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico)."
+                },
+                {
+                  "disabled": false,
+                  "key": "iso_country_code",
+                  "value": "<string>",
+                  "description": "An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                },
+                {
+                  "disabled": false,
+                  "key": "supports_account_identification",
+                  "value": "<boolean>",
+                  "description": "Filter only institutions which support account identification."
+                },
+                {
+                  "disabled": false,
+                  "key": "supports_account_statement",
+                  "value": "<boolean>",
+                  "description": "Filter only institutions which support account statements."
+                },
+                {
+                  "disabled": false,
+                  "key": "supports_account_verification",
+                  "value": "<boolean>",
+                  "description": "Filter only institutions which support account verification."
+                },
+                {
+                  "disabled": false,
+                  "key": "supports_transaction_history",
+                  "value": "<boolean>",
+                  "description": "Filter only institutions which support extended transaction history."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fc05fe1-50ad-4ec8-91b5-8adaaf69fef2",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "institutions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "mxbank"
+                    },
+                    {
+                      "key": "iso_country_code",
+                      "value": "US"
+                    },
+                    {
+                      "key": "iso_country_code",
+                      "value": "CA"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    },
+                    {
+                      "key": "supports_account_identification",
+                      "value": "true"
+                    },
+                    {
+                      "key": "supports_account_statement",
+                      "value": "true"
+                    },
+                    {
+                      "key": "supports_account_verification",
+                      "value": "true"
+                    },
+                    {
+                      "key": "supports_transaction_history",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"institutions\": [\n    {\n      \"code\": \"mxbank\",\n      \"forgot_password_url\": \"https://example.url.mxbank.com/forgot-password\",\n      \"forgot_username_url\": \"https://example.url.mxbank.com/forgot-username\",\n      \"instructional_text\": \"Some instructional text <a href=\\\"https://example.url.mxbank.com/instructions\\\" id=\\\"instructional_text\\\">for end users</a>.\",\n      \"instructional_text_steps\": [\n        \"Step 1: Do this.\",\n        \"Step 2: Do that.\"\n      ],\n      \"is_disabled_by_client\": false,\n      \"iso_country_code\": \"US\",\n      \"medium_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png\",\n      \"name\": \"MX Bank\",\n      \"small_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png\",\n      \"supports_account_identification\": true,\n      \"supports_account_statement\": true,\n      \"supports_account_verification\": true,\n      \"supports_oauth\": true,\n      \"supports_tax_document\": true,\n      \"supports_transaction_history\": true,\n      \"trouble_signing_in_url\": \"https://example.url.mxbank.com/login-trouble\",\n      \"url\": \"https://www.mxbank.com\"\n    },\n    {\n      \"code\": \"mxbank\",\n      \"forgot_password_url\": \"https://example.url.mxbank.com/forgot-password\",\n      \"forgot_username_url\": \"https://example.url.mxbank.com/forgot-username\",\n      \"instructional_text\": \"Some instructional text <a href=\\\"https://example.url.mxbank.com/instructions\\\" id=\\\"instructional_text\\\">for end users</a>.\",\n      \"instructional_text_steps\": [\n        \"Step 1: Do this.\",\n        \"Step 2: Do that.\"\n      ],\n      \"is_disabled_by_client\": false,\n      \"iso_country_code\": \"US\",\n      \"medium_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png\",\n      \"name\": \"MX Bank\",\n      \"small_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png\",\n      \"supports_account_identification\": true,\n      \"supports_account_statement\": true,\n      \"supports_account_verification\": true,\n      \"supports_oauth\": true,\n      \"supports_tax_document\": true,\n      \"supports_transaction_history\": true,\n      \"trouble_signing_in_url\": \"https://example.url.mxbank.com/login-trouble\",\n      \"url\": \"https://www.mxbank.com\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f0e9032-6f9c-430d-9b03-26cc78599f93",
+          "name": "List favorite institutions",
+          "request": {
+            "name": "List favorite institutions",
+            "description": {
+              "content": "This endpoint returns a paginated list containing institutions that have been set as the partner’s favorites, sorted by popularity. Please contact MX to set a list of favorites.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "institutions",
+                "favorites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "iso_country_code",
+                  "value": "<string>",
+                  "description": "An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico)."
+                },
+                {
+                  "disabled": false,
+                  "key": "iso_country_code",
+                  "value": "<string>",
+                  "description": "An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ab0f631-f703-4788-aa38-4a8312237598",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "institutions",
+                    "favorites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "iso_country_code",
+                      "value": "US"
+                    },
+                    {
+                      "key": "iso_country_code",
+                      "value": "CA"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"institutions\": [\n    {\n      \"code\": \"mxbank\",\n      \"forgot_password_url\": \"https://example.url.mxbank.com/forgot-password\",\n      \"forgot_username_url\": \"https://example.url.mxbank.com/forgot-username\",\n      \"instructional_text\": \"Some instructional text <a href=\\\"https://example.url.mxbank.com/instructions\\\" id=\\\"instructional_text\\\">for end users</a>.\",\n      \"instructional_text_steps\": [\n        \"Step 1: Do this.\",\n        \"Step 2: Do that.\"\n      ],\n      \"is_disabled_by_client\": false,\n      \"iso_country_code\": \"US\",\n      \"medium_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png\",\n      \"name\": \"MX Bank\",\n      \"small_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png\",\n      \"supports_account_identification\": true,\n      \"supports_account_statement\": true,\n      \"supports_account_verification\": true,\n      \"supports_oauth\": true,\n      \"supports_tax_document\": true,\n      \"supports_transaction_history\": true,\n      \"trouble_signing_in_url\": \"https://example.url.mxbank.com/login-trouble\",\n      \"url\": \"https://www.mxbank.com\"\n    },\n    {\n      \"code\": \"mxbank\",\n      \"forgot_password_url\": \"https://example.url.mxbank.com/forgot-password\",\n      \"forgot_username_url\": \"https://example.url.mxbank.com/forgot-username\",\n      \"instructional_text\": \"Some instructional text <a href=\\\"https://example.url.mxbank.com/instructions\\\" id=\\\"instructional_text\\\">for end users</a>.\",\n      \"instructional_text_steps\": [\n        \"Step 1: Do this.\",\n        \"Step 2: Do that.\"\n      ],\n      \"is_disabled_by_client\": false,\n      \"iso_country_code\": \"US\",\n      \"medium_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png\",\n      \"name\": \"MX Bank\",\n      \"small_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png\",\n      \"supports_account_identification\": true,\n      \"supports_account_statement\": true,\n      \"supports_account_verification\": true,\n      \"supports_oauth\": true,\n      \"supports_tax_document\": true,\n      \"supports_transaction_history\": true,\n      \"trouble_signing_in_url\": \"https://example.url.mxbank.com/login-trouble\",\n      \"url\": \"https://www.mxbank.com\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62af48d5-9186-4b51-9bff-af66c7d68085",
+          "name": "Read institution",
+          "request": {
+            "name": "Read institution",
+            "description": {
+              "content": "This endpoint returns information about the institution specified by `institution_code`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "institutions",
+                ":institution_code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institution_code",
+                  "description": "(Required) The institution_code of the institution."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a83e16fe-b69b-46f8-bd7f-7a9019190434",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "institutions",
+                    ":institution_code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institution_code",
+                      "description": "(Required) The institution_code of the institution."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"institution\": {\n    \"code\": \"mxbank\",\n    \"forgot_password_url\": \"https://example.url.mxbank.com/forgot-password\",\n    \"forgot_username_url\": \"https://example.url.mxbank.com/forgot-username\",\n    \"instructional_text\": \"Some instructional text <a href=\\\"https://example.url.mxbank.com/instructions\\\" id=\\\"instructional_text\\\">for end users</a>.\",\n    \"instructional_text_steps\": [\n      \"Step 1: Do this.\",\n      \"Step 2: Do that.\"\n    ],\n    \"is_disabled_by_client\": false,\n    \"iso_country_code\": \"US\",\n    \"medium_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png\",\n    \"name\": \"MX Bank\",\n    \"small_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png\",\n    \"supports_account_identification\": true,\n    \"supports_account_statement\": true,\n    \"supports_account_verification\": true,\n    \"supports_oauth\": true,\n    \"supports_tax_document\": true,\n    \"supports_transaction_history\": true,\n    \"trouble_signing_in_url\": \"https://example.url.mxbank.com/login-trouble\",\n    \"url\": \"https://www.mxbank.com\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61ab0329-7cd6-4dd1-b686-566346b59806",
+          "name": "List institution credentials",
+          "request": {
+            "name": "List institution credentials",
+            "description": {
+              "content": "Use this endpoint to see which credentials will be needed to create a member for a specific institution.\n\nPassing an invalid `institution_code` returns a `404`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "institutions",
+                ":institution_code",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institution_code",
+                  "description": "(Required) The institution_code of the institution."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aabbeaef-ed15-4b68-be34-d548364d7b5e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "institutions",
+                    ":institution_code",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institution_code",
+                      "description": "(Required) The institution_code of the institution."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"credentials\": [\n    {\n      \"display_order\": 1,\n      \"field_name\": \"LOGIN\",\n      \"field_type\": \"TEXT\",\n      \"guid\": \"CRD-1ec152cd-e628-e81a-e852-d1e7104624da\",\n      \"label\": \"Username\",\n      \"type\": \"TEXT\"\n    },\n    {\n      \"display_order\": 1,\n      \"field_name\": \"LOGIN\",\n      \"field_type\": \"TEXT\",\n      \"guid\": \"CRD-1ec152cd-e628-e81a-e852-d1e7104624da\",\n      \"label\": \"Username\",\n      \"type\": \"TEXT\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66846802-4be9-4ddd-9695-fc768ac9f610",
+          "name": "List institution credentials",
+          "request": {
+            "name": "List institution credentials",
+            "description": {
+              "content": "Use this endpoint to see which credentials will be needed to create a member for a specific institution.\n\nPassing an invalid `institution_identifier` returns a `404`.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "institutions",
+                ":institution_identifier",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "institution_identifier",
+                  "description": "(Required) The identifier for the institution. For this identifier, use either the `institution_code` or the institution `guid`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "536a719b-2cce-4f4e-9a4e-a02771525ba7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "institutions",
+                    ":institution_identifier",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "institution_identifier",
+                      "description": "(Required) The identifier for the institution. For this identifier, use either the `institution_code` or the institution `guid`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"credentials\": [\n    {\n      \"display_order\": 1,\n      \"field_name\": \"LOGIN\",\n      \"field_type\": \"TEXT\",\n      \"guid\": \"CRD-1ec152cd-e628-e81a-e852-d1e7104624da\",\n      \"label\": \"Username\",\n      \"type\": \"TEXT\"\n    },\n    {\n      \"display_order\": 1,\n      \"field_name\": \"LOGIN\",\n      \"field_type\": \"TEXT\",\n      \"guid\": \"CRD-1ec152cd-e628-e81a-e852-d1e7104624da\",\n      \"label\": \"Username\",\n      \"type\": \"TEXT\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://int-api.mx.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "99b60faa-a534-4f1b-ae40-72fe0caf2e3e",
+    "name": "MX Platform accounts institutions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.\n\nJust getting started? See our [use case guides](/use-cases/).\n\n\nContact Support:\n Name: MX Platform API",
+      "type": "text/plain"
+    }
+  }
+}

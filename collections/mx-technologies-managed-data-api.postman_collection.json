@@ -1,0 +1,2217 @@
+{
+  "item": [
+    {
+      "id": "efecc2f2-62fd-4587-9f52-3fdb0d46900b",
+      "name": "managed data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dca7a6e5-6b1d-4af0-9200-c89ac2c4fe4f",
+          "name": "List managed institutions",
+          "request": {
+            "name": "List managed institutions",
+            "description": {
+              "content": "This endpoint returns a list of institutions which can be used to create partner-managed members.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "managed_institutions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "839bcebb-4a96-4c67-9d63-87ab12cb2e12",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "managed_institutions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"institutions\": [\n    {\n      \"code\": \"mxbank\",\n      \"forgot_password_url\": \"https://example.url.mxbank.com/forgot-password\",\n      \"forgot_username_url\": \"https://example.url.mxbank.com/forgot-username\",\n      \"instructional_text\": \"Some instructional text <a href=\\\"https://example.url.mxbank.com/instructions\\\" id=\\\"instructional_text\\\">for end users</a>.\",\n      \"instructional_text_steps\": [\n        \"Step 1: Do this.\",\n        \"Step 2: Do that.\"\n      ],\n      \"is_disabled_by_client\": false,\n      \"iso_country_code\": \"US\",\n      \"medium_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png\",\n      \"name\": \"MX Bank\",\n      \"small_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png\",\n      \"supports_account_identification\": true,\n      \"supports_account_statement\": true,\n      \"supports_account_verification\": true,\n      \"supports_oauth\": true,\n      \"supports_tax_document\": true,\n      \"supports_transaction_history\": true,\n      \"trouble_signing_in_url\": \"https://example.url.mxbank.com/login-trouble\",\n      \"url\": \"https://www.mxbank.com\"\n    },\n    {\n      \"code\": \"mxbank\",\n      \"forgot_password_url\": \"https://example.url.mxbank.com/forgot-password\",\n      \"forgot_username_url\": \"https://example.url.mxbank.com/forgot-username\",\n      \"instructional_text\": \"Some instructional text <a href=\\\"https://example.url.mxbank.com/instructions\\\" id=\\\"instructional_text\\\">for end users</a>.\",\n      \"instructional_text_steps\": [\n        \"Step 1: Do this.\",\n        \"Step 2: Do that.\"\n      ],\n      \"is_disabled_by_client\": false,\n      \"iso_country_code\": \"US\",\n      \"medium_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png\",\n      \"name\": \"MX Bank\",\n      \"small_logo_url\": \"https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png\",\n      \"supports_account_identification\": true,\n      \"supports_account_statement\": true,\n      \"supports_account_verification\": true,\n      \"supports_oauth\": true,\n      \"supports_tax_document\": true,\n      \"supports_transaction_history\": true,\n      \"trouble_signing_in_url\": \"https://example.url.mxbank.com/login-trouble\",\n      \"url\": \"https://www.mxbank.com\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f8317f95-7d74-4829-8c52-cc0284e697ea",
+          "name": "List managed members",
+          "request": {
+            "name": "List managed members",
+            "description": {
+              "content": "This endpoint returns a list of all the partner-managed members associated with the specified `user`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa83aab2-841f-4c78-8d14-12be2adf10e4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n      \"background_aggregation_is_disabled\": false,\n      \"connection_status\": \"CONNECTED\",\n      \"connection_status_message\": \"Connected to MX Bank\",\n      \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n      \"id\": \"unique_id\",\n      \"institution_code\": \"mxbank\",\n      \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n      \"is_being_aggregated\": false,\n      \"is_managed_by_user\": false,\n      \"is_manual\": false,\n      \"is_oauth\": false,\n      \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n      \"most_recent_job_detail_code\": null,\n      \"most_recent_job_detail_text\": null,\n      \"most_recent_job_guid\": true,\n      \"name\": \"MX Bank\",\n      \"needs_updated_credentials\": false,\n      \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n      \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n      \"use_cases\": [\n        \"PFM\"\n      ],\n      \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n      \"user_id\": \"user123\"\n    },\n    {\n      \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n      \"background_aggregation_is_disabled\": false,\n      \"connection_status\": \"CONNECTED\",\n      \"connection_status_message\": \"Connected to MX Bank\",\n      \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n      \"id\": \"unique_id\",\n      \"institution_code\": \"mxbank\",\n      \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n      \"is_being_aggregated\": false,\n      \"is_managed_by_user\": false,\n      \"is_manual\": false,\n      \"is_oauth\": false,\n      \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n      \"most_recent_job_detail_code\": null,\n      \"most_recent_job_detail_text\": null,\n      \"most_recent_job_guid\": false,\n      \"name\": \"MX Bank\",\n      \"needs_updated_credentials\": false,\n      \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n      \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n      \"use_cases\": [\n        \"PFM\"\n      ],\n      \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n      \"user_id\": \"user123\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4895d948-9bdb-4363-b8d1-0f30863389e2",
+          "name": "Create managed member",
+          "request": {
+            "name": "Create managed member",
+            "description": {
+              "content": "Use this endpoint to create a new partner-managed `member`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member\": {\n    \"institution_code\": \"<string>\",\n    \"id\": \"<string>\",\n    \"metadata\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4f50c898-eff3-4e4f-848b-0cdb1403bebf",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member\": {\n    \"institution_code\": \"mxbank\",\n    \"id\": \"member123\",\n    \"metadata\": \"some metadata\",\n    \"name\": \"MX Bank\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": true,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6eaf474d-0200-464e-8a4c-ff260932a589",
+          "name": "Delete managed member",
+          "request": {
+            "name": "Delete managed member",
+            "description": {
+              "content": "Use this endpoint to delete the specified partner-managed `member`. The endpoint will respond with a status of `204 No Content` without a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c81b811d-ee7c-4022-b2c9-b0a59c7b897e",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the media type expected in the response.",
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "860b4a41-ed10-41f6-8bca-230551d8037d",
+          "name": "Read managed member",
+          "request": {
+            "name": "Read managed member",
+            "description": {
+              "content": "This endpoint returns the attributes of the specified partner-managed`member`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "39ddb907-b85d-4fef-ba6b-4a517a44f9b4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": true,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "828e625a-76f9-4912-8e74-9eb895eae28a",
+          "name": "Update managed member",
+          "request": {
+            "name": "Update managed member",
+            "description": {
+              "content": "Use this endpoint to update the attributes of the specified partner_managed `member`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"member\": {\n    \"id\": \"<string>\",\n    \"metadata\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d31eeb36-3dac-4a4f-bdf7-ecd9fd5173c4",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"member\": {\n    \"id\": \"member123\",\n    \"metadata\": \"some metadata\",\n    \"name\": \"MX Bank\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"aggregated_at\": \"2016-10-13T18:07:57.000Z\",\n    \"background_aggregation_is_disabled\": false,\n    \"connection_status\": \"CONNECTED\",\n    \"connection_status_message\": \"Connected to MX Bank\",\n    \"guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"id\": \"unique_id\",\n    \"institution_code\": \"mxbank\",\n    \"institution_guid\": \"INST-12345678-90ab-cdef-1234-567890abcdef\",\n    \"is_being_aggregated\": false,\n    \"is_managed_by_user\": false,\n    \"is_manual\": false,\n    \"is_oauth\": false,\n    \"metadata\": \"\\\\\\\"credentials_last_refreshed_at\\\\\\\": \\\\\\\"2015-10-15\\\\\",\n    \"most_recent_job_detail_code\": null,\n    \"most_recent_job_detail_text\": null,\n    \"most_recent_job_guid\": true,\n    \"name\": \"MX Bank\",\n    \"needs_updated_credentials\": false,\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\",\n    \"successfully_aggregated_at\": \"2016-10-13T17:57:38.000Z\",\n    \"use_cases\": [\n      \"PFM\"\n    ],\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73c9e0d8-0d96-4b34-837e-b598ee9b5325",
+          "name": "List managed accounts",
+          "request": {
+            "name": "List managed accounts",
+            "description": {
+              "content": "Use this endpoint to retrieve a list of all the partner-managed accounts associated with the given partner-managed member.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2e2fc8d8-89a9-450d-ab67-50dc0dc786dc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"account_number\": \"5366\",\n      \"account_number_set_by\": 1,\n      \"account_ownership\": \"INDIVIDUAL\",\n      \"annuity_policy_to_date\": \"2016-10-13T17:57:37.000Z\",\n      \"annuity_provider\": \"Metlife\",\n      \"annuity_term_year\": 2048,\n      \"apr\": 1,\n      \"apr_set_by\": 1,\n      \"apy\": 1,\n      \"apy_set_by\": 1,\n      \"available_balance\": 1000,\n      \"available_balance_set_by\": 1,\n      \"available_credit\": 1000,\n      \"available_credit_set_by\": 1,\n      \"balance\": 10000,\n      \"balance_set_by\": 1,\n      \"calculated_apr\": 21.66409,\n      \"cash_balance\": 1000,\n      \"cash_balance_set_by\": 1,\n      \"cash_surrender_value\": 1000,\n      \"cash_surrender_value_set_by\": 1,\n      \"created_at\": \"2023-07-25T17:14:46Z\",\n      \"credit_limit\": 100,\n      \"credit_limit_set_by\": 1,\n      \"currency_code\": \"USD\",\n      \"currency_code_set_by\": 1,\n      \"day_payment_is_due\": 20,\n      \"day_payment_is_due_set_by\": 1,\n      \"death_benefit\": 1000,\n      \"death_benefit_set_by\": 1,\n      \"federal_insurance_status\": \"INSURED\",\n      \"feed_account_number\": \"5366\",\n      \"feed_account_subtype\": 1,\n      \"feed_account_type\": 1,\n      \"feed_apr\": 1,\n      \"feed_apy\": 1,\n      \"feed_available_balance\": 1000,\n      \"feed_balance\": 1000,\n      \"feed_cash_balance\": 1000,\n      \"feed_cash_surrender_value\": 1000,\n      \"feed_credit_limit\": 100,\n      \"feed_currency_code\": \"USD\",\n      \"feed_day_payment_is_due\": 20,\n      \"feed_death_benefit\": 1000,\n      \"feed_holdings_value\": 1000,\n      \"feed_interest_rate\": 1,\n      \"feed_is_closed\": false,\n      \"feed_last_payment\": 100,\n      \"feed_last_payment_at\": \"2023-07-25T17:14:46Z\",\n      \"feed_loan_amount\": 1000,\n      \"feed_matures_on\": \"2015-10-13T17:57:37.000Z\",\n      \"feed_minimum_balance\": 100,\n      \"feed_minimum_payment\": 10,\n      \"feed_name\": \"Test account 2\",\n      \"feed_nickname\": \"My Checking\",\n      \"feed_original_balance\": 10,\n      \"feed_payment_due_at\": \"2025-02-13T17:57:37.000Z\",\n      \"feed_payoff_balance\": 10,\n      \"feed_routing_number\": \"68899990000000\",\n      \"feed_started_on\": \"2020-10-13T17:57:37.000Z\",\n      \"feed_statement_balance\": 100,\n      \"feed_total_account_value\": 100,\n      \"guid\": \"ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1\",\n      \"holdings_value\": 1000,\n      \"holdings_value_set_by\": 1,\n      \"id\": \"1040434698\",\n      \"imported_at\": \"2015-10-13T17:57:37.000Z\",\n      \"institution_code\": \"3af3685e-05d9-7060-359f-008d0755e993\",\n      \"institution_guid\": \"INS-12a3b-4c5dd6-1349-008d0755e993\",\n      \"insured_name\": \"Tommy Shelby\",\n      \"interest_rate\": 1,\n      \"interest_rate_set_by\": 1,\n      \"is_closed\": false,\n      \"is_closed_set_by\": 1,\n      \"is_hidden\": false,\n      \"is_manual\": false,\n      \"last_payment\": 100,\n      \"last_payment_set_by\": 1,\n      \"last_payment_at\": \"2023-07-25T17:14:46Z\",\n      \"last_payment_at_set_by\": 1,\n      \"loan_amount\": 1000,\n      \"loan_amount_set_by\": 1,\n      \"margin_balance\": 1000,\n      \"matures_on\": \"2015-10-13T17:57:37.000Z\",\n      \"matures_on_set_by\": 1,\n      \"member_guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n      \"member_id\": \"member123\",\n      \"member_is_managed_by_user\": false,\n      \"metadata\": \"some metadata\",\n      \"minimum_balance\": 100,\n      \"minimum_balance_set_by\": 1,\n      \"minimum_payment\": 10,\n      \"minimum_payment_set_by\": 1,\n      \"name\": \"Test account 2\",\n      \"name_set_by\": 1,\n      \"nickname\": \"My Checking\",\n      \"nickname_set_by\": 1,\n      \"original_balance\": 10,\n      \"original_balance_set_by\": 1,\n      \"pay_out_amount\": 10,\n      \"payment_due_at\": \"2015-10-13T17:57:37.000Z\",\n      \"payment_due_at_set_by\": 1,\n      \"payoff_balance\": 10,\n      \"payoff_balance_set_by\": 1,\n      \"premium_amount\": 3900,\n      \"property_type\": \"VEHICLE\",\n      \"routing_number\": \"68899990000000\",\n      \"started_on\": \"2015-10-13T17:57:37.000Z\",\n      \"started_on_set_by\": 1,\n      \"statement_balance\": 1000.5,\n      \"statement_balance_set_by\": 1,\n      \"subtype\": \"NONE\",\n      \"subtype_set_by\": 1,\n      \"today_ugl_amount\": 1000.5,\n      \"today_ugl_percentage\": 6.9,\n      \"total_account_value\": 1,\n      \"total_account_value_set_by\": 1,\n      \"total_account_value_ugl\": 1,\n      \"type\": \"SAVINGS\",\n      \"type_set_by\": 1,\n      \"updated_at\": \"2016-10-13T18:08:00.000Z\",\n      \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n      \"user_id\": \"user123\"\n    },\n    {\n      \"account_number\": \"5366\",\n      \"account_number_set_by\": 1,\n      \"account_ownership\": \"INDIVIDUAL\",\n      \"annuity_policy_to_date\": \"2016-10-13T17:57:37.000Z\",\n      \"annuity_provider\": \"Metlife\",\n      \"annuity_term_year\": 2048,\n      \"apr\": 1,\n      \"apr_set_by\": 1,\n      \"apy\": 1,\n      \"apy_set_by\": 1,\n      \"available_balance\": 1000,\n      \"available_balance_set_by\": 1,\n      \"available_credit\": 1000,\n      \"available_credit_set_by\": 1,\n      \"balance\": 10000,\n      \"balance_set_by\": 1,\n      \"calculated_apr\": 21.66409,\n      \"cash_balance\": 1000,\n      \"cash_balance_set_by\": 1,\n      \"cash_surrender_value\": 1000,\n      \"cash_surrender_value_set_by\": 1,\n      \"created_at\": \"2023-07-25T17:14:46Z\",\n      \"credit_limit\": 100,\n      \"credit_limit_set_by\": 1,\n      \"currency_code\": \"USD\",\n      \"currency_code_set_by\": 1,\n      \"day_payment_is_due\": 20,\n      \"day_payment_is_due_set_by\": 1,\n      \"death_benefit\": 1000,\n      \"death_benefit_set_by\": 1,\n      \"federal_insurance_status\": \"INSURED\",\n      \"feed_account_number\": \"5366\",\n      \"feed_account_subtype\": 1,\n      \"feed_account_type\": 1,\n      \"feed_apr\": 1,\n      \"feed_apy\": 1,\n      \"feed_available_balance\": 1000,\n      \"feed_balance\": 1000,\n      \"feed_cash_balance\": 1000,\n      \"feed_cash_surrender_value\": 1000,\n      \"feed_credit_limit\": 100,\n      \"feed_currency_code\": \"USD\",\n      \"feed_day_payment_is_due\": 20,\n      \"feed_death_benefit\": 1000,\n      \"feed_holdings_value\": 1000,\n      \"feed_interest_rate\": 1,\n      \"feed_is_closed\": false,\n      \"feed_last_payment\": 100,\n      \"feed_last_payment_at\": \"2023-07-25T17:14:46Z\",\n      \"feed_loan_amount\": 1000,\n      \"feed_matures_on\": \"2015-10-13T17:57:37.000Z\",\n      \"feed_minimum_balance\": 100,\n      \"feed_minimum_payment\": 10,\n      \"feed_name\": \"Test account 2\",\n      \"feed_nickname\": \"My Checking\",\n      \"feed_original_balance\": 10,\n      \"feed_payment_due_at\": \"2025-02-13T17:57:37.000Z\",\n      \"feed_payoff_balance\": 10,\n      \"feed_routing_number\": \"68899990000000\",\n      \"feed_started_on\": \"2020-10-13T17:57:37.000Z\",\n      \"feed_statement_balance\": 100,\n      \"feed_total_account_value\": 100,\n      \"guid\": \"ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1\",\n      \"holdings_value\": 1000,\n      \"holdings_value_set_by\": 1,\n      \"id\": \"1040434698\",\n      \"imported_at\": \"2015-10-13T17:57:37.000Z\",\n      \"institution_code\": \"3af3685e-05d9-7060-359f-008d0755e993\",\n      \"institution_guid\": \"INS-12a3b-4c5dd6-1349-008d0755e993\",\n      \"insured_name\": \"Tommy Shelby\",\n      \"interest_rate\": 1,\n      \"interest_rate_set_by\": 1,\n      \"is_closed\": false,\n      \"is_closed_set_by\": 1,\n      \"is_hidden\": false,\n      \"is_manual\": false,\n      \"last_payment\": 100,\n      \"last_payment_set_by\": 1,\n      \"last_payment_at\": \"2023-07-25T17:14:46Z\",\n      \"last_payment_at_set_by\": 1,\n      \"loan_amount\": 1000,\n      \"loan_amount_set_by\": 1,\n      \"margin_balance\": 1000,\n      \"matures_on\": \"2015-10-13T17:57:37.000Z\",\n      \"matures_on_set_by\": 1,\n      \"member_guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n      \"member_id\": \"member123\",\n      \"member_is_managed_by_user\": false,\n      \"metadata\": \"some metadata\",\n      \"minimum_balance\": 100,\n      \"minimum_balance_set_by\": 1,\n      \"minimum_payment\": 10,\n      \"minimum_payment_set_by\": 1,\n      \"name\": \"Test account 2\",\n      \"name_set_by\": 1,\n      \"nickname\": \"My Checking\",\n      \"nickname_set_by\": 1,\n      \"original_balance\": 10,\n      \"original_balance_set_by\": 1,\n      \"pay_out_amount\": 10,\n      \"payment_due_at\": \"2015-10-13T17:57:37.000Z\",\n      \"payment_due_at_set_by\": 1,\n      \"payoff_balance\": 10,\n      \"payoff_balance_set_by\": 1,\n      \"premium_amount\": 3900,\n      \"property_type\": \"VEHICLE\",\n      \"routing_number\": \"68899990000000\",\n      \"started_on\": \"2015-10-13T17:57:37.000Z\",\n      \"started_on_set_by\": 1,\n      \"statement_balance\": 1000.5,\n      \"statement_balance_set_by\": 1,\n      \"subtype\": \"NONE\",\n      \"subtype_set_by\": 1,\n      \"today_ugl_amount\": 1000.5,\n      \"today_ugl_percentage\": 6.9,\n      \"total_account_value\": 1,\n      \"total_account_value_set_by\": 1,\n      \"total_account_value_ugl\": 1,\n      \"type\": \"SAVINGS\",\n      \"type_set_by\": 1,\n      \"updated_at\": \"2016-10-13T18:08:00.000Z\",\n      \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n      \"user_id\": \"user123\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94817dee-45d0-455c-9788-588cb10b3284",
+          "name": "Create managed account",
+          "request": {
+            "name": "Create managed account",
+            "description": {
+              "content": "Use this endpoint to create a partner-managed account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account\": {\n    \"balance\": \"<number>\",\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"apr\": \"<number>\",\n    \"apy\": \"<number>\",\n    \"available_balance\": \"<number>\",\n    \"available_credit\": \"<number>\",\n    \"cash_surrender_value\": \"<number>\",\n    \"credit_limit\": \"<number>\",\n    \"currency_code\": \"<string>\",\n    \"day_payment_is_due\": \"<integer>\",\n    \"death_benefit\": \"<integer>\",\n    \"interest_rate\": \"<number>\",\n    \"is_closed\": \"<boolean>\",\n    \"is_hidden\": \"<boolean>\",\n    \"last_payment\": \"<number>\",\n    \"last_payment_at\": \"<string>\",\n    \"loan_amount\": \"<number>\",\n    \"matures_on\": \"<string>\",\n    \"metadata\": \"<string>\",\n    \"minimum_balance\": \"<number>\",\n    \"minimum_payment\": \"<number>\",\n    \"nickname\": \"<string>\",\n    \"original_balance\": \"<number>\",\n    \"payment_due_at\": \"<string>\",\n    \"payoff_balance\": \"<number>\",\n    \"routing_number\": \"<string>\",\n    \"started_on\": \"<string>\",\n    \"subtype\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "84fd07de-ae9f-4198-b306-33a74a529264",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": {\n    \"balance\": 1000,\n    \"id\": \"1040434698\",\n    \"name\": \"Test account 2\",\n    \"type\": \"SAVINGS\",\n    \"account_number\": \"5366\",\n    \"apr\": 1,\n    \"apy\": 1,\n    \"available_balance\": 1000,\n    \"available_credit\": 1000,\n    \"cash_surrender_value\": 1000,\n    \"credit_limit\": 100,\n    \"currency_code\": \"USD\",\n    \"day_payment_is_due\": 20,\n    \"death_benefit\": 1000,\n    \"interest_rate\": 1,\n    \"is_closed\": false,\n    \"is_hidden\": false,\n    \"last_payment\": 100,\n    \"last_payment_at\": \"2015-10-13T17:57:37.000Z\",\n    \"loan_amount\": 1000,\n    \"matures_on\": \"2015-10-13T17:57:37.000Z\",\n    \"metadata\": \"some metadata\",\n    \"minimum_balance\": 100,\n    \"minimum_payment\": 10,\n    \"nickname\": \"Swiss Account\",\n    \"original_balance\": 10,\n    \"payment_due_at\": \"2015-10-13T17:57:37.000Z\",\n    \"payoff_balance\": 10,\n    \"routing_number\": \"68899990000000\",\n    \"started_on\": \"2015-10-13T17:57:37.000Z\",\n    \"subtype\": \"NONE\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"account_number\": \"5366\",\n    \"account_number_set_by\": 1,\n    \"account_ownership\": \"INDIVIDUAL\",\n    \"annuity_policy_to_date\": \"2016-10-13T17:57:37.000Z\",\n    \"annuity_provider\": \"Metlife\",\n    \"annuity_term_year\": 2048,\n    \"apr\": 1,\n    \"apr_set_by\": 1,\n    \"apy\": 1,\n    \"apy_set_by\": 1,\n    \"available_balance\": 1000,\n    \"available_balance_set_by\": 1,\n    \"available_credit\": 1000,\n    \"available_credit_set_by\": 1,\n    \"balance\": 10000,\n    \"balance_set_by\": 1,\n    \"calculated_apr\": 21.66409,\n    \"cash_balance\": 1000,\n    \"cash_balance_set_by\": 1,\n    \"cash_surrender_value\": 1000,\n    \"cash_surrender_value_set_by\": 1,\n    \"created_at\": \"2023-07-25T17:14:46Z\",\n    \"credit_limit\": 100,\n    \"credit_limit_set_by\": 1,\n    \"currency_code\": \"USD\",\n    \"currency_code_set_by\": 1,\n    \"day_payment_is_due\": 20,\n    \"day_payment_is_due_set_by\": 1,\n    \"death_benefit\": 1000,\n    \"death_benefit_set_by\": 1,\n    \"federal_insurance_status\": \"INSURED\",\n    \"feed_account_number\": \"5366\",\n    \"feed_account_subtype\": 1,\n    \"feed_account_type\": 1,\n    \"feed_apr\": 1,\n    \"feed_apy\": 1,\n    \"feed_available_balance\": 1000,\n    \"feed_balance\": 1000,\n    \"feed_cash_balance\": 1000,\n    \"feed_cash_surrender_value\": 1000,\n    \"feed_credit_limit\": 100,\n    \"feed_currency_code\": \"USD\",\n    \"feed_day_payment_is_due\": 20,\n    \"feed_death_benefit\": 1000,\n    \"feed_holdings_value\": 1000,\n    \"feed_interest_rate\": 1,\n    \"feed_is_closed\": false,\n    \"feed_last_payment\": 100,\n    \"feed_last_payment_at\": \"2023-07-25T17:14:46Z\",\n    \"feed_loan_amount\": 1000,\n    \"feed_matures_on\": \"2015-10-13T17:57:37.000Z\",\n    \"feed_minimum_balance\": 100,\n    \"feed_minimum_payment\": 10,\n    \"feed_name\": \"Test account 2\",\n    \"feed_nickname\": \"My Checking\",\n    \"feed_original_balance\": 10,\n    \"feed_payment_due_at\": \"2025-02-13T17:57:37.000Z\",\n    \"feed_payoff_balance\": 10,\n    \"feed_routing_number\": \"68899990000000\",\n    \"feed_started_on\": \"2020-10-13T17:57:37.000Z\",\n    \"feed_statement_balance\": 100,\n    \"feed_total_account_value\": 100,\n    \"guid\": \"ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1\",\n    \"holdings_value\": 1000,\n    \"holdings_value_set_by\": 1,\n    \"id\": \"1040434698\",\n    \"imported_at\": \"2015-10-13T17:57:37.000Z\",\n    \"institution_code\": \"3af3685e-05d9-7060-359f-008d0755e993\",\n    \"institution_guid\": \"INS-12a3b-4c5dd6-1349-008d0755e993\",\n    \"insured_name\": \"Tommy Shelby\",\n    \"interest_rate\": 1,\n    \"interest_rate_set_by\": 1,\n    \"is_closed\": false,\n    \"is_closed_set_by\": 1,\n    \"is_hidden\": false,\n    \"is_manual\": false,\n    \"last_payment\": 100,\n    \"last_payment_set_by\": 1,\n    \"last_payment_at\": \"2023-07-25T17:14:46Z\",\n    \"last_payment_at_set_by\": 1,\n    \"loan_amount\": 1000,\n    \"loan_amount_set_by\": 1,\n    \"margin_balance\": 1000,\n    \"matures_on\": \"2015-10-13T17:57:37.000Z\",\n    \"matures_on_set_by\": 1,\n    \"member_guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"member_id\": \"member123\",\n    \"member_is_managed_by_user\": false,\n    \"metadata\": \"some metadata\",\n    \"minimum_balance\": 100,\n    \"minimum_balance_set_by\": 1,\n    \"minimum_payment\": 10,\n    \"minimum_payment_set_by\": 1,\n    \"name\": \"Test account 2\",\n    \"name_set_by\": 1,\n    \"nickname\": \"My Checking\",\n    \"nickname_set_by\": 1,\n    \"original_balance\": 10,\n    \"original_balance_set_by\": 1,\n    \"pay_out_amount\": 10,\n    \"payment_due_at\": \"2015-10-13T17:57:37.000Z\",\n    \"payment_due_at_set_by\": 1,\n    \"payoff_balance\": 10,\n    \"payoff_balance_set_by\": 1,\n    \"premium_amount\": 3900,\n    \"property_type\": \"VEHICLE\",\n    \"routing_number\": \"68899990000000\",\n    \"started_on\": \"2015-10-13T17:57:37.000Z\",\n    \"started_on_set_by\": 1,\n    \"statement_balance\": 1000.5,\n    \"statement_balance_set_by\": 1,\n    \"subtype\": \"NONE\",\n    \"subtype_set_by\": 1,\n    \"today_ugl_amount\": 1000.5,\n    \"today_ugl_percentage\": 6.9,\n    \"total_account_value\": 1,\n    \"total_account_value_set_by\": 1,\n    \"total_account_value_ugl\": 1,\n    \"type\": \"SAVINGS\",\n    \"type_set_by\": 1,\n    \"updated_at\": \"2016-10-13T18:08:00.000Z\",\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3bd18e47-2fb9-4fa3-9fb4-6e5d010bcb74",
+          "name": "Delete managed account",
+          "request": {
+            "name": "Delete managed account",
+            "description": {
+              "content": "Use this endpoint to delete a partner-managed account according to its unique GUID. If successful, the API will respond with a status of `204 No Content`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts",
+                ":account_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_guid",
+                  "description": "(Required) The unique id for an `account`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "34fbf237-5c7e-4130-9b37-313e9700dd90",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts",
+                    ":account_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_guid",
+                      "description": "(Required) The unique id for an `account`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9095406-97bc-439a-be2a-e7abe5e1743a",
+          "name": "Read managed account",
+          "request": {
+            "name": "Read managed account",
+            "description": {
+              "content": "Use this endpoint to read the attributes of a partner-managed account according to its unique guid.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts",
+                ":account_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_guid",
+                  "description": "(Required) The unique id for an `account`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f7109075-1750-49b7-8639-a7cbe7930d68",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts",
+                    ":account_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_guid",
+                      "description": "(Required) The unique id for an `account`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"account_number\": \"5366\",\n    \"account_number_set_by\": 1,\n    \"account_ownership\": \"INDIVIDUAL\",\n    \"annuity_policy_to_date\": \"2016-10-13T17:57:37.000Z\",\n    \"annuity_provider\": \"Metlife\",\n    \"annuity_term_year\": 2048,\n    \"apr\": 1,\n    \"apr_set_by\": 1,\n    \"apy\": 1,\n    \"apy_set_by\": 1,\n    \"available_balance\": 1000,\n    \"available_balance_set_by\": 1,\n    \"available_credit\": 1000,\n    \"available_credit_set_by\": 1,\n    \"balance\": 10000,\n    \"balance_set_by\": 1,\n    \"calculated_apr\": 21.66409,\n    \"cash_balance\": 1000,\n    \"cash_balance_set_by\": 1,\n    \"cash_surrender_value\": 1000,\n    \"cash_surrender_value_set_by\": 1,\n    \"created_at\": \"2023-07-25T17:14:46Z\",\n    \"credit_limit\": 100,\n    \"credit_limit_set_by\": 1,\n    \"currency_code\": \"USD\",\n    \"currency_code_set_by\": 1,\n    \"day_payment_is_due\": 20,\n    \"day_payment_is_due_set_by\": 1,\n    \"death_benefit\": 1000,\n    \"death_benefit_set_by\": 1,\n    \"federal_insurance_status\": \"INSURED\",\n    \"feed_account_number\": \"5366\",\n    \"feed_account_subtype\": 1,\n    \"feed_account_type\": 1,\n    \"feed_apr\": 1,\n    \"feed_apy\": 1,\n    \"feed_available_balance\": 1000,\n    \"feed_balance\": 1000,\n    \"feed_cash_balance\": 1000,\n    \"feed_cash_surrender_value\": 1000,\n    \"feed_credit_limit\": 100,\n    \"feed_currency_code\": \"USD\",\n    \"feed_day_payment_is_due\": 20,\n    \"feed_death_benefit\": 1000,\n    \"feed_holdings_value\": 1000,\n    \"feed_interest_rate\": 1,\n    \"feed_is_closed\": false,\n    \"feed_last_payment\": 100,\n    \"feed_last_payment_at\": \"2023-07-25T17:14:46Z\",\n    \"feed_loan_amount\": 1000,\n    \"feed_matures_on\": \"2015-10-13T17:57:37.000Z\",\n    \"feed_minimum_balance\": 100,\n    \"feed_minimum_payment\": 10,\n    \"feed_name\": \"Test account 2\",\n    \"feed_nickname\": \"My Checking\",\n    \"feed_original_balance\": 10,\n    \"feed_payment_due_at\": \"2025-02-13T17:57:37.000Z\",\n    \"feed_payoff_balance\": 10,\n    \"feed_routing_number\": \"68899990000000\",\n    \"feed_started_on\": \"2020-10-13T17:57:37.000Z\",\n    \"feed_statement_balance\": 100,\n    \"feed_total_account_value\": 100,\n    \"guid\": \"ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1\",\n    \"holdings_value\": 1000,\n    \"holdings_value_set_by\": 1,\n    \"id\": \"1040434698\",\n    \"imported_at\": \"2015-10-13T17:57:37.000Z\",\n    \"institution_code\": \"3af3685e-05d9-7060-359f-008d0755e993\",\n    \"institution_guid\": \"INS-12a3b-4c5dd6-1349-008d0755e993\",\n    \"insured_name\": \"Tommy Shelby\",\n    \"interest_rate\": 1,\n    \"interest_rate_set_by\": 1,\n    \"is_closed\": false,\n    \"is_closed_set_by\": 1,\n    \"is_hidden\": false,\n    \"is_manual\": false,\n    \"last_payment\": 100,\n    \"last_payment_set_by\": 1,\n    \"last_payment_at\": \"2023-07-25T17:14:46Z\",\n    \"last_payment_at_set_by\": 1,\n    \"loan_amount\": 1000,\n    \"loan_amount_set_by\": 1,\n    \"margin_balance\": 1000,\n    \"matures_on\": \"2015-10-13T17:57:37.000Z\",\n    \"matures_on_set_by\": 1,\n    \"member_guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"member_id\": \"member123\",\n    \"member_is_managed_by_user\": false,\n    \"metadata\": \"some metadata\",\n    \"minimum_balance\": 100,\n    \"minimum_balance_set_by\": 1,\n    \"minimum_payment\": 10,\n    \"minimum_payment_set_by\": 1,\n    \"name\": \"Test account 2\",\n    \"name_set_by\": 1,\n    \"nickname\": \"My Checking\",\n    \"nickname_set_by\": 1,\n    \"original_balance\": 10,\n    \"original_balance_set_by\": 1,\n    \"pay_out_amount\": 10,\n    \"payment_due_at\": \"2015-10-13T17:57:37.000Z\",\n    \"payment_due_at_set_by\": 1,\n    \"payoff_balance\": 10,\n    \"payoff_balance_set_by\": 1,\n    \"premium_amount\": 3900,\n    \"property_type\": \"VEHICLE\",\n    \"routing_number\": \"68899990000000\",\n    \"started_on\": \"2015-10-13T17:57:37.000Z\",\n    \"started_on_set_by\": 1,\n    \"statement_balance\": 1000.5,\n    \"statement_balance_set_by\": 1,\n    \"subtype\": \"NONE\",\n    \"subtype_set_by\": 1,\n    \"today_ugl_amount\": 1000.5,\n    \"today_ugl_percentage\": 6.9,\n    \"total_account_value\": 1,\n    \"total_account_value_set_by\": 1,\n    \"total_account_value_ugl\": 1,\n    \"type\": \"SAVINGS\",\n    \"type_set_by\": 1,\n    \"updated_at\": \"2016-10-13T18:08:00.000Z\",\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4497e5e2-c35c-4a2a-b6c1-3e2cbf0dbd36",
+          "name": "Update managed account",
+          "request": {
+            "name": "Update managed account",
+            "description": {
+              "content": "Use this endpoint to update the attributes of a partner-managed account according to its unique GUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts",
+                ":account_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_guid",
+                  "description": "(Required) The unique id for an `account`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account\": {\n    \"account_number\": \"<string>\",\n    \"apr\": \"<number>\",\n    \"apy\": \"<number>\",\n    \"available_balance\": \"<number>\",\n    \"available_credit\": \"<number>\",\n    \"balance\": \"<number>\",\n    \"cash_surrender_value\": \"<number>\",\n    \"credit_limit\": \"<number>\",\n    \"currency_code\": \"<string>\",\n    \"day_payment_is_due\": \"<integer>\",\n    \"death_benefit\": \"<integer>\",\n    \"id\": \"<string>\",\n    \"interest_rate\": \"<number>\",\n    \"is_closed\": \"<boolean>\",\n    \"is_hidden\": \"<boolean>\",\n    \"last_payment\": \"<number>\",\n    \"last_payment_at\": \"<string>\",\n    \"loan_amount\": \"<number>\",\n    \"matures_on\": \"<string>\",\n    \"metadata\": \"<string>\",\n    \"minimum_balance\": \"<number>\",\n    \"minimum_payment\": \"<number>\",\n    \"name\": \"<string>\",\n    \"nickname\": \"<string>\",\n    \"original_balance\": \"<number>\",\n    \"payment_due_at\": \"<string>\",\n    \"payoff_balance\": \"<number>\",\n    \"routing_number\": \"<string>\",\n    \"started_on\": \"<string>\",\n    \"subtype\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46faec8d-f679-4d05-902e-76f8a9ee41b5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts",
+                    ":account_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_guid",
+                      "description": "(Required) The unique id for an `account`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account\": {\n    \"account_number\": \"5366\",\n    \"apr\": 1,\n    \"apy\": 1,\n    \"available_balance\": 1000,\n    \"available_credit\": 1000,\n    \"balance\": 1000,\n    \"cash_surrender_value\": 1000,\n    \"credit_limit\": 100,\n    \"currency_code\": \"USD\",\n    \"day_payment_is_due\": 20,\n    \"death_benefit\": 1000,\n    \"id\": \"1040434698\",\n    \"interest_rate\": 1,\n    \"is_closed\": false,\n    \"is_hidden\": false,\n    \"last_payment\": 100,\n    \"last_payment_at\": \"2015-10-13T17:57:37.000Z\",\n    \"loan_amount\": 1000,\n    \"matures_on\": \"2015-10-13T17:57:37.000Z\",\n    \"metadata\": \"some metadata\",\n    \"minimum_balance\": 100,\n    \"minimum_payment\": 10,\n    \"name\": \"Test account 2\",\n    \"nickname\": \"Swiss Account\",\n    \"original_balance\": 10,\n    \"payment_due_at\": \"2015-10-13T17:57:37.000Z\",\n    \"payoff_balance\": 10,\n    \"routing_number\": \"68899990000000\",\n    \"started_on\": \"2015-10-13T17:57:37.000Z\",\n    \"subtype\": \"NONE\",\n    \"type\": \"SAVINGS\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"account_number\": \"5366\",\n    \"account_number_set_by\": 1,\n    \"account_ownership\": \"INDIVIDUAL\",\n    \"annuity_policy_to_date\": \"2016-10-13T17:57:37.000Z\",\n    \"annuity_provider\": \"Metlife\",\n    \"annuity_term_year\": 2048,\n    \"apr\": 1,\n    \"apr_set_by\": 1,\n    \"apy\": 1,\n    \"apy_set_by\": 1,\n    \"available_balance\": 1000,\n    \"available_balance_set_by\": 1,\n    \"available_credit\": 1000,\n    \"available_credit_set_by\": 1,\n    \"balance\": 10000,\n    \"balance_set_by\": 1,\n    \"calculated_apr\": 21.66409,\n    \"cash_balance\": 1000,\n    \"cash_balance_set_by\": 1,\n    \"cash_surrender_value\": 1000,\n    \"cash_surrender_value_set_by\": 1,\n    \"created_at\": \"2023-07-25T17:14:46Z\",\n    \"credit_limit\": 100,\n    \"credit_limit_set_by\": 1,\n    \"currency_code\": \"USD\",\n    \"currency_code_set_by\": 1,\n    \"day_payment_is_due\": 20,\n    \"day_payment_is_due_set_by\": 1,\n    \"death_benefit\": 1000,\n    \"death_benefit_set_by\": 1,\n    \"federal_insurance_status\": \"INSURED\",\n    \"feed_account_number\": \"5366\",\n    \"feed_account_subtype\": 1,\n    \"feed_account_type\": 1,\n    \"feed_apr\": 1,\n    \"feed_apy\": 1,\n    \"feed_available_balance\": 1000,\n    \"feed_balance\": 1000,\n    \"feed_cash_balance\": 1000,\n    \"feed_cash_surrender_value\": 1000,\n    \"feed_credit_limit\": 100,\n    \"feed_currency_code\": \"USD\",\n    \"feed_day_payment_is_due\": 20,\n    \"feed_death_benefit\": 1000,\n    \"feed_holdings_value\": 1000,\n    \"feed_interest_rate\": 1,\n    \"feed_is_closed\": false,\n    \"feed_last_payment\": 100,\n    \"feed_last_payment_at\": \"2023-07-25T17:14:46Z\",\n    \"feed_loan_amount\": 1000,\n    \"feed_matures_on\": \"2015-10-13T17:57:37.000Z\",\n    \"feed_minimum_balance\": 100,\n    \"feed_minimum_payment\": 10,\n    \"feed_name\": \"Test account 2\",\n    \"feed_nickname\": \"My Checking\",\n    \"feed_original_balance\": 10,\n    \"feed_payment_due_at\": \"2025-02-13T17:57:37.000Z\",\n    \"feed_payoff_balance\": 10,\n    \"feed_routing_number\": \"68899990000000\",\n    \"feed_started_on\": \"2020-10-13T17:57:37.000Z\",\n    \"feed_statement_balance\": 100,\n    \"feed_total_account_value\": 100,\n    \"guid\": \"ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1\",\n    \"holdings_value\": 1000,\n    \"holdings_value_set_by\": 1,\n    \"id\": \"1040434698\",\n    \"imported_at\": \"2015-10-13T17:57:37.000Z\",\n    \"institution_code\": \"3af3685e-05d9-7060-359f-008d0755e993\",\n    \"institution_guid\": \"INS-12a3b-4c5dd6-1349-008d0755e993\",\n    \"insured_name\": \"Tommy Shelby\",\n    \"interest_rate\": 1,\n    \"interest_rate_set_by\": 1,\n    \"is_closed\": false,\n    \"is_closed_set_by\": 1,\n    \"is_hidden\": false,\n    \"is_manual\": false,\n    \"last_payment\": 100,\n    \"last_payment_set_by\": 1,\n    \"last_payment_at\": \"2023-07-25T17:14:46Z\",\n    \"last_payment_at_set_by\": 1,\n    \"loan_amount\": 1000,\n    \"loan_amount_set_by\": 1,\n    \"margin_balance\": 1000,\n    \"matures_on\": \"2015-10-13T17:57:37.000Z\",\n    \"matures_on_set_by\": 1,\n    \"member_guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"member_id\": \"member123\",\n    \"member_is_managed_by_user\": false,\n    \"metadata\": \"some metadata\",\n    \"minimum_balance\": 100,\n    \"minimum_balance_set_by\": 1,\n    \"minimum_payment\": 10,\n    \"minimum_payment_set_by\": 1,\n    \"name\": \"Test account 2\",\n    \"name_set_by\": 1,\n    \"nickname\": \"My Checking\",\n    \"nickname_set_by\": 1,\n    \"original_balance\": 10,\n    \"original_balance_set_by\": 1,\n    \"pay_out_amount\": 10,\n    \"payment_due_at\": \"2015-10-13T17:57:37.000Z\",\n    \"payment_due_at_set_by\": 1,\n    \"payoff_balance\": 10,\n    \"payoff_balance_set_by\": 1,\n    \"premium_amount\": 3900,\n    \"property_type\": \"VEHICLE\",\n    \"routing_number\": \"68899990000000\",\n    \"started_on\": \"2015-10-13T17:57:37.000Z\",\n    \"started_on_set_by\": 1,\n    \"statement_balance\": 1000.5,\n    \"statement_balance_set_by\": 1,\n    \"subtype\": \"NONE\",\n    \"subtype_set_by\": 1,\n    \"today_ugl_amount\": 1000.5,\n    \"today_ugl_percentage\": 6.9,\n    \"total_account_value\": 1,\n    \"total_account_value_set_by\": 1,\n    \"total_account_value_ugl\": 1,\n    \"type\": \"SAVINGS\",\n    \"type_set_by\": 1,\n    \"updated_at\": \"2016-10-13T18:08:00.000Z\",\n    \"user_guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\",\n    \"user_id\": \"user123\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81e790fb-b44f-441a-9efc-1eb65e996667",
+          "name": "List managed transactions",
+          "request": {
+            "name": "List managed transactions",
+            "description": {
+              "content": "This endpoint returns a list of all the partner-managed transactions associated with the specified `account`, scoped through a `user` and a `member`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts",
+                ":account_guid",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "from_date",
+                  "value": "<string>",
+                  "description": "Filter transactions from this date. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 120 days ago if not provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "to_date",
+                  "value": "<string>",
+                  "description": "Filter transactions to this date (at midnight). This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 5 days forward from the day the request is made to capture pending transactions."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_guid",
+                  "description": "(Required) The unique id for an `account`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e3c8625-4f3b-4e30-88ab-1f52bba50bb0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts",
+                    ":account_guid",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "from_date",
+                      "value": "2024-01-01"
+                    },
+                    {
+                      "key": "to_date",
+                      "value": "2024-03-31"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_guid",
+                      "description": "(Required) The unique id for an `account`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"transactions\": [\n    {\n      \"account_guid\": \"ACT-0af29528-bb91-447f-b5de-85c1c42593e5\",\n      \"account_id\": \"FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw\",\n      \"amount\": 5003.9,\n      \"category\": \"Paycheck\",\n      \"category_guid\": \"CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819\",\n      \"check_number_string\": null,\n      \"created_at\": \"2024-12-20T18:52:36Z\",\n      \"currency_code\": null,\n      \"date\": \"2024-12-20\",\n      \"description\": \"MX Technologies\",\n      \"extended_transaction_type\": null,\n      \"guid\": \"TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1\",\n      \"id\": \"1734681600000-178fa8095c154a55b9172f977b4c5f9a-0\",\n      \"is_bill_pay\": false,\n      \"is_direct_deposit\": false,\n      \"is_expense\": false,\n      \"is_fee\": false,\n      \"is_income\": true,\n      \"is_international\": null,\n      \"is_manual\": false,\n      \"is_overdraft_fee\": false,\n      \"is_payroll_advance\": false,\n      \"is_recurring\": null,\n      \"is_subscription\": false,\n      \"latitude\": null,\n      \"localized_description\": null,\n      \"localized_memo\": null,\n      \"longitude\": null,\n      \"member_guid\": \"MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8\",\n      \"member_is_managed_by_user\": true,\n      \"memo\": \"Transactions\",\n      \"merchant_category_code\": null,\n      \"merchant_guid\": \"MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1\",\n      \"merchant_location_guid\": null,\n      \"metadata\": null,\n      \"original_description\": \"MX TECHNOLOGIES PAYMENT\",\n      \"posted_at\": \"2024-12-20T12:00:00Z\",\n      \"status\": \"POSTED\",\n      \"top_level_category\": \"Income\",\n      \"transacted_at\": \"2024-12-20T12:00:00Z\",\n      \"type\": \"CREDIT\",\n      \"updated_at\": \"2024-12-20T18:52:38Z\",\n      \"user_guid\": \"USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e\",\n      \"user_id\": null\n    },\n    {\n      \"account_guid\": \"ACT-0af29528-bb91-447f-b5de-85c1c42593e5\",\n      \"account_id\": \"FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw\",\n      \"amount\": 5003.9,\n      \"category\": \"Paycheck\",\n      \"category_guid\": \"CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819\",\n      \"check_number_string\": null,\n      \"created_at\": \"2024-12-20T18:52:36Z\",\n      \"currency_code\": null,\n      \"date\": \"2024-12-20\",\n      \"description\": \"MX Technologies\",\n      \"extended_transaction_type\": null,\n      \"guid\": \"TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1\",\n      \"id\": \"1734681600000-178fa8095c154a55b9172f977b4c5f9a-0\",\n      \"is_bill_pay\": false,\n      \"is_direct_deposit\": false,\n      \"is_expense\": false,\n      \"is_fee\": false,\n      \"is_income\": true,\n      \"is_international\": null,\n      \"is_manual\": false,\n      \"is_overdraft_fee\": false,\n      \"is_payroll_advance\": false,\n      \"is_recurring\": null,\n      \"is_subscription\": false,\n      \"latitude\": null,\n      \"localized_description\": null,\n      \"localized_memo\": null,\n      \"longitude\": null,\n      \"member_guid\": \"MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8\",\n      \"member_is_managed_by_user\": true,\n      \"memo\": \"Transactions\",\n      \"merchant_category_code\": null,\n      \"merchant_guid\": \"MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1\",\n      \"merchant_location_guid\": null,\n      \"metadata\": null,\n      \"original_description\": \"MX TECHNOLOGIES PAYMENT\",\n      \"posted_at\": \"2024-12-20T12:00:00Z\",\n      \"status\": \"POSTED\",\n      \"top_level_category\": \"Income\",\n      \"transacted_at\": \"2024-12-20T12:00:00Z\",\n      \"type\": \"CREDIT\",\n      \"updated_at\": \"2024-12-20T18:52:38Z\",\n      \"user_guid\": \"USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e\",\n      \"user_id\": null\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6868b740-8871-4ac5-877a-ec2f7b10d84a",
+          "name": "Create managed transaction",
+          "request": {
+            "name": "Create managed transaction",
+            "description": {
+              "content": "Use this endpoint to create a new partner-managed `transaction`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts",
+                ":account_guid",
+                "transactions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_guid",
+                  "description": "(Required) The unique id for an `account`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction\": {\n    \"amount\": \"<string>\",\n    \"description\": \"<string>\",\n    \"status\": \"<string>\",\n    \"posted_at\": \"<string>\",\n    \"transacted_at\": \"<string>\",\n    \"type\": \"<string>\",\n    \"category\": \"<string>\",\n    \"check_number_string\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"id\": \"<string>\",\n    \"is_international\": \"<boolean>\",\n    \"latitude\": \"<number>\",\n    \"localized_description\": \"<string>\",\n    \"localized_memo\": \"<string>\",\n    \"longitude\": \"<number>\",\n    \"memo\": \"<string>\",\n    \"merchant_category_code\": \"<integer>\",\n    \"merchant_guid\": \"<string>\",\n    \"merchant_location_guid\": \"<string>\",\n    \"metadata\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cebe19c5-b004-467a-9f88-ddb83243e77c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts",
+                    ":account_guid",
+                    "transactions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_guid",
+                      "description": "(Required) The unique id for an `account`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"amount\": \"61.11\",\n    \"description\": \"Whole foods\",\n    \"status\": \"POSTED\",\n    \"posted_at\": \"2016-10-07T06:00:00.000Z\",\n    \"transacted_at\": \"2016-10-06T13:00:00.000Z\",\n    \"type\": \"DEBIT\",\n    \"category\": \"Groceries\",\n    \"check_number_string\": \"6812\",\n    \"currency_code\": \"USD\",\n    \"id\": \"transaction-265abee9-889b-af6a-c69b-25157db2bdd9\",\n    \"is_international\": false,\n    \"latitude\": -43.2075,\n    \"localized_description\": \"This is a localized_description\",\n    \"localized_memo\": \"This is a localized_memo\",\n    \"longitude\": 139.691706,\n    \"memo\": \"This is a memo\",\n    \"merchant_category_code\": 5411,\n    \"merchant_guid\": \"MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b\",\n    \"merchant_location_guid\": \"MCL-00024e59-18b5-4d79-b879-2a7896726fea\",\n    \"metadata\": \"some metadata\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"transaction\": {\n    \"account_guid\": \"ACT-0af29528-bb91-447f-b5de-85c1c42593e5\",\n    \"account_id\": \"FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw\",\n    \"amount\": 5003.9,\n    \"category\": \"Paycheck\",\n    \"category_guid\": \"CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819\",\n    \"check_number_string\": null,\n    \"created_at\": \"2024-12-20T18:52:36Z\",\n    \"currency_code\": null,\n    \"date\": \"2024-12-20\",\n    \"description\": \"MX Technologies\",\n    \"extended_transaction_type\": null,\n    \"guid\": \"TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1\",\n    \"id\": \"1734681600000-178fa8095c154a55b9172f977b4c5f9a-0\",\n    \"is_bill_pay\": false,\n    \"is_direct_deposit\": false,\n    \"is_expense\": false,\n    \"is_fee\": false,\n    \"is_income\": true,\n    \"is_international\": null,\n    \"is_manual\": false,\n    \"is_overdraft_fee\": false,\n    \"is_payroll_advance\": false,\n    \"is_recurring\": null,\n    \"is_subscription\": false,\n    \"latitude\": null,\n    \"localized_description\": null,\n    \"localized_memo\": null,\n    \"longitude\": null,\n    \"member_guid\": \"MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8\",\n    \"member_is_managed_by_user\": true,\n    \"memo\": \"Transactions\",\n    \"merchant_category_code\": null,\n    \"merchant_guid\": \"MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1\",\n    \"merchant_location_guid\": null,\n    \"metadata\": null,\n    \"original_description\": \"MX TECHNOLOGIES PAYMENT\",\n    \"posted_at\": \"2024-12-20T12:00:00Z\",\n    \"status\": \"POSTED\",\n    \"top_level_category\": \"Income\",\n    \"transacted_at\": \"2024-12-20T12:00:00Z\",\n    \"type\": \"CREDIT\",\n    \"updated_at\": \"2024-12-20T18:52:38Z\",\n    \"user_guid\": \"USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e\",\n    \"user_id\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "485d9de3-ba86-4e04-b61b-7853b9a423d5",
+          "name": "Delete managed transaction",
+          "request": {
+            "name": "Delete managed transaction",
+            "description": {
+              "content": "Use this endpoint to delete the specified partner-managed `transaction`. The endpoint will respond with a status of `204 No Content` without a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts",
+                ":account_guid",
+                "transactions",
+                ":transaction_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_guid",
+                  "description": "(Required) The unique id for an `account`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transaction_guid",
+                  "description": "(Required) The unique id for a `transaction`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd894f6b-3e80-45aa-8154-08ba02f17ff3",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts",
+                    ":account_guid",
+                    "transactions",
+                    ":transaction_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_guid",
+                      "description": "(Required) The unique id for an `account`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_guid",
+                      "description": "(Required) The unique id for a `transaction`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "86750db5-5b92-437b-a2b2-a4b682160c68",
+          "name": "Read managed transaction",
+          "request": {
+            "name": "Read managed transaction",
+            "description": {
+              "content": "Requests to this endpoint will return the attributes of the specified partner-managed `transaction`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts",
+                ":account_guid",
+                "transactions",
+                ":transaction_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_guid",
+                  "description": "(Required) The unique id for an `account`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transaction_guid",
+                  "description": "(Required) The unique id for a `transaction`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "293bf71d-72b5-4375-8939-5b857b931d09",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts",
+                    ":account_guid",
+                    "transactions",
+                    ":transaction_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_guid",
+                      "description": "(Required) The unique id for an `account`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_guid",
+                      "description": "(Required) The unique id for a `transaction`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"transaction\": {\n    \"account_guid\": \"ACT-0af29528-bb91-447f-b5de-85c1c42593e5\",\n    \"account_id\": \"FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw\",\n    \"amount\": 5003.9,\n    \"category\": \"Paycheck\",\n    \"category_guid\": \"CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819\",\n    \"check_number_string\": null,\n    \"created_at\": \"2024-12-20T18:52:36Z\",\n    \"currency_code\": null,\n    \"date\": \"2024-12-20\",\n    \"description\": \"MX Technologies\",\n    \"extended_transaction_type\": null,\n    \"guid\": \"TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1\",\n    \"id\": \"1734681600000-178fa8095c154a55b9172f977b4c5f9a-0\",\n    \"is_bill_pay\": false,\n    \"is_direct_deposit\": false,\n    \"is_expense\": false,\n    \"is_fee\": false,\n    \"is_income\": true,\n    \"is_international\": null,\n    \"is_manual\": false,\n    \"is_overdraft_fee\": false,\n    \"is_payroll_advance\": false,\n    \"is_recurring\": null,\n    \"is_subscription\": false,\n    \"latitude\": null,\n    \"localized_description\": null,\n    \"localized_memo\": null,\n    \"longitude\": null,\n    \"member_guid\": \"MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8\",\n    \"member_is_managed_by_user\": true,\n    \"memo\": \"Transactions\",\n    \"merchant_category_code\": null,\n    \"merchant_guid\": \"MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1\",\n    \"merchant_location_guid\": null,\n    \"metadata\": null,\n    \"original_description\": \"MX TECHNOLOGIES PAYMENT\",\n    \"posted_at\": \"2024-12-20T12:00:00Z\",\n    \"status\": \"POSTED\",\n    \"top_level_category\": \"Income\",\n    \"transacted_at\": \"2024-12-20T12:00:00Z\",\n    \"type\": \"CREDIT\",\n    \"updated_at\": \"2024-12-20T18:52:38Z\",\n    \"user_guid\": \"USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e\",\n    \"user_id\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54cd6d06-970d-49d3-acfe-36571948468a",
+          "name": "Update managed transaction",
+          "request": {
+            "name": "Update managed transaction",
+            "description": {
+              "content": "Use this endpoint to update the attributes of the specified partner_managed `transaction`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "managed_members",
+                ":member_guid",
+                "accounts",
+                ":account_guid",
+                "transactions",
+                ":transaction_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account_guid",
+                  "description": "(Required) The unique id for an `account`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transaction_guid",
+                  "description": "(Required) The unique id for a `transaction`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction\": {\n    \"amount\": \"<string>\",\n    \"category\": \"<string>\",\n    \"check_number_string\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"description\": \"<string>\",\n    \"id\": \"<string>\",\n    \"is_international\": \"<boolean>\",\n    \"latitude\": \"<number>\",\n    \"localized_description\": \"<string>\",\n    \"localized_memo\": \"<string>\",\n    \"longitude\": \"<number>\",\n    \"memo\": \"<string>\",\n    \"merchant_category_code\": \"<integer>\",\n    \"merchant_guid\": \"<string>\",\n    \"merchant_location_guid\": \"<string>\",\n    \"metadata\": \"<string>\",\n    \"posted_at\": \"<string>\",\n    \"status\": \"<string>\",\n    \"transacted_at\": \"<string>\",\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4475933a-8fe9-4c95-9668-00364b3fa8b1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "managed_members",
+                    ":member_guid",
+                    "accounts",
+                    ":account_guid",
+                    "transactions",
+                    ":transaction_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account_guid",
+                      "description": "(Required) The unique id for an `account`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_guid",
+                      "description": "(Required) The unique id for a `transaction`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction\": {\n    \"amount\": \"61.11\",\n    \"category\": \"Groceries\",\n    \"check_number_string\": \"6812\",\n    \"currency_code\": \"USD\",\n    \"description\": \"Whole foods\",\n    \"id\": \"transaction-265abee9-889b-af6a-c69b-25157db2bdd9\",\n    \"is_international\": false,\n    \"latitude\": -43.2075,\n    \"localized_description\": \"This is a localized_description\",\n    \"localized_memo\": \"This is a localized_memo\",\n    \"longitude\": 139.691706,\n    \"memo\": \"This is a memo\",\n    \"merchant_category_code\": 5411,\n    \"merchant_guid\": \"MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b\",\n    \"merchant_location_guid\": \"MCL-00024e59-18b5-4d79-b879-2a7896726fea\",\n    \"metadata\": \"some metadata\",\n    \"posted_at\": \"2016-10-07T06:00:00.000Z\",\n    \"status\": \"POSTED\",\n    \"transacted_at\": \"2016-10-06T13:00:00.000Z\",\n    \"type\": \"DEBIT\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"transaction\": {\n    \"account_guid\": \"ACT-0af29528-bb91-447f-b5de-85c1c42593e5\",\n    \"account_id\": \"FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw\",\n    \"amount\": 5003.9,\n    \"category\": \"Paycheck\",\n    \"category_guid\": \"CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819\",\n    \"check_number_string\": null,\n    \"created_at\": \"2024-12-20T18:52:36Z\",\n    \"currency_code\": null,\n    \"date\": \"2024-12-20\",\n    \"description\": \"MX Technologies\",\n    \"extended_transaction_type\": null,\n    \"guid\": \"TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1\",\n    \"id\": \"1734681600000-178fa8095c154a55b9172f977b4c5f9a-0\",\n    \"is_bill_pay\": false,\n    \"is_direct_deposit\": false,\n    \"is_expense\": false,\n    \"is_fee\": false,\n    \"is_income\": true,\n    \"is_international\": null,\n    \"is_manual\": false,\n    \"is_overdraft_fee\": false,\n    \"is_payroll_advance\": false,\n    \"is_recurring\": null,\n    \"is_subscription\": false,\n    \"latitude\": null,\n    \"localized_description\": null,\n    \"localized_memo\": null,\n    \"longitude\": null,\n    \"member_guid\": \"MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8\",\n    \"member_is_managed_by_user\": true,\n    \"memo\": \"Transactions\",\n    \"merchant_category_code\": null,\n    \"merchant_guid\": \"MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1\",\n    \"merchant_location_guid\": null,\n    \"metadata\": null,\n    \"original_description\": \"MX TECHNOLOGIES PAYMENT\",\n    \"posted_at\": \"2024-12-20T12:00:00Z\",\n    \"status\": \"POSTED\",\n    \"top_level_category\": \"Income\",\n    \"transacted_at\": \"2024-12-20T12:00:00Z\",\n    \"type\": \"CREDIT\",\n    \"updated_at\": \"2024-12-20T18:52:38Z\",\n    \"user_guid\": \"USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e\",\n    \"user_id\": null\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://int-api.mx.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "acd2fb46-f23a-4b41-a55b-c2b0ddca441e",
+    "name": "MX Platform accounts managed data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.\n\nJust getting started? See our [use case guides](/use-cases/).\n\n\nContact Support:\n Name: MX Platform API",
+      "type": "text/plain"
+    }
+  }
+}

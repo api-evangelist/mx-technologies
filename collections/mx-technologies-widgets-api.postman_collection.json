@@ -1,0 +1,655 @@
+{
+  "item": [
+    {
+      "id": "6aaaea2c-fe30-4007-ad2d-d0cd49a097fa",
+      "name": "widgets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bba86374-e5cb-40a4-b927-ba6c25a2e9aa",
+          "name": "(Deprecated) Request connect widget URL",
+          "request": {
+            "name": "(Deprecated) Request connect widget URL",
+            "description": {
+              "content": "This endpoint will return a URL for an embeddable version of MX Connect.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "connect_widget_url"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"config\": {\n    \"client_redirect_url\": \"<string>\",\n    \"color_scheme\": \"<string>\",\n    \"current_institution_code\": \"<string>\",\n    \"current_member_guid\": \"<string>\",\n    \"disable_background_agg\": \"<boolean>\",\n    \"disable_institution_search\": \"<boolean>\",\n    \"enable_app2app\": \"<boolean>\",\n    \"include_identity\": \"<boolean>\",\n    \"include_transactions\": \"<boolean>\",\n    \"is_mobile_webview\": \"<boolean>\",\n    \"mode\": \"<string>\",\n    \"oauth_referral_source\": \"<string>\",\n    \"ui_message_version\": \"<integer>\",\n    \"ui_message_webview_url_scheme\": \"<string>\",\n    \"update_credentials\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e4e324c1-fcdf-497e-a4ed-a0579c22240d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "connect_widget_url"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"config\": {\n    \"client_redirect_url\": \"https://{yoursite.com}\",\n    \"color_scheme\": \"light\",\n    \"current_institution_code\": \"mxbank\",\n    \"current_member_guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"disable_background_agg\": false,\n    \"disable_institution_search\": false,\n    \"enable_app2app\": false,\n    \"include_identity\": false,\n    \"include_transactions\": true,\n    \"is_mobile_webview\": false,\n    \"mode\": \"aggregation\",\n    \"oauth_referral_source\": \"BROWSER\",\n    \"ui_message_version\": 4,\n    \"ui_message_webview_url_scheme\": \"<string>\",\n    \"update_credentials\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"user\": {\n    \"connect_widget_url\": \"https://int-widgets.moneydesktop.com/md/connect/jb1rA14m85tw2lyvpgfx4gc6d3Z8z8Ayb8\",\n    \"guid\": \"USR-fa7537f3-48aa-a683-a02a-b18940482f54\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a680a27-5238-4a31-a2cb-3cd5413e10b1",
+          "name": "Request oauth window uri",
+          "request": {
+            "name": "Request oauth window uri",
+            "description": {
+              "content": "This endpoint will generate an `oauth_window_uri` for the specified `member`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "members",
+                ":member_guid",
+                "oauth_window_uri"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_redirect_url",
+                  "value": "<string>",
+                  "description": "A URL that MX will redirect to at the end of OAuth with additional query parameters. Only available with `referral_source=APP`."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_app2app",
+                  "value": "<string>",
+                  "description": "This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. When set to `false`, any `oauth_window_uri` generated will **not** direct the end user to the institution's mobile application. This setting is not persistent. This setting currently only affects Chase institutions."
+                },
+                {
+                  "disabled": false,
+                  "key": "referral_source",
+                  "value": "<string>",
+                  "description": "Must be either `BROWSER` or `APP` depending on the implementation. Defaults to `BROWSER`."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip_aggregation",
+                  "value": "<boolean>",
+                  "description": "Setting this parameter to `true` will prevent the member from automatically aggregating after being redirected from the authorization page."
+                },
+                {
+                  "disabled": false,
+                  "key": "ui_message_webview_url_scheme",
+                  "value": "<string>",
+                  "description": "A scheme for routing the user back to the application state they were previously in. Only available with `referral_source=APP`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_guid",
+                  "description": "(Required) The unique id for a `member`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9749396-d3da-45f7-933e-68debc7ddae5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "members",
+                    ":member_guid",
+                    "oauth_window_uri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_redirect_url",
+                      "value": "https://{yoursite.com}"
+                    },
+                    {
+                      "key": "enable_app2app",
+                      "value": "false"
+                    },
+                    {
+                      "key": "referral_source",
+                      "value": "APP"
+                    },
+                    {
+                      "key": "skip_aggregation",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ui_message_webview_url_scheme",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_guid",
+                      "description": "(Required) The unique id for a `member`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"guid\": \"MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f\",\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8d88776-a468-4332-9800-47e86266b47d",
+          "name": "Request widget URL",
+          "request": {
+            "name": "Request widget URL",
+            "description": {
+              "content": "Get an embeddable URL for integrating a widget into your website or app. The URL expires after ten minutes or upon first use, whichever occurs first. You'll need to obtain a new URL each time the page loads or reloads.\n\nInclude the `widget_type` in the request body to specify which widget you want to embed—the Connect Widget, a Personal Financial Management widget, or an Insights widget. Some request parameters are specific to certain widget types.\n\nTo embed the Connect Widget, set `widget_type` to `connect_widget`.\n\nFor a full list of available widget types, see [Widget Types](/api-reference/platform-api/reference/widgets#widget-types).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "widget_urls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "The desired language of the widget.",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "disabled": false,
+                "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                "key": "X-CALLBACK-PAYLOAD",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"widget_url\": {\n    \"widget_type\": \"<string>\",\n    \"client_redirect_url\": \"<string>\",\n    \"color_scheme\": \"<string>\",\n    \"connections_use_case_filter\": \"<boolean>\",\n    \"current_institution_code\": \"<string>\",\n    \"current_institution_guid\": \"<string>\",\n    \"current_member_guid\": \"<string>\",\n    \"disable_background_agg\": \"<boolean>\",\n    \"disable_institution_search\": \"<boolean>\",\n    \"enable_app2app\": \"<boolean>\",\n    \"include_identity\": \"<boolean>\",\n    \"include_transactions\": \"<boolean>\",\n    \"insight_guid\": \"<string>\",\n    \"iso_country_code\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"is_mobile_webview\": \"<boolean>\",\n    \"microwidget_instance_id\": \"<string>\",\n    \"mode\": \"<string>\",\n    \"oauth_referral_source\": \"<string>\",\n    \"ui_message_version\": \"<integer>\",\n    \"ui_message_webview_url_scheme\": \"<string>\",\n    \"update_credentials\": \"<boolean>\",\n    \"use_cases\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a036c4f8-9230-4033-bd51-24f9256f5926",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "widget_urls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The desired language of the widget.",
+                    "key": "Accept-Language",
+                    "value": "en-US"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "The base64 encoded string defined in this header will be returned in the [Member](/resources/webhooks/member/) and [Member Data Updated](/resources/webhooks/member#member-data-updated) webhooks. This allows you to trace user interactions and workflows initiated externally and internally in the MX Platform. Max 1024 characters.",
+                    "key": "X-CALLBACK-PAYLOAD",
+                    "value": "813e50bd-4a7e-4517-b6bb-9eef65a68cbd"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"widget_url\": {\n    \"widget_type\": \"connect_widget\",\n    \"client_redirect_url\": \"https://{yoursite.com}\",\n    \"color_scheme\": \"light\",\n    \"connections_use_case_filter\": false,\n    \"current_institution_code\": \"mxbank\",\n    \"current_institution_guid\": \"INS-f1a3285d-e855-b61f-6aa7-8ae575c0e0e9\",\n    \"current_member_guid\": \"MBR-7c6f361b-e582-15b6-60c0-358f12466b4b\",\n    \"disable_background_agg\": false,\n    \"disable_institution_search\": false,\n    \"enable_app2app\": false,\n    \"include_identity\": false,\n    \"include_transactions\": true,\n    \"insight_guid\": null,\n    \"iso_country_code\": [\n      \"US\",\n      \"CA\"\n    ],\n    \"is_mobile_webview\": false,\n    \"microwidget_instance_id\": null,\n    \"mode\": \"aggregation\",\n    \"oauth_referral_source\": \"BROWSER\",\n    \"ui_message_version\": 4,\n    \"ui_message_webview_url_scheme\": \"<string>\",\n    \"update_credentials\": false,\n    \"use_cases\": [\n      \"PFM\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"widget_url\": {\n    \"type\": \"connect_widget\",\n    \"url\": \"https://int-widgets.moneydesktop.com/md/connect/yxcdk7f1nb99jwApp34lA24m0AZ8rzprgmw17gm8z8h2AzjyAnd1rj42qfv42r3xnn07Amfwlg3j09hwp8bkq8tc5z21j33xjggmp2qtlpkz2v4gywfhfn31l44tx2w91bfc2thc58j4syqp0hgxcyvA4g7754hk7gjc56kt7tc36s45mmkdz2jqqqydspytmtr3dAb9jh6fkb24f3zkfpdjj0v77f0vmrtzvzxkmxz7dklsq8gd0gstkbhlw5bgpgc3m9mAtpAcr2w15gwy5xc4blgxppl42Avnm63291z3cyp0wm3lqgmvgzdAddct423gAdqxdlfx5d4mvc0ck2gt7ktqgks4vxq1pAy5\",\n    \"user_id\": \"U-jeff-201709221210\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee6c1fc1-1646-43aa-b267-861328fb8a44",
+          "name": "Request oauth window uri",
+          "request": {
+            "name": "Request oauth window uri",
+            "description": {
+              "content": "This endpoint will generate an `oauth_window_uri` for the specified `member`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_identifier",
+                "members",
+                ":member_identifier",
+                "oauth_window_uri"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "client_redirect_url",
+                  "value": "<string>",
+                  "description": "A URL that MX will redirect to at the end of OAuth with additional query parameters. Only available with `referral_source=APP`."
+                },
+                {
+                  "disabled": false,
+                  "key": "enable_app2app",
+                  "value": "<string>",
+                  "description": "This indicates whether OAuth app2app behavior is enabled for institutions that support it. Defaults to `true`. When set to `false`, any `oauth_window_uri` generated will **not** direct the end user to the institution's mobile application. This setting is not persistent. This setting currently only affects Chase institutions."
+                },
+                {
+                  "disabled": false,
+                  "key": "referral_source",
+                  "value": "<string>",
+                  "description": "Must be either `BROWSER` or `APP` depending on the implementation. Defaults to `BROWSER`."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip_aggregation",
+                  "value": "<boolean>",
+                  "description": "Setting this parameter to `true` will prevent the member from automatically aggregating after being redirected from the authorization page."
+                },
+                {
+                  "disabled": false,
+                  "key": "ui_message_webview_url_scheme",
+                  "value": "<string>",
+                  "description": "A scheme for routing the user back to the application state they were previously in. Only available with `referral_source=APP`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "member_identifier",
+                  "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_identifier",
+                  "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) MX Platform API version.",
+                "key": "Accept-Version",
+                "value": "v20250224"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6278b76c-8bab-4e47-9b87-252dc0781b8d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_identifier",
+                    "members",
+                    ":member_identifier",
+                    "oauth_window_uri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "client_redirect_url",
+                      "value": "https://{yoursite.com}"
+                    },
+                    {
+                      "key": "enable_app2app",
+                      "value": "false"
+                    },
+                    {
+                      "key": "referral_source",
+                      "value": "APP"
+                    },
+                    {
+                      "key": "skip_aggregation",
+                      "value": "false"
+                    },
+                    {
+                      "key": "ui_message_webview_url_scheme",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "member_identifier",
+                      "description": "(Required) Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_identifier",
+                      "description": "(Required) Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) MX Platform API version.",
+                    "key": "Accept-Version",
+                    "value": "v20250224"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"member\": {\n    \"guid\": \"MBR-df96fd60-7122-4464-b3c2-ff11d8c74f6f\",\n    \"oauth_window_uri\": \"https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://int-api.mx.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "31f6fac7-ee65-4970-a9ff-c65c60c2f947",
+    "name": "MX Platform accounts widgets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.\n\nJust getting started? See our [use case guides](/use-cases/).\n\n\nContact Support:\n Name: MX Platform API",
+      "type": "text/plain"
+    }
+  }
+}

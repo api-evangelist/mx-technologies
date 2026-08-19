@@ -1,0 +1,121 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MX Platform accounts monthly cash flow profile API",
+    "version": "20111101"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "monthly cash flow profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read monthly cash flow profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_guid/monthly_cash_flow_profile",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ]
+          },
+          "docs": "Read monthly cash flow profile."
+        },
+        {
+          "info": {
+            "name": "Update monthly cash flow profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://int-api.mx.com/users/:user_guid/monthly_cash_flow_profile",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to update the attributes of a `monthly_cash_flow_profile`."
+        },
+        {
+          "info": {
+            "name": "Read monthly cash flow profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_identifier/monthly_cash_flow_profile",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user_identifier",
+                "value": "",
+                "type": "path",
+                "description": "Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+              }
+            ]
+          },
+          "docs": "Read monthly cash flow profile."
+        },
+        {
+          "info": {
+            "name": "Update monthly cash flow profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://int-api.mx.com/users/:user_identifier/monthly_cash_flow_profile",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user_identifier",
+                "value": "",
+                "type": "path",
+                "description": "Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to update the attributes of a `monthly_cash_flow_profile`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

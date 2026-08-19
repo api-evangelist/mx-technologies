@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MX Platform accounts institutions API",
+    "version": "20111101"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "institutions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List institutions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/institutions",
+            "params": [
+              {
+                "name": "name",
+                "value": "mxbank",
+                "type": "query",
+                "description": "This will list only institutions in which the appended string appears."
+              },
+              {
+                "name": "iso_country_code",
+                "value": "US,CA",
+                "type": "query",
+                "description": "An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico)."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Results are paginated. Specify current page."
+              },
+              {
+                "name": "records_per_page",
+                "value": "10",
+                "type": "query",
+                "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+              },
+              {
+                "name": "supports_account_identification",
+                "value": "true",
+                "type": "query",
+                "description": "Filter only institutions which support account identification."
+              },
+              {
+                "name": "supports_account_statement",
+                "value": "true",
+                "type": "query",
+                "description": "Filter only institutions which support account statements."
+              },
+              {
+                "name": "supports_account_verification",
+                "value": "true",
+                "type": "query",
+                "description": "Filter only institutions which support account verification."
+              },
+              {
+                "name": "supports_transaction_history",
+                "value": "true",
+                "type": "query",
+                "description": "Filter only institutions which support extended transaction history."
+              }
+            ]
+          },
+          "docs": "This endpoint returns a list of institutions based on the specified search term or parameter."
+        },
+        {
+          "info": {
+            "name": "List favorite institutions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/institutions/favorites",
+            "params": [
+              {
+                "name": "iso_country_code",
+                "value": "US,CA",
+                "type": "query",
+                "description": "An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico)."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Results are paginated. Specify current page."
+              },
+              {
+                "name": "records_per_page",
+                "value": "10",
+                "type": "query",
+                "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+              }
+            ]
+          },
+          "docs": "This endpoint returns a paginated list containing institutions that have been set as the partner’s favorites, sorted by popularity. Please contact MX to set a list of favorites."
+        },
+        {
+          "info": {
+            "name": "Read institution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/institutions/:institution_code",
+            "params": [
+              {
+                "name": "institution_code",
+                "value": "mxbank",
+                "type": "path",
+                "description": "The institution_code of the institution."
+              }
+            ]
+          },
+          "docs": "This endpoint returns information about the institution specified by `institution_code`."
+        },
+        {
+          "info": {
+            "name": "List institution credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/institutions/:institution_code/credentials",
+            "params": [
+              {
+                "name": "institution_code",
+                "value": "mxbank",
+                "type": "path",
+                "description": "The institution_code of the institution."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Results are paginated. Specify current page."
+              },
+              {
+                "name": "records_per_page",
+                "value": "10",
+                "type": "query",
+                "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to see which credentials will be needed to create a member for a specific institution.\n\nPassing an invalid `institution_code` returns a `404`.\n"
+        },
+        {
+          "info": {
+            "name": "List institution credentials",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/institutions/:institution_identifier/credentials",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "institution_identifier",
+                "value": "mxbank",
+                "type": "path",
+                "description": "The identifier for the institution. For this identifier, use either the `institution_code` or the institution `guid`."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Results are paginated. Specify current page."
+              },
+              {
+                "name": "records_per_page",
+                "value": "10",
+                "type": "query",
+                "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to see which credentials will be needed to create a member for a specific institution.\n\nPassing an invalid `institution_identifier` returns a `404`.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

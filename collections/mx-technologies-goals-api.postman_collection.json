@@ -1,0 +1,770 @@
+{
+  "item": [
+    {
+      "id": "e089a6cd-d464-4d78-83b2-ca9344de471d",
+      "name": "goals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d559e85-1505-404f-8528-e017aefee443",
+          "name": "Create a goal",
+          "request": {
+            "name": "Create a goal",
+            "description": {
+              "content": "Create a goal. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "goals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.mx.api.v1+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"goal\": {\n    \"account_guid\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"goal_type_name\": \"<string>\",\n    \"meta_type_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"completed_at\": \"<string>\",\n    \"has_been_spent\": \"<boolean>\",\n    \"is_complete\": \"<boolean>\",\n    \"metadata\": \"<string>\",\n    \"position\": \"<integer>\",\n    \"targeted_to_complete_at\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06b9e79f-8718-4870-9183-2daf31e0b956",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "goals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"goal\": {\n    \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n    \"amount\": 4500.5,\n    \"goal_type_name\": \"PAYOFF\",\n    \"meta_type_name\": \"VACATION\",\n    \"name\": \"Save for Europe\",\n    \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n    \"has_been_spent\": false,\n    \"is_complete\": false,\n    \"metadata\": \"Additional information\",\n    \"position\": 3,\n    \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"goal\": {\n    \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n    \"amount\": 4500,\n    \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n    \"current_amount\": 1651.27,\n    \"goal_type_name\": \"PAYOFF\",\n    \"guid\": \"GOL-f223463-4355-48d0-rce7-fe2rb345617c\",\n    \"has_been_spent\": false,\n    \"is_complete\": false,\n    \"metadata\": \"Additional information\",\n    \"meta_type_name\": \"VACATION\",\n    \"name\": \"Save for Europe\",\n    \"position\": 3,\n    \"projected_to_complete_at\": \"2022-06-14T16:03:53-00:00\",\n    \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\",\n    \"track_type_name\": \"Track Type Name\",\n    \"user_guid\": \"USR-11141024-90b3-1bce-cac9-c06ced52ab4c\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb2e0957-003c-4ea3-9574-4e046f7c6da9",
+          "name": "List goals",
+          "request": {
+            "name": "List goals",
+            "description": {
+              "content": "List all goals a user can set.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "goals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8a8109be-640f-489e-8ef6-9323d6f583d1",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "goals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the media type expected in the response.",
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"goals\": [\n    {\n      \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n      \"amount\": 4500,\n      \"current_amount\": 1651.27,\n      \"guid\": \"GOL-524ca5db-a2d5-44f3-b048-16de16059024\",\n      \"goal_type_name\": \"PAYOFF\",\n      \"meta_type_name\": \"VACATION\",\n      \"name\": \"Save for Europe\",\n      \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n      \"has_been_spent\": false,\n      \"is_complete\": false,\n      \"metadata\": \"Additional information\",\n      \"position\": 3,\n      \"projected_to_complete_at\": \"2022-06-14T16:03:53-00:00\",\n      \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\",\n      \"track_type_name\": \"Track Type Name\",\n      \"user_guid\": \"USR-11141024-90b3-1bce-cac9-c06ced52ab4c\"\n    },\n    {\n      \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n      \"amount\": 4500,\n      \"current_amount\": 1651.27,\n      \"guid\": \"GOL-524ca5db-a2d5-44f3-b048-16de16059024\",\n      \"goal_type_name\": \"PAYOFF\",\n      \"meta_type_name\": \"VACATION\",\n      \"name\": \"Save for Europe\",\n      \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n      \"has_been_spent\": false,\n      \"is_complete\": false,\n      \"metadata\": \"Additional information\",\n      \"position\": 3,\n      \"projected_to_complete_at\": \"2022-06-14T16:03:53-00:00\",\n      \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\",\n      \"track_type_name\": \"Track Type Name\",\n      \"user_guid\": \"USR-11141024-90b3-1bce-cac9-c06ced52ab4c\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "10a3070f-9749-4215-ba79-b2f0b8ee4394",
+          "name": "Delete a goal",
+          "request": {
+            "name": "Delete a goal",
+            "description": {
+              "content": "Delete a goal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "goals",
+                ":goal_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "goal_guid",
+                  "description": "(Required) The unique identifier for a goal. Defined by MX."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4b6bb85-5b1a-41bb-a14f-ece21afd4348",
+              "name": "No content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "goals",
+                    ":goal_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "goal_guid",
+                      "description": "(Required) The unique identifier for a goal. Defined by MX."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Specifies the media type expected in the response.",
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c73ef3f1-c545-4c04-b6a7-077a8e522b39",
+          "name": "Read a goal",
+          "request": {
+            "name": "Read a goal",
+            "description": {
+              "content": "Read a specific goal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "goals",
+                ":goal_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "goal_guid",
+                  "description": "(Required) The unique identifier for a goal. Defined by MX."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "546d37dd-e076-4983-9505-2fcfe81a943a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "goals",
+                    ":goal_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "goal_guid",
+                      "description": "(Required) The unique identifier for a goal. Defined by MX."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"goal\": {\n    \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n    \"amount\": 4500,\n    \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n    \"current_amount\": 1651.27,\n    \"goal_type_name\": \"PAYOFF\",\n    \"guid\": \"GOL-f223463-4355-48d0-rce7-fe2rb345617c\",\n    \"has_been_spent\": false,\n    \"is_complete\": false,\n    \"metadata\": \"Additional information\",\n    \"meta_type_name\": \"VACATION\",\n    \"name\": \"Save for Europe\",\n    \"position\": 3,\n    \"projected_to_complete_at\": \"2022-06-14T16:03:53-00:00\",\n    \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\",\n    \"track_type_name\": \"Track Type Name\",\n    \"user_guid\": \"USR-11141024-90b3-1bce-cac9-c06ced52ab4c\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2e663c5-ecda-405d-85c4-a6ddcc949280",
+          "name": "Update a goal",
+          "request": {
+            "name": "Update a goal",
+            "description": {
+              "content": "This endpoint updates a specific goal.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "goals",
+                ":goal_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "goal_guid",
+                  "description": "(Required) The unique identifier for a goal. Defined by MX."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"goal\": {\n    \"account_guid\": \"<string>\",\n    \"amount\": \"<number>\",\n    \"goal_type_name\": \"<string>\",\n    \"meta_type_name\": \"<string>\",\n    \"name\": \"<string>\",\n    \"completed_at\": \"<string>\",\n    \"has_been_spent\": \"<boolean>\",\n    \"is_complete\": \"<boolean>\",\n    \"metadata\": \"<string>\",\n    \"position\": \"<integer>\",\n    \"targeted_to_complete_at\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1b4c3c0-8a58-4cde-bc84-4f385a736359",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "goals",
+                    ":goal_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "goal_guid",
+                      "description": "(Required) The unique identifier for a goal. Defined by MX."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"goal\": {\n    \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n    \"amount\": 4500.5,\n    \"goal_type_name\": \"PAYOFF\",\n    \"meta_type_name\": \"VACATION\",\n    \"name\": \"Save for Europe\",\n    \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n    \"has_been_spent\": false,\n    \"is_complete\": false,\n    \"metadata\": \"Additional information\",\n    \"position\": 3,\n    \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"goal\": {\n    \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n    \"amount\": 4500,\n    \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n    \"current_amount\": 1651.27,\n    \"goal_type_name\": \"PAYOFF\",\n    \"guid\": \"GOL-f223463-4355-48d0-rce7-fe2rb345617c\",\n    \"has_been_spent\": false,\n    \"is_complete\": false,\n    \"metadata\": \"Additional information\",\n    \"meta_type_name\": \"VACATION\",\n    \"name\": \"Save for Europe\",\n    \"position\": 3,\n    \"projected_to_complete_at\": \"2022-06-14T16:03:53-00:00\",\n    \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\",\n    \"track_type_name\": \"Track Type Name\",\n    \"user_guid\": \"USR-11141024-90b3-1bce-cac9-c06ced52ab4c\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c816309d-5492-4a4f-b972-b11fe7c6e5fe",
+          "name": "Reposition goals",
+          "request": {
+            "name": "Reposition goals",
+            "description": {
+              "content": "This endpoint repositions goal priority levels. If one goal is set to a lower priority, then any other goals need to be adjusted accordingly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "goals",
+                "reposition"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.mx.api.v1+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"goals\": [\n    {\n      \"guid\": \"<string>\",\n      \"position\": \"<integer>\"\n    },\n    {\n      \"guid\": \"<string>\",\n      \"position\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c2a3da73-9a61-4d7a-8069-009547b155d0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "goals",
+                    "reposition"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"goals\": [\n    {\n      \"guid\": \"GOL-97665947-235c-b213-ca25-8cf0174774f5\",\n      \"position\": 1\n    },\n    {\n      \"guid\": \"GOL-97665947-235c-b213-ca25-8cf0174774f5\",\n      \"position\": 1\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"goals\": [\n    {\n      \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n      \"amount\": 4500,\n      \"current_amount\": 1651.27,\n      \"guid\": \"GOL-524ca5db-a2d5-44f3-b048-16de16059024\",\n      \"goal_type_name\": \"PAYOFF\",\n      \"meta_type_name\": \"VACATION\",\n      \"name\": \"Save for Europe\",\n      \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n      \"has_been_spent\": false,\n      \"is_complete\": false,\n      \"metadata\": \"Additional information\",\n      \"position\": 3,\n      \"projected_to_complete_at\": \"2022-06-14T16:03:53-00:00\",\n      \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\",\n      \"track_type_name\": \"Track Type Name\",\n      \"user_guid\": \"USR-11141024-90b3-1bce-cac9-c06ced52ab4c\"\n    },\n    {\n      \"account_guid\": \"ACT-4e431124-4a29-abf9-f059-ab232ac14dbf\",\n      \"amount\": 4500,\n      \"current_amount\": 1651.27,\n      \"guid\": \"GOL-524ca5db-a2d5-44f3-b048-16de16059024\",\n      \"goal_type_name\": \"PAYOFF\",\n      \"meta_type_name\": \"VACATION\",\n      \"name\": \"Save for Europe\",\n      \"completed_at\": \"2015-06-19T10:37:04-06:00\",\n      \"has_been_spent\": false,\n      \"is_complete\": false,\n      \"metadata\": \"Additional information\",\n      \"position\": 3,\n      \"projected_to_complete_at\": \"2022-06-14T16:03:53-00:00\",\n      \"targeted_to_complete_at\": \"2026-12-08 00:00:00.000000\",\n      \"track_type_name\": \"Track Type Name\",\n      \"user_guid\": \"USR-11141024-90b3-1bce-cac9-c06ced52ab4c\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://int-api.mx.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f3f0658a-a487-41a6-96f2-929517bb9f27",
+    "name": "MX Platform accounts goals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.\n\nJust getting started? See our [use case guides](/use-cases/).\n\n\nContact Support:\n Name: MX Platform API",
+      "type": "text/plain"
+    }
+  }
+}

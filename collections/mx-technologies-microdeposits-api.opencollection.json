@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MX Platform accounts microdeposits API",
+    "version": "20111101"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "microdeposits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all microdeposits for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_guid/micro_deposits",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID."
+        },
+        {
+          "info": {
+            "name": "Create or pre-initiate a microdeposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://int-api.mx.com/users/:user_guid/micro_deposits",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to create or pre-initiate a microdeposit. The response will include the new microdeposit record with a status of `INITIATED` or `PREINITIATED` respectively.\n\nTo pre-initiate a microdeposit, you only need to set `email` (string), `first_name` (string), and `last_name` (string) in the request body. \n\nPre-initiating a microdeposit allows you to pass the end user's first name, last name, and email if this data has already been collected. If the end user selects an institution which"
+        },
+        {
+          "info": {
+            "name": "Read a microdeposit for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_guid/micro_deposits/:micro_deposit_guid",
+            "params": [
+              {
+                "name": "micro_deposit_guid",
+                "value": "MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb",
+                "type": "path",
+                "description": "The unique identifier for the microdeposit. Defined by MX."
+              },
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a status changes. The actual status of the microdeposit guid updates every minute. You may force a status update by calling the read microdeposit endpoint."
+        },
+        {
+          "info": {
+            "name": "Delete a microdeposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://int-api.mx.com/users/:user_guid/micro_deposits/:micro_deposit_guid",
+            "params": [
+              {
+                "name": "micro_deposit_guid",
+                "value": "MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb",
+                "type": "path",
+                "description": "The unique identifier for the microdeposit. Defined by MX."
+              },
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to delete the specified microdeposit."
+        },
+        {
+          "info": {
+            "name": "Verify a Microdeposit",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://int-api.mx.com/micro_deposits/:micro_deposit_guid/verify",
+            "params": [
+              {
+                "name": "micro_deposit_guid",
+                "value": "MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb",
+                "type": "path",
+                "description": "The unique identifier for the microdeposit. Defined by MX."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use this endpoint to verify the amounts deposited into the account during a microdeposit verification. The verification has not successfully completed until the `status` is `VERIFIED`. Poll the `/users/{user_guid}/micro_deposits/{micro_deposit_guid}` (read microdeposit) endpoint until you see this status or an error state."
+        },
+        {
+          "info": {
+            "name": "List all verifications for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_guid/account_verifications",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ]
+          },
+          "docs": "This endpoint returns a list of the account verifications associated with the user, as well as the status of those verifications.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

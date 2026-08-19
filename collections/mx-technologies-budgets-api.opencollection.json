@@ -1,0 +1,165 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MX Platform accounts budgets API",
+    "version": "20111101"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "budgets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Auto-generate budgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://int-api.mx.com/users/:user_guid/budgets/generate",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ]
+          },
+          "docs": "This endpoint will automatically create budgets for several categories based on existing transactions; these budgets are returned as an array. Specifically, budgets will only be generated if the `user` has at least one `transaction` in a given category during each of the two previous calendar months. For example, if the request is made on March 6, and there is at least one \"Bills & Utilities\" `transaction` in both January and February, a budget will be generated for \"Bills & Utilities.\" If there"
+        },
+        {
+          "info": {
+            "name": "List all budgets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_guid/budgets",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ]
+          },
+          "docs": "List all budgets"
+        },
+        {
+          "info": {
+            "name": "Create a budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://int-api.mx.com/users/:user_guid/budgets",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a budget. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter. You cannot create a duplicate budget. For example, if you attempt to create a budget for \"Gas\", but that budget already exist, the request will fail. You can retrieve a list of all existing categories by using the List Categories endpoint."
+        },
+        {
+          "info": {
+            "name": "Read a specific budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_guid/budgets/:budget_guid",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              },
+              {
+                "name": "budget_guid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the budget. Defined by MX."
+              }
+            ]
+          },
+          "docs": "Read a specific budget."
+        },
+        {
+          "info": {
+            "name": "Update a specific budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://int-api.mx.com/users/:user_guid/budgets/:budget_guid",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              },
+              {
+                "name": "budget_guid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the budget. Defined by MX."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific budget."
+        },
+        {
+          "info": {
+            "name": "Delete a budget",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://int-api.mx.com/users/:user_guid/budgets/:budget_guid",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              },
+              {
+                "name": "budget_guid",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier for the budget. Defined by MX."
+              }
+            ]
+          },
+          "docs": "Delete a budget."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,533 @@
+{
+  "item": [
+    {
+      "id": "f64aec9b-153b-4e75-a9a9-6faf27a505a9",
+      "name": "transaction rules",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "08db5913-65a6-4c92-83af-15efe85d4b55",
+          "name": "List transaction rules",
+          "request": {
+            "name": "List transaction rules",
+            "description": {
+              "content": "Use this endpoint to read the attributes of all existing transaction rules belonging to the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "transaction_rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "Results are paginated. Specify current page."
+                },
+                {
+                  "disabled": false,
+                  "key": "records_per_page",
+                  "value": "<integer>",
+                  "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ad6e7440-77bf-4068-8780-2c7216719f91",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "transaction_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "records_per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"transaction_rules\": [\n    {\n      \"category_guid\": \"CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0\",\n      \"created_at\": \"2018-10-02T22:00:50+00:00\",\n      \"description\": \"Wal-mart food storage\",\n      \"guid\": \"TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3\",\n      \"match_description\": \"Wal-mart\",\n      \"updated_at\": \"2018-10-02T23:54:40+00:00\",\n      \"user_guid\": \"USR-22fc3203-b3e6-8340-43db-8e50b2f56995\"\n    },\n    {\n      \"category_guid\": \"CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0\",\n      \"created_at\": \"2018-10-02T22:00:50+00:00\",\n      \"description\": \"Wal-mart food storage\",\n      \"guid\": \"TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3\",\n      \"match_description\": \"Wal-mart\",\n      \"updated_at\": \"2018-10-02T23:54:40+00:00\",\n      \"user_guid\": \"USR-22fc3203-b3e6-8340-43db-8e50b2f56995\"\n    }\n  ],\n  \"pagination\": {\n    \"current_page\": 1,\n    \"per_page\": 25,\n    \"total_entries\": 1,\n    \"total_pages\": 1\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee226089-8b39-4d71-8d4e-65daca2be599",
+          "name": "Create transaction rule",
+          "request": {
+            "name": "Create transaction rule",
+            "description": {
+              "content": "Use this endpoint to create a new transaction rule. The newly-created `transaction_rule` object will be returned if successful.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "transaction_rules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction_rule\": {\n    \"category_guid\": \"<string>\",\n    \"match_description\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb5444c5-bf3c-4fed-bd89-1adf569a9635",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "transaction_rules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction_rule\": {\n    \"category_guid\": \"CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0\",\n    \"match_description\": \"Wal-mart\",\n    \"description\": \"Wal-mart food storage\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"transaction_rule\": {\n    \"category_guid\": \"CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0\",\n    \"created_at\": \"2018-10-02T22:00:50+00:00\",\n    \"description\": \"Wal-mart food storage\",\n    \"guid\": \"TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3\",\n    \"match_description\": \"Wal-mart\",\n    \"updated_at\": \"2018-10-02T23:54:40+00:00\",\n    \"user_guid\": \"USR-22fc3203-b3e6-8340-43db-8e50b2f56995\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e96238c3-1c88-422e-a323-bc9c84ecf2d4",
+          "name": "Read transaction rule",
+          "request": {
+            "name": "Read transaction rule",
+            "description": {
+              "content": "Use this endpoint to read the attributes of an existing transaction rule based on the rule’s unique GUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "transaction_rules",
+                ":transaction_rule_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transaction_rule_guid",
+                  "description": "(Required) The unique id for a `transaction_rule`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5dc7e440-a018-49c3-8a61-b81817a27707",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "transaction_rules",
+                    ":transaction_rule_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_rule_guid",
+                      "description": "(Required) The unique id for a `transaction_rule`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"transaction_rule\": {\n    \"category_guid\": \"CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0\",\n    \"created_at\": \"2018-10-02T22:00:50+00:00\",\n    \"description\": \"Wal-mart food storage\",\n    \"guid\": \"TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3\",\n    \"match_description\": \"Wal-mart\",\n    \"updated_at\": \"2018-10-02T23:54:40+00:00\",\n    \"user_guid\": \"USR-22fc3203-b3e6-8340-43db-8e50b2f56995\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de2b84b1-afe2-4a40-bff7-b03af8b40f95",
+          "name": "Update transaction rule",
+          "request": {
+            "name": "Update transaction rule",
+            "description": {
+              "content": "Use this endpoint to update the attributes of a specific transaction rule based on its unique GUID. The API will respond with the updated transaction_rule object. Any attributes not provided will be left unchanged.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_guid",
+                "transaction_rules",
+                ":transaction_rule_guid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "transaction_rule_guid",
+                  "description": "(Required) The unique id for a `transaction_rule`."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_guid",
+                  "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.mx.api.v1+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"transaction_rule\": {\n    \"category_guid\": \"<string>\",\n    \"description\": \"<string>\",\n    \"match_description\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aac48f64-8c77-4d59-8fc5-7d8a15fed55a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_guid",
+                    "transaction_rules",
+                    ":transaction_rule_guid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "transaction_rule_guid",
+                      "description": "(Required) The unique id for a `transaction_rule`."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_guid",
+                      "description": "(Required) The unique identifier for a `user`, beginning with the prefix `USR-`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.mx.api.v1+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"transaction_rule\": {\n    \"category_guid\": \"CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0\",\n    \"description\": \"Wal-mart food storage\",\n    \"match_description\": \"Wal-mart\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.mx.api.v1+json"
+                }
+              ],
+              "body": "{\n  \"transaction_rule\": {\n    \"category_guid\": \"CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0\",\n    \"created_at\": \"2018-10-02T22:00:50+00:00\",\n    \"description\": \"Wal-mart food storage\",\n    \"guid\": \"TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3\",\n    \"match_description\": \"Wal-mart\",\n    \"updated_at\": \"2018-10-02T23:54:40+00:00\",\n    \"user_guid\": \"USR-22fc3203-b3e6-8340-43db-8e50b2f56995\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://int-api.mx.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "80be285b-41e8-4d73-97c0-6372a15c46e7",
+    "name": "MX Platform accounts transaction rules API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.\n\nJust getting started? See our [use case guides](/use-cases/).\n\n\nContact Support:\n Name: MX Platform API",
+      "type": "text/plain"
+    }
+  }
+}

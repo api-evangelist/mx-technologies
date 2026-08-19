@@ -1,0 +1,156 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MX Platform accounts rewards API",
+    "version": "20111101"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Fetch Rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://int-api.mx.com/users/:user_guid/members/:member_guid/fetch_rewards",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              },
+              {
+                "name": "member_guid",
+                "value": "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
+                "type": "path",
+                "description": "The unique id for a `member`."
+              }
+            ]
+          },
+          "docs": "Calling this endpoint initiates an aggregation-type event which will gather the member's rewards information, as well as account and transaction information. Rewards data is also gathered with daily background aggregations. Member and Rewards guids are defined by MX."
+        },
+        {
+          "info": {
+            "name": "List Rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_guid/members/:member_guid/rewards",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              },
+              {
+                "name": "member_guid",
+                "value": "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
+                "type": "path",
+                "description": "The unique id for a `member`."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to list all the `rewards` associated with a specified `member`. Member guids are defined by MX."
+        },
+        {
+          "info": {
+            "name": "Read Reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/users/:user_guid/members/:member_guid/rewards/:reward_guid",
+            "params": [
+              {
+                "name": "user_guid",
+                "value": "USR-fa7537f3-48aa-a683-a02a-b18940482f54",
+                "type": "path",
+                "description": "The unique identifier for a `user`, beginning with the prefix `USR-`."
+              },
+              {
+                "name": "member_guid",
+                "value": "MBR-7c6f361b-e582-15b6-60c0-358f12466b4b",
+                "type": "path",
+                "description": "The unique id for a `member`."
+              },
+              {
+                "name": "reward_guid",
+                "value": "RWD-fa7537f3-48aa-a683-a02a-b324322f54",
+                "type": "path",
+                "description": "The unique identifier for the rewards. Defined by MX."
+              }
+            ]
+          },
+          "docs": "Use this endpoint to read a specific `reward` based on its unique GUID. Member and Rewards guids are defined by MX."
+        },
+        {
+          "info": {
+            "name": "Read a Credit Card Product",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/credit_card_products/:credit_card_product_guid",
+            "params": [
+              {
+                "name": "credit_card_product_guid",
+                "value": "credit_card_product_guid",
+                "type": "path",
+                "description": "The required `credit_card_product_guid` can be found on the `account` object."
+              }
+            ]
+          },
+          "docs": "This endpoint returns the specified `credit_card_product` according to the unique GUID."
+        },
+        {
+          "info": {
+            "name": "Fetch Rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://int-api.mx.com/users/:user_identifier/members/:member_identifier/fetch_rewards",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "user_identifier",
+                "value": "",
+                "type": "path",
+                "description": "Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+              },
+              {
+                "name": "member_identifier",
+                "value": "",
+                "type": "path",
+                "description": "Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you)."
+              }
+            ]
+          },
+          "docs": "Calling this endpoint initiates an aggregation-type event which will gather the member's rewards information, as well as account and transaction information. Rewards data is also gathered with daily background aggregations. Member and Rewards guids are defined by MX."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

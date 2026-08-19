@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MX Platform accounts merchants API",
+    "version": "20111101"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "merchants",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Read merchant location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/merchant_locations/:merchant_location_guid",
+            "params": [
+              {
+                "name": "merchant_location_guid",
+                "value": "MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621",
+                "type": "path",
+                "description": "The unique id for a `merchant_location`."
+              }
+            ]
+          },
+          "docs": "This endpoint returns the specified `merchant_location` resource. The `merchant_location_guid` can be found on `transaction` objects."
+        },
+        {
+          "info": {
+            "name": "List merchants",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/merchants",
+            "params": [
+              {
+                "name": "name",
+                "value": "Comcast",
+                "type": "query",
+                "description": "This will list only merchants in which the appended string appears."
+              },
+              {
+                "name": "page",
+                "value": "1",
+                "type": "query",
+                "description": "Results are paginated. Specify current page."
+              },
+              {
+                "name": "records_per_page",
+                "value": "10",
+                "type": "query",
+                "description": "This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead."
+              }
+            ]
+          },
+          "docs": "This endpoint returns a paginated list of all the merchants in the MX system."
+        },
+        {
+          "info": {
+            "name": "Read merchant",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/merchants/:merchant_guid",
+            "params": [
+              {
+                "name": "merchant_guid",
+                "value": "MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b",
+                "type": "path",
+                "description": "The unique id for a `merchant`."
+              }
+            ]
+          },
+          "docs": "Returns information about a particular merchant, such as a logo, name, and website."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

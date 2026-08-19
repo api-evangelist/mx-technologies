@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "MX Platform accounts processor token API",
+    "version": "20111101"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "processor token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request an authorization code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://int-api.mx.com/authorization_code",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clients use this endpoint to request an authorization code according to the parameters specified in the scope. Clients then pass this code to processors. Processor access is scoped only to the GUIDs and features specified in this request. Before requesting an authorization code which includes a member in the scope, clients must have verified that member."
+        },
+        {
+          "info": {
+            "name": "(Deprecated) Request an authorization code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://int-api.mx.com/payment_processor_authorization_code",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "(This endpoint is deprecated. Clients should use `/authorization_code`.) Clients use this endpoint to request an authorization_code according to a user, member, and account specified in the request body. Clients then pass this code to processors. Processor access is scoped only to the user/member/account specified in this request. Before requesting an authorization_code, clients must have verified the specified member."
+        },
+        {
+          "info": {
+            "name": "View a List of Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/tokens",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "View a list of tokens that exist for a user, member, or account."
+        },
+        {
+          "info": {
+            "name": "Request an account number (Processors Only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/account/account_numbers",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get account information such as routing number and account number, scoped to your access token."
+        },
+        {
+          "info": {
+            "name": "Check Real Time Account Balance (Processors Only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://int-api.mx.com/account/check_balance",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Check the real-time account balance using your access token."
+        },
+        {
+          "info": {
+            "name": "Read the account balance (Processors Only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/payment_account",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Read the account balance (Processors Only)"
+        },
+        {
+          "info": {
+            "name": "Get account owner information (Processors Only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://int-api.mx.com/account/transactions",
+            "headers": [
+              {
+                "name": "Accept-Version",
+                "value": ""
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get account owner information (Processors Only)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
