@@ -263,6 +263,8 @@ apis:
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
+  - Institutions
+  tags_raw:
   - institutions
   properties:
   - type: OpenAPI
@@ -398,7 +400,7 @@ apis:
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
-  - Monthly_cash_flow_profile
+  - monthly cash flow profile
   tags_raw:
   - monthly cash flow profile
   properties:
@@ -476,7 +478,7 @@ apis:
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
-  - Spending Plan
+  - spending plan
   tags_raw:
   - spending plan
   properties:
@@ -556,7 +558,7 @@ apis:
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
-  - Transaction_rules
+  - transaction rules
   tags_raw:
   - transaction rules
   properties:
