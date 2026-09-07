@@ -1,0 +1,43 @@
+generated: '2026-07-23'
+method: searched
+source: https://docs.mx.com/products/data/data-access
+notes: >-
+  Standards conformance for MX. Data Access is positioned as FDX-conformant,
+  consumer-permissioned, tokenized data sharing; the Consent Management API
+  versions map to FDX versions. The Platform API uses HTTP Basic (no OAuth2
+  securityScheme in the spec), so OAuth2/OIDC are asserted at the institution
+  connection layer, not the API-authorization layer. Compliance certifications
+  (SOC 2, PCI DSS) are captured in security/mx-trust-center.yml.
+standards:
+  - id: fdx
+    name: Financial Data Exchange (FDX) API
+    conforms: true
+    evidence: >-
+      Data Access shares/consumes institution data using FDX standards; Consent
+      Management version parameter indicates the FDX version in use.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: true
+    evidence: >-
+      Institution connections and Data Access use OAuth for tokenized,
+      consumer-permissioned access (institution-level, not API authorization).
+  - id: http-basic-auth
+    name: HTTP Basic Authentication (RFC 7617)
+    conforms: true
+    evidence: openapi securityScheme type http scheme basic (client_id / api_key)
+  - id: rfc9116-security-txt
+    name: security.txt (RFC 9116)
+    conforms: true
+    evidence: PGP-signed /.well-known/security.txt published at mx.com
+  - id: rfc9457-problem-details
+    name: RFC 9457 Problem Details
+    conforms: false
+    evidence: Errors use an `error` envelope (message/status/type), not application/problem+json
+  - id: rfc8594-sunset-header
+    name: Sunset / Deprecation headers (RFC 8594)
+    conforms: false
+    evidence: Versioning uses the Accept-Version header and a documented deprecation policy, not Sunset headers
+  - id: consumer-permissioned-data-sharing
+    name: Consumer-permissioned data sharing
+    conforms: true
+    evidence: Consent Management API lets consumers grant, modify, and revoke access at any time

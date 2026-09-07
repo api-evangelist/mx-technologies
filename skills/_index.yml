@@ -1,0 +1,16 @@
+generated: '2026-07-23'
+method: generated
+source: openapi/mx-platform-api-openapi.yml
+notes: >-
+  Packaged Agent Skills for the MX Platform API, grounded in real operationIds
+  verified against the OpenAPI spec, plus the captured auth / conventions /
+  errors / rate-limit / webhook rules.
+skills:
+  - file: mx-connect-and-aggregate.md
+    name: Connect a user and aggregate their financial data
+    api: openapi/mx-platform-api-openapi.yml
+    operations: [createUser, listInstitutions, createMember, aggregateMember, readMemberStatus, listMemberAccounts, listTransactionsByMember]
+  - file: mx-verify-account.md
+    name: Verify a member's account and read account numbers
+    api: openapi/mx-platform-api-openapi.yml
+    operations: [createMember, verifyMember, readMemberStatus, listMemberAccounts, listAccountNumbersByMember]

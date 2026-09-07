@@ -1,0 +1,34 @@
+generated: '2026-07-23'
+method: searched
+source: https://docs.mx.com/api-reference/platform-api/overview/versioning
+notes: >-
+  MX ships dated API versions selected via the Accept-Version request header
+  (current v20250224). Each version is supported at least 18 months, then enters
+  a 12-month deprecation window before sunset; sunset versions return an error.
+versioning:
+  scheme: dated-header
+  header: Accept-Version
+  current: v20250224
+  docs: https://docs.mx.com/api-reference/platform-api/overview/versioning
+  migration_guide: https://docs.mx.com/api-reference/platform-api/overview/migration
+deprecation:
+  policy_url: https://docs.mx.com/api-reference/platform-api/overview/versioning
+  support_window_months: 18
+  deprecation_window_months: 12
+  sunset_behavior: >-
+    After the 12-month deprecation period the version sunsets; access is removed
+    and requests to the version return an error.
+  in_spec_deprecated_tag: true   # OpenAPI declares a `deprecated` tag and deprecated operations
+sla:
+  status_page: https://status.mx.com/
+  status_docs: https://docs.mx.com/resources/status-page/index
+status_page: https://status.mx.com/
+changelog: https://docs.mx.com/resources/changelog/index
+breaking_change_policy:
+  - Adding a new required request parameter, or making an optional one required
+  - Removing a request parameter (optional or required)
+  - Changing the semantic meaning or type of a parameter
+  - Adding a new validation rule to an existing parameter
+  - Removing or renaming a response field
+  - Removing enum values
+  - Removing, moving, or changing endpoint paths

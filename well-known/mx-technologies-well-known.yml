@@ -1,0 +1,40 @@
+generated: '2026-07-23'
+method: searched
+notes: >-
+  Probed /.well-known/ discovery surface across the MX hosts (api.mx.com,
+  www.mx.com, docs.mx.com). Only the RFC 9116 security.txt (PGP-signed, served
+  from www.mx.com with canonical https://mx.com/.well-known/security.txt) was
+  present. The api.mx.com host returns HTTP 400 to bare well-known and
+  /openapi.json probes (auth-gated API host, no anonymous discovery surface);
+  the machine-readable spec is published at
+  https://docs.mx.com/openapi/platform-api/v20250224.yaml instead.
+hosts:
+  - host: https://www.mx.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: mx-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+  - host: https://api.mx.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 400
+      - path: /.well-known/openid-configuration
+        status: 400
+      - path: /.well-known/oauth-authorization-server
+        status: 400
+      - path: /.well-known/api-catalog
+        status: 400
+      - path: /openapi.json
+        status: 400
+      - path: /swagger.json
+        status: 400
+  - host: https://docs.mx.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /llms.txt
+        status: 200

@@ -1,0 +1,49 @@
+generated: '2026-07-23'
+method: searched
+source: https://docs.mx.com/resources/changelog/index
+notes: >-
+  MX publishes a dated changelog covering backwards-compatible (non-breaking)
+  changes; breaking changes are gated behind dated versions (see
+  lifecycle/mx-lifecycle.yml). Recent window captured below; the live changelog
+  is the source of truth.
+scheme: dated-entries
+current_version: v20250224
+entries:
+  - date: '2026-04-03'
+    tags: [Platform API]
+    breaking: false
+    highlights: >-
+      Added v20250224 `status` and `client_status` fields to Institution
+      responses and `include_blocked_institutions` query parameter to List
+      Institutions.
+  - date: '2026-02-26'
+    tags: [Legacy APIs, Platform API]
+    breaking: false
+    highlights: Added `widget` parameter to deep_link_params in Request/Get Widget URL (SSO V3).
+  - date: '2026-02-03'
+    tags: [Platform API]
+    breaking: false
+    highlights: Added v20250224 `created` 201 response to Create Member and descriptions of all statuses.
+  - date: '2026-01-29'
+    tags: [Legacy APIs, Platform API]
+    breaking: false
+    highlights: Added `view` to deep_link_params in Request/Get Widget URL (SSO V3).
+  - date: '2025-12-10'
+    tags: [Platform API]
+    breaking: false
+    highlights: Replaced `user_guid` with `user_identifier` in POST /widget_urls for v20250224.
+  - date: '2025-12-09'
+    tags: [Platform API]
+    breaking: false
+    highlights: >-
+      Added several v20250224 endpoints incl. List Category Totals, Read a Job,
+      Aggregate All Members, Block an Account, Create/Delete Split Transactions
+      by Account, and Transaction-by-Account reads/updates.
+  - date: '2025-11-27'
+    tags: [Platform API]
+    breaking: false
+    highlights: List Institutions / List Favorite Institutions records_per_page now supports up to 1000 (v20250224 & v20111101).
+  - date: '2025-08-25'
+    tags: [Platform API]
+    breaking: false
+    highlights: Added v20250224 `/users/{user_guid}/accounts/merge` endpoint.

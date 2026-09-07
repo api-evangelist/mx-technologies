@@ -1,0 +1,26 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Canonical: https://mx.com/.well-known/security.txt
+Contact: mailto:vulns@mx.com
+Encryption: openpgp4fpr:D1282084BAA3C4AD6D653C30E3B0502F2494AFB5
+Expires: 2030-12-31T23:59:59z
+Policy: https://mx.com/security-policy/
+Preferred-Languages: en
+-----BEGIN PGP SIGNATURE-----
+
+iQJBBAEBCAArFiEE0SgghLqjxK1tZTww47BQLySUr7UFAmX7JfQNHHZ1bG5zQG14
+LmNvbQAKCRDjsFAvJJSvteqJD/4oee1uRLiVj6SGFykmsNSb+6rJRlX9i+p3oVAu
+addKi63wPdsQbK/nfu1xqRi+1XqkO1s4XQhMxbrbb3j1HjtxJ0l4c/VSy8CvYSu/
+SyaP/axYKK/NUbVyFgD4K1/VdTgw0Ko9n6eGT7tRAc9aLxtqIS7n/Y0eVic6Ex5C
+RcUMSVo0JVrH3+5SNspI8IsFUmRNC1kl7EdrPqjnC0OFptJTWE/b1zHqoiE4kWZq
+DO00/VFmPau/+xxJPDXSYn9RyBmzrHORs7BbpSVjiaY7h6Tw+nGpu8kegoAR23wl
+aN9fpvvlLzfo/C0Jl/DFJqoqYN/GhtvcG+BP786dOzyuG8ZLQCXOJHTxM6YdgN8p
+9wESiqHMHQgKn8RDSVdkbW7qLWZpFkyKqI6b+VXy0SSo9qhQeUmQZG/SwqBG8lDa
+DF1jtDClsofkFoWnuH87Ww97lPsyY3tqSOa+BFZR7uCwG9aYXL826gTTxdGTK6rN
+cAMa4DfhI2nRNkLzt7WLBKfKo6NLBiS9eCKtKCrDPmfbx2HN6gCt9OP4jIcn198q
+4cVEgRPYQqbRr+y8M+yCRX5ed9/ERLIcsbROwH+38dxKIsdgIBAFNgINL4UzOFV2
+6xLxKFwjRUDG2sLXVRfFp32xJprDA3M1BBgriawmNorF0oGzW93ZOzb6MtE+RDew
+DzgIWQ==
+=fsJ3
+-----END PGP SIGNATURE-----

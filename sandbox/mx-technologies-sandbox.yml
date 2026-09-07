@@ -1,0 +1,44 @@
+generated: '2026-07-23'
+method: searched
+source: https://docs.mx.com/resources/test-platform/index
+notes: >-
+  MX provides test institutions in the integration environment rather than card
+  fixtures (it is a data aggregator, not a card acquirer). Credentials come from
+  the Client Dashboard (dashboard.mx.com): client_id as username, api_key as
+  password via HTTP Basic. The OpenAPI declares two servers — int-api.mx.com
+  (integration/test) and api.mx.com (production).
+environments:
+  - name: integration
+    base_url: https://int-api.mx.com
+    purpose: Testing / sandbox environment.
+  - name: production
+    base_url: https://api.mx.com
+    purpose: Live environment (requires production access request).
+credentials:
+  source: https://dashboard.mx.com
+  scheme: http-basic
+  username: client_id
+  password: api_key
+test_institutions:
+  - name: MX Bank
+    kind: credential
+    detail: >-
+      More account types and features than the MXCU institutions; also lets you
+      test different connection statuses.
+    docs: https://docs.mx.com/resources/test-platform/mxbank/index
+  - name: MX Bank (OAuth)
+    kind: oauth
+    detail: Legacy OAuth test institution; MXCU (OAuth) is now recommended instead.
+  - name: MXCU (OAuth)
+    kind: oauth
+    detail: Full hypothetical OAuth flow resulting in an OAuth token used to connect the member.
+    docs: https://docs.mx.com/resources/test-platform/mxcu/index
+  - name: MXCU (Credential)
+    kind: credential
+    detail: Credential-based authentication using MXCU credentials.
+postman:
+  method: openapi-import
+  detail: >-
+    Download the OpenAPI spec (https://docs.mx.com/openapi/platform-api/v20250224.yaml)
+    and import into Postman; use Basic Auth with client_id / api_key. Set folder
+    organization to "Tags" for the best experience.

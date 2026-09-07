@@ -1,0 +1,650 @@
+# MX Documentation
+
+## Docs
+
+- [Customer Consent Management Dashboard API](https://docs.mx.com/api-reference/consent-management/overview/index.md): Integrate the consumer consent management dashboard into your UX.
+- [Request Token](https://docs.mx.com/api-reference/consent-management/reference/01-request-token.md)
+- [Revoke Token](https://docs.mx.com/api-reference/consent-management/reference/02-revoke-token.md): Revokes token. Using the current token in the path, this endpoint updates the revoked_at field and revokes the token.
+- [Rotate Credentials](https://docs.mx.com/api-reference/consent-management/reference/03-rotate-credentials.md)
+- [Consent list](https://docs.mx.com/api-reference/consent-management/reference/3-consent-list.md)
+- [Update Consented Account](https://docs.mx.com/api-reference/consent-management/reference/account-enabled-status.md): Updates a consent by enabling or disabling an account. Use this endpoint when an end user wants to change whether or not an account is shared with an app.
+- [Update Auto Access](https://docs.mx.com/api-reference/consent-management/reference/auto-access-update.md): Set a consented app's auto update status. Use this endpoint to allow or disallow an app to automatically add new accounts to an end user's consent. This sets the consent object's `auto_enable_future_accounts` field to true or false.
+- [Revoke Consent](https://docs.mx.com/api-reference/consent-management/reference/revoke-consent.md)
+- [Account](https://docs.mx.com/api-reference/more-apis/batch-api/file-contents/account-file-contents.md): The account file should contain only accounts belonging to the member objects contained in the Member File.
+- [File Contents](https://docs.mx.com/api-reference/more-apis/batch-api/file-contents/index.md)
+- [Member](https://docs.mx.com/api-reference/more-apis/batch-api/file-contents/member-file-contents.md): Members represent the connection between a user and a financial institution.
+- [Transactions](https://docs.mx.com/api-reference/more-apis/batch-api/file-contents/transactions-file-contents.md)
+- [User](https://docs.mx.com/api-reference/more-apis/batch-api/file-contents/user-file-contents.md)
+- [Batch API Overview](https://docs.mx.com/api-reference/more-apis/batch-api/index.md): The Batch API allows you to upload held account data records in properly formatted and encrypted CSV files via SFTP. MX can provide a response file for each batch file submitted.
+- [Response Files](https://docs.mx.com/api-reference/more-apis/batch-api/response-files.md)
+- [MDX Overview](https://docs.mx.com/api-reference/more-apis/mdx/index.md)
+- [MDX On Demand v5](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/index.md)
+- [Account Number Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/account-numbers/account-number-fields.md): Account number fields for the MDX On Demand API.
+- [List Account Numbers](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/account-numbers/list-account-numbers.md): This endpoint should return a list of account numbers.
+- [Account Owner Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/account-owners/account-owner-fields.md): Account owner fields for the MDX On Demand API.
+- [List Account Owners](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/account-owners/list-account-owners.md): This endpoint should return a list of account owners.
+- [Account Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/accounts/account-fields.md): Account fields for the MDX On Demand API.
+- [List Accounts](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/accounts/list-accounts.md): Use this endpoint to list all accounts for a user.
+- [Holding Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/holdings/holding-fields.md): Holding fields for the MDX On Demand API.
+- [List Holdings](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/holdings/list-holdings.md): Holdings are retrieved by making a GET request to /accounts/holdings.
+- [Member Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/members/member-fields.md): Member fields for the MDX On Demand API.
+- [Read Member (Deprecated)](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/members/read-member.md): This endpoint is deprecated.
+- [Create Session](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/sessions/create-session.md): This endpoint creates a new session.
+- [Sessions Overview](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/sessions/sessions-overview.md): Overview of sessions for the MDX On Demand API.
+- [Update Session](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/sessions/update-session.md): When an MFA challenge is needed, the partner responds to the initial create session request with one of the available MFA challenge responses. MX will collect the answers and provide them to the partner by making a PUT /sessions request.
+- [List Transactions](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/transactions/list-transactions.md): This endpoint should return a list of transactions.
+- [Transaction Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/transactions/transaction_fields.md): Transaction fields for the MDX On Demand API.
+- [Read User (Deprecated)](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/users/read_user.md): This endpoint has been deprecated.
+- [User Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-on-demand/reference/users/user-fields.md): User fields for the MDX On Demand API.
+- [MDX Real Time](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/index.md)
+- [Account Number Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/account-numbers/account-number-fields.md): Account number fields for the MDX Real Time API.
+- [Create or Update Account Number](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/account-numbers/create-update-account-number.md): Use this endpoint to set the full account number, routing number, transit numbers, and banking institution for an account as needed.
+- [Delete Account Number](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/account-numbers/delete-account-number.md): Use this endpoint to delete an account number.
+- [Read Account Number](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/account-numbers/read-account-number.md): Use this endpoint to read an account number.
+- [Account Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/accounts/account-fields.md): Account fields for the MDX Real Time API.
+- [Create Account](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/accounts/create-account.md): Use this endpoint to create an account. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Delete Account](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/accounts/delete_account.md): Use this endpoint to delete an account. Deleting an account will automatically delete all transactions associated with that account. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Read Account](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/accounts/read-account.md): Use this endpoint to read an account.
+- [Remap Account ID](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/accounts/remap-account-id.md): Use this endpoint to remap the ID assigned to the account.
+- [Update Account](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/accounts/update-account.md): Use this endpoint to update an account. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Create Holding](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/holdings/create-holding.md): Use this endpoint to create a holding. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Delete Holding](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/holdings/delete-holding.md): Use this endpoint to delete a holding. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Holding Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/holdings/holding-fields.md): Holding fields for the MDX Real Time API.
+- [Read Holding](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/holdings/read-holding.md): Use this endpoint to read a holding.
+- [Update Holding](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/holdings/update-holding.md): Use this endpoint to update a holding. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Create Member](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/members/create-member.md): Use this endpoint to create a member. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header. Credentials (userkey, or login/password) will be required if you support the On Demand protocol; they should be supplied in the create member request. On Demand requests will fail without valid credent…
+- [Delete Member](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/members/delete-member.md): Use this endpoint to delete a member. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Member Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/members/member-fields.md): Member fields for the MDX Real Time API.
+- [Read Member](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/members/read-member.md): Use this endpoint to read a member.
+- [Remap Member ID](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/members/remap-member-id.md): Use this endpoint to remap the ID assigned to the member.
+- [Update Member](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/members/update-member.md): Use this endpoint to update a member. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Create Transaction](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/transactions/create-transaction.md): Use this endpoint to create a transaction. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header. It is recommended that partners only send dates in one format, using either the `_on` or `_at` fields, but not both.
+- [Delete Transaction](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/transactions/delete-transaction.md): Use this endpoint to delete a transaction. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Read Transaction](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/transactions/read-transaction.md): Use this endpoint to read a transaction.
+- [Remap Transaction ID](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/transactions/remap-transaction-id.md): Use this endpoint to remap the ID assigned to the transaction.
+- [Transaction Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/transactions/transaction-fields.md): Field definitions for the MDX Real Time transaction data model.
+- [Update Transaction](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/transactions/update-transaction.md): Use this endpoint to update a transaction. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Create User](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/users/create-user.md): Use this endpoint to create a user. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Delete User](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/users/delete-user.md): Use this endpoint to delete an user. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [Read User](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/users/read-user.md): Use this endpoint to read a user.
+- [Remap User ID](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/users/remap-user-id.md): This endpoint allows partners to re-assign their partner-defined user ID.
+- [Update User](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/users/update-user.md): Use this endpoint to update a user. This endpoint accepts the optional `MX-SKIP-WEBHOOK` header.
+- [User Fields](https://docs.mx.com/api-reference/more-apis/mdx/mdx-real-time/reference/users/user-fields.md): Field definitions for the MDX Real Time user data model.
+- [Analytics Events](https://docs.mx.com/api-reference/more-apis/reporting/data-specifications/analytics-events.md)
+- [Base Resources](https://docs.mx.com/api-reference/more-apis/reporting/data-specifications/base-resources.md): Data field specifications for all base Reporting API resources.
+- [Discovered Accounts](https://docs.mx.com/api-reference/more-apis/reporting/data-specifications/discovered-accounts.md): Data field specifications for the Discovered Accounts and Discovered Transactions resources.
+- [User Communications](https://docs.mx.com/api-reference/more-apis/reporting/data-specifications/user-communications.md)
+- [Reporting API Overview](https://docs.mx.com/api-reference/more-apis/reporting/index.md)
+- [Download Daily Files](https://docs.mx.com/api-reference/more-apis/reporting/reference/daily-files/download-daily-files.md): This endpoint downloads a daily reporting file for a specific resource, date, and action.
+- [List Daily Files](https://docs.mx.com/api-reference/more-apis/reporting/reference/daily-files/list-daily-files.md): This endpoint returns a list of daily files.
+- [Download Snapshots](https://docs.mx.com/api-reference/more-apis/reporting/reference/snapshots/download-snapshots.md): The URLs returned in the list snapshot file URLs endpoint should be used to download each file individually.
+- [List Snapshot File URLs](https://docs.mx.com/api-reference/more-apis/reporting/reference/snapshots/list-snapshot-file-urls.md): This endpoint returns a JSON array of snapshot file URLs.
+- [API Requirements](https://docs.mx.com/api-reference/more-apis/reporting/requirements.md): Accept headers, authentication, base URLs, and schema evolution for the Reporting API.
+- [Sample Files](https://docs.mx.com/api-reference/more-apis/reporting/sample-files.md): Sample Avro files generated from the Reporting API.
+- [SFTP Delivery](https://docs.mx.com/api-reference/more-apis/reporting/sftp-delivery.md): Optionally have MX deliver your daily reporting files to an SFTP server.
+- [Snapshots](https://docs.mx.com/api-reference/more-apis/reporting/snapshots.md): The Reporting API does not provide a full snapshot of historical data, but a one-time data snapshot can be generated for an additional cost.
+- [Using the Reporting API](https://docs.mx.com/api-reference/more-apis/reporting/using-the-api.md): Best practices for consuming and staging Reporting API data in your system.
+- [Deleting Objects](https://docs.mx.com/api-reference/nexus/overview/deleting-objects.md)
+- [HTTP Status Codes and Errors](https://docs.mx.com/api-reference/nexus/overview/errors.md)
+- [Authentication and Security](https://docs.mx.com/api-reference/nexus/overview/index.md)
+- [Webhooks](https://docs.mx.com/api-reference/nexus/overview/webhooks.md)
+- [Accounts Overview](https://docs.mx.com/api-reference/nexus/reference/01-accounts-overview.md): Overview of accounts resource and field definitions
+- [Beats Overview](https://docs.mx.com/api-reference/nexus/reference/01-beats-overview.md): Overview of beats resource and field definitions
+- [Budgets Overview](https://docs.mx.com/api-reference/nexus/reference/01-budgets-overview.md): Overview of budget resource and field definitions
+- [Categories Overview](https://docs.mx.com/api-reference/nexus/reference/01-categories-overview.md): Overview of category resource and field definitions
+- [Extended Transaction History Overview](https://docs.mx.com/api-reference/nexus/reference/01-extended-transaction-history-overview.md): Some institutions allow developers to access an extended transaction history with up to 24 months of data associated with a particular member.
+- [Goals Overview](https://docs.mx.com/api-reference/nexus/reference/01-goals-overview.md): Overview of goal resource and field definitions
+- [Holdings Overview](https://docs.mx.com/api-reference/nexus/reference/01-holdings-overview.md): Overview of holding resource and field definitions
+- [identity overview](https://docs.mx.com/api-reference/nexus/reference/01-identity-overview.md): The identify endpoint may be used to gather account owner information on certain institutions.
+- [Institutions Overview](https://docs.mx.com/api-reference/nexus/reference/01-institutions-overview.md): Overview of institution resource and field definitions
+- [Jobs Overview](https://docs.mx.com/api-reference/nexus/reference/01-jobs-overview.md): Overview of job resource and field definitions
+- [Members Overview](https://docs.mx.com/api-reference/nexus/reference/01-members-overview.md): Overview of members resource and field definitions
+- [Merchants Overview](https://docs.mx.com/api-reference/nexus/reference/01-merchants-overview.md): Overview of merchant resource and field definitions
+- [Microdeposits Overview](https://docs.mx.com/api-reference/nexus/reference/01-microdeposits-overview.md): Overview of microdeposit resource and field definitions
+- [Monthly Cash Flow Profile Overview](https://docs.mx.com/api-reference/nexus/reference/01-monthly-cash-flow-profiles-overview.md): Overview of monthly cash flow profile resource and field definitions
+- [Notifications Overview](https://docs.mx.com/api-reference/nexus/reference/01-notifications-overview.md): Overview of notification resource and field definitions
+- [Scheduled Payments Overview](https://docs.mx.com/api-reference/nexus/reference/01-scheduled-payments-overview.md): Overview of scheduled payments resource and field definitions
+- [Spending Plan Overview](https://docs.mx.com/api-reference/nexus/reference/01-spending-plans-overview.md): Overview of spending plan resource and field definitions
+- [Taggings Overview](https://docs.mx.com/api-reference/nexus/reference/01-taggings-overview.md): Overview of tagging resource and field definitions
+- [Tags Overview](https://docs.mx.com/api-reference/nexus/reference/01-tags-overview.md): Overview of tags resource and field definitions
+- [Transaction Rules Overview](https://docs.mx.com/api-reference/nexus/reference/01-transaction-rules-overview.md): Overview of transaction rules resource and field definitions
+- [Transactions Overview](https://docs.mx.com/api-reference/nexus/reference/01-transactions-overview.md): Overview of transaction resource and field definitions
+- [Users Overview](https://docs.mx.com/api-reference/nexus/reference/01-users-overview.md): Overview of user resource and field definitions
+- [Verification Overview](https://docs.mx.com/api-reference/nexus/reference/01-verification-overview.md): Overview of verification resource and field definitions
+- [Aggregate all members](https://docs.mx.com/api-reference/nexus/reference/aggregate-all-members.md)
+- [Aggregate member](https://docs.mx.com/api-reference/nexus/reference/aggregate-member.md)
+- [Block an account](https://docs.mx.com/api-reference/nexus/reference/block-account.md): This endpoint is used to delete existing data and block new data from being stored on the specified account. This may be necessary in order to comply with certain rules, regulations, or standards. <br></br>   This endpoint does several things.<ol><li>It immediately and permanently deletes most data…
+- [Categorize transactions](https://docs.mx.com/api-reference/nexus/reference/categorize-transactions.md)
+- [Check Balances](https://docs.mx.com/api-reference/nexus/reference/check-member-balance.md): Use this endpoint to gather account balance information for all accounts associated with the member. This endpoint operates much like the aggregate member endpoint except that it gathers only account balance information; it does not gather any transaction data. You must use the read member endpoint…
+- [Create a budget](https://docs.mx.com/api-reference/nexus/reference/create-budget.md): Create a budget. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter.
+- [Create deliverable](https://docs.mx.com/api-reference/nexus/reference/create-deliverable.md)
+- [(Deprecated) Create a split transaction](https://docs.mx.com/api-reference/nexus/reference/create-deprecated-split-transaction.md): In our efforts to improve our Nexus API, we have implemented newer, better endpoints to create and delete split transactions. As such, this endpoint has been deprecated, but it remains documented for previous integrations using this feature. All new integrations must use the improved split and delet…
+- [Create a goal](https://docs.mx.com/api-reference/nexus/reference/create-goal.md): Create a goal. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter.
+- [Create manual accounts](https://docs.mx.com/api-reference/nexus/reference/create-manual-accounts.md)
+- [Create manual transaction](https://docs.mx.com/api-reference/nexus/reference/create-manual-transaction.md)
+- [Create member](https://docs.mx.com/api-reference/nexus/reference/create-member.md)
+- [(Deprecated) Member credentials](https://docs.mx.com/api-reference/nexus/reference/create-member-credentials.md): This endpoint has been deprecated and should no longer be used. Use the update member endpoint to update a member when the member's connection_status is DENIED. Use the resume aggregation endpoint to answer an MFA challenge.  This endpoint was part of a deprecated workflow that required several requ…
+- [Create or Preinitiate a Microdeposit](https://docs.mx.com/api-reference/nexus/reference/create-microdeposit.md): Use this endpoint to create a microdeposit. To create a microdeposit include the `first_name`, `last_name`, `email`, `account_number`, `routing_number`, and `account_type` in the request body. The response will include the new microdeposit record with a status of `INITIATED`. <br></br> You can also…
+- [Create notification](https://docs.mx.com/api-reference/nexus/reference/create-notification.md)
+- [Create a scheduled payment](https://docs.mx.com/api-reference/nexus/reference/create-scheduled-payment.md): Create a scheduled payment.
+- [Create session](https://docs.mx.com/api-reference/nexus/reference/create-session.md)
+- [Create a spending plan](https://docs.mx.com/api-reference/nexus/reference/create-spending-plan.md): Create a spending plan.
+- [Create a spending plan iteration item](https://docs.mx.com/api-reference/nexus/reference/create-spending-plan-iteration-item.md): This endpoint creates a new `spending_plan_iteration_item`.
+- [Create split transactions](https://docs.mx.com/api-reference/nexus/reference/create-split-transactions.md)
+- [Create a subcategory](https://docs.mx.com/api-reference/nexus/reference/create-subcategory.md): Create a subcategory to an already existing parent category.
+- [Create transaction rule](https://docs.mx.com/api-reference/nexus/reference/create-transaction-rule.md)
+- [Delete a manual account](https://docs.mx.com/api-reference/nexus/reference/delete-a-manual-account.md)
+- [Delete a budget](https://docs.mx.com/api-reference/nexus/reference/delete-budget.md): Delete a budget.
+- [Delete deliverable](https://docs.mx.com/api-reference/nexus/reference/delete-deliverable.md)
+- [Delete a goal](https://docs.mx.com/api-reference/nexus/reference/delete-goal.md): Delete a goal.
+- [Delete member](https://docs.mx.com/api-reference/nexus/reference/delete-member.md)
+- [Delete a microdeposit](https://docs.mx.com/api-reference/nexus/reference/delete-microdeposit.md): Use this endpoint to delete the specified microdeposit.
+- [Delete notification](https://docs.mx.com/api-reference/nexus/reference/delete-notification.md)
+- [Delete a scheduled payment](https://docs.mx.com/api-reference/nexus/reference/delete-scheduled-payment.md): Use this endpoint to delete a specific scheduled_payment according to its unique GUID. Unlike most other Nexus delete requests, a successful delete will return a `204 No Content` status without an empty body.
+- [Delete a spending plan](https://docs.mx.com/api-reference/nexus/reference/delete-spending-plan.md): Use this endpoint to delete a particular spending plan according to its unique GUID.
+- [Delete spending plan account](https://docs.mx.com/api-reference/nexus/reference/delete-spending-plan-account.md)
+- [Delete spending plan iteration item](https://docs.mx.com/api-reference/nexus/reference/delete-spending-plan-iteration-item.md)
+- [Delete split transactions](https://docs.mx.com/api-reference/nexus/reference/delete-split-transactions.md)
+- [Delete a subcategory](https://docs.mx.com/api-reference/nexus/reference/delete-subcategory.md): Delete a subcategory.
+- [Delete transaction](https://docs.mx.com/api-reference/nexus/reference/delete-transaction.md)
+- [Delete a transaction rule](https://docs.mx.com/api-reference/nexus/reference/delete-transaction-rule.md): Use this endpoint to permanently delete a transaction rule based on its unique GUID.
+- [Extend transaction history](https://docs.mx.com/api-reference/nexus/reference/extend-transaction-history.md)
+- [Auto-generate budgets](https://docs.mx.com/api-reference/nexus/reference/generate-budgets.md): This endpoint will automatically create budgets for several categories based on existing transactions; these budgets are returned as an array. Specifically, budgets will only be generated if the `user` has at least one `transaction` in a given category during each of the two previous calendar months…
+- [Generate OAuth window URI](https://docs.mx.com/api-reference/nexus/reference/generate-o-auth-window-uri.md): This endpoint will generate an `oauth_window_uri` for the specified `member`.    Generating a new `oauth_window_uri` is necessary in order to send the end user through the OAuth process again. There are several situations where you might want to do this, like if a previous attempt at OAuth failed be…
+- [Identify](https://docs.mx.com/api-reference/nexus/reference/identify-member.md): This endpoint gathers information about account owners. Partners may optionally choose to include transaction data in this request, potentially avoiding a separate aggregate member request. The identification workflow is similar to standard aggregation -  Start the identification, poll the member, a…
+- [List account balances by month](https://docs.mx.com/api-reference/nexus/reference/list-account-balancesby-month.md): List account balances by month.
+- [List Account Owners](https://docs.mx.com/api-reference/nexus/reference/list-account-owners.md)
+- [List account transactions](https://docs.mx.com/api-reference/nexus/reference/list-account-transactions.md)
+- [List account transactions created between two dates](https://docs.mx.com/api-reference/nexus/reference/list-account-transactions-created-between-two-dates.md)
+- [List account transactions updated between two dates](https://docs.mx.com/api-reference/nexus/reference/list-account-transactions-updated-between-two-dates.md)
+- [List accounts created by a partner](https://docs.mx.com/api-reference/nexus/reference/list-accounts-created-by-partner.md): This endpoint returns accounts belonging only to partner-created members. Partner-created members are those for which `is_user_created == true.`
+- [List all accounts](https://docs.mx.com/api-reference/nexus/reference/list-all-accounts.md)
+- [List beats (deprecated)](https://docs.mx.com/api-reference/nexus/reference/list-beats.md): This endpoint returns a list of information about all beat resources associated with the user for which the Nexus session is open.
+- [List all budgets](https://docs.mx.com/api-reference/nexus/reference/list-budgets.md): List all budgets
+- [List categories](https://docs.mx.com/api-reference/nexus/reference/list-categories.md)
+- [List category totals between two dates](https://docs.mx.com/api-reference/nexus/reference/list-category-totals-by-date-range.md): Returns a list of categories that have transactions dated within the provided date range, and the total of all transactions that belong to each category. A single account GUID can be specified by providing an `account_guid` parameter. An array of account GUIDs can be specified by providing a series…
+- [List  default categories](https://docs.mx.com/api-reference/nexus/reference/list-default-categories.md): List all default categories that users can choose from.
+- [List deliverables](https://docs.mx.com/api-reference/nexus/reference/list-deliverables.md)
+- [List goals](https://docs.mx.com/api-reference/nexus/reference/list-goals.md)
+- [List all holdings](https://docs.mx.com/api-reference/nexus/reference/list-holdings.md): List all holdings.
+- [Institution required credentials](https://docs.mx.com/api-reference/nexus/reference/list-institution-credentials.md): Use this endpoint to view all credentials needed to create a member for a given institution. Intitution-required credentials are subject to change; these credentials must be requested each time a new member is created, or, if being cached, requested daily along with the institution list. If the wron…
+- [(Deprecated) List institutions](https://docs.mx.com/api-reference/nexus/reference/list-institutions.md): Calling this endpoint will kick off the downloading of an institutions.csv file. Data in this file can change daily. MX recommends that partners using this file pull it on a daily basis to update any outdated information. This endpoint has been deprecated. Partners are encouraged to use the search i…
+- [MFA credentials](https://docs.mx.com/api-reference/nexus/reference/list-job-mfa-credentials.md): Best practice is to use the list member challenges endpoint to list challenges that need to be answered; however, MX continues to support partners who use the mfa credentials endpoint for this purpose.<br></br> Institutions often require MFA (multi-factor authentication) in order to refresh a member…
+- [List member accounts](https://docs.mx.com/api-reference/nexus/reference/list-member-accounts.md)
+- [List member challenges](https://docs.mx.com/api-reference/nexus/reference/list-member-challenges.md)
+- [List member credentials](https://docs.mx.com/api-reference/nexus/reference/list-member-credentials.md)
+- [List member transactions](https://docs.mx.com/api-reference/nexus/reference/list-member-transactions.md)
+- [List members](https://docs.mx.com/api-reference/nexus/reference/list-members.md)
+- [List merchants](https://docs.mx.com/api-reference/nexus/reference/list-merchants.md)
+- [List all microdeposits for a user](https://docs.mx.com/api-reference/nexus/reference/list-microdeposits.md): Use this endpoint to list all the microdeposits associated with the user for which the Nexus session is open.
+- [List notifications](https://docs.mx.com/api-reference/nexus/reference/list-notifications.md)
+- [List scheduled payments](https://docs.mx.com/api-reference/nexus/reference/list-scheduled-payments.md)
+- [List spending plan accounts](https://docs.mx.com/api-reference/nexus/reference/list-spending-plan-accounts.md)
+- [List spending plan iteration items](https://docs.mx.com/api-reference/nexus/reference/list-spending-plan-iteration-items.md)
+- [List spending plan iterations](https://docs.mx.com/api-reference/nexus/reference/list-spending-plan-iterations.md)
+- [List spending plans](https://docs.mx.com/api-reference/nexus/reference/list-spending-plans.md)
+- [List taggings](https://docs.mx.com/api-reference/nexus/reference/list-taggings.md)
+- [List tags](https://docs.mx.com/api-reference/nexus/reference/list-tags.md)
+- [List transaction rules](https://docs.mx.com/api-reference/nexus/reference/list-transaction-rules.md)
+- [List transactions](https://docs.mx.com/api-reference/nexus/reference/list-transactions.md)
+- [List transactions by category GUID and date](https://docs.mx.com/api-reference/nexus/reference/list-transactions-by-category-and-date.md): This endpoint returns transactions with the specified category GUID within the date range provided. This endpoint returns paginated results; each page will need to be requested separately to retrieve the data on that page. The `total_pages` field returns an integer representing the total pages to be…
+- [List transactions by top-level category GUID and date](https://docs.mx.com/api-reference/nexus/reference/list-transactions-by-top-level-category-and-date.md): This endpoint returns all transactions that match the provided category GUID between two dates. It includes all transactions in a subcategory of the provided category GUID. This endpoint returns paginated results; each page will need to be requested separately to retrieve the data on that page. The…
+- [List transactions created between two dates](https://docs.mx.com/api-reference/nexus/reference/list-transactions-created-between-dates.md): Use this endpoint to list transactions that were created between two dates. This endpoint returns paginated results; each page will need to be requested separately to retrieve the data on that page. The `total_pages` field returns an integer representing the total pages to be requested.
+- [List transactions updated between two dates](https://docs.mx.com/api-reference/nexus/reference/list-transactions-updated-between-dates.md): Use this endpoint to list transactions that were updated between two dates. This endpoint returns paginated results; each page will need to be requested separately to retrieve the data on that page. The `total_pages` field returns an integer representing the total pages to be requested.
+- [List accounts created by a user](https://docs.mx.com/api-reference/nexus/reference/list-user-created-accounts.md): This endpoint returns accounts belonging only to user-created members. User-created members are those for which `is_user_created == true.`
+- [Merge duplicate accounts](https://docs.mx.com/api-reference/nexus/reference/merge-duplicate-accounts.md)
+- [Nexus API](https://docs.mx.com/api-reference/nexus/reference/nexus-api.md): Legacy clients can use Nexus API for all their connectivity needs. If you are a new client refer to our Platform API.
+- [Read an account](https://docs.mx.com/api-reference/nexus/reference/read-account.md)
+- [Read account numbers](https://docs.mx.com/api-reference/nexus/reference/read-account-numbers.md)
+- [Read account numbers by account_guid](https://docs.mx.com/api-reference/nexus/reference/read-account-numbers-by-account.md): Use this endpoint to check whether account number data is available for a specific account. This includes the transit number and institution number for Canadian institutions.    For compatibility purposes, a Canadian transit number may sometimes appear in the `routing_number` field. However, all new…
+- [Read a beat (deprecated)](https://docs.mx.com/api-reference/nexus/reference/read-beat.md): This endpoint returns information about a specific beat according to its MX-defined GUID.
+- [Read a specific budget](https://docs.mx.com/api-reference/nexus/reference/read-budget.md): Read a specific budget
+- [Read a category](https://docs.mx.com/api-reference/nexus/reference/read-category.md): Read a category.
+- [Read current iteration](https://docs.mx.com/api-reference/nexus/reference/read-current-spending-plan-iteration.md): This endpoint returns information about the current `iteration` associated to the `spending_plan`.
+- [Read deliverable](https://docs.mx.com/api-reference/nexus/reference/read-deliverable.md)
+- [Read a goal](https://docs.mx.com/api-reference/nexus/reference/read-goal.md): Read a specific goal
+- [Read holding](https://docs.mx.com/api-reference/nexus/reference/read-holding.md)
+- [Read institution](https://docs.mx.com/api-reference/nexus/reference/read-institution.md)
+- [Read job](https://docs.mx.com/api-reference/nexus/reference/read-job.md)
+- [Read member](https://docs.mx.com/api-reference/nexus/reference/read-member.md)
+- [Read merchant](https://docs.mx.com/api-reference/nexus/reference/read-merchant.md)
+- [Read merchant location](https://docs.mx.com/api-reference/nexus/reference/read-merchant-location.md)
+- [Read a microdeposit](https://docs.mx.com/api-reference/nexus/reference/read-microdeposit.md): Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a status changes. However, the actual status of the microdeposit guid only updates once per hour on the 15th minute of the hour. For…
+- [Read monthly cash flow profile](https://docs.mx.com/api-reference/nexus/reference/read-monthly-cash-flow-profile.md)
+- [Read notification](https://docs.mx.com/api-reference/nexus/reference/read-notification.md)
+- [Read a scheduled payment](https://docs.mx.com/api-reference/nexus/reference/read-scheduled-payment.md): Use this endpoint to read the attributes of a specific `scheduled_payment` according to its unique GUID.
+- [Read a spending plan](https://docs.mx.com/api-reference/nexus/reference/read-spending-plan.md): This endpoint returns information about a specific spending_plan according to its MX-defined GUID.
+- [Read a spending plan account](https://docs.mx.com/api-reference/nexus/reference/read-spending-plan-account.md): This endpoint returns information about a specific `spending_plan_account` according to its MX-defined GUID.
+- [Read a spending plan iteration](https://docs.mx.com/api-reference/nexus/reference/read-spending-plan-iteration.md): This endpoint returns information about a specific iteration according to its `iteration_number`.
+- [Read a spending plan iteration item](https://docs.mx.com/api-reference/nexus/reference/read-spending-plan-iteration-item.md): Use this endpoint to read the attributes of a specific spending plan `iteration_item` according to its unique GUID.
+- [Read transaction](https://docs.mx.com/api-reference/nexus/reference/read-transaction.md)
+- [Read transaction rule](https://docs.mx.com/api-reference/nexus/reference/read-transaction-rule.md)
+- [Read user](https://docs.mx.com/api-reference/nexus/reference/read-user.md)
+- [Refresh all members (alias for aggregate all member)](https://docs.mx.com/api-reference/nexus/reference/refresh-all-members.md): This is an alias for aggregate all members. This endpoint will kick off a new aggregation job for each member which belongs to the user. If you've set the `use_cases` field when creating the member, then the member's `use_case` must be set to `PFM`, otherwise a 403 will return. The response will inc…
+- [Refresh member (alias for aggregate member)](https://docs.mx.com/api-reference/nexus/reference/refresh-member.md): This is an alias for `members/aggregate`. Use this endpoint to create a new aggregation job, which is the process that gathers updated account, transaction, and holding data for a given member. If you've set the `use_cases` field when creating the member, then the member's `use_case` must be set to…
+- [Reposition goals](https://docs.mx.com/api-reference/nexus/reference/reposition-goals.md)
+- [Resume aggregation](https://docs.mx.com/api-reference/nexus/reference/resume-aggregation.md)
+- [(Deprecated) Resume job](https://docs.mx.com/api-reference/nexus/reference/resume-job.md): This endpoint has been deprecated. Partners should use the resume aggregation endpoint in its place, as outlined in the Nexus guide. When an institution allows for multi-factor authentication and MFA member credentials aren't yet created for that user, the job enters a `CHALLENGED` state. Once membe…
+- [Search institutions](https://docs.mx.com/api-reference/nexus/reference/search-institutions.md)
+- [Update an account](https://docs.mx.com/api-reference/nexus/reference/update-account.md): Update an account. The endpoint accepts the optional MX-Skip-Webhook header and `skip_webhook` parameter.
+- [Update beat (deprecated)](https://docs.mx.com/api-reference/nexus/reference/update-beat.md): Use this endpoint to update the attributes of a particular beat according to its unique GUID. No specific parameter is required, but the request body cannot be empty.
+- [Update a specific budget](https://docs.mx.com/api-reference/nexus/reference/update-budget.md): Update a specific budget
+- [Update a goal](https://docs.mx.com/api-reference/nexus/reference/update-goal.md): This endpoint updates a specific goal. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook parameter`.
+- [Update holding](https://docs.mx.com/api-reference/nexus/reference/update-holding.md)
+- [Update member](https://docs.mx.com/api-reference/nexus/reference/update-member.md)
+- [Update monthly cash flow profile](https://docs.mx.com/api-reference/nexus/reference/update-monthly-cash-flow-profile.md)
+- [Update a scheduled payment](https://docs.mx.com/api-reference/nexus/reference/update-scheduled-payment.md): Use this endpoint to update an existing scheduled payment according to its unique GUID.
+- [Update a spending plan iteration item](https://docs.mx.com/api-reference/nexus/reference/update-spending-plan-iteration-item.md): Use this endpoint to update an existing `spending_plan_iteration_item`.
+- [Update a subcategory](https://docs.mx.com/api-reference/nexus/reference/update-subcategory.md): Only user-defined subcategories can be updated, i.e., those where the `is_default` field is `false`. The `metadata` field can be used to add information to user-defined subcategories. For default categories, this field will be null and can not be changed via Nexus. This endpoint accepts the optional…
+- [Update transaction](https://docs.mx.com/api-reference/nexus/reference/update-transaction.md)
+- [Update a transaction rule](https://docs.mx.com/api-reference/nexus/reference/update-transaction-rule.md): Use this endpoint to update the attributes of a specific transaction rule based on its unique GUID. Nexus will respond with the updated `transaction_rule` object. Any attributes not provided will be left unchanged.    Updating the `category_guid` or description will also update all past and future t…
+- [Verify member](https://docs.mx.com/api-reference/nexus/reference/verify-member.md)
+- [Verify a microdeposit](https://docs.mx.com/api-reference/nexus/reference/verify-microdeposit.md): Use this endpoint to verify the amounts deposited into the account during a microdeposit verification. The verification has not successfully completed until the microdeposit status is `VERIFIED`.  Poll the [Read a Microdeposit](/api-reference/nexus/reference/read-microdeposit) endpoint until you see…
+- [Architecture & Security](https://docs.mx.com/api-reference/platform-api/overview/architecture-and-security.md): The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable.
+- [Background and Foreground Aggregation](https://docs.mx.com/api-reference/platform-api/overview/background-foreground.md): You cannot run a new aggregation within three hours of a successful aggregation, whether foreground or background.
+- [Deleting Objects](https://docs.mx.com/api-reference/platform-api/overview/deleting-objects.md): Learn how to delete objects in the MX Platform API.
+- [Errors](https://docs.mx.com/api-reference/platform-api/overview/errors.md): The MX Platform API uses conventional HTTP response codes to indicate the success or failure of a request, with supplementary error messaging as needed within response bodies.
+- [API Request Formats and Requirements](https://docs.mx.com/api-reference/platform-api/overview/formats-requirements.md): The following information explains requirements for making API requests to the Platform API.
+- [Migration Guide](https://docs.mx.com/api-reference/platform-api/overview/migration.md): This overview lists the breaking changes in Platform API v20250224.
+- [API Versioning](https://docs.mx.com/api-reference/platform-api/overview/versioning.md): Dated versions of our APIs are released when we introduce backwards-incompatible changes to a generally available product or feature.
+- [Accounts overview](https://docs.mx.com/api-reference/platform-api/reference/accounts.md): The Accounts endpoints represent a user's checking, savings, mortgage, 401(k), or other types of accounts held by a financial institution.
+- [ACH Return Overview](https://docs.mx.com/api-reference/platform-api/reference/ach-returns.md)
+- [Aggregate all members](https://docs.mx.com/api-reference/platform-api/reference/aggregate-all-members.md)
+- [Aggregate member](https://docs.mx.com/api-reference/platform-api/reference/aggregate-member.md)
+- [Auto-generate budgets](https://docs.mx.com/api-reference/platform-api/reference/auto-generate-budgets.md)
+- [Block an account](https://docs.mx.com/api-reference/platform-api/reference/block-account.md): This endpoint is used to delete existing data and block new data from being stored on the specified account. This may be necessary in order to comply with certain rules, regulations, or standards. <br></br>   This endpoint does several things.<ol><li>It immediately and permanently deletes most data…
+- [Budgets Overview](https://docs.mx.com/api-reference/platform-api/reference/budgets.md): Use these endpoints to create and manage budgets for your end users.
+- [Categories Overview](https://docs.mx.com/api-reference/platform-api/reference/categories.md): A transaction can have its category set to one of MX's default categories or a custom category for a specific user.
+- [Check balances](https://docs.mx.com/api-reference/platform-api/reference/check-balances.md)
+- [Check Real Time Account Balance (Processors Only)](https://docs.mx.com/api-reference/platform-api/reference/check-real-time-account-balance.md): Check the real-time account balance using your access token.
+- [Create ACH Return](https://docs.mx.com/api-reference/platform-api/reference/create-ach-return.md)
+- [Create a budget](https://docs.mx.com/api-reference/platform-api/reference/create-budget.md): Create a budget. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter.
+- [Create category](https://docs.mx.com/api-reference/platform-api/reference/create-category.md)
+- [Create a goal](https://docs.mx.com/api-reference/platform-api/reference/create-goal.md): Create a goal. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter.
+- [Create managed account](https://docs.mx.com/api-reference/platform-api/reference/create-managed-account.md)
+- [Create managed member](https://docs.mx.com/api-reference/platform-api/reference/create-managed-member.md)
+- [Create managed transaction](https://docs.mx.com/api-reference/platform-api/reference/create-managed-transaction.md)
+- [Create manual account](https://docs.mx.com/api-reference/platform-api/reference/create-manual-account.md)
+- [Create manual transaction](https://docs.mx.com/api-reference/platform-api/reference/create-manual-transaction.md)
+- [Create member](https://docs.mx.com/api-reference/platform-api/reference/create-member.md)
+- [Create or Preinitiate a Microdeposit](https://docs.mx.com/api-reference/platform-api/reference/create-microdeposit.md): Use this endpoint to create a microdeposit. To create a microdeposit include the `first_name`, `last_name`, `email`, `account_number`, `routing_number`, and `account_type` in the request body. The response will include the new microdeposit record with a status of `INITIATED`. You can also use this e…
+- [Create notification](https://docs.mx.com/api-reference/platform-api/reference/create-notification.md): All notifications created through the API will be of notification type `API_NOTIFICATION` and will not be associated to an entity.
+- [Create spending plan](https://docs.mx.com/api-reference/platform-api/reference/create-spending-plan.md)
+- [Create spending plan iteration item](https://docs.mx.com/api-reference/platform-api/reference/create-spending-plan-iteration-item.md)
+- [Create split transactions](https://docs.mx.com/api-reference/platform-api/reference/create-split-transactions.md)
+- [Create split transactions by account](https://docs.mx.com/api-reference/platform-api/reference/create-split-transactionsby-account.md): This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction.  When a split transaction is created, the parent transaction's `has_been_split` field will auto…
+- [Create tag](https://docs.mx.com/api-reference/platform-api/reference/create-tag.md)
+- [Create tagging](https://docs.mx.com/api-reference/platform-api/reference/create-tagging.md)
+- [Create transaction rule](https://docs.mx.com/api-reference/platform-api/reference/create-transaction-rule.md)
+- [Create user](https://docs.mx.com/api-reference/platform-api/reference/create-user.md)
+- [Deactivate user from Investment Holdings](https://docs.mx.com/api-reference/platform-api/reference/deactivate-user.md): This endpoint deactivates the specific user from the `/investment_holdings` product. To reactivate a user, use any of the current `/investment_holding` endpoints.
+- [Delete a budget](https://docs.mx.com/api-reference/platform-api/reference/delete-budget.md): Delete a budget.
+- [Delete category](https://docs.mx.com/api-reference/platform-api/reference/delete-category.md)
+- [Delete a goal](https://docs.mx.com/api-reference/platform-api/reference/delete-goal.md): Delete a goal.
+- [Delete managed account](https://docs.mx.com/api-reference/platform-api/reference/delete-managed-account.md)
+- [Delete managed member](https://docs.mx.com/api-reference/platform-api/reference/delete-managed-member.md)
+- [Delete managed transaction](https://docs.mx.com/api-reference/platform-api/reference/delete-managed-transaction.md)
+- [Delete manual account](https://docs.mx.com/api-reference/platform-api/reference/delete-manual-account.md): This endpoint deletes accounts that were manually created. The API will respond with an empty object and a status of `204 No Content`.
+- [Delete manual transactions](https://docs.mx.com/api-reference/platform-api/reference/delete-manual-transactions.md)
+- [Delete member](https://docs.mx.com/api-reference/platform-api/reference/delete-member.md)
+- [Delete a microdeposit](https://docs.mx.com/api-reference/platform-api/reference/delete-microdeposit.md): Use this endpoint to delete the specified microdeposit.
+- [Delete spending plan](https://docs.mx.com/api-reference/platform-api/reference/delete-spending-plan.md)
+- [Delete spending plan account](https://docs.mx.com/api-reference/platform-api/reference/delete-spending-plan-account.md)
+- [Delete spending plan iteration item](https://docs.mx.com/api-reference/platform-api/reference/delete-spending-plan-iteration-item.md)
+- [Delete split transactions](https://docs.mx.com/api-reference/platform-api/reference/delete-split-transactions.md)
+- [Delete split transactions by account](https://docs.mx.com/api-reference/platform-api/reference/delete-split-transactionsby-account.md): This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
+- [Delete tag](https://docs.mx.com/api-reference/platform-api/reference/delete-tag.md)
+- [Delete tagging](https://docs.mx.com/api-reference/platform-api/reference/delete-tagging.md)
+- [Delete transaction rule](https://docs.mx.com/api-reference/platform-api/reference/delete-transaction-rule.md)
+- [Delete user](https://docs.mx.com/api-reference/platform-api/reference/delete-user.md)
+- [Download statement pdf](https://docs.mx.com/api-reference/platform-api/reference/download-statement-pdf.md)
+- [Enhance transactions](https://docs.mx.com/api-reference/platform-api/reference/enhance-transactions.md)
+- [Extend history](https://docs.mx.com/api-reference/platform-api/reference/extend-history.md)
+- [Fetch statements](https://docs.mx.com/api-reference/platform-api/reference/fetch-statements.md)
+- [Get account owner information (Processors Only)](https://docs.mx.com/api-reference/platform-api/reference/get-account-owner-info.md): Get account owner information (Processors Only)
+- [Get Accounts Data](https://docs.mx.com/api-reference/platform-api/reference/get-accounts-data.md)
+- [Get Identity Data](https://docs.mx.com/api-reference/platform-api/reference/get-identity-data.md)
+- [Get Transactions Data](https://docs.mx.com/api-reference/platform-api/reference/get-transactions-data.md)
+- [Goals Overview](https://docs.mx.com/api-reference/platform-api/reference/goals.md): Use these endpoints to create and manage goals for a user. You can also reposition goals to adjust their priority levels.
+- [Identify member](https://docs.mx.com/api-reference/platform-api/reference/identify-member.md)
+- [Insights Overview](https://docs.mx.com/api-reference/platform-api/reference/insights.md): Use these endpoints to build customizable user experiences in UIs powered by our Financial Insights data.
+- [Institutions Overview](https://docs.mx.com/api-reference/platform-api/reference/institutions.md): Institutions represent a financial institution.
+- [Investment Holdings Overview](https://docs.mx.com/api-reference/platform-api/reference/investment-holdings.md): Investment Data Enhancement lets you connect to an end user's financial institution and retrieve cleansed and enhanced investment data.
+- [Jobs Overview](https://docs.mx.com/api-reference/platform-api/reference/jobs.md): Reference for aggregation job fields and statuses in the MX Platform API.
+- [List account balances by month](https://docs.mx.com/api-reference/platform-api/reference/list-account-balances-by-month.md)
+- [List account numbers by account](https://docs.mx.com/api-reference/platform-api/reference/list-account-numbers-by-account.md)
+- [List account numbers by member](https://docs.mx.com/api-reference/platform-api/reference/list-account-numbers-by-member.md)
+- [List account owners by member](https://docs.mx.com/api-reference/platform-api/reference/list-account-owners-by-member.md)
+- [List all accounts associated with an insight](https://docs.mx.com/api-reference/platform-api/reference/list-accounts-insight.md): Use this endpoint to list all the accounts associated with the insight.
+- [List ACH Returns](https://docs.mx.com/api-reference/platform-api/reference/list-ach-returns.md)
+- [List categories](https://docs.mx.com/api-reference/platform-api/reference/list-categories.md)
+- [List all categories associated with an insight](https://docs.mx.com/api-reference/platform-api/reference/list-categories-insight.md): Use this endpoint to list all the categories associated with the insight.
+- [List category totals by account](https://docs.mx.com/api-reference/platform-api/reference/list-date-range-category-totals-by-account.md): Returns a list of categories that have transactions dated within the provided date range, and the total of all transactions that belong to each category.
+- [List default categories](https://docs.mx.com/api-reference/platform-api/reference/list-default-categories.md)
+- [List default categories by user](https://docs.mx.com/api-reference/platform-api/reference/list-default-categories-by-user.md)
+- [List favorite institutions](https://docs.mx.com/api-reference/platform-api/reference/list-favorite-institutions.md)
+- [List goals](https://docs.mx.com/api-reference/platform-api/reference/list-goals.md)
+- [List holdings by account](https://docs.mx.com/api-reference/platform-api/reference/list-holdings-by-account.md)
+- [List holdings by member](https://docs.mx.com/api-reference/platform-api/reference/list-holdings-by-member.md)
+- [List holdings by user](https://docs.mx.com/api-reference/platform-api/reference/list-holdings-by-user.md)
+- [List insights by account](https://docs.mx.com/api-reference/platform-api/reference/list-insights-by-account.md)
+- [List insights by transaction](https://docs.mx.com/api-reference/platform-api/reference/list-insights-by-transaction.md)
+- [List all insights for a user](https://docs.mx.com/api-reference/platform-api/reference/list-insights-user.md): Use this endpoint to list all the insights associated with the user.
+- [List institution credentials](https://docs.mx.com/api-reference/platform-api/reference/list-institution-credentials.md)
+- [List institutions](https://docs.mx.com/api-reference/platform-api/reference/list-institutions.md)
+- [List managed accounts](https://docs.mx.com/api-reference/platform-api/reference/list-managed-accounts.md)
+- [List managed institutions](https://docs.mx.com/api-reference/platform-api/reference/list-managed-institutions.md)
+- [List managed members](https://docs.mx.com/api-reference/platform-api/reference/list-managed-members.md)
+- [List managed transactions](https://docs.mx.com/api-reference/platform-api/reference/list-managed-transactions.md)
+- [List member accounts](https://docs.mx.com/api-reference/platform-api/reference/list-member-accounts.md)
+- [List member challenges](https://docs.mx.com/api-reference/platform-api/reference/list-member-challenges.md)
+- [List member credentials](https://docs.mx.com/api-reference/platform-api/reference/list-member-credentials.md)
+- [List members](https://docs.mx.com/api-reference/platform-api/reference/list-members.md)
+- [List merchants](https://docs.mx.com/api-reference/platform-api/reference/list-merchants.md)
+- [List all merchants associated with an insight](https://docs.mx.com/api-reference/platform-api/reference/list-merchants-insight.md): Use this endpoint to list all the merchants associated with the insight.
+- [List notifications](https://docs.mx.com/api-reference/platform-api/reference/list-notifications.md)
+- [List all scheduled payments associated with an insight](https://docs.mx.com/api-reference/platform-api/reference/list-scheduled-payments-insight.md): Use this endpoint to list all the scheduled payments associated with the insight.
+- [List spending plan accounts](https://docs.mx.com/api-reference/platform-api/reference/list-spending-plan-accounts.md)
+- [List spending plan iteration items](https://docs.mx.com/api-reference/platform-api/reference/list-spending-plan-iteration-items.md)
+- [List spending plan iterations](https://docs.mx.com/api-reference/platform-api/reference/list-spending-plan-iterations.md)
+- [List spending plans](https://docs.mx.com/api-reference/platform-api/reference/list-spending-plans.md)
+- [List statements by member](https://docs.mx.com/api-reference/platform-api/reference/list-statements-by-member.md)
+- [List taggings](https://docs.mx.com/api-reference/platform-api/reference/list-taggings.md)
+- [List tags](https://docs.mx.com/api-reference/platform-api/reference/list-tags.md)
+- [View a List of Tokens](https://docs.mx.com/api-reference/platform-api/reference/list-tokens.md): View a list of tokens that exist for a user, member, or account.
+- [List transaction rules](https://docs.mx.com/api-reference/platform-api/reference/list-transaction-rules.md)
+- [List transactions](https://docs.mx.com/api-reference/platform-api/reference/list-transactions.md)
+- [List transactions by account](https://docs.mx.com/api-reference/platform-api/reference/list-transactions-by-account.md)
+- [List transactions by account per member](https://docs.mx.com/api-reference/platform-api/reference/list-transactions-by-account-per-member.md)
+- [List transactions by member](https://docs.mx.com/api-reference/platform-api/reference/list-transactions-by-member.md)
+- [List transactions by tag](https://docs.mx.com/api-reference/platform-api/reference/list-transactions-by-tag.md)
+- [List all transactions associated with an insight](https://docs.mx.com/api-reference/platform-api/reference/list-transactions-insight.md): Use this endpoint to list all the transactions associated with the insight.
+- [List accounts](https://docs.mx.com/api-reference/platform-api/reference/list-user-accounts.md): This endpoint returns a list of all the accounts associated with the specified user.
+- [List all microdeposits for a user](https://docs.mx.com/api-reference/platform-api/reference/list-user-microdeposits.md): Use this endpoint to read the attributes of a specific microdeposit according to its unique GUID.
+- [List all verifications for a user](https://docs.mx.com/api-reference/platform-api/reference/list-user-verifications.md): This endpoint returns a list of the account verifications associated with the user, as well as the status of those verifications.
+- [List users](https://docs.mx.com/api-reference/platform-api/reference/list-users.md)
+- [Members Overview](https://docs.mx.com/api-reference/platform-api/reference/members.md): Members represent the connection between an end user and a financial institution.
+- [Merchants Overview](https://docs.mx.com/api-reference/platform-api/reference/merchants.md): Merchants are representations of a transaction's origin.
+- [Merge accounts](https://docs.mx.com/api-reference/platform-api/reference/merge-accounts.md)
+- [Microdeposits Overview](https://docs.mx.com/api-reference/platform-api/reference/microdeposits.md): Microdeposits is an additional verification method that allows you to verify account details and navigate the process of using microdeposits and the automated clearing house (ACH) system.
+- [Monthly Cash Flow Profile Overview](https://docs.mx.com/api-reference/platform-api/reference/monthly-cashflow-profile.md): Monthly cash flow profile fields for the MX Platform API.
+- [MX Platform API](https://docs.mx.com/api-reference/platform-api/reference/mx-platform-api.md): The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
+- [Notifications Overview](https://docs.mx.com/api-reference/platform-api/reference/notifications.md)
+- [Read a custom category](https://docs.mx.com/api-reference/platform-api/reference/read-a-custom-category.md)
+- [Read account](https://docs.mx.com/api-reference/platform-api/reference/read-account.md)
+- [Read the account balance (Processors Only)](https://docs.mx.com/api-reference/platform-api/reference/read-account-balance.md): Read the account balance (Processors Only)
+- [Read ACH Return](https://docs.mx.com/api-reference/platform-api/reference/read-ach-return.md)
+- [Read a category](https://docs.mx.com/api-reference/platform-api/reference/read-category.md): Read a category.
+- [Read current spending plan iteration](https://docs.mx.com/api-reference/platform-api/reference/read-current-spending-plan-iteration.md)
+- [Read a default category](https://docs.mx.com/api-reference/platform-api/reference/read-default-category.md): Use this endpoint to read the attributes of a default category.
+- [Read a goal](https://docs.mx.com/api-reference/platform-api/reference/read-goal.md): Read a specific goal
+- [Read holding](https://docs.mx.com/api-reference/platform-api/reference/read-holding.md)
+- [Read insight](https://docs.mx.com/api-reference/platform-api/reference/read-insight-user.md): Use this endpoint to read the attributes of an insight according to its unique GUID.
+- [Read institution](https://docs.mx.com/api-reference/platform-api/reference/read-institution.md)
+- [Read job](https://docs.mx.com/api-reference/platform-api/reference/read-job.md): Use this endpoint to read the attributes of a specific job. > **Warning:** New implementations shouldn't use this endpoint. It is maintained for compatibility with our Nexus API only.
+- [Read managed account](https://docs.mx.com/api-reference/platform-api/reference/read-managed-account.md)
+- [Read managed member](https://docs.mx.com/api-reference/platform-api/reference/read-managed-member.md)
+- [Read managed transaction](https://docs.mx.com/api-reference/platform-api/reference/read-managed-transaction.md)
+- [Read member](https://docs.mx.com/api-reference/platform-api/reference/read-member.md)
+- [Read member account](https://docs.mx.com/api-reference/platform-api/reference/read-member-account.md)
+- [Read member status](https://docs.mx.com/api-reference/platform-api/reference/read-member-status.md)
+- [Read merchant](https://docs.mx.com/api-reference/platform-api/reference/read-merchant.md)
+- [Read merchant location](https://docs.mx.com/api-reference/platform-api/reference/read-merchant-location.md)
+- [Read monthly cash flow profile](https://docs.mx.com/api-reference/platform-api/reference/read-monthly-cash-flow-profile.md)
+- [Read notifications](https://docs.mx.com/api-reference/platform-api/reference/read-notifications.md)
+- [Read a specific budget](https://docs.mx.com/api-reference/platform-api/reference/read-specific-budget.md): Read a specific budget.
+- [Read spending plan account](https://docs.mx.com/api-reference/platform-api/reference/read-spending-plan-account.md)
+- [Read a spending plan iteration](https://docs.mx.com/api-reference/platform-api/reference/read-spending-plan-iteration.md): This endpoint returns information about a specific iteration according to its `iteration_number`.
+- [Read a spending plan iteration item](https://docs.mx.com/api-reference/platform-api/reference/read-spending-plan-iteration-item.md): Use this endpoint to read the attributes of a specific spending plan `iteration_item` according to its unique GUID.
+- [Read a spending plan for a user](https://docs.mx.com/api-reference/platform-api/reference/read-spending-plan-user.md): Use this endpoint to read the attributes of a specific spending plan according to its unique GUID.
+- [Read statement by member](https://docs.mx.com/api-reference/platform-api/reference/read-statement-by-member.md)
+- [Read tag](https://docs.mx.com/api-reference/platform-api/reference/read-tag.md)
+- [Read tagging](https://docs.mx.com/api-reference/platform-api/reference/read-tagging.md)
+- [Read transaction](https://docs.mx.com/api-reference/platform-api/reference/read-transaction.md)
+- [Read transaction by account](https://docs.mx.com/api-reference/platform-api/reference/read-transaction-by-account.md)
+- [Read transaction rule](https://docs.mx.com/api-reference/platform-api/reference/read-transaction-rule.md)
+- [Read user](https://docs.mx.com/api-reference/platform-api/reference/read-user.md)
+- [Read a microdeposit for a user](https://docs.mx.com/api-reference/platform-api/reference/read-user-microdeposit.md): Use this endpoint to read the attributes of a specific microdeposit according to its  unique GUID. <br></br> Webhooks for microdeposit status changes are triggered when a  status changes. The actual status of the microdeposit guid updates every minute. You may  force a status update by calling the r…
+- [List Repeating Transactions](https://docs.mx.com/api-reference/platform-api/reference/repeating-transactions.md): Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](/api-reference/platform-api/v20111101/reference/transactions#repeating-transactions).
+- [Reposition goals](https://docs.mx.com/api-reference/platform-api/reference/reposition-goals.md)
+- [Request an account number (Processors Only)](https://docs.mx.com/api-reference/platform-api/reference/request-account-number.md): Get account information such as routing number and account number, scoped to your access token.
+- [Request an authorization code](https://docs.mx.com/api-reference/platform-api/reference/request-authorization-code.md): Clients use this endpoint to request an authorization code according to the parameters specified in the scope. Clients then pass this code to processors. Processor access is scoped only to the GUIDs and features specified in this request. Before requesting an authorization code which includes a memb…
+- [Request oauth window uri](https://docs.mx.com/api-reference/platform-api/reference/request-oauth-window-uri.md)
+- [Request widget URL](https://docs.mx.com/api-reference/platform-api/reference/request-widget-url.md)
+- [Resume aggregation](https://docs.mx.com/api-reference/platform-api/reference/resume-aggregation.md)
+- [Get a Repeating Transaction](https://docs.mx.com/api-reference/platform-api/reference/specific-repeating-transaction.md): Get a Specific Repeating Transaction. <br /><br />List For more see the  [Repeating Transactions guide](/api-reference/platform-api/v20111101/reference/transactions#repeating-transactions)
+- [Spending Plan Overview](https://docs.mx.com/api-reference/platform-api/reference/spending-plans.md): Use these endpoints to create a custom Spending Plan UI to help end users track their spending throughout the month.
+- [Statements Overview](https://docs.mx.com/api-reference/platform-api/reference/statements.md): With Statements, you can retrieve a user's monthly account statements in PDF format.
+- [Taggings Overview](https://docs.mx.com/api-reference/platform-api/reference/taggings.md): Tags and taggings are two resources in the MX Platform API that, when used together, give end users more control over organizing their transactions.
+- [Tag Overview](https://docs.mx.com/api-reference/platform-api/reference/tags.md): Tags and taggings are two resources in the MX Platform API that, when used together, give end users more control over organizing their transactions.
+- [Transaction Rules Overview](https://docs.mx.com/api-reference/platform-api/reference/transaction-rules.md): Transaction Rules allow users to automatically recategorize or rename all similar transactions according to their preferences.
+- [Transactions Overview](https://docs.mx.com/api-reference/platform-api/reference/transactions.md): Transactions represent any instance in which money moves into or out of an account.
+- [Update account by member](https://docs.mx.com/api-reference/platform-api/reference/update-account-by-member.md)
+- [Update category](https://docs.mx.com/api-reference/platform-api/reference/update-category.md)
+- [Update a goal](https://docs.mx.com/api-reference/platform-api/reference/update-goal.md): Use this endpoint to update a specific goal.
+- [Update insight](https://docs.mx.com/api-reference/platform-api/reference/update-insight.md)
+- [Update managed account](https://docs.mx.com/api-reference/platform-api/reference/update-managed-account.md)
+- [Update managed member](https://docs.mx.com/api-reference/platform-api/reference/update-managed-member.md)
+- [Update managed transaction](https://docs.mx.com/api-reference/platform-api/reference/update-managed-transaction.md)
+- [Update member](https://docs.mx.com/api-reference/platform-api/reference/update-member.md)
+- [Update monthly cash flow profile](https://docs.mx.com/api-reference/platform-api/reference/update-monthly-cash-flow-profile.md)
+- [Update a specific budget](https://docs.mx.com/api-reference/platform-api/reference/update-specific-budget.md): Update a specific budget.
+- [Update a spending plan iteration item](https://docs.mx.com/api-reference/platform-api/reference/update-spending-plan-iteration-item.md): Use this endpoint to update an existing `spending_plan_iteration_item`.
+- [Update tag](https://docs.mx.com/api-reference/platform-api/reference/update-tag.md)
+- [Update tagging](https://docs.mx.com/api-reference/platform-api/reference/update-tagging.md)
+- [Update transaction](https://docs.mx.com/api-reference/platform-api/reference/update-transaction.md)
+- [Update transaction by account](https://docs.mx.com/api-reference/platform-api/reference/update-transaction-by-account.md)
+- [Update transaction rule](https://docs.mx.com/api-reference/platform-api/reference/update-transaction-rule.md)
+- [Update user](https://docs.mx.com/api-reference/platform-api/reference/update-user.md)
+- [Users Overview](https://docs.mx.com/api-reference/platform-api/reference/users.md): Users represent an end user using the Platform API through your web or mobile app.
+- [Verifiable Credentials](https://docs.mx.com/api-reference/platform-api/reference/verifiable-credentials.md): MX provides Verifiable Credential endpoints that comply with web5 standards.
+- [Verify member](https://docs.mx.com/api-reference/platform-api/reference/verify-member.md)
+- [Verify a microdeposit](https://docs.mx.com/api-reference/platform-api/reference/verify-microdeposit.md): Use this endpoint to verify the amounts deposited into the account during a microdeposit verification. The verification has not successfully completed until the microdeposit status is `VERIFIED`.  Poll the [Read a Microdeposit](/api-reference/nexus/reference/read-microdeposit) endpoint until you see…
+- [Widgets Overview](https://docs.mx.com/api-reference/platform-api/reference/widgets.md): Many request body parameters only work for some widgets.
+- [Best Practices](https://docs.mx.com/connect/best-practices.md): Make the most of your Connect Widget integration with these practical tips.
+- [MXquickconnect Demo App](https://docs.mx.com/connect/demo-app.md): Set up our demo app and use the Connect Widget yourself
+- [Embed Widget](https://docs.mx.com/connect/guides/index.md)
+- [React Native SDK](https://docs.mx.com/connect/guides/react-native-sdk.md)
+- [Web SDK](https://docs.mx.com/connect/guides/web-sdk.md)
+- [WebView](https://docs.mx.com/connect/guides/webviews.md)
+- [JavaScript Loader (Deprecated)](https://docs.mx.com/connect/guides/widget_loader_deprecated.md)
+- [Connect Widget Overview](https://docs.mx.com/connect/index.md)
+- [Testing the Connect Widget](https://docs.mx.com/connect/testing-the-connect-widget.md)
+- [Connect Widget UI Walkthrough](https://docs.mx.com/connect/ui-walkthrough.md): Explore the Connect Widget's UI and common flows.
+- [Widget Events](https://docs.mx.com/connect/widget-events.md): A list of Connect Widget events, how to handle them, and best practices
+- [Welcome to the MX Documentation](https://docs.mx.com/index.md)
+- [Account Aggregation](https://docs.mx.com/products/connectivity/account-aggregation/index.md): Get account and transaction data by connecting end users' financial accounts
+- [Account Owner Identification](https://docs.mx.com/products/connectivity/account-owner-identification/index.md): Get the name, address, and contact information for the owner of an account
+- [Balance Checks](https://docs.mx.com/products/connectivity/balance-checks/index.md): Get the available balance for an end user's financial accounts
+- [Extended Transaction History](https://docs.mx.com/products/connectivity/extended-transaction-history/index.md): Get up to 24 months of account and transaction data
+- [Instant Account Verification](https://docs.mx.com/products/connectivity/instant-account-verification/index.md): Get account and routing numbers for demand deposit accounts
+- [Best Practices ](https://docs.mx.com/products/connectivity/instant-account-verification/processor-token/best-practice.md)
+- [How-to Guide for Clients](https://docs.mx.com/products/connectivity/instant-account-verification/processor-token/client-guide.md)
+- [Intro to Processor Token](https://docs.mx.com/products/connectivity/instant-account-verification/processor-token/index.md)
+- [How-to Guide for Processors](https://docs.mx.com/products/connectivity/instant-account-verification/processor-token/processor-guide.md)
+- [Build a Microdeposits Flow with our API](https://docs.mx.com/products/connectivity/microdeposits/api-only.md): Build a microdeposits flow using the Platform API to let end users verify their accounts with institutions that don't support Instant Account Verification.
+- [Microdeposits Workflow in the Connect Widget](https://docs.mx.com/products/connectivity/microdeposits/connect-widget.md)
+- [Microdeposits](https://docs.mx.com/products/connectivity/microdeposits/index.md): Verify account details by making two, small ACH deposits for end user confirmation.
+- [Best Practices](https://docs.mx.com/products/connectivity/overview/best-practices.md)
+- [Integrate without using MX's Connect Widget](https://docs.mx.com/products/connectivity/overview/connectivity-integration-guides/api-only-flow.md)
+- [Integrate using MX's Connect Widget](https://docs.mx.com/products/connectivity/overview/connectivity-integration-guides/connect-widget-flow.md)
+- [Connect Accounts](https://docs.mx.com/products/connectivity/overview/connectivity-integration-guides/index.md)
+- [MX Data Architecture](https://docs.mx.com/products/connectivity/overview/data-architecture.md)
+- [Held Data Best Practices](https://docs.mx.com/products/connectivity/overview/held-data/best-practices.md)
+- [Sending Held Data](https://docs.mx.com/products/connectivity/overview/held-data/index.md)
+- [MDX On Demand v5](https://docs.mx.com/products/connectivity/overview/held-data/mdx-on-demand.md)
+- [MDX Real Time](https://docs.mx.com/products/connectivity/overview/held-data/mdx-real-time.md)
+- [Connectivity Overview](https://docs.mx.com/products/connectivity/overview/index.md): Connect users to their financial accounts and retrieve the enhanced data you need
+- [Intro to Unified Product Ordering](https://docs.mx.com/products/connectivity/overview/intro-to-unified-product-ordering/index.md)
+- [Handling Multifactor Authentication](https://docs.mx.com/products/connectivity/overview/mfa.md)
+- [Statements](https://docs.mx.com/products/connectivity/statements/index.md): Get monthly account statements
+- [Audience Assistant](https://docs.mx.com/products/data/audiences/audience-assistant.md): Use natural language to create audiences
+- [Import Audiences](https://docs.mx.com/products/data/audiences/import-audiences.md)
+- [Audiences](https://docs.mx.com/products/data/audiences/overview.md)
+- [Sync Audiences](https://docs.mx.com/products/data/audiences/sync-audiences.md)
+- [Customer Analytics](https://docs.mx.com/products/data/customer-analytics/index.md): Data-driven intelligence about your customers.
+- [Optimal Data Specifications](https://docs.mx.com/products/data/customer-analytics/integration-guides/data-options.md)
+- [Existing Client Integration Guide for Customer Analytics](https://docs.mx.com/products/data/customer-analytics/integration-guides/existing-clients.md)
+- [New Client Integration Guide for Customer Analytics](https://docs.mx.com/products/data/customer-analytics/integration-guides/new-clients.md)
+- [Competitive Insights](https://docs.mx.com/products/data/customer-analytics/user-guide/competitive-insights.md)
+- [Customer Segments](https://docs.mx.com/products/data/customer-analytics/user-guide/customer-segments.md)
+- [Deposit Attrition](https://docs.mx.com/products/data/customer-analytics/user-guide/deposit-attrition.md)
+- [Digital Engagement](https://docs.mx.com/products/data/customer-analytics/user-guide/digital-engagement.md)
+- [External Relationships](https://docs.mx.com/products/data/customer-analytics/user-guide/growth-opportunities.md)
+- [Customer Analytics User Guide](https://docs.mx.com/products/data/customer-analytics/user-guide/index.md)
+- [Analytics Home](https://docs.mx.com/products/data/customer-analytics/user-guide/overview.md)
+- [Portfolio Performance](https://docs.mx.com/products/data/customer-analytics/user-guide/portfolio-performance.md)
+- [Spend-to-Income](https://docs.mx.com/products/data/customer-analytics/user-guide/spend-to-income.md)
+- [Authentication](https://docs.mx.com/products/data/data-access/channel-partner-portal/authentication.md)
+- [Channel Partner Dashboard User Guide](https://docs.mx.com/products/data/data-access/channel-partner-portal/index.md)
+- [Institutions](https://docs.mx.com/products/data/data-access/channel-partner-portal/institutions.md)
+- [Logs](https://docs.mx.com/products/data/data-access/channel-partner-portal/logs.md)
+- [Overview Page](https://docs.mx.com/products/data/data-access/channel-partner-portal/overview.md)
+- [Settings](https://docs.mx.com/products/data/data-access/channel-partner-portal/settings.md)
+- [Team Members](https://docs.mx.com/products/data/data-access/channel-partner-portal/team-members.md)
+- [The Customer Consent Management Dashboard API](https://docs.mx.com/products/data/data-access/data-provider-reference/consent-management-api.md)
+- [The Customer Consent-Management Dashboard](https://docs.mx.com/products/data/data-access/data-provider-reference/consent-management-dashboard.md)
+- [All Apps](https://docs.mx.com/products/data/data-access/data-provider-reference/data-provider-portal/all-apps.md)
+- [API Documentation](https://docs.mx.com/products/data/data-access/data-provider-reference/data-provider-portal/api-documentation.md)
+- [Configuration](https://docs.mx.com/products/data/data-access/data-provider-reference/data-provider-portal/configuration.md)
+- [Data Provider Portal User Guide](https://docs.mx.com/products/data/data-access/data-provider-reference/data-provider-portal/index.md)
+- [Intermediaries](https://docs.mx.com/products/data/data-access/data-provider-reference/data-provider-portal/intermediaries.md)
+- [Onboarding](https://docs.mx.com/products/data/data-access/data-provider-reference/data-provider-portal/onboarding.md)
+- [Overview](https://docs.mx.com/products/data/data-access/data-provider-reference/data-provider-portal/overview.md)
+- [Settings](https://docs.mx.com/products/data/data-access/data-provider-reference/data-provider-portal/settings.md)
+- [MX-Hosted Implementations](https://docs.mx.com/products/data/data-access/data-provider-reference/hosted.md)
+- [Data Provider Reference](https://docs.mx.com/products/data/data-access/data-provider-reference/index.md)
+- [Branding](https://docs.mx.com/products/data/data-access/data-recipient-reference/branding.md)
+- [All Apps](https://docs.mx.com/products/data/data-access/data-recipient-reference/data-recipient-portal/all-apps.md)
+- [API Documentation](https://docs.mx.com/products/data/data-access/data-recipient-reference/data-recipient-portal/api-documentation.md)
+- [Data Recipient Portal User Guide](https://docs.mx.com/products/data/data-access/data-recipient-reference/data-recipient-portal/index.md)
+- [Logs](https://docs.mx.com/products/data/data-access/data-recipient-reference/data-recipient-portal/logs.md)
+- [Settings](https://docs.mx.com/products/data/data-access/data-recipient-reference/data-recipient-portal/settings.md)
+- [Verified IPs](https://docs.mx.com/products/data/data-access/data-recipient-reference/data-recipient-portal/verified-ips.md)
+- [Dynamic Client Registration](https://docs.mx.com/products/data/data-access/data-recipient-reference/dcr.md)
+- [FDX 4.6 API](https://docs.mx.com/products/data/data-access/data-recipient-reference/fdx.md)
+- [Data Recipient Reference](https://docs.mx.com/products/data/data-access/data-recipient-reference/index.md)
+- [OAuth](https://docs.mx.com/products/data/data-access/data-recipient-reference/oauth.md)
+- [Data Access](https://docs.mx.com/products/data/data-access/index.md)
+- [Data Access Analytics](https://docs.mx.com/products/data/data-access/premium-data-access/data-access-analytics.md)
+- [Data Access Consent Triaging](https://docs.mx.com/products/data/data-access/premium-data-access/data-access-consent-triaging.md)
+- [Data Access Events](https://docs.mx.com/products/data/data-access/premium-data-access/data-access-events.md)
+- [Premium Data Access](https://docs.mx.com/products/data/data-access/premium-data-access/index.md)
+- [Data Access Webhooks](https://docs.mx.com/products/data/data-access/premium-data-access/webhooks.md)
+- [Investment Data](https://docs.mx.com/products/data/investment-data-enhancement/index.md): Get enhanced investment holdings data and actionable insights into users' portfolios
+- [Mobile Deep Linking for Messaging](https://docs.mx.com/products/data/marketing-hub/deeplinking.md)
+- [Embedded Spaces](https://docs.mx.com/products/data/marketing-hub/embedded-spaces.md)
+- [Messaging](https://docs.mx.com/products/data/marketing-hub/index.md): Create a focused, detailed, informed message seen only by the users who are most likely to respond.
+- [Messaging Feature](https://docs.mx.com/products/data/marketing-hub/messaging-feature.md)
+- [User Role Permissions](https://docs.mx.com/products/data/marketing-hub/user-role-permissions.md)
+- [Best Practices](https://docs.mx.com/products/experience/insights/best-practices.md)
+- [Financial Insights](https://docs.mx.com/products/experience/insights/index.md): Deliver dynamic, personalized, and predictive financial insights using our widgets or API to inform, guide, and protect end users towards financial wellness
+- [Insights Integration Guides](https://docs.mx.com/products/experience/insights/integration-guides/index.md)
+- [Integrate the Insights Widget](https://docs.mx.com/products/experience/insights/integration-guides/integrate-insights-widget.md)
+- [Integrate the Micro Widget](https://docs.mx.com/products/experience/insights/integration-guides/integrate-micro-widget.md)
+- [Integrate the Mini Widget](https://docs.mx.com/products/experience/insights/integration-guides/integrate-mini-widget.md)
+- [Borrow](https://docs.mx.com/products/experience/insights/library/borrow.md)
+- [Insights Library](https://docs.mx.com/products/experience/insights/library/index.md)
+- [Plan](https://docs.mx.com/products/experience/insights/library/plan.md)
+- [Save](https://docs.mx.com/products/experience/insights/library/save.md)
+- [Spend](https://docs.mx.com/products/experience/insights/library/spend.md)
+- [Insights Widgets](https://docs.mx.com/products/experience/insights/widget-overviews/index.md)
+- [Insights Widget](https://docs.mx.com/products/experience/insights/widget-overviews/insights-widget.md)
+- [Micro Widget Overview](https://docs.mx.com/products/experience/insights/widget-overviews/micro-widget.md)
+- [Mini Widget Overview](https://docs.mx.com/products/experience/insights/widget-overviews/mini-widget.md)
+- [Accounts](https://docs.mx.com/products/experience/mobile/features/accounts.md)
+- [Connect](https://docs.mx.com/products/experience/mobile/features/connect.md)
+- [Contact Support](https://docs.mx.com/products/experience/mobile/features/contact-support.md)
+- [Dashboard](https://docs.mx.com/products/experience/mobile/features/dashboard.md)
+- [FDIC](https://docs.mx.com/products/experience/mobile/features/fdic.md)
+- [Features Overview](https://docs.mx.com/products/experience/mobile/features/index.md)
+- [Marketing](https://docs.mx.com/products/experience/mobile/features/marketing.md)
+- [Deposit Check](https://docs.mx.com/products/experience/mobile/features/move-money/deposit-check.md)
+- [Move Money](https://docs.mx.com/products/experience/mobile/features/move-money/index.md)
+- [Internal Transfers](https://docs.mx.com/products/experience/mobile/features/move-money/internal-transfers.md)
+- [Notifications](https://docs.mx.com/products/experience/mobile/features/notifications.md)
+- [Settings](https://docs.mx.com/products/experience/mobile/features/settings.md)
+- [Splash and Login](https://docs.mx.com/products/experience/mobile/features/splash-and-login.md)
+- [Transactions](https://docs.mx.com/products/experience/mobile/features/transactions.md)
+- [Mobile Banking](https://docs.mx.com/products/experience/mobile/index.md)
+- [Setup](https://docs.mx.com/products/experience/mobile/setup/index.md)
+- [Theme Your Mobile App](https://docs.mx.com/products/experience/mobile/setup/theming.md)
+- [Webviews](https://docs.mx.com/products/experience/mobile/setup/webviews.md)
+- [Best Practices](https://docs.mx.com/products/experience/pfm/best-practices.md)
+- [Personal Finance Management](https://docs.mx.com/products/experience/pfm/index.md)
+- [Build Your Own Spending Plan UI](https://docs.mx.com/products/experience/pfm/integration-guides/build-your-own-spending-plan-ui.md)
+- [PFM Integration Guides](https://docs.mx.com/products/experience/pfm/integration-guides/index.md)
+- [Integrate Any PFM Widget](https://docs.mx.com/products/experience/pfm/integration-guides/integrate-a-widget.md)
+- [Create Custom Transaction Categories](https://docs.mx.com/products/experience/pfm/integration-guides/personalization/custom-categories.md)
+- [Custom Tags and Taggings for Transaction Personalization](https://docs.mx.com/products/experience/pfm/integration-guides/personalization/index.md)
+- [Using Transaction Rules for Automatic Categorization](https://docs.mx.com/products/experience/pfm/integration-guides/personalization/transaction-rules.md)
+- [Notifications](https://docs.mx.com/products/experience/pfm/notifications.md)
+- [Accounts Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/accounts-widget.md)
+- [Budgets Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/budgets-widget.md)
+- [Cash Flow Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/cash-flow-widget.md)
+- [Connections Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/connections-widget.md)
+- [Debts Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/debts-widget.md)
+- [FinStrong Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/finstrong-widget.md)
+- [Goals Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/goals-widget.md)
+- [Widget Overviews](https://docs.mx.com/products/experience/pfm/widget-overviews/index.md)
+- [Investments Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/investments-widget.md)
+- [Money Dashboard Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/money-dashboard-widget.md)
+- [Net Worth Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/net-worth-widget.md)
+- [Recurring Transactions Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/recurring-transactions.md)
+- [Settings Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/settings-widget.md)
+- [Spending Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/spending-widget.md)
+- [Transactions Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/transactions-widget.md)
+- [Trends Widget Overview](https://docs.mx.com/products/experience/pfm/widget-overviews/trends-widget.md)
+- [Release Notes](https://docs.mx.com/release-notes/index.md): Review our Release Notes to stay up to date with product updates and new features.
+- [Changelog](https://docs.mx.com/resources/changelog/index.md)
+- [How to Setup SAML SSO Login](https://docs.mx.com/resources/client-dashboard/how-to-setup-saml-sso.md)
+- [Client Dashboard](https://docs.mx.com/resources/client-dashboard/index.md)
+- [Manage API Keys](https://docs.mx.com/resources/client-dashboard/manage-api-keys.md)
+- [Manage Webhooks](https://docs.mx.com/resources/client-dashboard/manage-webhooks.md)
+- [Mobile Maintenance Mode](https://docs.mx.com/resources/client-dashboard/mobile.md)
+- [User Lookup](https://docs.mx.com/resources/client-dashboard/user-lookup.md)
+- [Glossary](https://docs.mx.com/resources/glossary/index.md): Key MX concepts, terminology, and products.
+- [API Integration Checklist](https://docs.mx.com/resources/integration-checklist/index.md)
+- [OAuth](https://docs.mx.com/resources/oauth-guide/index.md)
+- [OAuth in Browsers](https://docs.mx.com/resources/oauth-guide/oauth-in-browsers.md)
+- [OAuth in the Connect Widget](https://docs.mx.com/resources/oauth-guide/oauth-in-connect-widget.md): Build a flow to connect users to their financial institutions using OAuth in the Connect Widget.
+- [OAuth in Mobile Apps](https://docs.mx.com/resources/oauth-guide/oauth-in-mobile-apps.md)
+- [Product Status Page](https://docs.mx.com/resources/status-page/index.md)
+- [Testing the Platform API](https://docs.mx.com/resources/test-platform/index.md)
+- [Testing with MX Bank](https://docs.mx.com/resources/test-platform/mxbank/index.md)
+- [Testing with MXCU](https://docs.mx.com/resources/test-platform/mxcu/index.md)
+- [Testing Multiple Account Owners](https://docs.mx.com/resources/test-platform/mxcu/testing-multiple-account-owners.md)
+- [Testing OAuth with MXCU](https://docs.mx.com/resources/test-platform/mxcu/testing-oauth-with-mxcu.md)
+- [Accounts](https://docs.mx.com/resources/webhooks/accounts.md)
+- [Aggregation](https://docs.mx.com/resources/webhooks/aggregation.md)
+- [Balance](https://docs.mx.com/resources/webhooks/balance.md)
+- [Beats (Deprecated)](https://docs.mx.com/resources/webhooks/beats-deprecated.md)
+- [Budgets](https://docs.mx.com/resources/webhooks/budgets.md)
+- [Categories](https://docs.mx.com/resources/webhooks/categories.md)
+- [Connection Status](https://docs.mx.com/resources/webhooks/connection-status.md)
+- [Goals](https://docs.mx.com/resources/webhooks/goals.md)
+- [History](https://docs.mx.com/resources/webhooks/history.md)
+- [Holdings](https://docs.mx.com/resources/webhooks/holdings.md)
+- [Webhooks](https://docs.mx.com/resources/webhooks/index.md)
+- [Initial Data Ready](https://docs.mx.com/resources/webhooks/initial-data-ready.md)
+- [Insights](https://docs.mx.com/resources/webhooks/insights.md)
+- [Job Status](https://docs.mx.com/resources/webhooks/job-status.md)
+- [Members](https://docs.mx.com/resources/webhooks/member.md)
+- [Microdeposits](https://docs.mx.com/resources/webhooks/microdeposits.md)
+- [Notifications](https://docs.mx.com/resources/webhooks/notifications.md)
+- [Spending Plan](https://docs.mx.com/resources/webhooks/spending-plan.md)
+- [Statement](https://docs.mx.com/resources/webhooks/statements.md)
+- [Tags and Taggings](https://docs.mx.com/resources/webhooks/tags-&-taggings.md)
+- [Transactions](https://docs.mx.com/resources/webhooks/transactions.md)
+- [Users](https://docs.mx.com/resources/webhooks/users.md)
+- [Verification](https://docs.mx.com/resources/webhooks/verifications.md)
+- [Support](https://docs.mx.com/support.md)
+
+## OpenAPI Specs
+
+- [v20250224](https://docs.mx.com/openapi/platform-api/v20250224.yaml)
+- [v20111101](https://docs.mx.com/openapi/platform-api/v20111101.yaml)
+- [v2026](https://docs.mx.com/openapi/platform-api-2026/v2026.yaml)
+- [v1](https://docs.mx.com/openapi/rewards/v1.yaml)
+- [v4](https://docs.mx.com/openapi/consent-management/v4.yaml)
+- [openapi](https://docs.mx.com/api-reference/openapi.json)

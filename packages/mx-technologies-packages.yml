@@ -1,0 +1,69 @@
+generated: '2026-07-23'
+method: searched
+source: https://github.com/mxenabled
+notes: >-
+  MX publishes official first-party client libraries for the MX Platform API,
+  generated from its OpenAPI specification, across six languages, plus browser
+  and React Native widget SDKs. Registry versions verified 2026-07-23.
+packages:
+  - language: ruby
+    registry: rubygems
+    name: mx-platform-ruby
+    version: 1.13.0
+    url: https://rubygems.org/gems/mx-platform-ruby
+    source: https://github.com/mxenabled/mx-platform-ruby
+    install: gem install mx-platform-ruby
+    official: true
+  - language: python
+    registry: pypi
+    name: mx-platform-python
+    version: 1.12.0
+    url: https://pypi.org/project/mx-platform-python/
+    source: https://github.com/mxenabled/mx-platform-python
+    install: pip install mx-platform-python
+    official: true
+  - language: javascript
+    registry: npm
+    name: mx-platform-node
+    version: 2.1.0
+    url: https://www.npmjs.com/package/mx-platform-node
+    source: https://github.com/mxenabled/mx-platform-node
+    install: npm install mx-platform-node
+    official: true
+  - language: java
+    registry: github
+    name: mx-platform-java
+    url: https://github.com/mxenabled/mx-platform-java
+    source: https://github.com/mxenabled/mx-platform-java
+    official: true
+  - language: csharp
+    registry: github
+    name: mx-platform-csharp
+    url: https://github.com/mxenabled/mx-platform-csharp
+    source: https://github.com/mxenabled/mx-platform-csharp
+    official: true
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/mxenabled/mx-platform-go
+    url: https://pkg.go.dev/github.com/mxenabled/mx-platform-go
+    source: https://github.com/mxenabled/mx-platform-go
+    install: go get github.com/mxenabled/mx-platform-go
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@mxenabled/web-widget-sdk"
+    version: 0.0.15
+    url: https://www.npmjs.com/package/@mxenabled/web-widget-sdk
+    source: https://github.com/mxenabled/web-widget-sdk
+    install: npm install @mxenabled/web-widget-sdk
+    official: true
+    kind: widget-sdk
+  - language: javascript
+    registry: npm
+    name: "@mxenabled/react-native-widget-sdk"
+    version: 3.0.0
+    url: https://www.npmjs.com/package/@mxenabled/react-native-widget-sdk
+    source: https://github.com/mxenabled/react-native-widget-sdk
+    install: npm install @mxenabled/react-native-widget-sdk
+    official: true
+    kind: widget-sdk

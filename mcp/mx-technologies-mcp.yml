@@ -1,0 +1,62 @@
+generated: '2026-07-23'
+method: derived
+status: candidate
+source: openapi/mx-platform-api-openapi.yml
+notes: No official hosted MX MCP server was found (checked docs.mx.com, the mxenabled GitHub org, and
+  the npm @modelcontextprotocol scope as of 2026-07-23). This is a DERIVED candidate tool surface — a
+  curated subset of the MX Platform API's most agent-relevant read/aggregate operations, one tool per
+  operationId. Each tool inherits its real inputSchema from the backing OpenAPI operation's parameters.
+  Not published by MX.
+server:
+  name: mx-platform
+  transport: http
+  auth: http-basic (client_id / api_key)
+tools:
+- name: list_users
+  description: List users belonging to the client.
+  source_operation: openapi/mx-platform-api-openapi.yml#listUsers
+- name: create_user
+  description: Create a user.
+  source_operation: openapi/mx-platform-api-openapi.yml#createUser
+- name: list_institutions
+  description: List financial institutions supported by MX.
+  source_operation: openapi/mx-platform-api-openapi.yml#listInstitutions
+- name: create_member
+  description: Connect a user to an institution by creating a member.
+  source_operation: openapi/mx-platform-api-openapi.yml#createMember
+- name: list_members
+  description: List a user's members (institution connections).
+  source_operation: openapi/mx-platform-api-openapi.yml#listMembers
+- name: read_member_status
+  description: Read the aggregation/connection status of a member.
+  source_operation: openapi/mx-platform-api-openapi.yml#readMemberStatus
+- name: aggregate_member
+  description: Trigger a data aggregation for a member.
+  source_operation: openapi/mx-platform-api-openapi.yml#aggregateMember
+- name: verify_member
+  description: Trigger account verification for a member.
+  source_operation: openapi/mx-platform-api-openapi.yml#verifyMember
+- name: list_member_accounts
+  description: List accounts for a member.
+  source_operation: openapi/mx-platform-api-openapi.yml#listMemberAccounts
+- name: list_user_accounts
+  description: List all accounts for a user.
+  source_operation: openapi/mx-platform-api-openapi.yml#listUserAccounts
+- name: read_account
+  description: Read a single account.
+  source_operation: openapi/mx-platform-api-openapi.yml#readAccount
+- name: list_transactions
+  description: List transactions for a user.
+  source_operation: openapi/mx-platform-api-openapi.yml#listTransactions
+- name: list_transactions_by_account
+  description: List transactions for a specific account.
+  source_operation: openapi/mx-platform-api-openapi.yml#listTransactionsByAccount
+- name: request_widget_url
+  description: Request a URL to embed an MX widget (e.g. Connect) for a user.
+  source_operation: openapi/mx-platform-api-openapi.yml#requestWidgetURL
+deployment:
+  mode: none
+  verified: derived
+  tools: 14
+  checked: '2026-08-12'
+  source: catalog MCP census

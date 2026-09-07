@@ -1,0 +1,106 @@
+generated: '2026-07-23'
+method: searched
+source: https://docs.mx.com/api-reference/platform-api/overview/errors
+format: json
+notes: >-
+  The MX Platform API uses conventional HTTP response codes and does NOT use
+  RFC 9457 problem+json. Errors are returned in an `error` envelope with
+  `message`, `status`, and `type` fields. `error.message` is safe to display to
+  end users. Institution-blocking errors return 400 with an `institution_*`
+  error.type. Status semantics captured verbatim from the docs error reference;
+  the OpenAPI specification declares no per-operation 4xx/5xx response schemas.
+envelope:
+  wrapper: error
+  fields:
+    - message   # human-readable, displayable to end users
+    - status    # snake_case status string, e.g. bad_request
+    - type      # machine error type, e.g. institution_maintenance_error
+  example: |
+    {
+      "error": {
+        "message": "This institution is temporarily unavailable due to scheduled system maintenance.",
+        "status": "bad_request",
+        "type": "institution_maintenance_error"
+      }
+    }
+status_codes:
+  - status: 200
+    title: OK
+    detail: Everything worked as expected with content returned.
+  - status: 202
+    title: Accepted
+    detail: >-
+      Request accepted and processing; also returned when a job of the same
+      type is already running, or a standard aggregation was attempted within
+      the minimum time between standard aggregations.
+  - status: 204
+    title: No Content
+    detail: Everything worked as expected without content returned.
+  - status: 400
+    title: Bad Request
+    detail: >-
+      A required parameter was missing, or a premium aggregation job was
+      requested for an institution that does not support it. Also used for
+      institution-blocking errors (see institution_* types).
+  - status: 401
+    title: Unauthorized
+    detail: Invalid MX-API-Key or MX-Client-ID provided.
+  - status: 403
+    title: Forbidden
+    detail: Request from a non-whitelisted address, or feature unavailable to the client.
+  - status: 404
+    title: Not Found
+    detail: >-
+      Invalid item/id/URL requested. May also occur transiently on an immediate
+      GET after a successful POST due to data propagation (retry after ~500ms).
+  - status: 405
+    title: Method Not Allowed
+    detail: A constraint on the requested endpoint was not met.
+  - status: 406
+    title: Not Acceptable
+    detail: The request did not specify a valid API version (Accept-Version header).
+  - status: 409
+    title: Conflict
+    detail: >-
+      An object with the given attributes already exists, or a conflicting
+      aggregation of a different type is already running on the member.
+  - status: 422
+    title: Unprocessable Entity
+    detail: The data provided cannot be processed.
+  - status: 429
+    title: Too Many Requests
+    detail: >-
+      Concurrent-connection limit or per-second rate limit exceeded. Retry once
+      the rate-limit window expires.
+  - status: 500
+    title: Internal Server Error
+    detail: Something went wrong with MX's servers.
+  - status: 502
+    title: Bad Gateway
+    detail: Something went wrong with MX's servers.
+  - status: 503
+    title: Service Unavailable
+    detail: The MX Platform is being updated.
+  - status: 504
+    title: Gateway Timeout
+    detail: Something went wrong with MX's servers.
+institution_blocking_errors:
+  - type: institution_maintenance_error
+    http_status: 400
+    message: >-
+      This institution is temporarily unavailable due to scheduled system
+      maintenance. Access will resume once maintenance is complete.
+  - type: institution_unavailable_error
+    http_status: 400
+    message: >-
+      This institution is experiencing technical issues that are preventing
+      successful connections. It's unclear when this will be resolved.
+  - type: institution_prevented_error
+    http_status: 400
+    message: The requested data isn't available through this institution.
+  - type: institution_prevent_new_error
+    http_status: 400
+    message: This institution is not available for connection.
+  - type: institution_prevent_verification_error
+    http_status: 400
+    message: The requested data isn't available through this connection.

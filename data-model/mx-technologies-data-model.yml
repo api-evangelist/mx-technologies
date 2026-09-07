@@ -1,0 +1,89 @@
+generated: '2026-07-23'
+method: derived
+source: openapi/mx-platform-api-openapi.yml
+notes: >-
+  Entity-relationship graph derived from the MX Platform API OpenAPI path
+  structure and id-reference fields. The core hierarchy is
+  User -> Member -> Account -> Transaction, with categorization, insights, and
+  verification products hanging off accounts/transactions. Objects are addressed
+  by MX-defined GUIDs.
+entities:
+  - name: User
+    id_field: guid
+    detail: The top-level container representing an end user of the client.
+  - name: Member
+    id_field: guid
+    detail: A user's overall connection/relationship with one financial institution.
+  - name: Institution
+    id_field: code
+    detail: A financial institution MX can connect to.
+  - name: Account
+    id_field: guid
+    detail: A checking, savings, loan, investment, or other account held at an institution.
+  - name: Transaction
+    id_field: guid
+    detail: An individual transaction on an account.
+  - name: Category
+    id_field: guid
+    detail: A (default or custom) transaction category.
+  - name: Tagging
+    id_field: guid
+    detail: Association between a tag and a transaction.
+  - name: Holding
+    id_field: guid
+    detail: An investment holding within an investment account.
+  - name: Statement
+    id_field: guid
+    detail: A retrieved account statement.
+  - name: Merchant
+    id_field: guid
+    detail: A cleansed merchant associated with transactions.
+relationships:
+  - from: Member
+    to: User
+    kind: belongs_to
+    via: user_guid
+  - from: Member
+    to: Institution
+    kind: belongs_to
+    via: institution_code
+  - from: User
+    to: Member
+    kind: has_many
+    via: user_guid
+  - from: Account
+    to: Member
+    kind: belongs_to
+    via: member_guid
+  - from: Account
+    to: User
+    kind: belongs_to
+    via: user_guid
+  - from: Member
+    to: Account
+    kind: has_many
+    via: member_guid
+  - from: Transaction
+    to: Account
+    kind: belongs_to
+    via: account_guid
+  - from: Transaction
+    to: Member
+    kind: belongs_to
+    via: member_guid
+  - from: Transaction
+    to: Category
+    kind: belongs_to
+    via: category_guid
+  - from: Account
+    to: Transaction
+    kind: has_many
+    via: account_guid
+  - from: Holding
+    to: Account
+    kind: belongs_to
+    via: account_guid
+  - from: Tagging
+    to: Transaction
+    kind: belongs_to
+    via: transaction_guid

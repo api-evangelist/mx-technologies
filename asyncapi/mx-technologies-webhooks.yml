@@ -1,0 +1,88 @@
+generated: '2026-07-23'
+method: searched
+source: https://docs.mx.com/resources/webhooks/index
+spec_type: Webhooks
+notes: >-
+  MX delivers events as HTTPS POST callbacks to a URL you configure per event
+  (subscribe via the Client Dashboard; some webhooks are available only on
+  request to MX Support). MX publishes no AsyncAPI document, so this artifact
+  captures the webhook catalog. Payloads are JSON; object-based webhooks (e.g.
+  Members, Transactions) carry a `revision` field for de-duplication and an
+  `action` field (created / updated / deleted). Mutating API operations accept
+  MX-Skip-Webhook to suppress emission. Recommended ack is 204 No Content;
+  return 429 to have MX re-queue delivery.
+transport: https-post-callback
+subscription:
+  mechanism: Client Dashboard (Developers > Webhooks); some require MX Support request
+  per_event_url: true
+delivery:
+  ack_success: 204 No Content
+  requeue_status: 429 Too Many Requests
+  retries: Frequency of retries diminishes over time.
+common_fields:
+  action: [created, updated, deleted]
+  revision: Incrementing integer on object-based webhooks for de-duplication.
+webhooks:
+  - name: Accounts
+    trigger: An account is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/accounts
+  - name: Aggregation
+    trigger: New data is available after a successful aggregation.
+    docs: https://docs.mx.com/resources/webhooks/aggregation
+  - name: Balance
+    trigger: New data is available after a successful balance fetch.
+    docs: https://docs.mx.com/resources/webhooks/balance
+  - name: Budgets
+    trigger: A budget is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/budgets
+  - name: Categories
+    trigger: A category is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/categories
+  - name: Connection Status
+    trigger: A member's connection status has entered an actionable state.
+    docs: https://docs.mx.com/resources/webhooks/connection-status
+  - name: Goals
+    trigger: A goal is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/goals
+  - name: History
+    trigger: New data is available after a successful history fetch.
+    docs: https://docs.mx.com/resources/webhooks/history
+  - name: Holdings
+    trigger: A holding is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/holdings
+  - name: Initial Data Ready
+    trigger: Requested data has aggregated and is ready for retrieval.
+    docs: https://docs.mx.com/resources/webhooks/initial-data-ready
+  - name: Insights
+    trigger: An insight is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/insights
+  - name: Job Status
+    trigger: A job enters an actionable state.
+    docs: https://docs.mx.com/resources/webhooks/job-status
+  - name: Members
+    trigger: A member is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/member
+  - name: Microdeposits
+    trigger: A microdeposit is created or updated.
+    docs: https://docs.mx.com/resources/webhooks/microdeposits
+  - name: Notifications
+    trigger: An alertable action occurs.
+    docs: https://docs.mx.com/resources/webhooks/notifications
+  - name: Spending Plan
+    trigger: A spending plan is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/spending-plan
+  - name: Statement
+    trigger: New data is available after a successful statement fetch.
+    docs: https://docs.mx.com/resources/webhooks/statements
+  - name: Tags and Taggings
+    trigger: A tag or tagging is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/tags-&-taggings
+  - name: Transactions
+    trigger: A transaction is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/transactions
+  - name: Users
+    trigger: A user is created, updated, or deleted.
+    docs: https://docs.mx.com/resources/webhooks/users
+  - name: Verification
+    trigger: A member verification is successful.
+    docs: https://docs.mx.com/resources/webhooks/verifications

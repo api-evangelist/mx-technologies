@@ -1,0 +1,31 @@
+generated: '2026-07-23'
+method: searched
+source: https://docs.mx.com/connect
+notes: >-
+  MX ships embeddable, client-side UI surfaces (widgets) that load MX-hosted
+  experiences in an iframe/webview, distinct from the server-side SDKs in
+  packages/. The Connect Widget is the marquee account-connection flow; MoneyMap
+  and other widgets are loaded via the same SDKs.
+families:
+  - name: Connect Widget
+    detail: >-
+      MX-hosted account-connection experience (institution search, credential /
+      OAuth entry, MFA) embedded via iframe or webview and driven by postMessage
+      events.
+    docs: https://docs.mx.com/connect
+  - name: MX Widgets (Money Map, Finances, etc.)
+    detail: >-
+      Prebuilt personal-finance widgets loaded by URL (Request Widget URL) and
+      configured via deep_link_params.
+loaders:
+  - name: "@mxenabled/web-widget-sdk"
+    platform: web
+    url: https://www.npmjs.com/package/@mxenabled/web-widget-sdk
+    source: https://github.com/mxenabled/web-widget-sdk
+  - name: "@mxenabled/react-native-widget-sdk"
+    platform: react-native
+    url: https://www.npmjs.com/package/@mxenabled/react-native-widget-sdk
+    source: https://github.com/mxenabled/react-native-widget-sdk
+  - name: connect-widget
+    platform: web (source)
+    source: https://github.com/mxenabled/connect-widget

@@ -1,0 +1,65 @@
+generated: '2026-07-23'
+method: searched
+source: https://docs.mx.com/api-reference/platform-api/overview/errors
+notes: >-
+  Cross-cutting request/response semantics for the MX Platform API, harvested
+  from the docs and derived from the OpenAPI. MX does NOT document an
+  idempotency-key mechanism (no Idempotency-Key header/param in the spec or
+  docs); the pipeline therefore emits no Idempotency pointer. Data propagation
+  can make an immediate GET-after-POST return 404 (retry after ~500ms).
+authentication:
+  style: http-basic
+  detail: >-
+    HTTP Basic auth over TLS; client_id is the username, api_key is the
+    password, Base64 encoded in the Authorization header. Consent Management
+    endpoints additionally use a bearer token.
+  docs: https://docs.mx.com/resources/oauth-guide
+idempotency:
+  supported: false
+  detail: >-
+    No idempotency-key contract is documented. Guidance instead relies on using
+    the POST response body for validation and treating 202 Accepted as a signal
+    that a same-type job is already running.
+pagination:
+  style: page-number
+  request_params:
+    - page
+    - records_per_page
+  notes: >-
+    Offset/page-number pagination via `page` and `records_per_page` query
+    parameters (e.g. List Institutions supports up to 1000 records_per_page).
+    Responses include a `pagination` object.
+  response_fields:
+    - pagination.current_page
+    - pagination.per_page
+    - pagination.total_entries
+    - pagination.total_pages
+versioning:
+  style: dated-header
+  header: Accept-Version
+  current: v20250224
+  ref: lifecycle/mx-lifecycle.yml
+webhook_suppression:
+  header: MX-Skip-Webhook
+  param: skip_webhook
+  detail: >-
+    Mutating endpoints accept an optional MX-Skip-Webhook header (and
+    skip_webhook parameter) to suppress the webhook that the operation would
+    otherwise emit.
+error_envelope:
+  wrapper: error
+  fields: [message, status, type]
+  ref: errors/mx-problem-types.yml
+rate_limit_signaling:
+  mechanism: http-429
+  detail: >-
+    Per-client rate limits by method (GET 2000/rps, POST 750/rps, PUT 750/rps,
+    DELETE 150/rps) plus a concurrent-connection ceiling. Exceeding either
+    returns 429 Too Many Requests; retry after the window expires.
+  ref: rate-limits/mx-rate-limits.yml
+object_identity:
+  scheme: guid
+  detail: >-
+    Objects are addressed by MX-defined GUIDs (e.g. USR-..., MBR-..., ACT-...,
+    TRN-...). Object-based webhooks carry a `revision` field that increments on
+    each update for de-duplication.

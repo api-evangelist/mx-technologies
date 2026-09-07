@@ -1,0 +1,30 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for MX Platform API
+  version: 1.0.0
+extends: openapi/mx-platform-api-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-provider: mx
+      x-apievangelist-artifacts:
+        authentication: authentication/mx-authentication.yml
+        conventions: conventions/mx-conventions.yml
+        errors: errors/mx-problem-types.yml
+        rate_limits: rate-limits/mx-rate-limits.yml
+        lifecycle: lifecycle/mx-lifecycle.yml
+        webhooks: asyncapi/mx-webhooks.yml
+        sandbox: sandbox/mx-sandbox.yml
+        data_model: data-model/mx-data-model.yml
+      x-apievangelist-auth: http-basic (client_id / api_key)
+      x-apievangelist-versioning:
+        header: Accept-Version
+        current: v20250224
+  - target: $.info
+    update:
+      x-apievangelist-rate-limits:
+        get: 2000/rps
+        post: 750/rps
+        put: 750/rps
+        delete: 150/rps
+      x-apievangelist-webhook-suppression-header: MX-Skip-Webhook
