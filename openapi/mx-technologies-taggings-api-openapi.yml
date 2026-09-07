@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   contact:
     name: MX Platform API
@@ -9,7 +9,7 @@ info:
     Just getting started? See our [use case guides](/use-cases/).
 
     '
-  title: MX Platform accounts taggings API
+  title: MX Platform accounts Taggings API
   version: '20111101'
 servers:
 - url: https://int-api.mx.com
@@ -118,47 +118,6 @@ components:
         tagging:
           $ref: '#/components/schemas/TaggingUpdateRequest'
       type: object
-    TaggingResponse:
-      properties:
-        guid:
-          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-          nullable: true
-          type: string
-        member_is_managed_by_user:
-          example: false
-          nullable: true
-          type: boolean
-        tag_guid:
-          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          nullable: true
-          type: string
-        transaction_guid:
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          nullable: true
-          type: string
-        user_guid:
-          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-          nullable: true
-          type: string
-      type: object
-    TaggingUpdateRequest:
-      properties:
-        tag_guid:
-          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          type: string
-      required:
-      - tag_guid
-      type: object
-    TaggingResponseBody:
-      properties:
-        tagging:
-          $ref: '#/components/schemas/TaggingResponse'
-      type: object
-    TaggingCreateRequestBody:
-      properties:
-        tagging:
-          $ref: '#/components/schemas/TaggingCreateRequest'
-      type: object
     TaggingCreateRequest:
       properties:
         tag_guid:
@@ -195,14 +154,53 @@ components:
           example: 1
           type: integer
       type: object
+    TaggingResponseBody:
+      properties:
+        tagging:
+          $ref: '#/components/schemas/TaggingResponse'
+      type: object
+    TaggingCreateRequestBody:
+      properties:
+        tagging:
+          $ref: '#/components/schemas/TaggingCreateRequest'
+      type: object
+    TaggingUpdateRequest:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+      required:
+      - tag_guid
+      type: object
+    TaggingResponse:
+      properties:
+        guid:
+          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+          type:
+          - string
+          - 'null'
+        member_is_managed_by_user:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type:
+          - string
+          - 'null'
+        transaction_guid:
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type:
+          - string
+          - 'null'
+        user_guid:
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+          type:
+          - string
+          - 'null'
+      type: object
   parameters:
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
-      in: query
-      name: page
-      schema:
-        type: integer
     taggingGuid:
       description: The unique id for a `tagging`.
       example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
@@ -211,13 +209,6 @@ components:
       required: true
       schema:
         type: string
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
     userGuid:
       description: The unique identifier for a `user`, beginning with the prefix `USR-`.
       example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -226,6 +217,20 @@ components:
       required: true
       schema:
         type: string
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http

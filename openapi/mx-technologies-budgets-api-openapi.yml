@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   contact:
     name: MX Platform API
@@ -9,7 +9,7 @@ info:
     Just getting started? See our [use case guides](/use-cases/).
 
     '
-  title: MX Platform accounts budgets API
+  title: MX Platform accounts Budgets API
   version: '20111101'
 servers:
 - url: https://int-api.mx.com
@@ -148,6 +148,26 @@ components:
       - category_guid
       - parent_guid
       type: object
+    BudgetUpdateRequest:
+      properties:
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      type: object
+    BudgetResponseBody:
+      properties:
+        budget:
+          $ref: '#/components/schemas/BudgetResponse'
+      type: object
     BudgetResponse:
       properties:
         amount:
@@ -158,7 +178,6 @@ components:
           description: Unique identifier for the budget category. Defined by MX.
           example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
           type: string
-          nullable: false
         created_at:
           description: Date and time the budget was created, represented in ISO 8601 format with timestamp.
           example: '2018-10-18T19:51:26+00:00'
@@ -178,26 +197,31 @@ components:
         metadata:
           description: Additional information a partner can store on the budget.
           example: some metadata
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         name:
           description: The name of the budget that is visible to the user (ie "Food", "Bills", "Entertainment", etc).
           example: Food & Dining
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         off_track_percentage:
           description: The percentage amount of off track spending. (Deprecated).
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         parent_guid:
           description: Unique identifier for the parent budget. Defined by MX.
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         percent_spent:
           description: The percentage of a budget that has been spent during the current calendar month Calculated as the transaction total divided by the amount and then multiplied by 100.A value of zero will be returned when `amount` is zero.
           example: 1276.34
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
         projected_spending:
           description: The projected amount of spending for the budget.
           example: 3562.4
@@ -215,30 +239,10 @@ components:
         user_guid:
           description: Unique identifier for the user. Defined by MX.
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-    BudgetUpdateRequest:
-      properties:
-        amount:
-          example: 1000
-          description: Amount of the budget.
-          type: integer
-        metadata:
-          example: Additional information
-          description: Additional information a partner can store on the budget.
-          type: string
-        skip_webhook:
-          example: true
-          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
-          type: boolean
-      type: object
     BudgetCreateRequestBody:
       properties:
         budget:
           $ref: '#/components/schemas/BudgetCreateRequest'
-      type: object
-    BudgetResponseBody:
-      properties:
-        budget:
-          $ref: '#/components/schemas/BudgetResponse'
       type: object
   parameters:
     budgetGuid:
