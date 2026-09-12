@@ -1,31 +1,34 @@
-# Kin Score artifact — mx-technologies — 2026-08-12T193225
+# Kin Score artifact — mx-technologies — 2026-09-07T200636
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: mx-technologies
-  schema_version: 0.11.0
-  scored_at: '2026-08-12'
-  run_ts: 2026-08-12T193225
-  composite: 51.3
+  schema_version: 0.20.0
+  scored_at: '2026-09-07'
+  run_ts: 2026-09-07T200636
+  composite: 54.0
   band: developing
   facets:
-    discoverability: 74.1
-    contract_quality: 71.0
-    governance: 68.8
-    operational_transparency: 52.6
-    developer_ergonomics: 21.7
+    discoverability: 75.9
+    contract_quality: 70.8
+    governance: 43.2
+    operational_transparency: 50.0
+    developer_ergonomics: 23.8
     commercial_clarity: 47.4
+    contract_governance: 43.2
+    access_clarity: 47.4
   agent_readiness:
-    score: 30.6
+    score: 21.0
     band: agent-aware
     dimensions:
       spec_presence: true
       agentic_access: derived
+      reversibility_documented: false
       mcp_server: false
-      auth_clarity: true
+      auth_clarity: bearer
       idempotency: false
       error_semantics: false
-      openapi_examples: false
+      openapi_examples: documented
       rate_limit_signal: documented
       event_surface_described: false
       agent_skills: false
@@ -33,14 +36,21 @@ kin_score:
       consent_identity: false
       agent_card: false
       dry_run_mode: false
+      delegated_identity: false
+      protected_resource_metadata: false
+      dynamic_client_registration: false
+      agentic_commerce: false
   regulatory:
     applies: true
     regime: Banking & Open Finance
     regime_id: banking_open_finance
-    score: 35.4
+    score: 54.4
     matched_via: tags
   provenance:
+    mcp: derived
+    skills: derived
     agentic_access: derived
+    conformance: first-party
     contracts:
       total: 26
       derived: 0
