@@ -1,27 +1,25 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies Transactions API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts Transactions API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged transactions across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
 security:
 - basicAuth: []
 tags:
-- name: transactions
+- name: Transactions
 paths:
   /transactions/enhance:
     post:
-      description: Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform. <br /><br />For more information on returned data, please see the [Enhanced Transactions fields guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions).
+      description: 'Use this endpoint to categorize, cleanse, and classify transactions. These transactions are not persisted or stored on the MX platform.
+
+
+        For more information on returned data, please see the Enhanced Transactions fields guide.'
       operationId: enhanceTransactions
       requestBody:
         content:
@@ -39,12 +37,15 @@ paths:
           description: OK
       summary: Enhance transactions
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/accounts/{account_guid}/transactions:
     post:
       operationId: createManualTransaction
       tags:
-      - transactions
+      - Transactions
       summary: Create manual transaction
       description: This endpoint can only be used to create manual transactions that are under a manual account. This endpoint accepts the optional MX-Skip-Webhook header and skip_webhook parameter.
       parameters:
@@ -64,7 +65,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/TransactionCreateResponseBody'
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified account. <br /><br /> Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: 'Requests to this endpoint return a list of transactions associated with the specified account.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: listTransactionsByAccount
       parameters:
       - $ref: '#/components/parameters/accountGuid'
@@ -91,7 +95,10 @@ paths:
           description: OK
       summary: List transactions by account
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/accounts/{account_guid}/transactions/{transaction_guid}:
     put:
       description: Use this endpoint to update a specific transaction according to its unique GUID.
@@ -117,7 +124,10 @@ paths:
           description: OK
       summary: Update Transaction by Account
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/extend_history:
     post:
       description: Some institutions allow developers to access an extended transaction history with up to 24 months of data associated with a particular member. The process for fetching and then reading this extended transaction history is much like standard aggregation, and it may trigger multi-factor authentication.
@@ -134,10 +144,16 @@ paths:
           description: Accepted
       summary: Extend history
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified `member`, across all accounts associated with that `member`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: 'Requests to this endpoint return a list of transactions associated with the specified `member`, across all accounts associated with that `member`.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: listTransactionsByMember
       parameters:
       - $ref: '#/components/parameters/memberGuid'
@@ -164,10 +180,16 @@ paths:
           description: OK
       summary: List transactions by member
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/tags/{tag_guid}/transactions:
     get:
-      description: Use this endpoint to get a list of all transactions associated with a particular tag according to the tag's unique GUID. This lists all transactions that have been assigned to a particular tag using the create tagging endpoint. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: 'Use this endpoint to get a list of all transactions associated with a particular tag according to the tag''s unique GUID. This lists all transactions that have been assigned to a particular tag using the create tagging endpoint.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: listTransactionsByTag
       parameters:
       - $ref: '#/components/parameters/userGuid'
@@ -195,7 +217,10 @@ paths:
           description: OK
       summary: List transactions by tag
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/transaction_rules/{transaction_rule_guid}:
     delete:
       description: Use this endpoint to permanently delete a transaction rule based on its unique GUID.
@@ -208,10 +233,16 @@ paths:
           description: No Content
       summary: Delete transaction rule
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified `user`, across all members and accounts associated with that `user`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: 'Requests to this endpoint return a list of transactions associated with the specified `user`, across all members and accounts associated with that `user`.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: listTransactions
       parameters:
       - $ref: '#/components/parameters/userGuid'
@@ -238,13 +269,19 @@ paths:
           description: OK
       summary: List transactions
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/transactions/{transaction_guid}:
     parameters:
     - $ref: '#/components/parameters/userGuid'
     - $ref: '#/components/parameters/transactionGuid'
     get:
-      description: Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br /> Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the [Optional Enhancement Query Parameter guide](/api-reference/platform-api/reference/transactions-overview#enhanced-transactions#optional-enhancement-query-parameter).
+      description: 'Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: readTransaction
       responses:
         '200':
@@ -255,7 +292,7 @@ paths:
           description: OK
       summary: Read transaction
       tags:
-      - transactions
+      - Transactions
       parameters:
       - $ref: '#/components/parameters/includes'
     put:
@@ -277,19 +314,25 @@ paths:
           description: OK
       summary: Update transaction
       tags:
-      - transactions
+      - Transactions
     delete:
       tags:
-      - transactions
+      - Transactions
       operationId: deleteManualTransactions
       summary: Delete manual transactions
       description: Delete a manual transaction. In the path, use the manual transaction guid as the `transaction_guid`, such as `MAN-810828b0-5210-4878-9bd3-f4ce514f90c4`.
       responses:
         '204':
           description: No content
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/repeating_transactions:
     get:
-      description: Retrieve a list of all recurring transactions for a user. <br /><br />For more see the [Repeating Transactions guide](/api-reference/platform-api/v20111101/reference/transactions-overview#repeating-transactions).
+      description: 'Retrieve a list of all recurring transactions for a user.
+
+
+        For more see the Repeating Transactions guide.'
       operationId: repeatingTransactions
       parameters:
       - $ref: '#/components/parameters/userGuid'
@@ -302,10 +345,16 @@ paths:
           description: OK
       summary: List Repeating Transactions
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/repeating_transactions/{repeating_transaction_guid}:
     get:
-      description: Get a Specific Repeating Transaction. <br /><br />List For more see the  [Repeating Transactions guide](/api-reference/platform-api/v20111101/reference/transactions-overview#repeating-transactions)
+      description: 'Get a Specific Repeating Transaction.
+
+
+        List For more see the Repeating Transactions guide'
       operationId: specificRepeatingTransaction
       parameters:
       - $ref: '#/components/parameters/userGuid'
@@ -319,14 +368,17 @@ paths:
           description: OK
       summary: Get a Repeating Transaction
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/transactions/{transaction_guid}/split:
     parameters:
     - $ref: '#/components/parameters/transactionGuid'
     - $ref: '#/components/parameters/userGuid'
     delete:
       tags:
-      - transactions
+      - Transactions
       operationId: deleteSplitTransactions
       summary: Delete split transactions
       description: This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
@@ -335,12 +387,10 @@ paths:
           description: No content
     post:
       tags:
-      - transactions
+      - Transactions
       operationId: createSplitTransactions
       summary: Create split transactions
-      description: 'This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction.  When a split transaction is created, the parent transaction''s `has_been_split` field will automatically be updated to true and the child transactions'' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can''t be split again.    In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction''s `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
-
-        '
+      description: This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction. When a split transaction is created, the parent transaction's `has_been_split` field will automatically be updated to true and the child transactions' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can't be split again. In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction's `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
       requestBody:
         content:
           application/json:
@@ -353,9 +403,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/SplitTransactionsResponseBody'
           description: OK
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/accounts/{account_guid}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified account. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: 'Requests to this endpoint return a list of transactions associated with the specified account.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: listTransactionsByAccountPerMember
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -380,7 +436,10 @@ paths:
           description: OK
       summary: List transactions by account per member
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/members/{member_identifier}/extend_history:
     post:
       description: Some institutions allow developers to access an extended transaction history with up to 24 months of data associated with a particular member. The process for fetching and then reading this extended transaction history is much like standard aggregation, and it may trigger multi-factor authentication.
@@ -398,10 +457,16 @@ paths:
           description: Accepted
       summary: Extend history
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/members/{member_identifier}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified `member`, across all accounts associated with that `member`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: 'Requests to this endpoint return a list of transactions associated with the specified `member`, across all accounts associated with that `member`.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: listTransactionsByMember
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -427,10 +492,16 @@ paths:
           description: OK
       summary: List transactions by member
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/tags/{tag_guid}/transactions:
     get:
-      description: Use this endpoint to get a list of all transactions associated with a particular tag according to the tag's unique GUID. This lists all transactions that have been assigned to a particular tag using the create tagging endpoint. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: 'Use this endpoint to get a list of all transactions associated with a particular tag according to the tag''s unique GUID. This lists all transactions that have been assigned to a particular tag using the create tagging endpoint.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: listTransactionsByTag
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -454,10 +525,16 @@ paths:
           description: OK
       summary: List transactions by tag
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/transactions:
     get:
-      description: Requests to this endpoint return a list of transactions associated with the specified `user`, across all members and accounts associated with that `user`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: 'Requests to this endpoint return a list of transactions associated with the specified `user`, across all members and accounts associated with that `user`.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: listTransactions
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -481,7 +558,10 @@ paths:
           description: OK
       summary: List transactions
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/members/{member_identifier}/accounts/{account_identifier}/transactions/{transaction_identifier}:
     parameters:
     - $ref: '#/components/parameters/acceptVersion'
@@ -490,7 +570,10 @@ paths:
     - $ref: '#/components/parameters/accountIdentifier'
     - $ref: '#/components/parameters/transactionIdentifier'
     get:
-      description: Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`. <br /><br />Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.
+      description: 'Requests to this endpoint will return the attributes of the specified `transaction`. To read a manual transaction, use the manual transaction guid in the path as the `transactionGuid`.
+
+
+        Enhanced transaction data may be requested using the `includes` parameter. To use this optional parameter, the value should include the optional metadata requested such as `repeating_transactions`, `merchants`, `classifications`, `geolocations`. For more information, see the Optional Enhancement Query Parameter guide.'
       operationId: readTransactionByAccount
       responses:
         '200':
@@ -501,7 +584,7 @@ paths:
           description: OK
       summary: Read transaction by account
       tags:
-      - transactions
+      - Transactions
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
       - $ref: '#/components/parameters/includes'
@@ -526,7 +609,10 @@ paths:
           description: OK
       summary: Update transaction
       tags:
-      - transactions
+      - Transactions
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   ? /users/{user_identifier}/members/{member_identifier}/accounts/{account_identifier}/transactions/{transaction_identifier}/split
   : parameters:
     - $ref: '#/components/parameters/transactionIdentifier'
@@ -536,7 +622,7 @@ paths:
     - $ref: '#/components/parameters/acceptVersion'
     delete:
       tags:
-      - transactions
+      - Transactions
       operationId: deleteSplitTransactionByAccount
       summary: Delete split transactions by account
       description: This endpoint deletes all split transactions linked to a parent transaction, but it leaves the parent transaction active. This request will also update the parent transaction's has_been_split field to false. This endpoint accepts the optional MX-Skip-Webhook header.
@@ -545,12 +631,10 @@ paths:
           description: No content
     post:
       tags:
-      - transactions
+      - Transactions
       operationId: createSplitTransactionsByAccount
       summary: Create split transactions by account
-      description: 'This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction.  When a split transaction is created, the parent transaction''s `has_been_split` field will automatically be updated to true and the child transactions'' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can''t be split again.    In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction''s `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
-
-        '
+      description: This endpoint creates two or more child transactions that are branched from a previous transaction. This endpoint allows you to link multiple categories, descriptions, and amounts to a parent transaction. When a split transaction is created, the parent transaction's `has_been_split` field will automatically be updated to true and the child transactions' `parent_guid` will have the transaction guid of the parent. The total amount of the child transactions must equal the amount of the parent transaction. Once a transaction has been split it can't be split again. In order to re-split a transaction, it must first be un-split. This can be done by calling the Delete Split Transactions endpoint. Calling this endpoint will delete the existing child transactions and update the parent transaction's `has_been_split` field to false. You can then re-split the parent transaction by calling Create Split Transaction again.
       requestBody:
         content:
           application/json:
@@ -563,83 +647,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/SplitTransactionsResponseBody'
           description: OK
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
   parameters:
-    fromCreatedAt:
-      name: from_created_at
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
       in: query
-      description: Filter transactions from the date the transaction was created. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
-      example: '2024-01-01'
+      name: page
       schema:
-        type: string
-    memberIdentifier:
-      description: Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      name: member_identifier
-      in: path
-      required: true
-      schema:
-        type: string
-    repeatingTransactionGuid:
-      description: The unique id for a recurring transaction.
-      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-      in: path
-      name: repeating_transaction_guid
-      required: true
-      schema:
-        type: string
-    fromTimestamp:
-      name: from_timestamp
-      in: query
-      description: Filter transactions from the date the transaction was created. This only supports unix timestamp format.
-      example: '1666936800'
-      schema:
-        type: string
-    categoryGuidQuery:
-      name: category_guid
-      description: 'Filter transactions belonging to specified `category_guid`.
-
-
-        For example, `?category_guid=CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874`.'
-      in: query
-      schema:
-        type: string
-    toDateUnix:
-      description: Filter transactions to this date (at midnight). This only supports unix timestamp format. Defaults to 5 days forward from the day the request is made to capture pending transactions.
-      example: '1698472800'
-      in: query
-      name: to_date
-      schema:
-        type: string
-    fromUpdatedAt:
-      name: from_updated_at
-      description: Filter transactions from the date in which the transaction was updated. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
-      example: '2024-01-01'
-      in: query
-      schema:
-        type: string
-    useCase_2:
-      description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`.
-      required: false
-      in: query
-      name: use_case
-      schema:
-        type: string
-    includes:
-      description: "Options for enhanced transactions. This query parameter is optional. Possible additional metadata: `repeating_transactions`, `merchants`, `classifications`, `geolocations`. The query value is format sensitive. To retrieve all available enhancements, append:\n\n`?includes=repeating_transactions,merchants,classifications,geolocations`. \n \nThe query options may be combined to specific enhancements. For example, to request Repeating Transactions and Geolocation data, use: \n\n`?includes=repeating_transactions,geolocations`.\n\n- Repeating Transactions: Identifies transactions with predictable recurrence patterns (e.g., Bill, Income, Subscription).\n- Merchants: Enriches transactions with merchant name.\n- Classifications: Provides more insight into the type of money movement that is occurring on the transaction, whether it be retail or investments.\n- Geolocation: Provides geographic metadata.\n"
-      example: repeating_transactions,merchants,classifications,geolocations
-      in: query
-      name: includes
-      required: false
-      schema:
-        type: string
-    useCase:
-      description: The use case associated with the member. Valid values are `PFM` and `MONEY_MOVEMENT`. For example, you can append either `?use_case=PFM` or `?use_case=MONEY_MOVEMENT`.
-      example: MONEY_MOVEMENT
-      required: false
-      in: query
-      name: use_case
-      schema:
-        type: string
+        type: integer
     categoryGuidQueryArray:
       name: category_guid[]
       description: 'Filter transactions belonging to any specified `category_guid[]` in url.
@@ -651,117 +670,11 @@ components:
         type: array
         items:
           type: string
-    tagGuid:
-      description: The unique id for a `tag`.
-      example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
-      in: path
-      name: tag_guid
-      required: true
-      schema:
-        type: string
     toDate:
       description: Filter transactions to this date (at midnight). This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 5 days forward from the day the request is made to capture pending transactions.
       example: '2024-03-31'
       in: query
       name: to_date
-      schema:
-        type: string
-    memberGuid:
-      description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    transactionIdentifier:
-      description: Use either the transaction `id` you defined or the MX-defined transaction `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      in: path
-      required: true
-      name: transaction_identifier
-      schema:
-        type: string
-    fromUpdatedAt_2:
-      name: from_updated_at
-      description: Filter transactions from the date in which the transaction was updated. This only supports unix timestamp format.
-      example: '1666936800'
-      in: query
-      schema:
-        type: string
-    topLevelCategoryGuidArray:
-      name: top_level_category_guid[]
-      description: 'Filter transactions belonging to any specified `top_level_category_guid[]` in url. This must be top level category guid(s), use `category_guid` for subcategory guid(s).
-
-
-        For example, `?top_level_category_guid[]=CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874`.'
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-    acceptVersion:
-      name: Accept-Version
-      in: header
-      required: true
-      schema:
-        type: string
-        default: v20250224
-        example: v20250224
-      description: MX Platform API version.
-    toCreatedAt_2:
-      name: to_created_at
-      description: Filter transaction to the date in which the transaction was created. This only supports unix timestamp format.
-      example: '1698472800'
-      in: query
-      schema:
-        type: string
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
-      in: query
-      name: page
-      schema:
-        type: integer
-    toTimestamp:
-      name: to_timestamp
-      description: Filter transaction to the date in which the transaction was created. This only supports unix timestamp format.
-      example: '1698472800'
-      in: query
-      schema:
-        type: string
-    fromCreatedAt_2:
-      name: from_created_at
-      in: query
-      description: Filter transactions from the date the transaction was created. This only supports unix timestamp format.
-      example: '1666936800'
-      schema:
-        type: string
-    accountIdentifier:
-      description: Use either the account `id` you defined or the MX-defined account `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      in: path
-      required: true
-      name: account_identifier
-      schema:
-        type: string
-    fromDate:
-      description: Filter transactions from this date. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 120 days ago if not provided.
-      example: '2024-01-01'
-      in: query
-      name: from_date
-      schema:
-        type: string
-    fromDateUnix:
-      description: Filter transactions from this date. This only supports unix timestamp format. Defaults to 120 days ago if not provided.
-      example: '1666936800'
-      in: query
-      name: from_date
-      schema:
-        type: string
-    toUpdatedAt_2:
-      name: to_updated_at
-      description: Filter transactions to the date in which the transaction was updated. This only supports unix timestamp format.
-      example: '1698472800'
-      in: query
       schema:
         type: string
     accountGuid:
@@ -779,35 +692,26 @@ components:
       name: records_per_page
       schema:
         type: integer
-    toCreatedAt:
-      name: to_created_at
-      description: Filter transaction to the date in which the transaction was created. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
-      example: '2024-03-31'
-      in: query
-      schema:
-        type: string
-    transactionGuid:
-      description: The unique id for a `transaction`.
-      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-      in: path
-      name: transaction_guid
-      required: true
-      schema:
-        type: string
-    userGuid:
-      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
     topLevelCategoryGuid:
       name: top_level_category_guid
       description: 'Filter transactions belonging to specified `top_level_category_guid`. This must be top level category guid, use `category_guid` for subcategory guid.
 
 
         For example, `?top_level_category_guid=CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874`.'
+      in: query
+      schema:
+        type: string
+    toUpdatedAt:
+      name: to_updated_at
+      description: Filter transactions to the date in which the transaction was updated. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
+      example: '2024-03-31'
+      in: query
+      schema:
+        type: string
+    fromUpdatedAt:
+      name: from_updated_at
+      description: Filter transactions from the date in which the transaction was updated. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
+      example: '2024-01-01'
       in: query
       schema:
         type: string
@@ -819,6 +723,124 @@ components:
       required: true
       schema:
         type: string
+    repeatingTransactionGuid:
+      description: The unique id for a recurring transaction.
+      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+      in: path
+      name: repeating_transaction_guid
+      required: true
+      schema:
+        type: string
+    useCase:
+      description: The use case associated with the member. Valid values are `PFM` and `MONEY_MOVEMENT`. For example, you can append either `?use_case=PFM` or `?use_case=MONEY_MOVEMENT`.
+      example: MONEY_MOVEMENT
+      required: false
+      in: query
+      name: use_case
+      schema:
+        type: string
+    fromCreatedAt:
+      name: from_created_at
+      in: query
+      description: Filter transactions from the date the transaction was created. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
+      example: '2024-01-01'
+      schema:
+        type: string
+    fromDate:
+      description: Filter transactions from this date. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 120 days ago if not provided.
+      example: '2024-01-01'
+      in: query
+      name: from_date
+      schema:
+        type: string
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    transactionGuid:
+      description: The unique id for a `transaction`.
+      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+      in: path
+      name: transaction_guid
+      required: true
+      schema:
+        type: string
+    memberGuid:
+      description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    includes:
+      description: "Options for enhanced transactions. This query parameter is optional. Possible additional metadata: `repeating_transactions`, `merchants`, `classifications`, `geolocations`. The query value is format sensitive. To retrieve all available enhancements, append:\n\n`?includes=repeating_transactions,merchants,classifications,geolocations`. \n \nThe query options may be combined to specific enhancements. For example, to request Repeating Transactions and Geolocation data, use: \n\n`?includes=repeating_transactions,geolocations`.\n\n- Repeating Transactions: Identifies transactions with predictable recurrence patterns (e.g., Bill, Income, Subscription).\n- Merchants: Enriches transactions with merchant name.\n- Classifications: Provides more insight into the type of money movement that is occurring on the transaction, whether it be retail or investments.\n- Geolocation: Provides geographic metadata.\n"
+      example: repeating_transactions,merchants,classifications,geolocations
+      in: query
+      name: includes
+      required: false
+      schema:
+        type: string
+    tagGuid:
+      description: The unique id for a `tag`.
+      example: TAG-aef36e72-6294-4c38-844d-e573e80aed52
+      in: path
+      name: tag_guid
+      required: true
+      schema:
+        type: string
+    categoryGuidQuery:
+      name: category_guid
+      description: 'Filter transactions belonging to specified `category_guid`.
+
+
+        For example, `?category_guid=CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874`.'
+      in: query
+      schema:
+        type: string
+    toCreatedAt:
+      name: to_created_at
+      description: Filter transaction to the date in which the transaction was created. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
+      example: '2024-03-31'
+      in: query
+      schema:
+        type: string
+    topLevelCategoryGuidArray:
+      name: top_level_category_guid[]
+      description: 'Filter transactions belonging to any specified `top_level_category_guid[]` in url. This must be top level category guid(s), use `category_guid` for subcategory guid(s).
+
+
+        For example, `?top_level_category_guid[]=CAT-7829f71c-2e8c-afa5-2f55-fa3634b89874`.'
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+    transactionIdentifier:
+      description: Use either the transaction `id` you defined or the MX-defined transaction `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      in: path
+      required: true
+      name: transaction_identifier
+      schema:
+        type: string
+    memberIdentifier:
+      description: Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      name: member_identifier
+      in: path
+      required: true
+      schema:
+        type: string
+    toTimestamp:
+      name: to_timestamp
+      description: Filter transaction to the date in which the transaction was created. This only supports unix timestamp format.
+      example: '1698472800'
+      in: query
+      schema:
+        type: string
     userIdentifier:
       description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
       in: path
@@ -826,26 +848,79 @@ components:
       name: user_identifier
       schema:
         type: string
-    toUpdatedAt:
+    fromDateUnix:
+      description: Filter transactions from this date. This only supports unix timestamp format. Defaults to 120 days ago if not provided.
+      example: '1666936800'
+      in: query
+      name: from_date
+      schema:
+        type: string
+    toUpdatedAt_2:
       name: to_updated_at
-      description: Filter transactions to the date in which the transaction was updated. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Maximum date range limit is 6 months.
-      example: '2024-03-31'
+      description: Filter transactions to the date in which the transaction was updated. This only supports unix timestamp format.
+      example: '1698472800'
+      in: query
+      schema:
+        type: string
+    fromUpdatedAt_2:
+      name: from_updated_at
+      description: Filter transactions from the date in which the transaction was updated. This only supports unix timestamp format.
+      example: '1666936800'
+      in: query
+      schema:
+        type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
+    accountIdentifier:
+      description: Use either the account `id` you defined or the MX-defined account `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      in: path
+      required: true
+      name: account_identifier
+      schema:
+        type: string
+    useCase_2:
+      description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`.
+      required: false
+      in: query
+      name: use_case
+      schema:
+        type: string
+    fromCreatedAt_2:
+      name: from_created_at
+      in: query
+      description: Filter transactions from the date the transaction was created. This only supports unix timestamp format.
+      example: '1666936800'
+      schema:
+        type: string
+    fromTimestamp:
+      name: from_timestamp
+      in: query
+      description: Filter transactions from the date the transaction was created. This only supports unix timestamp format.
+      example: '1666936800'
+      schema:
+        type: string
+    toDateUnix:
+      description: Filter transactions to this date (at midnight). This only supports unix timestamp format. Defaults to 5 days forward from the day the request is made to capture pending transactions.
+      example: '1698472800'
+      in: query
+      name: to_date
+      schema:
+        type: string
+    toCreatedAt_2:
+      name: to_created_at
+      description: Filter transaction to the date in which the transaction was created. This only supports unix timestamp format.
+      example: '1698472800'
       in: query
       schema:
         type: string
   schemas:
-    TransactionUpdateRequest:
-      properties:
-        date:
-          type: string
-        memo:
-          type: string
-        category_guid:
-          type: string
-        description:
-          example: new description
-          type: string
-      type: object
     EnhanceTransactionResponse:
       properties:
         amount:
@@ -964,536 +1039,15 @@ components:
           - string
           - 'null'
       type: object
-    EnhanceTransactionsResponseBody:
+    TransactionCreateRequestBody:
       properties:
-        transactions:
-          items:
-            $ref: '#/components/schemas/EnhanceTransactionResponse'
-          type: array
-      type: object
-    TransactionResponse:
-      properties:
-        account_guid:
-          example: ACT-0af29528-bb91-447f-b5de-85c1c42593e5
-          type:
-          - string
-          - 'null'
-        account_id:
-          example: FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw
-          type:
-          - string
-          - 'null'
-        amount:
-          example: 5003.9
-          type:
-          - number
-          - 'null'
-        category:
-          example: Paycheck
-          type:
-          - string
-          - 'null'
-        category_guid:
-          example: CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819
-          type:
-          - string
-          - 'null'
-        check_number_string:
-          example: null
-          type:
-          - string
-          - 'null'
-        created_at:
-          example: '2024-12-20T18:52:36Z'
-          type:
-          - string
-          - 'null'
-        currency_code:
-          example: null
-          type:
-          - string
-          - 'null'
-        date:
-          example: '2024-12-20'
-          type:
-          - string
-          - 'null'
-        description:
-          example: MX Technologies
-          type:
-          - string
-          - 'null'
-        extended_transaction_type:
-          example: null
-          type:
-          - string
-          - 'null'
-        guid:
-          example: TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1
-          type:
-          - string
-          - 'null'
-        id:
-          example: 1734681600000-178fa8095c154a55b9172f977b4c5f9a-0
-          type:
-          - string
-          - 'null'
-        is_bill_pay:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_direct_deposit:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_expense:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_fee:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_income:
-          example: true
-          type:
-          - boolean
-          - 'null'
-        is_international:
-          example: null
-          type:
-          - boolean
-          - 'null'
-        is_manual:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_overdraft_fee:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_payroll_advance:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_recurring:
-          example: null
-          type:
-          - boolean
-          - 'null'
-        is_subscription:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        latitude:
-          example: null
-          type:
-          - number
-          - 'null'
-        localized_description:
-          example: null
-          type:
-          - string
-          - 'null'
-        localized_memo:
-          example: null
-          type:
-          - string
-          - 'null'
-        longitude:
-          example: null
-          type:
-          - number
-          - 'null'
-        member_guid:
-          example: MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8
-          type:
-          - string
-          - 'null'
-        member_is_managed_by_user:
-          example: true
-          type:
-          - boolean
-          - 'null'
-        memo:
-          example: Transactions
-          type:
-          - string
-          - 'null'
-        merchant_category_code:
-          example: null
-          type:
-          - integer
-          - 'null'
-        merchant_guid:
-          example: MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1
-          type:
-          - string
-          - 'null'
-        merchant_location_guid:
-          example: null
-          type:
-          - string
-          - 'null'
-        metadata:
-          example: null
-          type:
-          - string
-          - 'null'
-        original_description:
-          example: MX TECHNOLOGIES PAYMENT
-          type:
-          - string
-          - 'null'
-        posted_at:
-          example: '2024-12-20T12:00:00Z'
-          type:
-          - string
-          - 'null'
-        status:
-          example: POSTED
-          type:
-          - string
-          - 'null'
-        top_level_category:
-          example: Income
-          type:
-          - string
-          - 'null'
-        transacted_at:
-          example: '2024-12-20T12:00:00Z'
-          type:
-          - string
-          - 'null'
-        type:
-          example: CREDIT
-          type:
-          - string
-          - 'null'
-        updated_at:
-          example: '2024-12-20T18:52:38Z'
-          type:
-          - string
-          - 'null'
-        user_guid:
-          example: USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e
-          type:
-          - string
-          - 'null'
-        user_id:
-          example: null
-          type:
-          - string
-          - 'null'
-      type: object
-    TransactionIncludesResponse:
-      allOf:
-      - $ref: '#/components/schemas/TransactionResponse'
-      - properties:
-          classification:
-            type:
-            - object
-            - 'null'
-            properties:
-              parent_class:
-                example: Deposit
-                type: string
-                enum:
-                - Payroll
-                - Deposit
-                - Savings
-                - Transfer
-                - Refunds
-                - Spend
-                - Investment
-                - Buy
-                - Sell
-                - Income
-                - Fees
-                - Expenses
-                - Corporate Actions
-                - Other
-              guid:
-                example: MNC-3ad50f86-60d0-4545-a1f9-e66c2ac40f69
-                type: string
-          geolocation:
-            type:
-            - object
-            - 'null'
-            properties:
-              country:
-                example: us
-                type: string
-              state:
-                example: UT
-                type: string
-              city:
-                example: lehi
-                type: string
-              postal code:
-                example: '84043'
-                type: string
-          merchant:
-            type:
-            - object
-            - 'null'
-            properties:
-              name:
-                example: MX
-                type: string
-              guid:
-                example: MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84
-                type: string
-              logo_url:
-                type: string
-                example: https://content.mx.com/logos/merchants/MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84.png
-              website_url:
-                type: string
-                example: https://www.mx.com
-          repeating_transaction:
-            type:
-            - object
-            - 'null'
-            properties:
-              repeating_transaction_type:
-                type: string
-                enum:
-                - BILL
-                - SUBSCRIPTION
-                - INCOME
-                - UNKNOWN
-              recurrence_type:
-                type: string
-                enum:
-                - EVERY_OTHER_WEEK
-              guid:
-                type: string
-                example: RPT-065b8b1d-826a-45ce-8487-60ca1510e72a
-      type: object
-    RepeatingTransactionResponse:
-      properties:
-        account_guid:
-          example: ACT-0af29528-bb91-447f-b5de-85c1c42593e5
-          type:
-          - string
-          - 'null'
-        amount:
-          example: 107.4
-          type: number
-        description:
-          type: string
-          example: Dominion Energy
-        guid:
-          type: string
-          example: RPT-a2264e1a-d2e6-41d9-88d2-2cfdf1143959
-        member_guid:
-          type: string
-          example: MBR-78b14c5f-7297-4fb5-a966-65ac45f74d83
-        merchant_guid:
-          type: string
-          example: MCH-1b5d7e4d-fa29-95d1-fd0f-540b6f17d986
-        last_posted_date:
-          type: string
-          example: '2024-12-09'
-        predicted_occurs_on:
-          type: string
-          example: '2025-01-09'
-        recurrence_type:
-          type: string
-          example: EVERY_MONTH
-        user_guid:
-          type: string
-        repeating_transaction_type:
-          type: string
-          enum:
-          - BILL
-          - SUBSCRIPTION
-          - INCOME
-          - UNKNOWN
-        transaction_type:
-          type: string
-          enum:
-          - DEBIT
-          - CREDIT
-    MemberResponse:
-      properties:
-        aggregated_at:
-          example: '2016-10-13T18:07:57.000Z'
-          type:
-          - string
-          - 'null'
-        background_aggregation_is_disabled:
-          example: false
-          type: boolean
-        connection_status:
-          example: CONNECTED
-          type:
-          - string
-          - 'null'
-        connection_status_message:
-          example: Connected to MX Bank
-          type:
-          - string
-          - 'null'
-        guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type:
-          - string
-          - 'null'
-        id:
-          example: unique_id
-          type:
-          - string
-          - 'null'
-        institution_code:
-          example: mxbank
-          type:
-          - string
-          - 'null'
-        institution_guid:
-          example: INST-12345678-90ab-cdef-1234-567890abcdef
-          type: string
-        is_being_aggregated:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_managed_by_user:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_manual:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_oauth:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        metadata:
-          example: '\"credentials_last_refreshed_at\": \"2015-10-15\'
-          type:
-          - string
-          - 'null'
-        most_recent_job_detail_code:
-          example: null
-          type:
-          - integer
-          - 'null'
-        most_recent_job_detail_text:
-          example: null
-          type:
-          - boolean
-          - 'null'
-        most_recent_job_guid:
-          example: JOB-12345678-90ab-cdef-1234-567890abcdef
-          type:
-          - boolean
-          - 'null'
-        name:
-          example: MX Bank
-          type:
-          - string
-          - 'null'
-        needs_updated_credentials:
-          example: false
-          type:
-          - boolean
-          - 'null'
-        oauth_window_uri:
-          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
-          type:
-          - string
-          - 'null'
-        successfully_aggregated_at:
-          example: '2016-10-13T17:57:38.000Z'
-          type:
-          - string
-          - 'null'
-        use_cases:
-          type: array
-          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
-          items:
-            type: string
-            enum:
-            - MONEY_MOVEMENT
-            - PFM
-          example:
-          - PFM
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type:
-          - string
-          - 'null'
-        user_id:
-          example: user123
-          type:
-          - string
-          - 'null'
+        transaction:
+          $ref: '#/components/schemas/TransactionCreateRequest'
       type: object
     TransactionUpdateRequestBody:
       properties:
         transaction:
           $ref: '#/components/schemas/TransactionUpdateRequest'
-      type: object
-    SplitTransactionsResponseBody:
-      properties:
-        transactions:
-          items:
-            $ref: '#/components/schemas/TransactionResponse'
-          type: array
-      type: object
-    SplitTransactionRequest:
-      properties:
-        amount:
-          description: Amount of money you want to re-categorize.
-          example: 54.19
-          type: number
-        description:
-          description: Description for the split transaction.
-          example: Chevron Gas
-          type: string
-        category_guid:
-          description: Unique identifier of the category.
-          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
-          type: string
-        memo:
-          description: Memo for the split transaction
-          type: string
-          example: Chips and Soda
-      required:
-      - amount
-    EnhanceTransactionsRequestBody:
-      properties:
-        transactions:
-          items:
-            $ref: '#/components/schemas/EnhanceTransactionsRequest'
-          type: array
-      type: object
-    TransactionResponseBody:
-      properties:
-        transaction:
-          $ref: '#/components/schemas/TransactionResponse'
-      type: object
-    TransactionsResponseBodyIncludes:
-      properties:
-        transactions:
-          items:
-            $ref: '#/components/schemas/TransactionIncludesResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
       type: object
     PaginationResponse:
       properties:
@@ -1510,51 +1064,12 @@ components:
           example: 1
           type: integer
       type: object
-    MemberResponseBody:
-      properties:
-        member:
-          $ref: '#/components/schemas/MemberResponse'
-      type: object
-    EnhanceTransactionsRequest:
-      properties:
-        amount:
-          example: 21.33
-          type: number
-        description:
-          example: ubr* pending.uber.com
-          type: string
-        extended_transaction_type:
-          example: partner_transaction_type
-          type: string
-        id:
-          example: ID-123
-          type: string
-        memo:
-          example: Additional-information*on_transaction
-          type: string
-        merchant_category_code:
-          example: 4121
-          type: integer
-        type:
-          example: DEBIT
-          type: string
-      required:
-      - description
-      - id
-      type: object
-    RepeatingTransactionsResponseBody:
-      properties:
-        repeating_transactions:
-          items:
-            $ref: '#/components/schemas/RepeatingTransactionResponse'
-          type: array
-      type: object
-    SplitTransactionRequestBody:
+    SplitTransactionsResponseBody:
       properties:
         transactions:
-          $ref: '#/components/schemas/SplitTransactionRequest'
-      required:
-      - transactions
+          items:
+            $ref: '#/components/schemas/TransactionResponse'
+          type: array
       type: object
     TransactionCreateRequest:
       properties:
@@ -1819,10 +1334,1793 @@ components:
           - string
           - 'null'
       type: object
-    TransactionCreateRequestBody:
+    EnhanceTransactionsRequest:
+      properties:
+        amount:
+          example: 21.33
+          type: number
+        description:
+          example: ubr* pending.uber.com
+          type: string
+        extended_transaction_type:
+          example: partner_transaction_type
+          type: string
+        id:
+          example: ID-123
+          type: string
+        memo:
+          example: Additional-information*on_transaction
+          type: string
+        merchant_category_code:
+          example: 4121
+          type: integer
+        type:
+          example: DEBIT
+          type: string
+      required:
+      - description
+      - id
+      type: object
+    EnhanceTransactionsResponseBody:
+      properties:
+        transactions:
+          items:
+            $ref: '#/components/schemas/EnhanceTransactionResponse'
+          type: array
+      type: object
+    TransactionResponseBody:
       properties:
         transaction:
-          $ref: '#/components/schemas/TransactionCreateRequest'
+          $ref: '#/components/schemas/TransactionResponse'
+      type: object
+    RepeatingTransactionResponse:
+      properties:
+        account_guid:
+          example: ACT-0af29528-bb91-447f-b5de-85c1c42593e5
+          type:
+          - string
+          - 'null'
+        amount:
+          example: 107.4
+          type: number
+        description:
+          type: string
+          example: Dominion Energy
+        guid:
+          type: string
+          example: RPT-a2264e1a-d2e6-41d9-88d2-2cfdf1143959
+        member_guid:
+          type: string
+          example: MBR-78b14c5f-7297-4fb5-a966-65ac45f74d83
+        merchant_guid:
+          type: string
+          example: MCH-1b5d7e4d-fa29-95d1-fd0f-540b6f17d986
+        last_posted_date:
+          type: string
+          example: '2024-12-09'
+        predicted_occurs_on:
+          type: string
+          example: '2025-01-09'
+        recurrence_type:
+          type: string
+          example: EVERY_MONTH
+        user_guid:
+          type: string
+        repeating_transaction_type:
+          type: string
+          enum:
+          - BILL
+          - SUBSCRIPTION
+          - INCOME
+          - UNKNOWN
+        transaction_type:
+          type: string
+          enum:
+          - DEBIT
+          - CREDIT
+    TransactionUpdateRequest:
+      properties:
+        date:
+          type: string
+        memo:
+          type: string
+        category_guid:
+          type: string
+        description:
+          example: new description
+          type: string
+      type: object
+    SplitTransactionRequestBody:
+      properties:
+        transactions:
+          $ref: '#/components/schemas/SplitTransactionRequest'
+      required:
+      - transactions
+      type: object
+    RepeatingTransactionsResponseBody:
+      properties:
+        repeating_transactions:
+          items:
+            $ref: '#/components/schemas/RepeatingTransactionResponse'
+          type: array
+      type: object
+    TransactionIncludesResponse:
+      allOf:
+      - $ref: '#/components/schemas/TransactionResponse'
+      - properties:
+          classification:
+            type:
+            - object
+            - 'null'
+            properties:
+              parent_class:
+                example: Deposit
+                type: string
+                enum:
+                - Payroll
+                - Deposit
+                - Savings
+                - Transfer
+                - Refunds
+                - Spend
+                - Investment
+                - Buy
+                - Sell
+                - Income
+                - Fees
+                - Expenses
+                - Corporate Actions
+                - Other
+              guid:
+                example: MNC-3ad50f86-60d0-4545-a1f9-e66c2ac40f69
+                type: string
+          geolocation:
+            type:
+            - object
+            - 'null'
+            properties:
+              country:
+                example: us
+                type: string
+              state:
+                example: UT
+                type: string
+              city:
+                example: lehi
+                type: string
+              postal code:
+                example: '84043'
+                type: string
+          merchant:
+            type:
+            - object
+            - 'null'
+            properties:
+              name:
+                example: MX
+                type: string
+              guid:
+                example: MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84
+                type: string
+              logo_url:
+                type: string
+                example: https://content.mx.com/logos/merchants/MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84.png
+              website_url:
+                type: string
+                example: https://www.mx.com
+          repeating_transaction:
+            type:
+            - object
+            - 'null'
+            properties:
+              repeating_transaction_type:
+                type: string
+                enum:
+                - BILL
+                - SUBSCRIPTION
+                - INCOME
+                - UNKNOWN
+              recurrence_type:
+                type: string
+                enum:
+                - EVERY_OTHER_WEEK
+              guid:
+                type: string
+                example: RPT-065b8b1d-826a-45ce-8487-60ca1510e72a
+      type: object
+    EnhanceTransactionsRequestBody:
+      properties:
+        transactions:
+          items:
+            $ref: '#/components/schemas/EnhanceTransactionsRequest'
+          type: array
+      type: object
+    MemberResponseBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/MemberResponse'
+      type: object
+    TransactionsResponseBodyIncludes:
+      properties:
+        transactions:
+          items:
+            $ref: '#/components/schemas/TransactionIncludesResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    TransactionResponse:
+      properties:
+        account_guid:
+          example: ACT-0af29528-bb91-447f-b5de-85c1c42593e5
+          type:
+          - string
+          - 'null'
+        account_id:
+          example: FdvkkAgLS0nbDNUujrblz6rYDSl5w-tTLwYRgIxe7jw
+          type:
+          - string
+          - 'null'
+        amount:
+          example: 5003.9
+          type:
+          - number
+          - 'null'
+        category:
+          example: Paycheck
+          type:
+          - string
+          - 'null'
+        category_guid:
+          example: CAT-982ea9e6-3f0e-0c5b-611b-6657a10ba819
+          type:
+          - string
+          - 'null'
+        check_number_string:
+          example: null
+          type:
+          - string
+          - 'null'
+        created_at:
+          example: '2024-12-20T18:52:36Z'
+          type:
+          - string
+          - 'null'
+        currency_code:
+          example: null
+          type:
+          - string
+          - 'null'
+        date:
+          example: '2024-12-20'
+          type:
+          - string
+          - 'null'
+        description:
+          example: MX Technologies
+          type:
+          - string
+          - 'null'
+        extended_transaction_type:
+          example: null
+          type:
+          - string
+          - 'null'
+        guid:
+          example: TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1
+          type:
+          - string
+          - 'null'
+        id:
+          example: 1734681600000-178fa8095c154a55b9172f977b4c5f9a-0
+          type:
+          - string
+          - 'null'
+        is_bill_pay:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_direct_deposit:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_expense:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_fee:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_income:
+          example: true
+          type:
+          - boolean
+          - 'null'
+        is_international:
+          example: null
+          type:
+          - boolean
+          - 'null'
+        is_manual:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_overdraft_fee:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_payroll_advance:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_recurring:
+          example: null
+          type:
+          - boolean
+          - 'null'
+        is_subscription:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        latitude:
+          example: null
+          type:
+          - number
+          - 'null'
+        localized_description:
+          example: null
+          type:
+          - string
+          - 'null'
+        localized_memo:
+          example: null
+          type:
+          - string
+          - 'null'
+        longitude:
+          example: null
+          type:
+          - number
+          - 'null'
+        member_guid:
+          example: MBR-78b14c5f-7297-4fb5-a966-65ac45f74d8
+          type:
+          - string
+          - 'null'
+        member_is_managed_by_user:
+          example: true
+          type:
+          - boolean
+          - 'null'
+        memo:
+          example: Transactions
+          type:
+          - string
+          - 'null'
+        merchant_category_code:
+          example: null
+          type:
+          - integer
+          - 'null'
+        merchant_guid:
+          example: MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1
+          type:
+          - string
+          - 'null'
+        merchant_location_guid:
+          example: null
+          type:
+          - string
+          - 'null'
+        metadata:
+          example: null
+          type:
+          - string
+          - 'null'
+        original_description:
+          example: MX TECHNOLOGIES PAYMENT
+          type:
+          - string
+          - 'null'
+        posted_at:
+          example: '2024-12-20T12:00:00Z'
+          type:
+          - string
+          - 'null'
+        status:
+          example: POSTED
+          type:
+          - string
+          - 'null'
+        top_level_category:
+          example: Income
+          type:
+          - string
+          - 'null'
+        transacted_at:
+          example: '2024-12-20T12:00:00Z'
+          type:
+          - string
+          - 'null'
+        type:
+          example: CREDIT
+          type:
+          - string
+          - 'null'
+        updated_at:
+          example: '2024-12-20T18:52:38Z'
+          type:
+          - string
+          - 'null'
+        user_guid:
+          example: USR-ef7a82f6-d6c1-42c4-9061-bdece5c4d44e
+          type:
+          - string
+          - 'null'
+        user_id:
+          example: null
+          type:
+          - string
+          - 'null'
+      type: object
+    SplitTransactionRequest:
+      properties:
+        amount:
+          description: Amount of money you want to re-categorize.
+          example: 54.19
+          type: number
+        description:
+          description: Description for the split transaction.
+          example: Chevron Gas
+          type: string
+        category_guid:
+          description: Unique identifier of the category.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type: string
+        memo:
+          description: Memo for the split transaction
+          type: string
+          example: Chips and Soda
+      required:
+      - amount
+    MemberResponse:
+      properties:
+        aggregated_at:
+          example: '2016-10-13T18:07:57.000Z'
+          type:
+          - string
+          - 'null'
+        background_aggregation_is_disabled:
+          example: false
+          type: boolean
+        connection_status:
+          example: CONNECTED
+          type:
+          - string
+          - 'null'
+        connection_status_message:
+          example: Connected to MX Bank
+          type:
+          - string
+          - 'null'
+        guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        id:
+          example: unique_id
+          type:
+          - string
+          - 'null'
+        institution_code:
+          example: mxbank
+          type:
+          - string
+          - 'null'
+        institution_guid:
+          example: INST-12345678-90ab-cdef-1234-567890abcdef
+          type: string
+        is_being_aggregated:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_managed_by_user:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_manual:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_oauth:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        metadata:
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\'
+          type:
+          - string
+          - 'null'
+        most_recent_job_detail_code:
+          example: null
+          type:
+          - integer
+          - 'null'
+        most_recent_job_detail_text:
+          example: null
+          type:
+          - boolean
+          - 'null'
+        most_recent_job_guid:
+          example: JOB-12345678-90ab-cdef-1234-567890abcdef
+          type:
+          - boolean
+          - 'null'
+        name:
+          example: MX Bank
+          type:
+          - string
+          - 'null'
+        needs_updated_credentials:
+          example: false
+          type:
+          - boolean
+          - 'null'
+        oauth_window_uri:
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
+          type:
+          - string
+          - 'null'
+        successfully_aggregated_at:
+          example: '2016-10-13T17:57:38.000Z'
+          type:
+          - string
+          - 'null'
+        use_cases:
+          type: array
+          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
+          items:
+            type: string
+            enum:
+            - MONEY_MOVEMENT
+            - PFM
+          example:
+          - PFM
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+        user_id:
+          example: user123
+          type:
+          - string
+          - 'null'
+      type: object
+    EnhanceTransactionResponse_2:
+      properties:
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: 61.11
+          type:
+          - number
+          - 'null'
+        categorized_by:
+          description: The method used to determine the category assigned to the transaction.
+          example: 13
+          type:
+          - integer
+          - 'null'
+        category:
+          description: The category of the `transaction`.
+          example: Paycheck
+          type:
+          - string
+          - 'null'
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        described_by:
+          description: The method used to describe the `transaction`.
+          example: 6
+          type:
+          - integer
+          - 'null'
+        description:
+          description: A human-readable version of the `original_description` field. This is provided by the MX Platform.
+          example: Uber
+          type:
+          - string
+          - 'null'
+        extended_transaction_type:
+          description: The transaction type assigned by the partner.
+          example: partner_transaction_type
+          type:
+          - string
+          - 'null'
+        id:
+          description: The unique partner-defined identifier for the transaction.
+          example: ID-123
+          type:
+          - string
+          - 'null'
+        is_bill_pay:
+          description: Indicates whether the transaction is a bill payment.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_direct_deposit:
+          description: Indicates whether the transaction is a direct deposit.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_expense:
+          description: Indicates whether the transaction is an expense.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_fee:
+          description: Indicates whether the transaction is a fee.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_income:
+          description: Indicates whether the transaction is income.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_international:
+          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
+          example: false
+          type: boolean
+        is_overdraft_fee:
+          description: Indicates whether the transaction is an overdraft fee.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_payroll_advance:
+          description: Indicates whether the transaction is a payroll advance.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_subscription:
+          description: Indicates whether the transaction is a subscription payment.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        memo:
+          description: This field contains additional descriptive information about the `transaction`.
+          example: Additional-information*on_transaction
+          type:
+          - string
+          - 'null'
+        merchant_category_code:
+          description: The ISO 18245 category code for the `transaction`.
+          example: 4121
+          type:
+          - integer
+          - 'null'
+        merchant_guid:
+          description: The unique identifier for the merchant associated with this `transaction`. Defined by MX.
+          example: MCH-14f25b63-ef47-a38e-b2b6-d02b280b6e4e
+          type:
+          - string
+          - 'null'
+        merchant_location_guid:
+          description: The unique identifier for the `merchant_location` associated with this `transaction`. Defined by MX.
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type:
+          - string
+          - 'null'
+        original_description:
+          description: The original description of the `transaction` as provided by our data feed.
+          example: ubr* pending.uber.com
+          type:
+          - string
+          - 'null'
+        top_level_category_guid:
+          description: The unique identifier for the `top_level_category` associated with this `transaction`. Defined by MX.
+          example: CAT-9588eaad-90a4-bb5c-66c8-1812503d0db8
+          type:
+          - string
+          - 'null'
+        type:
+          description: The type of transaction.
+          example: DEBIT
+          type:
+          - string
+          - 'null'
+          enum:
+          - CREDIT
+          - DEBIT
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+      type: object
+    PaginationResponse_2:
+      properties:
+        current_page:
+          description: The page delivered by the current response.
+          example: 1
+          type: integer
+        per_page:
+          description: The number of records delivered with each page.
+          example: 25
+          type: integer
+        total_entries:
+          description: The total number of records available.
+          example: 1
+          type: integer
+        total_pages:
+          description: The total number of pages available.
+          example: 1
+          type: integer
+      type: object
+    TransactionCreateRequest_2:
+      properties:
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: 61.11
+          type:
+          - number
+          - 'null'
+        date:
+          description: The date of the `transaction`.
+          example: '2016-10-06'
+          type: string
+        description:
+          description: A human-readable version of the `original_description` field. Provided by MX.
+          example: Whole foods
+          type: string
+        type:
+          description: The type of transaction, which must be `CREDIT` or `DEBIT`.
+          example: DEBIT
+          type: string
+          enum:
+          - CREDIT
+          - DEBIT
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        has_been_viewed:
+          description: Indicates whether the transaction has been viewed.
+          example: false
+          type: boolean
+        is_hidden:
+          description: Indicates whether the account is hidden. Hidden accounts can still have an active balance and receive transactions. Defaults to `false`.
+          example: false
+          type: boolean
+        is_international:
+          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
+          example: false
+          type: boolean
+        memo:
+          description: A note about the transaction.
+          example: This is a memo
+          type: string
+        metadata:
+          description: Additional information you can store about the `transaction`.
+          example: some metadata
+          type: string
+        skip_webhook:
+          description: When set to `true`, this parameter will prevent a webhook from being triggered by the request.
+          example: true
+          type: boolean
+      required:
+      - amount
+      - date
+      - description
+      - type
+    TransactionCreateResponseBody_2:
+      properties:
+        account_guid:
+          description: The unique identifier for an account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        account_id:
+          description: The unique client-defined identifier for the account.
+          example: account123
+          type:
+          - string
+          - 'null'
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: 61.11
+          type: number
+        category:
+          description: The category of the `transaction`.
+          example: Groceries
+          type:
+          - string
+          - 'null'
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        check_number_string:
+          description: The check number for the `transaction`.
+          example: null
+          type:
+          - string
+          - 'null'
+        created_at:
+          description: The date and time the transaction was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type:
+          - string
+          - 'null'
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        date:
+          description: The date of the `transaction`.
+          example: '2016-10-06T00:00:00.000Z'
+          type:
+          - string
+          - 'null'
+        description:
+          description: A human-readable version of the `original_description` field. Provided by MX.
+          example: Whole foods
+          type:
+          - string
+          - 'null'
+        extended_transaction_type:
+          description: The transaction type assigned by the partner.
+          example: null
+          type:
+          - string
+          - 'null'
+        guid:
+          description: The unique identifier for the transaction. Defined by MX.
+          example: TRN-265abee9-889b-af6a-c69b-25157db2bdd9
+          type:
+          - string
+          - 'null'
+        id:
+          description: The unique partner-defined identifier for the transaction.
+          example: null
+          type:
+          - string
+          - 'null'
+        is_bill_pay:
+          description: Indicates whether the transaction is a bill payment.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_direct_deposit:
+          description: Indicates whether the transaction is a direct deposit.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_expense:
+          description: Indicates whether the transaction is an expense.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        is_fee:
+          description: Indicates whether the transaction is a fee.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_income:
+          description: Indicates whether the transaction is income.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_international:
+          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_manual:
+          description: Indicates whether the transaction was manually created or belongs to a manual account.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_overdraft_fee:
+          description: Indicates whether the transaction is an overdraft fee.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_payroll_advance:
+          description: Indicates whether the transaction is a payroll advance.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_recurring:
+          description: Deprecated. If required, reach out to MX to discuss an alternative.
+          example: null
+          type:
+          - boolean
+          - 'null'
+        is_subscription:
+          description: Indicates whether the transaction is a subscription payment.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        latitude:
+          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
+          example: null
+          type:
+          - number
+          - 'null'
+        localized_description:
+          description: A human-readable description of the transaction, provided in a local language.
+          example: null
+          type:
+          - string
+          - 'null'
+        localized_memo:
+          description: Additional descriptive information about the transaction, provided in a local language.
+          example: null
+          type:
+          - string
+          - 'null'
+        longitude:
+          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
+          example: null
+          type:
+          - number
+          - 'null'
+        member_guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        member_is_managed_by_user:
+          description: This indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to `false`.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        memo:
+          description: A note about the transaction.
+          example: This is a memo
+          type:
+          - string
+          - 'null'
+        merchant_category_code:
+          description: The category code assigned to the merchant. Defined by MX.
+          example: null
+          type:
+          - integer
+          - 'null'
+        merchant_guid:
+          description: The unique identifier for the merchant. Defined by MX.
+          example: null
+          type:
+          - string
+          - 'null'
+        merchant_location_guid:
+          description: The unique identifier for the merchant location. Defined by MX.
+          example: null
+          type:
+          - string
+          - 'null'
+        metadata:
+          description: Additional information you stored about the `transaction`.
+          example: some metadata
+          type:
+          - string
+          - 'null'
+        original_description:
+          description: The original description of the transaction as provided by the MX data feed.
+          example: null
+          type:
+          - string
+          - 'null'
+        posted_at:
+          description: The date and time the transaction was posted to the account.
+          example: null
+          type:
+          - string
+          - 'null'
+        status:
+          description: 'The status of the transaction.
+
+
+            All transaction data on our systems represent what we get through our data feed which depends what institutions make available for aggregation. Many institutions do not provide data for pending transactions; transactions from those accounts always have a status of `POSTED`.
+
+
+            When we do receive data for pending transactions, a single transaction may be updated from `PENDING` to `POSTED` and keep the same `guid`. This is done through various matching methods performed automatically by MX.
+
+
+            If a single transaction can''t be updated, the `PENDING` transaction will often be deleted and replaced with a new `POSTED` transaction (with a new `guid`) when it is sent to us; this is the most common scenario when pending data is available.
+
+
+            In unusual circumstances, there may be separate `PENDING` and `POSTED` transactions on MX systems for up to 14 days. All `PENDING` transactions are deleted after 14 days as a failsafe.
+
+            '
+          example: POSTED
+          type:
+          - string
+          - 'null'
+          enum:
+          - POSTED
+          - PENDING
+        top_level_category:
+          description: The parent category assigned to this transaction's category.
+          example: Food & Dining
+          type:
+          - string
+          - 'null'
+        transacted_at:
+          description: The date and time the transaction took place.
+          example: null
+          type:
+          - string
+          - 'null'
+        type:
+          description: The type of transaction.
+          example: DEBIT
+          type: string
+          enum:
+          - CREDIT
+          - DEBIT
+        updated_at:
+          description: 'The date and time the resource was last updated in ISO 8601 format with a timestamp.
+
+
+            For categories, this field will always be `null` when `is_default` is `true`.
+
+            '
+          example: '2025-02-13T18:09:00+00:00'
+          type: string
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+        user_id:
+          description: The unique partner-defined identifier for the user.
+          example: u-1234
+          type:
+          - string
+          - 'null'
+      type: object
+    EnhanceTransactionsRequest_2:
+      properties:
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: 61.11
+          type:
+          - number
+          - 'null'
+        description:
+          description: The description of the `transaction` to be enhanced.
+          example: ubr* pending.uber.com
+          type: string
+        extended_transaction_type:
+          description: The transaction type assigned by the partner.
+          example: partner_transaction_type
+          type: string
+        id:
+          description: The unique partner-defined identifier for the `transaction`.
+          example: ID-123
+          type: string
+        memo:
+          description: This field contains additional descriptive information about the `transaction`.
+          example: Additional-information*on_transaction
+          type: string
+        merchant_category_code:
+          description: The ISO 18245 category code for the `transaction`.
+          example: 4121
+          type: integer
+        type:
+          description: The type of transaction. Can be either `CREDIT` or `DEBIT`.
+          example: DEBIT
+          type: string
+          enum:
+          - CREDIT
+          - DEBIT
+      required:
+      - description
+      - id
+      type: object
+    RepeatingTransactionResponse_2:
+      properties:
+        account_guid:
+          description: The unique identifier for an account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: 61.11
+          type:
+          - number
+          - 'null'
+        description:
+          description: Merchant or bill description.
+          type: string
+          example: Dominion Energy
+        guid:
+          description: The unique identifier for the repeating transaction. Defined by MX.
+          type: string
+          example: RPT-a2264e1a-d2e6-41d9-88d2-2cfdf1143959
+        member_guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        merchant_guid:
+          description: The unique identifier for the merchant. Defined by MX.
+          type: string
+          example: MCH-1b5d7e4d-fa29-95d1-fd0f-540b6f17d986
+        last_posted_date:
+          description: Last occurrence date.
+          type: string
+          example: '2024-12-09'
+        predicted_occurs_on:
+          description: Predicted next occurrence.
+          type: string
+          example: '2025-01-09'
+        recurrence_type:
+          description: The frequency at which a transaction is expected to repeat based on historical patterns. See [Supported Recurrence Types](/api-reference/platform-api/reference/repeating-transactions-overview#supported-recurrence-types) for full list. This field appears on transaction endpoints where the optional query parameter is defined.
+          type: string
+          example: EVERY_MONTH
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
+        repeating_transaction_type:
+          description: The type of repeating transaction. This field appears on transaction endpoints where the optional query parameter is defined.
+          type: string
+          enum:
+          - BILL
+          - SUBSCRIPTION
+          - INCOME
+          - UNKNOWN
+        transaction_type:
+          description: The type of transaction.
+          type: string
+          enum:
+          - DEBIT
+          - CREDIT
+    TransactionUpdateRequest_2:
+      properties:
+        description:
+          example: new description
+          type: string
+      required:
+      - description
+      type: object
+    TransactionIncludesResponse_2:
+      allOf:
+      - $ref: '#/components/schemas/TransactionResponse_2'
+      - properties:
+          classification:
+            type:
+            - object
+            - 'null'
+            properties:
+              parent_class:
+                example: Deposit
+                type: string
+                enum:
+                - Payroll
+                - Deposit
+                - Savings
+                - Transfer
+                - Refunds
+                - Spend
+                - Investment
+                - Buy
+                - Sell
+                - Income
+                - Fees
+                - Expenses
+                - Corporate Actions
+                - Other
+              guid:
+                example: MNC-3ad50f86-60d0-4545-a1f9-e66c2ac40f69
+                type: string
+          geolocation:
+            type:
+            - object
+            - 'null'
+            properties:
+              country:
+                description: The country name.
+                example: US
+                type:
+                - string
+                - 'null'
+              state:
+                example: UT
+                type: string
+              city:
+                description: The city name.
+                example: North Kishaberg
+                type:
+                - string
+                - 'null'
+              postal code:
+                example: '84043'
+                type: string
+          merchant:
+            type:
+            - object
+            - 'null'
+            properties:
+              name:
+                description: The name of the merchant.
+                example: MX
+                type: string
+              guid:
+                example: MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84
+                type: string
+              logo_url:
+                description: The URL for a 100px X 100px logo for the merchant.
+                type: string
+                example: https://content.mx.com/logos/merchants/MCH-0c25f895-393c-42a4-9c18-95a0b26d4d84.png
+              website_url:
+                type: string
+                description: URL to the merchant's website.
+                example: https://www.example.com
+          repeating_transaction:
+            type:
+            - object
+            - 'null'
+            properties:
+              repeating_transaction_type:
+                description: The type of the repeating transaction.
+                type: string
+                enum:
+                - BILL
+                - SUBSCRIPTION
+                - INCOME
+                - UNKNOWN
+              recurrence_type:
+                description: The recurrence type of the repeating transaction.
+                type: string
+                enum:
+                - EVERY_OTHER_WEEK
+              guid:
+                description: The unique identifier for the repeating transaction. Defined by MX.
+                type: string
+                example: RPT-065b8b1d-826a-45ce-8487-60ca1510e72a
+      type: object
+    TransactionResponse_2:
+      properties:
+        account_guid:
+          description: The unique identifier for an account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        account_id:
+          description: The unique client-defined identifier for the account.
+          example: account123
+          type:
+          - string
+          - 'null'
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: 61.11
+          type:
+          - number
+          - 'null'
+        category:
+          description: The category of the `transaction`.
+          example: Paycheck
+          type:
+          - string
+          - 'null'
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        check_number_string:
+          description: The check number for the `transaction`.
+          example: null
+          type:
+          - string
+          - 'null'
+        created_at:
+          description: The date and time the transaction was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type:
+          - string
+          - 'null'
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        date:
+          description: The date on which the transaction took place. This is the field used when searching for transactions by date and is generally the same as `transacted_at`, but uses `posted_at` as a fallback.
+          example: '2024-12-20'
+          type:
+          - string
+          - 'null'
+        description:
+          description: A human-readable description of the transaction.
+          example: MX Technologies Payroll
+          type:
+          - string
+          - 'null'
+        extended_transaction_type:
+          description: The transaction type assigned by the partner.
+          example: null
+          type:
+          - string
+          - 'null'
+        guid:
+          description: The unique identifier for the transaction. Defined by MX.
+          example: TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1
+          type:
+          - string
+          - 'null'
+        id:
+          description: The unique partner-defined identifier for the transaction.
+          example: 1734681600000-178fa8095c154a55b9172f977b4c5f9a-0
+          type:
+          - string
+          - 'null'
+        is_bill_pay:
+          description: Indicates whether the transaction is a bill payment.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_direct_deposit:
+          description: Indicates whether the transaction is a direct deposit.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_expense:
+          description: Indicates whether the transaction is an expense.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_fee:
+          description: Indicates whether the transaction is a fee.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_income:
+          description: Indicates whether the transaction is income.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        is_international:
+          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
+          example: false
+          type: boolean
+        is_manual:
+          description: Indicates whether the transaction was manually created or belongs to a manual account.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_overdraft_fee:
+          description: Indicates whether the transaction is an overdraft fee.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_payroll_advance:
+          description: Indicates whether the transaction is a payroll advance.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_recurring:
+          description: Deprecated. If required, reach out to MX to discuss an alternative.
+          example: null
+          type:
+          - boolean
+          - 'null'
+        is_subscription:
+          description: Indicates whether the transaction is a subscription payment.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        latitude:
+          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
+          example: null
+          type:
+          - number
+          - 'null'
+        localized_description:
+          description: A human-readable description of the transaction, provided in a local language.
+          example: This is a localized_description
+          type:
+          - string
+          - 'null'
+        localized_memo:
+          description: Additional descriptive information about the transaction, provided in a local language.
+          example: This is a localized_memo
+          type:
+          - string
+          - 'null'
+        longitude:
+          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
+          example: null
+          type:
+          - number
+          - 'null'
+        member_guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        member_is_managed_by_user:
+          description: This indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to `false`.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        memo:
+          description: Additional information about the transaction.
+          example: Transactions
+          type:
+          - string
+          - 'null'
+        merchant_category_code:
+          description: The ISO 18245 category code for the transaction.
+          example: null
+          type:
+          - integer
+          - 'null'
+        merchant_guid:
+          description: The unique identifier for the merchant. Defined by MX.
+          example: MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1
+          type:
+          - string
+          - 'null'
+        merchant_location_guid:
+          description: The unique identifier for the merchant location. Defined by MX.
+          example: null
+          type:
+          - string
+          - 'null'
+        metadata:
+          description: Additional information you stored about the `transaction`.
+          example: some metadata
+          type:
+          - string
+          - 'null'
+        original_description:
+          description: The original description of the transaction as provided by our data feed.
+          example: MX TECHNOLOGIES PAYMENT
+          type:
+          - string
+          - 'null'
+        posted_at:
+          description: The date and time the transaction was posted to the account.
+          example: '2024-12-20T12:00:00Z'
+          type:
+          - string
+          - 'null'
+        status:
+          description: 'The status of the transaction.
+
+
+            All transaction data on our systems represent what we get through our data feed which depends what institutions make available for aggregation. Many institutions do not provide data for pending transactions; transactions from those accounts always have a status of `POSTED`.
+
+
+            When we do receive data for pending transactions, a single transaction may be updated from `PENDING` to `POSTED` and keep the same `guid`. This is done through various matching methods performed automatically by MX.
+
+
+            If a single transaction can''t be updated, the `PENDING` transaction will often be deleted and replaced with a new `POSTED` transaction (with a new `guid`) when it is sent to us; this is the most common scenario when pending data is available.
+
+
+            In unusual circumstances, there may be separate `PENDING` and `POSTED` transactions on MX systems for up to 14 days. All `PENDING` transactions are deleted after 14 days as a failsafe.
+
+            '
+          example: POSTED
+          type:
+          - string
+          - 'null'
+          enum:
+          - POSTED
+          - PENDING
+        top_level_category:
+          description: The parent category assigned to this transaction's category.
+          example: Income
+          type:
+          - string
+          - 'null'
+        transacted_at:
+          description: The date and time the transaction took place.
+          example: '2024-12-20T12:00:00Z'
+          type:
+          - string
+          - 'null'
+        type:
+          description: The type of transaction.
+          example: CREDIT
+          type:
+          - string
+          - 'null'
+          enum:
+          - CREDIT
+          - DEBIT
+        updated_at:
+          description: 'The date and time the resource was last updated in ISO 8601 format with a timestamp.
+
+
+            For categories, this field will always be `null` when `is_default` is `true`.
+
+            '
+          example: '2025-02-13T18:09:00+00:00'
+          type:
+          - string
+          - 'null'
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+        user_id:
+          description: The unique partner-defined identifier for the user.
+          example: u-1234
+          type:
+          - string
+          - 'null'
+      type: object
+    SplitTransactionRequest_2:
+      properties:
+        amount:
+          description: The amount of money you want to recategorize.
+          example: 61.11
+          type: number
+        description:
+          description: Description for the split transaction.
+          example: Chevron Gas
+          type: string
+        category_guid:
+          description: The unique identifier for the category.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        memo:
+          description: Memo for the split transaction
+          type: string
+          example: Chips and Soda
+      required:
+      - amount
+    MemberResponse_2:
+      properties:
+        aggregated_at:
+          description: 'The date and time the most recent aggregation-type job was started, given in ISO 8601 format with a time component.
+
+
+            A job will automatically be started when a member is created or its credentials are updated, unless the `skip_aggregation` parameter is used.
+
+
+            Jobs can also be started via manual aggregations, background aggregations, API endpoints, or when opening an MX widget.
+
+
+            A job can be a normal aggregation, or a premium job such as identification, verification, fetching statements, or fetching an extended transaction history.
+
+
+            If a member is deleted and then re-created with the `skip_aggregation` parameter set to `true` or if it is re-created within the throttle window (typically three hours), the previous value will be returned.
+
+            '
+          example: '2016-10-13T18:07:57.000Z'
+          type:
+          - string
+          - 'null'
+        background_aggregation_is_disabled:
+          description: Indicates whether background aggregation is disabled for the `member`.
+          example: false
+          type: boolean
+        connection_status:
+          description: The status of a user's connection to an institution. See [Member Connection Status](/api-reference/platform-api/reference/member-connection-statuses).
+          example: CONNECTED
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - CREATED
+          - PREVENTED
+          - DENIED
+          - CHALLENGED
+          - REJECTED
+          - LOCKED
+          - CONNECTED
+          - IMPEDED
+          - RECONNECTED
+          - DEGRADED
+          - DISCONNECTED
+          - DISCONTINUED
+          - CLOSED
+          - DELAYED
+          - FAILED
+          - UPDATED
+          - DISABLED
+          - IMPORTED
+          - RESUMED
+          - EXPIRED
+          - IMPAIRED
+          - PENDING
+        connection_status_message:
+          description: A human-readable message describing the connection status. See [Member Connection Status](/api-reference/platform-api/reference/member-connection-statuses).
+          example: Connected to MX Bank
+          type:
+          - string
+          - 'null'
+        guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        id:
+          description: The unique partner-defined identifier for the member.
+          example: unique_id
+          type:
+          - string
+          - 'null'
+        institution_code:
+          description: The code identifying a financial institution.
+          example: mxbank
+          type:
+          - string
+          - 'null'
+        institution_guid:
+          description: The unique identifier for the institution. Defined by MX.
+          example: INST-12345678-90ab-cdef-1234-567890abcdef
+          type: string
+        is_being_aggregated:
+          description: Indicates whether the member was being aggregated at the time of the request.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_managed_by_user:
+          description: Indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to `false`.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_manual:
+          description: Indicates whether the transaction was manually created or belongs to a manual account.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_oauth:
+          description: Indicates whether the member uses OAuth to authenticate. Defaults to `false`.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        metadata:
+          description: Additional information you stored about the `member`.
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\'
+          type:
+          - string
+          - 'null'
+        most_recent_job_detail_code:
+          description: (Deprecated) This field is no longer used and will be removed at a future date.
+          example: null
+          type:
+          - integer
+          - 'null'
+        most_recent_job_detail_text:
+          description: (Deprecated) This field is no longer used and will be removed at a future date.
+          example: null
+          type:
+          - boolean
+          - 'null'
+        most_recent_job_guid:
+          description: The unique identifier for the most recent job. Defined by MX.
+          example: JOB-12345678-90ab-cdef-1234-567890abcdef
+          type:
+          - string
+          - 'null'
+        name:
+          description: The name of the `member`.
+          example: MX Bank
+          type:
+          - string
+          - 'null'
+        needs_updated_credentials:
+          description: Internal field used by MX in some circumstances. When set to `true`, MX will not attempt to aggregate the member. It will be set to `false` automatically when the member's credentials are updated.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        oauth_window_uri:
+          description: When connecting a member using OAuth, this field will contain the URL to send the user to in order to authenticate, otherwise it will be blank.
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
+          type:
+          - string
+          - 'null'
+        successfully_aggregated_at:
+          description: The date and time when the member was last successfully aggregated, represented in ISO 8601 format with a timestamp.
+          example: '2016-10-13T17:57:38.000Z'
+          type:
+          - string
+          - 'null'
+        use_cases:
+          type: array
+          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
+          items:
+            type: string
+            enum:
+            - MONEY_MOVEMENT
+            - PFM
+          example:
+          - PFM
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+        user_id:
+          description: The unique partner-defined identifier for the user.
+          example: u-1234
+          type:
+          - string
+          - 'null'
       type: object
   securitySchemes:
     bearerAuth:
@@ -1831,3 +3129,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml

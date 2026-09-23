@@ -1,33 +1,28 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies Notifications API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts Notifications API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged notifications across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
 security:
 - basicAuth: []
 tags:
-- name: notifications
+- name: Notifications
 paths:
   /users/{user_guid}/notifications:
     parameters:
     - $ref: '#/components/parameters/userGuid'
     post:
       tags:
-      - notifications
+      - Notifications
       operationId: createNotification
       summary: Create a notification
-      description: All notifications created through the API will be of notification type `API_NOTIFICATION`, channel `PUSH`, and will not be associated to an entity.  No other channels are supported.  This will only have an effect for clients using an MX mobile application.
+      description: All notifications created through the API will be of notification type `API_NOTIFICATION`, channel `PUSH`, and will not be associated to an entity. No other channels are supported. This will only have an effect for clients using an MX mobile application.
       parameters:
       - $ref: '#/components/parameters/content'
       - $ref: '#/components/parameters/subject'
@@ -40,7 +35,7 @@ paths:
                 $ref: '#/components/schemas/NotificationResponseBody'
     get:
       tags:
-      - notifications
+      - Notifications
       operationId: listNotifications
       summary: List notifications
       description: All notifications for the user can be listed, including notifications created by MX for other channels besides `PUSH`.
@@ -56,15 +51,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotificationsResponseBody'
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/notifications/{notification_guid}:
     get:
       tags:
-      - notifications
+      - Notifications
       operationId: readNotifications
       summary: Read notifications
-      description: 'Can pull up any notification associated with the user, including notifications created by MX for other channels besides `PUSH`.
-
-        '
+      description: Can pull up any notification associated with the user, including notifications created by MX for other channels besides `PUSH`.
       parameters:
       - $ref: '#/components/parameters/userGuid'
       - $ref: '#/components/parameters/notificationGuid'
@@ -75,8 +71,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NotificationResponseBody'
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
   parameters:
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
     content:
       name: content
       description: The information related to the notification.
@@ -84,13 +90,13 @@ components:
       in: query
       schema:
         type: string
-    subject:
-      name: subject
-      description: The subject related to the notification.
-      required: true
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
       in: query
+      name: page
       schema:
-        type: string
+        type: integer
     fromDate:
       description: Filter transactions from this date. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 120 days ago if not provided.
       example: '2024-01-01'
@@ -106,20 +112,6 @@ components:
       required: true
       schema:
         type: string
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
-      in: query
-      name: page
-      schema:
-        type: integer
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
     notificationGuid:
       name: notification_guid
       description: The unique identifier for notifications. Defined by MX.
@@ -135,7 +127,28 @@ components:
       name: to_date
       schema:
         type: string
+    subject:
+      name: subject
+      description: The subject related to the notification.
+      required: true
+      in: query
+      schema:
+        type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
   schemas:
+    NotificationResponseBody:
+      properties:
+        notification:
+          $ref: '#/components/schemas/NotificationResponse'
+      type: object
     NotificationResponse:
       properties:
         guid:
@@ -164,10 +177,76 @@ components:
           items:
             $ref: '#/components/schemas/NotificationResponse'
       type: object
-    NotificationResponseBody:
+    NotificationResponse_2:
+      properties:
+        channel:
+          description: 'The way the notification will be delivered to the user.
+
+
+            All notifications created through the API will be of notification type `API_NOTIFICATION`, channel `PUSH`, and will not be associated to an entity. No other channels are supported.
+
+            '
+          example: EMAIL
+          type:
+          - string
+          - 'null'
+          enum:
+          - EMAIL
+          - SMS
+          - PUSH
+          - IN_APP
+        content:
+          description: The main body of the notification text sent to the user.
+          example: You're projected to spend $1,920.07 more than you've budgeted for Fees & Charges. You've already spent $325.67 of $716.00.
+          type: string
+        created_at:
+          description: The date and time the notification was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type: string
+        deep_link_guid:
+          description: The unique identifier for objects that directly trigger a notification. For example, `TRANSACTION_FEE_CHARGE` and `TRANSACTION_EXPENSE_LARGE` notification types will have a transaction guid in this field.
+          example: BGT-e386a323-e452-47f2-b2fd-1ac3c18533de
+        delivered_at:
+          description: Date and time the notification was delivered, represented in ISO 8601 format with timestamp.
+          example: null
+        entity_guid:
+          description: The unique identifier of the entity that the notification is attached to.
+          example: BGT-e386a323-e452-47f2-b2fd-1ac3c18533de
+        guid:
+          description: Unique identifier for the notification. Defined by MX.
+          example: NTF-b53294f5-2356-4782-9f81-ae064c42b40a
+        has_been_delivered:
+          description: Indicates if the notification has been delivered to the user.
+          example: true
+        has_been_viewed:
+          description: Indicates if the notification has been viewed by the user.
+          example: false
+        notification_type:
+          description: The type of notification. See [Notification Types](/api-reference/platform-api/reference/notifications-fields#notification-types).
+          example: 2
+        subject:
+          description: The notification summary text. Usually the same text used for “in-app” or SMS notifications.
+          example: Your Fees & Charges budget projection
+        threshold:
+          example: 325
+    NotificationRequest:
+      properties:
+        content:
+          description: The main body of the notification text sent to the user.
+          example: You're projected to spend $1,920.07 more than you've budgeted for Fees & Charges. You've already spent $325.67 of $716.00.
+          type: string
+        subject:
+          description: The notification summary text. Usually the same text used for “in-app” or SMS notifications.
+          example: Monthly Budget Report
+          type: string
+      required:
+      - content
+      - subject
+      type: object
+    NotificationRequestBody:
       properties:
         notification:
-          $ref: '#/components/schemas/NotificationResponse'
+          $ref: '#/components/schemas/NotificationRequest'
       type: object
   securitySchemes:
     bearerAuth:
@@ -176,3 +255,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml

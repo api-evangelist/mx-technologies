@@ -1,23 +1,18 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies Merchants API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts Merchants API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged merchants across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
 security:
 - basicAuth: []
 tags:
-- name: merchants
+- name: Merchants
 paths:
   /merchant_locations/{merchant_location_guid}:
     get:
@@ -34,7 +29,10 @@ paths:
           description: OK
       summary: Read merchant location
       tags:
-      - merchants
+      - Merchants
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /merchants:
     get:
       description: This endpoint returns a paginated list of all the merchants in the MX system.
@@ -52,7 +50,10 @@ paths:
           description: OK
       summary: List merchants
       tags:
-      - merchants
+      - Merchants
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /merchants/{merchant_guid}:
     get:
       description: Returns information about a particular merchant, such as a logo, name, and website.
@@ -68,22 +69,17 @@ paths:
           description: OK
       summary: Read merchant
       tags:
-      - merchants
+      - Merchants
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
   parameters:
-    merchantGuid:
-      description: The unique id for a `merchant`.
-      example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-      in: path
-      name: merchant_guid
-      required: true
-      schema:
-        type: string
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
       in: query
-      name: page
+      name: records_per_page
       schema:
         type: integer
     merchantLocationGuid:
@@ -94,11 +90,11 @@ components:
       required: true
       schema:
         type: string
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
       in: query
-      name: records_per_page
+      name: page
       schema:
         type: integer
     merchantName:
@@ -108,21 +104,33 @@ components:
       name: name
       schema:
         type: string
+    merchantGuid:
+      description: The unique id for a `merchant`.
+      example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+      in: path
+      name: merchant_guid
+      required: true
+      schema:
+        type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
   schemas:
-    PaginationResponse:
+    MerchantResponseBody:
       properties:
-        current_page:
-          example: 1
-          type: integer
-        per_page:
-          example: 25
-          type: integer
-        total_entries:
-          example: 1
-          type: integer
-        total_pages:
-          example: 1
-          type: integer
+        merchant:
+          $ref: '#/components/schemas/MerchantResponse'
+      type: object
+    MerchantLocationResponseBody:
+      properties:
+        merchant_location:
+          $ref: '#/components/schemas/MerchantLocationResponse'
       type: object
     MerchantLocationResponse:
       properties:
@@ -187,10 +195,14 @@ components:
           - string
           - 'null'
       type: object
-    MerchantResponseBody:
+    MerchantsResponseBody:
       properties:
-        merchant:
-          $ref: '#/components/schemas/MerchantResponse'
+        merchants:
+          items:
+            $ref: '#/components/schemas/MerchantResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
       type: object
     MerchantResponse:
       properties:
@@ -225,19 +237,163 @@ components:
           - string
           - 'null'
       type: object
-    MerchantLocationResponseBody:
+    PaginationResponse:
       properties:
-        merchant_location:
-          $ref: '#/components/schemas/MerchantLocationResponse'
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
       type: object
-    MerchantsResponseBody:
+    MerchantLocationResponse_2:
       properties:
-        merchants:
-          items:
-            $ref: '#/components/schemas/MerchantResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
+        city:
+          description: The city name.
+          example: North Kishaberg
+          type:
+          - string
+          - 'null'
+        country:
+          description: The country name.
+          example: US
+          type:
+          - string
+          - 'null'
+        created_at:
+          description: The date and time the merchant was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type:
+          - string
+          - 'null'
+        guid:
+          description: The unique identifier for the merchant location. Defined by MX.
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type:
+          - string
+          - 'null'
+        latitude:
+          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
+          example: 39.5963005
+          type:
+          - number
+          - 'null'
+        longitude:
+          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
+          example: -104.89158799999998
+          type:
+          - number
+          - 'null'
+        merchant_guid:
+          description: The unique identifier for the merchant. Defined by MX.
+          example: MCH-09466f0a-fb58-9d1a-bae2-2af0afbea621
+          type:
+          - string
+          - 'null'
+        phone_number:
+          description: The phone number of the merchant location.
+          example: (303) 689-0728
+          type:
+          - string
+          - 'null'
+        postal_code:
+          description: The postal code of the merchant location.
+          example: '801121436'
+          type:
+          - string
+          - 'null'
+        state:
+          description: The state abbreviation of the merchant location.
+          example: CO
+          type:
+          - string
+          - 'null'
+        street_address:
+          description: The street address of the merchant location.
+          example: 8547 E Arapahoe Rd, Ste 1
+          type:
+          - string
+          - 'null'
+        updated_at:
+          description: 'The date and time the resource was last updated in ISO 8601 format with a timestamp.
+
+
+            For categories, this field will always be `null` when `is_default` is `true`.
+
+            '
+          example: '2025-02-13T18:09:00+00:00'
+          type:
+          - string
+          - 'null'
+      type: object
+    MerchantResponse_2:
+      properties:
+        created_at:
+          description: The date and time the merchant was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type:
+          - string
+          - 'null'
+        guid:
+          description: The unique identifier for the merchant. Defined by MX.
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type:
+          - string
+          - 'null'
+        logo_url:
+          description: The URL for a 100px X 100px logo for the merchant.
+          example: https://s3.amazonaws.com/MD_Assets/merchant_logos/comcast.png
+          type:
+          - string
+          - 'null'
+        name:
+          description: The name of the merchant.
+          example: Comcast
+          type:
+          - string
+          - 'null'
+        updated_at:
+          description: 'The date and time the resource was last updated in ISO 8601 format with a timestamp.
+
+
+            For categories, this field will always be `null` when `is_default` is `true`.
+
+            '
+          example: '2025-02-13T18:09:00+00:00'
+          type:
+          - string
+          - 'null'
+        website_url:
+          description: URL to the merchant's website.
+          example: https://www.example.com
+          type:
+          - string
+          - 'null'
+      type: object
+    PaginationResponse_2:
+      properties:
+        current_page:
+          description: The page delivered by the current response.
+          example: 1
+          type: integer
+        per_page:
+          description: The number of records delivered with each page.
+          example: 25
+          type: integer
+        total_entries:
+          description: The total number of records available.
+          example: 1
+          type: integer
+        total_pages:
+          description: The total number of pages available.
+          example: 1
+          type: integer
       type: object
   securitySchemes:
     bearerAuth:
@@ -246,3 +402,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml

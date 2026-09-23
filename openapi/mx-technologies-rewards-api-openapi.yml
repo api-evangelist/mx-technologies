@@ -1,23 +1,18 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies Rewards API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts Rewards API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged rewards across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
 security:
 - basicAuth: []
 tags:
-- name: rewards
+- name: Rewards
 paths:
   /users/{user_guid}/members/{member_guid}/fetch_rewards:
     post:
@@ -35,7 +30,10 @@ paths:
           description: OK
       summary: Fetch Rewards
       tags:
-      - rewards
+      - Rewards
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/rewards:
     get:
       description: Use this endpoint to list all the `rewards` associated with a specified `member`. Member guids are defined by MX.
@@ -52,7 +50,10 @@ paths:
           description: OK
       summary: List Rewards
       tags:
-      - rewards
+      - Rewards
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/rewards/{reward_guid}:
     get:
       description: Use this endpoint to read a specific `reward` based on its unique GUID. Member and Rewards guids are defined by MX.
@@ -70,7 +71,10 @@ paths:
           description: OK
       summary: Read Reward
       tags:
-      - rewards
+      - Rewards
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /credit_card_products/{credit_card_product_guid}:
     get:
       description: This endpoint returns the specified `credit_card_product` according to the unique GUID.
@@ -86,7 +90,10 @@ paths:
           description: OK
       summary: Read a Credit Card Product
       tags:
-      - rewards
+      - Rewards
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/members/{member_identifier}/fetch_rewards:
     post:
       description: Calling this endpoint initiates an aggregation-type event which will gather the member's rewards information, as well as account and transaction information. Rewards data is also gathered with daily background aggregations. Member and Rewards guids are defined by MX.
@@ -104,65 +111,115 @@ paths:
           description: OK
       summary: Fetch Rewards
       tags:
-      - rewards
+      - Rewards
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
-  parameters:
-    memberGuid:
-      description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    memberIdentifier:
-      description: Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      name: member_identifier
-      in: path
-      required: true
-      schema:
-        type: string
-    rewardGuid:
-      description: The unique identifier for the rewards. Defined by MX.
-      example: RWD-fa7537f3-48aa-a683-a02a-b324322f54
-      in: path
-      name: reward_guid
-      required: true
-      schema:
-        type: string
-    userGuid:
-      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
-    acceptVersion:
-      name: Accept-Version
-      in: header
-      required: true
-      schema:
-        type: string
-        default: v20250224
-        example: v20250224
-      description: MX Platform API version.
-    creditCardProductGuid:
-      description: The required `credit_card_product_guid` can be found on the `account` object.
-      example: credit_card_product_guid
-      in: path
-      name: credit_card_product_guid
-      required: true
-      schema:
-        type: string
-    userIdentifier:
-      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      in: path
-      required: true
-      name: user_identifier
-      schema:
-        type: string
   schemas:
+    CreditCardProduct:
+      properties:
+        annual_fee:
+          example: 45
+          type: number
+        duration_of_introductory_rate_on_balance_transfer:
+          example: null
+          type:
+          - integer
+          - 'null'
+        duration_of_introductory_rate_on_purchases:
+          example: null
+          type:
+          - integer
+          - 'null'
+        guid:
+          example: CCA-b5bcd822-6d01-4e23-b8d6-846a225e714a
+          type: string
+        has_cashback_rewards:
+          example: false
+          type: boolean
+        has_other_rewards:
+          example: true
+          type: boolean
+        has_travel_rewards:
+          example: true
+          type: boolean
+        has_zero_introductory_annual_fee:
+          example: true
+          type: boolean
+        has_zero_percent_introductory_rate:
+          example: false
+          type: boolean
+        has_zero_percent_introductory_rate_on_balance_transfer:
+          example: true
+          type: boolean
+        is_accepting_applicants:
+          example: true
+          type: boolean
+        is_active_credit_card_product:
+          example: true
+          type: boolean
+        is_small_business_card:
+          example: true
+          type: boolean
+        name:
+          example: Chase Credit Card
+          type: string
+    RewardsResponseBody:
+      properties:
+        rewards:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/MemberElements'
+            - $ref: '#/components/schemas/RewardElements'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    RewardElements:
+      properties:
+        balance_type:
+          example: EXPIRING_BALANCE
+          type: string
+        balance:
+          example: 102
+          type: integer
+        created_at:
+          example: 2020-01-28T21:09:01+0000
+          type: string
+        description:
+          example: A description of the reward.
+          type: string
+        expires_on:
+          example: '2020-02-28'
+          type: string
+        guid:
+          example: RWD-1234
+          type: string
+        unit_type:
+          example: POINTS
+          type: string
+        updated_at:
+          example: '2023-06-01T19:18:06Z'
+          type: string
+    RewardResponseBody:
+      properties:
+        reward:
+          allOf:
+          - $ref: '#/components/schemas/MemberElements'
+          - $ref: '#/components/schemas/RewardElements'
+      type: object
+    MemberElements:
+      properties:
+        account_guid:
+          example: ACT-283132a4-1401-486a-909e-1605f1623d11
+          type: string
+        member_guid:
+          example: MBR-54feffb9-8474-47bd-8442-de003910113a
+          type: string
+        user_guid:
+          example: USR-101ad774-288b-44ed-ad16-da87d522ea20
+          type: string
     MemberResponse:
       properties:
         aggregated_at:
@@ -282,11 +339,6 @@ components:
           - string
           - 'null'
       type: object
-    CreditCardProductResponse:
-      properties:
-        credit_card_product:
-          $ref: '#/components/schemas/CreditCardProduct'
-      type: object
     PaginationResponse:
       properties:
         current_page:
@@ -302,24 +354,24 @@ components:
           example: 1
           type: integer
       type: object
-    RewardResponseBody:
+    CreditCardProductResponse:
       properties:
-        reward:
-          allOf:
-          - $ref: '#/components/schemas/MemberElements'
-          - $ref: '#/components/schemas/RewardElements'
+        credit_card_product:
+          $ref: '#/components/schemas/CreditCardProduct'
       type: object
     MemberResponseBody:
       properties:
         member:
           $ref: '#/components/schemas/MemberResponse'
       type: object
-    CreditCardProduct:
+    CreditCardProduct_2:
       properties:
         annual_fee:
+          description: The annual fee associated with the `credit_card_product`.
           example: 45
           type: number
         duration_of_introductory_rate_on_balance_transfer:
+          description: The duration of an introductory rate on balance transfers, given in months.
           example: null
           type:
           - integer
@@ -330,86 +382,351 @@ components:
           - integer
           - 'null'
         guid:
+          description: Unique identifier for the account. Defined by MX.
           example: CCA-b5bcd822-6d01-4e23-b8d6-846a225e714a
           type: string
         has_cashback_rewards:
+          description: Indicates if the credit card product has cashback rewards.
           example: false
           type: boolean
         has_other_rewards:
+          description: This indicates whether the credit card offers a rewards system that is different than standard cashback or travel rewards.
           example: true
           type: boolean
         has_travel_rewards:
+          description: This indicates whether the credit card offers travel rewards.
           example: true
           type: boolean
         has_zero_introductory_annual_fee:
+          description: This indicates whether the credit card offers a limited time period where a membership fee is waived.
           example: true
           type: boolean
         has_zero_percent_introductory_rate:
+          description: This indicates whether the credit card offers a zero percent introductory rate.
           example: false
           type: boolean
         has_zero_percent_introductory_rate_on_balance_transfer:
+          description: This indicates that the credit card offers a zero percent rate when transferring a balance from a different credit card.
           example: true
           type: boolean
         is_accepting_applicants:
+          description: This indicates whether the financial institution is still accepting applicants for the credit card.
           example: true
           type: boolean
         is_active_credit_card_product:
+          description: This indicates whether the credit card is still supported by the financial institution.
           example: true
           type: boolean
         is_small_business_card:
+          description: This indicates whether the credit card is associated with a small business.
           example: true
           type: boolean
         name:
-          example: Chase Credit Card
+          description: The name associated with the `credit_card_product`.
+          example: Credit Card
           type: string
-    RewardsResponseBody:
-      properties:
-        rewards:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/MemberElements'
-            - $ref: '#/components/schemas/RewardElements'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      type: object
-    RewardElements:
+    RewardElements_2:
       properties:
         balance_type:
+          description: The type of balance associated with the reward, for example, `BALANCE_TO_LEVEL`, or `TOTAL_BALANCE`.
           example: EXPIRING_BALANCE
           type: string
         balance:
-          example: 102
-          type: integer
+          description: "The current balance of the account.\n\n`PENDING` transactions are typically not taken into account with the current balance, but this may not always be the case.\n    \nThe balance will usually be a positive value for all account types. Asset-type accounts (`CHECKING`, `SAVINGS`, `INVESTMENT`) may have a negative balance if they are in overdraft.\n\nDebt-type accounts (`CREDIT_CARD`, `LOAN`, `LINE_OF_CREDIT`, `MORTGAGE`) may have a negative balance if they are overpaid.\n"
+          example: 1000
+          type: number
         created_at:
-          example: 2020-01-28T21:09:01+0000
+          description: The date and time the resource was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
           type: string
         description:
+          description: The description for the reward as given by the data provider.
           example: A description of the reward.
           type: string
         expires_on:
+          description: The date on which the balance expires.
           example: '2020-02-28'
           type: string
         guid:
+          description: The unique identifier for the reward. Defined by MX.
           example: RWD-1234
           type: string
         unit_type:
+          description: The units in which the balance is given, for example, `MILES` or `POINTS`.
           example: POINTS
           type: string
         updated_at:
+          description: The date and time at which the account was last updated.
           example: '2023-06-01T19:18:06Z'
           type: string
-    MemberElements:
+    MemberResponse_2:
+      properties:
+        aggregated_at:
+          description: 'The date and time the most recent aggregation-type job was started, given in ISO 8601 format with a time component.
+
+
+            A job will automatically be started when a member is created or its credentials are updated, unless the `skip_aggregation` parameter is used.
+
+
+            Jobs can also be started via manual aggregations, background aggregations, API endpoints, or when opening an MX widget.
+
+
+            A job can be a normal aggregation, or a premium job such as identification, verification, fetching statements, or fetching an extended transaction history.
+
+
+            If a member is deleted and then re-created with the `skip_aggregation` parameter set to `true` or if it is re-created within the throttle window (typically three hours), the previous value will be returned.
+
+            '
+          example: '2016-10-13T18:07:57.000Z'
+          type:
+          - string
+          - 'null'
+        background_aggregation_is_disabled:
+          description: Indicates whether background aggregation is disabled for the `member`.
+          example: false
+          type: boolean
+        connection_status:
+          description: The status of a user's connection to an institution. See [Member Connection Status](/api-reference/platform-api/reference/member-connection-statuses).
+          example: CONNECTED
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - CREATED
+          - PREVENTED
+          - DENIED
+          - CHALLENGED
+          - REJECTED
+          - LOCKED
+          - CONNECTED
+          - IMPEDED
+          - RECONNECTED
+          - DEGRADED
+          - DISCONNECTED
+          - DISCONTINUED
+          - CLOSED
+          - DELAYED
+          - FAILED
+          - UPDATED
+          - DISABLED
+          - IMPORTED
+          - RESUMED
+          - EXPIRED
+          - IMPAIRED
+          - PENDING
+        connection_status_message:
+          description: A human-readable message describing the connection status. See [Member Connection Status](/api-reference/platform-api/reference/member-connection-statuses).
+          example: Connected to MX Bank
+          type:
+          - string
+          - 'null'
+        guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        id:
+          description: The unique partner-defined identifier for the member.
+          example: unique_id
+          type:
+          - string
+          - 'null'
+        institution_code:
+          description: The code identifying a financial institution.
+          example: mxbank
+          type:
+          - string
+          - 'null'
+        institution_guid:
+          description: The unique identifier for the institution. Defined by MX.
+          example: INST-12345678-90ab-cdef-1234-567890abcdef
+          type: string
+        is_being_aggregated:
+          description: Indicates whether the member was being aggregated at the time of the request.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_managed_by_user:
+          description: Indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to `false`.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_manual:
+          description: Indicates whether the transaction was manually created or belongs to a manual account.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_oauth:
+          description: Indicates whether the member uses OAuth to authenticate. Defaults to `false`.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        metadata:
+          description: Additional information you stored about the `member`.
+          example: '\"credentials_last_refreshed_at\": \"2015-10-15\'
+          type:
+          - string
+          - 'null'
+        most_recent_job_detail_code:
+          description: (Deprecated) This field is no longer used and will be removed at a future date.
+          example: null
+          type:
+          - integer
+          - 'null'
+        most_recent_job_detail_text:
+          description: (Deprecated) This field is no longer used and will be removed at a future date.
+          example: null
+          type:
+          - boolean
+          - 'null'
+        most_recent_job_guid:
+          description: The unique identifier for the most recent job. Defined by MX.
+          example: JOB-12345678-90ab-cdef-1234-567890abcdef
+          type:
+          - string
+          - 'null'
+        name:
+          description: The name of the `member`.
+          example: MX Bank
+          type:
+          - string
+          - 'null'
+        needs_updated_credentials:
+          description: Internal field used by MX in some circumstances. When set to `true`, MX will not attempt to aggregate the member. It will be set to `false` automatically when the member's credentials are updated.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        oauth_window_uri:
+          description: When connecting a member using OAuth, this field will contain the URL to send the user to in order to authenticate, otherwise it will be blank.
+          example: https://mxbank.mx.com/oauth/authorize?client_id=b8OikQ4Ep3NuSUrQ13DdvFuwpNx-qqoAsJDVAQCyLkQ&redirect_uri=https%3A%2F%2Fint-app.moneydesktop.com%2Foauth%2Fredirect_from&response_type=code&scope=openid&state=d745bd4ee6f0f9c184757f574bcc2df2
+          type:
+          - string
+          - 'null'
+        successfully_aggregated_at:
+          description: The date and time when the member was last successfully aggregated, represented in ISO 8601 format with a timestamp.
+          example: '2016-10-13T17:57:38.000Z'
+          type:
+          - string
+          - 'null'
+        use_cases:
+          type: array
+          description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`. Only set this if you've met with MX and have opted in to using this field.
+          items:
+            type: string
+            enum:
+            - MONEY_MOVEMENT
+            - PFM
+          example:
+          - PFM
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+        user_id:
+          description: The unique partner-defined identifier for the user.
+          example: u-1234
+          type:
+          - string
+          - 'null'
+      type: object
+    MemberElements_2:
       properties:
         account_guid:
-          example: ACT-283132a4-1401-486a-909e-1605f1623d11
+          description: The unique identifier for an account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
           type: string
         member_guid:
-          example: MBR-54feffb9-8474-47bd-8442-de003910113a
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
           type: string
         user_guid:
-          example: USR-101ad774-288b-44ed-ad16-da87d522ea20
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
           type: string
+    PaginationResponse_2:
+      properties:
+        current_page:
+          description: The page delivered by the current response.
+          example: 1
+          type: integer
+        per_page:
+          description: The number of records delivered with each page.
+          example: 25
+          type: integer
+        total_entries:
+          description: The total number of records available.
+          example: 1
+          type: integer
+        total_pages:
+          description: The total number of pages available.
+          example: 1
+          type: integer
+      type: object
+  parameters:
+    creditCardProductGuid:
+      description: The required `credit_card_product_guid` can be found on the `account` object.
+      example: credit_card_product_guid
+      in: path
+      name: credit_card_product_guid
+      required: true
+      schema:
+        type: string
+    rewardGuid:
+      description: The unique identifier for the rewards. Defined by MX.
+      example: RWD-fa7537f3-48aa-a683-a02a-b324322f54
+      in: path
+      name: reward_guid
+      required: true
+      schema:
+        type: string
+    memberGuid:
+      description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    memberIdentifier:
+      description: Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      name: member_identifier
+      in: path
+      required: true
+      schema:
+        type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
+    userIdentifier:
+      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      in: path
+      required: true
+      name: user_identifier
+      schema:
+        type: string
   securitySchemes:
     bearerAuth:
       type: http
@@ -417,3 +734,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml

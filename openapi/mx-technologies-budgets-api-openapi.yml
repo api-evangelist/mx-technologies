@@ -1,28 +1,23 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies Budgets API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts Budgets API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged budgets across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
 security:
 - basicAuth: []
 tags:
-- name: budgets
+- name: Budgets
 paths:
   /users/{user_guid}/budgets/generate:
     post:
       tags:
-      - budgets
+      - Budgets
       operationId: autoGenerateBudgets
       summary: Auto-generate budgets
       parameters:
@@ -35,12 +30,15 @@ paths:
             application/vnd.mx.api.v1+json:
               schema:
                 $ref: '#/components/schemas/BudgetResponseBody'
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/budgets:
     parameters:
     - $ref: '#/components/parameters/userGuid'
     post:
       tags:
-      - budgets
+      - Budgets
       operationId: createBudget
       summary: Create a budget
       description: Create a budget. This endpoint accepts the optional `MX-Skip-Webhook` header and `skip_webhook` parameter. You cannot create a duplicate budget. For example, if you attempt to create a budget for "Gas", but that budget already exist, the request will fail. You can retrieve a list of all existing categories by using the List Categories endpoint.
@@ -59,10 +57,9 @@ paths:
                 $ref: '#/components/schemas/BudgetResponseBody'
     get:
       tags:
-      - budgets
+      - Budgets
       operationId: listAllBudgets
       summary: List all budgets
-      description: List all budgets
       responses:
         '200':
           description: OK
@@ -70,13 +67,16 @@ paths:
             application/vnd.mx.api.v1+json:
               schema:
                 $ref: '#/components/schemas/BudgetResponseBody'
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/budgets/{budget_guid}:
     parameters:
     - $ref: '#/components/parameters/userGuid'
     - $ref: '#/components/parameters/budgetGuid'
     get:
       tags:
-      - budgets
+      - Budgets
       operationId: readSpecificBudget
       summary: Read a specific budget
       description: Read a specific budget.
@@ -89,7 +89,7 @@ paths:
                 $ref: '#/components/schemas/BudgetResponseBody'
     put:
       tags:
-      - budgets
+      - Budgets
       operationId: updateSpecificBudget
       summary: Update a specific budget
       description: Update a specific budget.
@@ -108,66 +108,18 @@ paths:
                 $ref: '#/components/schemas/BudgetResponseBody'
     delete:
       tags:
-      - budgets
+      - Budgets
       operationId: deleteBudget
       summary: Delete a budget
       description: Delete a budget.
       responses:
         '204':
           description: No content
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
   schemas:
-    BudgetUpdateRequestBody:
-      properties:
-        budget:
-          $ref: '#/components/schemas/BudgetUpdateRequest'
-      type: object
-    BudgetCreateRequest:
-      properties:
-        category_guid:
-          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
-          description: Unique identifier of the category.
-          type: string
-        parent_guid:
-          example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
-          description: Unique identifier of the parent budget. This is only required when creating a budget on a sub-category.
-          type: string
-        amount:
-          example: 1000
-          description: Amount of the budget.
-          type: integer
-        metadata:
-          example: Additional information
-          description: Additional information a partner can store on the budget.
-          type: string
-        skip_webhook:
-          example: true
-          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
-          type: boolean
-      required:
-      - category_guid
-      - parent_guid
-      type: object
-    BudgetUpdateRequest:
-      properties:
-        amount:
-          example: 1000
-          description: Amount of the budget.
-          type: integer
-        metadata:
-          example: Additional information
-          description: Additional information a partner can store on the budget.
-          type: string
-        skip_webhook:
-          example: true
-          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
-          type: boolean
-      type: object
-    BudgetResponseBody:
-      properties:
-        budget:
-          $ref: '#/components/schemas/BudgetResponse'
-      type: object
     BudgetResponse:
       properties:
         amount:
@@ -244,6 +196,169 @@ components:
         budget:
           $ref: '#/components/schemas/BudgetCreateRequest'
       type: object
+    BudgetResponseBody:
+      properties:
+        budget:
+          $ref: '#/components/schemas/BudgetResponse'
+      type: object
+    BudgetCreateRequest:
+      properties:
+        category_guid:
+          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
+          description: Unique identifier of the category.
+          type: string
+        parent_guid:
+          example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
+          description: Unique identifier of the parent budget. This is only required when creating a budget on a sub-category.
+          type: string
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      required:
+      - category_guid
+      - parent_guid
+      type: object
+    BudgetUpdateRequest:
+      properties:
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information a partner can store on the budget.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      type: object
+    BudgetUpdateRequestBody:
+      properties:
+        budget:
+          $ref: '#/components/schemas/BudgetUpdateRequest'
+      type: object
+    BudgetResponse_2:
+      properties:
+        amount:
+          description: A goal amount set by the user for a category's transaction total during a month.
+          example: 153
+          type: number
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type: string
+        created_at:
+          description: The date and time the budget was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type: string
+        guid:
+          description: Unique identifier for the `budget`. Defined by MX.
+          example: BGT-6ca0e3ef-c65e-4655-8b5a-275a3c19c21d
+          type: string
+        is_exceeded:
+          description: If the budget has been exceeded, this field will be true. Otherwise, this field will be false.
+          example: true
+          type: boolean
+        is_off_track:
+          description: If the budget is off track, this field will be true. Otherwise, this field will be false.
+          example: true
+          type: boolean
+        metadata:
+          description: Additional information you stored about the `budget`.
+          example: some metadata
+          type:
+          - string
+          - 'null'
+        name:
+          description: The name of the budget that is visible to the user (ie "Food", "Bills", "Entertainment", etc).
+          example: Food & Dining
+          type:
+          - string
+          - 'null'
+        off_track_percentage:
+          description: The percentage amount of off track spending. (Deprecated).
+          type:
+          - number
+          - 'null'
+        parent_guid:
+          description: Unique identifier for the parent budget. Defined by MX.
+          type:
+          - string
+          - 'null'
+        percent_spent:
+          description: The percentage of a budget that has been spent during the current calendar month Calculated as the transaction total divided by the amount and then multiplied by 100.A value of zero will be returned when `amount` is zero.
+          example: 1276.34
+          type:
+          - number
+          - 'null'
+        projected_spending:
+          description: The projected amount of spending for the budget.
+          example: 3562.4
+          type: number
+        revision:
+          description: The revision number of this budget record.
+          example: 561
+          type: integer
+        transaction_total:
+          description: The cumulative amount of all transactions under the budget.
+          example: 1952.8
+        updated_at:
+          description: Date and time the budget was updated, represented in ISO 8601 format with timestamp.
+          example: '2022-06-14T21:17:11+00:00'
+        user_guid:
+          description: Unique identifier for the user. Defined by MX.
+          example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+    BudgetCreateRequest_2:
+      properties:
+        category_guid:
+          description: The unique identifier for the category.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type: string
+        parent_guid:
+          example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
+          description: Unique identifier of the parent budget. This is only required when creating a budget on a sub-category.
+          type: string
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information you can store on the `budget`.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      required:
+      - category_guid
+      - parent_guid
+      type: object
+    BudgetUpdateRequest_2:
+      properties:
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information you can store on the `budget`.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      type: object
   parameters:
     budgetGuid:
       name: budget_guid
@@ -260,6 +375,15 @@ components:
       required: true
       schema:
         type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
   securitySchemes:
     bearerAuth:
       type: http
@@ -267,3 +391,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml

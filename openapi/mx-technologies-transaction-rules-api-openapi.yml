@@ -1,16 +1,11 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies transaction rules API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts transaction rules API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged transaction rules across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
@@ -59,6 +54,9 @@ paths:
       summary: Create transaction rule
       tags:
       - transaction rules
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/transaction_rules/{transaction_rule_guid}:
     get:
       description: Use this endpoint to read the attributes of an existing transaction rule based on the rule’s unique GUID.
@@ -99,47 +97,19 @@ paths:
       summary: Update transaction rule
       tags:
       - transaction rules
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
   schemas:
-    TransactionRuleCreateRequest:
+    TransactionRulesResponseBody:
       properties:
-        category_guid:
-          example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
-          type: string
-        description:
-          example: Wal-mart food storage
-          type: string
-        match_description:
-          example: Wal-mart
-          type: string
-      required:
-      - category_guid
-      - match_description
-      type: object
-    TransactionRuleResponseBody:
-      properties:
-        transaction_rule:
-          $ref: '#/components/schemas/TransactionRuleResponse'
-      type: object
-    PaginationResponse:
-      properties:
-        current_page:
-          example: 1
-          type: integer
-        per_page:
-          example: 25
-          type: integer
-        total_entries:
-          example: 1
-          type: integer
-        total_pages:
-          example: 1
-          type: integer
-      type: object
-    TransactionRuleUpdateRequestBody:
-      properties:
-        transaction_rule:
-          $ref: '#/components/schemas/TransactionRuleUpdateRequest'
+        transaction_rules:
+          items:
+            $ref: '#/components/schemas/TransactionRuleResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
       type: object
     TransactionRuleResponse:
       properties:
@@ -184,6 +154,21 @@ components:
         transaction_rule:
           $ref: '#/components/schemas/TransactionRuleCreateRequest'
       type: object
+    TransactionRuleCreateRequest:
+      properties:
+        category_guid:
+          example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
+          type: string
+        description:
+          example: Wal-mart food storage
+          type: string
+        match_description:
+          example: Wal-mart
+          type: string
+      required:
+      - category_guid
+      - match_description
+      type: object
     TransactionRuleUpdateRequest:
       properties:
         category_guid:
@@ -196,16 +181,150 @@ components:
           example: Wal-mart
           type: string
       type: object
-    TransactionRulesResponseBody:
+    PaginationResponse:
       properties:
-        transaction_rules:
-          items:
-            $ref: '#/components/schemas/TransactionRuleResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
+    TransactionRuleUpdateRequestBody:
+      properties:
+        transaction_rule:
+          $ref: '#/components/schemas/TransactionRuleUpdateRequest'
+      type: object
+    TransactionRuleResponseBody:
+      properties:
+        transaction_rule:
+          $ref: '#/components/schemas/TransactionRuleResponse'
+      type: object
+    TransactionRuleResponse_2:
+      properties:
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        created_at:
+          description: The date and time the resource was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type:
+          - string
+          - 'null'
+        description:
+          description: The matched transaction's `description` will be updated to the string provided here.
+          example: Wal-mart food storage
+          type:
+          - string
+          - 'null'
+        guid:
+          description: A unique identifier for the `transaction_rule`. Defined by MX.
+          example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
+          type:
+          - string
+          - 'null'
+        match_description:
+          description: A string used to find a transaction to which the rule will be applied. Transaction matching is based on a comparison of `match_description` to a transaction's cleansed description.
+          example: Wal-mart
+          type:
+          - string
+          - 'null'
+        updated_at:
+          description: 'The date and time the resource was last updated in ISO 8601 format with a timestamp.
+
+
+            For categories, this field will always be `null` when `is_default` is `true`.
+
+            '
+          example: '2025-02-13T18:09:00+00:00'
+          type:
+          - string
+          - 'null'
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+      type: object
+    TransactionRuleCreateRequest_2:
+      properties:
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        description:
+          example: Wal-mart food storage
+          type: string
+        match_description:
+          example: Wal-mart
+          type: string
+      required:
+      - category_guid
+      - match_description
+      type: object
+    TransactionRuleUpdateRequest_2:
+      properties:
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        description:
+          description: The matched transaction's `description` will be updated to the string provided here.
+          example: Wal-mart food storage
+          type: string
+        match_description:
+          description: A string used to find a transaction to which the rule will be applied. Transaction matching is based on a comparison of `match_description` to a transaction's cleansed description.
+          example: Wal-mart
+          type: string
+      type: object
+    PaginationResponse_2:
+      properties:
+        current_page:
+          description: The page delivered by the current response.
+          example: 1
+          type: integer
+        per_page:
+          description: The number of records delivered with each page.
+          example: 25
+          type: integer
+        total_entries:
+          description: The total number of records available.
+          example: 1
+          type: integer
+        total_pages:
+          description: The total number of pages available.
+          example: 1
+          type: integer
       type: object
   parameters:
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
     userGuid:
       description: The unique identifier for a `user`, beginning with the prefix `USR-`.
       example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -214,20 +333,6 @@ components:
       required: true
       schema:
         type: string
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
-      in: query
-      name: page
-      schema:
-        type: integer
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
     transactionRuleGuid:
       description: The unique id for a `transaction_rule`.
       example: TXR-a080e0f9-a2d4-4d6f-9e03-672cc357a4d3
@@ -236,6 +341,15 @@ components:
       required: true
       schema:
         type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
   securitySchemes:
     bearerAuth:
       type: http
@@ -243,3 +357,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml

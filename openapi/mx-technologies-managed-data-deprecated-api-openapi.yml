@@ -3,14 +3,9 @@ info:
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts managed data [deprecated] managed data [deprecated] API
-  version: '20111101'
+  description: The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable.
+  title: MX Platform managed data [deprecated] API
+  version: '20250224'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
@@ -25,11 +20,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration)
+        This endpoint has been deprecated. For more information, reference the Migration guide
 
-        :::
-
-        '
+        :::'
       operationId: listManagedInstitutions
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -52,11 +45,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: listManagedMembers
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -79,11 +70,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: createManagedMember
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -112,11 +101,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: deleteManagedMember
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -135,11 +122,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: readManagedMember
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -161,11 +146,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: updateManagedMember
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -204,11 +187,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: listManagedAccounts
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -232,11 +213,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: createManagedAccount
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -266,11 +245,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: deleteManagedAccount
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -289,11 +266,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: readManagedAccount
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -312,7 +287,13 @@ paths:
       - managed data [deprecated]
       deprecated: true
     put:
-      description: "Use this endpoint to update the attributes of a partner-managed account according to its unique GUID.\n:::warning Deprecated \nThis endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).\n:::\n"
+      description: 'Use this endpoint to update the attributes of a partner-managed account according to its unique GUID.
+
+        :::warning Deprecated
+
+        This endpoint has been deprecated. For more information, reference the Migration guide.
+
+        :::'
       operationId: updateManagedAccount
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -343,11 +324,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: listManagedTransactions
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -374,11 +353,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: createManagedTransaction
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -409,11 +386,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: deleteManagedTransaction
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -433,11 +408,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: readManagedTransaction
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -461,11 +434,9 @@ paths:
 
         :::warning Deprecated
 
-        This endpoint has been deprecated. For more information, reference the [Migration guide](https://docs.mx.com/api-reference/platform-api/overview/migration).
+        This endpoint has been deprecated. For more information, reference the Migration guide.
 
-        :::
-
-        '
+        :::'
       operationId: updateManagedTransaction
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -493,47 +464,19 @@ paths:
       deprecated: true
 components:
   schemas:
-    ManagedMemberCreateRequest:
+    ManagedMemberCreateRequestBody:
       properties:
-        id:
-          description: The unique partner-defined identifier for the member.
-          example: member123
-          type: string
-        institution_code:
-          description: The code identifying a financial institution.
-          example: mxbank
-          type: string
-        metadata:
-          description: Additional information you can store about the `member`.
-          example: some metadata
-          type: string
-        name:
-          description: The name of the `member`.
-          example: MX Bank
-          type: string
-      required:
-      - institution_code
+        member:
+          $ref: '#/components/schemas/ManagedMemberCreateRequest'
       type: object
-    ManagedTransactionCreateRequestBody:
+    TransactionsResponseBody:
       properties:
-        transaction:
-          $ref: '#/components/schemas/ManagedTransactionCreateRequest'
-      type: object
-    ManagedMemberUpdateRequest:
-      properties:
-        id:
-          description: The unique partner-defined identifier for the member.
-          example: member123
-          type: string
-        metadata:
-          description: Additional information you can store about the `member`.
-          example: some metadata
-          type: string
-        name:
-          description: The name of the `member`.
-          example: MX Bank
-          type: string
-      type: object
+        transactions:
+          items:
+            $ref: '#/components/schemas/TransactionResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
     ManagedAccountCreateRequest:
       properties:
         account_number:
@@ -687,487 +630,10 @@ components:
       - name
       - type
       type: object
-    ManagedAccountUpdateRequest:
-      properties:
-        account_number:
-          description: The account number associated with the account. This will typically be a masked or partial account number.
-          example: '3331261'
-          type: string
-        apr:
-          description: The annual percentage rate associated with the `account`.
-          example: 5.25
-          type: number
-        apy:
-          description: The annual percentage yield associated with the `account`.
-          example: 2.35
-          type: number
-        available_balance:
-          description: 'The balance that is available for use in asset accounts like checking and savings.
-
-
-            `PENDING` transactions are typically (not always) taken into account with the available balance.
-
-
-            `available_balance` will usually be a positive value for all account types, determined in the same way as the balance field.
-
-            '
-          example: 1000
-          type: number
-        available_credit:
-          description: 'The amount of credit available for use in liability accounts like credit cards and lines of credit.
-
-
-            `PENDING` transactions are typically (not always) taken into account with available credit.
-
-
-            `available_credit` will usually be a positive value for all account types, determined in the same way as the `balance` field.
-
-            '
-          example: 4000
-          type:
-          - number
-          - 'null'
-        balance:
-          description: "The current balance of the account.\n\n`PENDING` transactions are typically not taken into account with the current balance, but this may not always be the case.\n    \nThe balance will usually be a positive value for all account types. Asset-type accounts (`CHECKING`, `SAVINGS`, `INVESTMENT`) may have a negative balance if they are in overdraft.\n\nDebt-type accounts (`CREDIT_CARD`, `LOAN`, `LINE_OF_CREDIT`, `MORTGAGE`) may have a negative balance if they are overpaid.\n"
-          example: 1000
-          type:
-          - number
-          - 'null'
-        cash_surrender_value:
-          description: Can only be updated for manual accounts. The sum of money paid to the policyholder or annuity holder in the event the policy is voluntarily terminated before it matures, or the insured event occurs.
-          example: 1000
-          type: number
-        credit_limit:
-          description: The credit limit associated with the `account`.
-          example: 5000
-          type: number
-        currency_code:
-          description: The three-character ISO 4217 currency code, for example, `USD`.
-          example: USD
-          type:
-          - string
-          - 'null'
-        day_payment_is_due:
-          description: The day of the month the payment is due. For example, the 14th is passed as `14`.
-          example: 14
-          type:
-          - integer
-          - 'null'
-        death_benefit:
-          description: The amount paid to the beneficiary of the account upon death of the account owner.
-          example: 1000
-          type: integer
-        id:
-          description: The unique partner-defined identifier for the `account`.
-          example: '1040434698'
-          type: string
-        interest_rate:
-          description: The interest rate associated with the `account`.
-          example: 3.25
-          type: number
-        is_closed:
-          description: Indicates whether an account has been closed. Closed accounts will no longer update balance or transaction information.
-          example: false
-          type: boolean
-        is_hidden:
-          description: Indicates whether the account is hidden. Hidden accounts can still have an active balance and receive transactions. Defaults to `false`.
-          example: false
-          type: boolean
-        last_payment:
-          description: The amount of the most recent payment on the `account`.
-          example: 100
-          type: number
-        last_payment_at:
-          description: The date and time when the last payment was made, represented in ISO 8601 format with a timestamp.
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        loan_amount:
-          description: The amount of the loan associated with the `account`.
-          example: 1000
-          type: number
-        matures_on:
-          description: The date on which the `account` matures.
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        metadata:
-          description: Additional information you can store about the `account`.
-          example: some metadata
-          type: string
-        minimum_balance:
-          description: The minimum balance associated with the `account`.
-          example: 100
-          type: number
-        minimum_payment:
-          description: The minimum payment required for an `account`. This can apply to any debt `account`.
-          example: 10
-          type: number
-        name:
-          description: The name of the `account`.
-          example: Test account 2
-          type: string
-        nickname:
-          description: A short, informal name for the `account`.
-          example: Swiss Account
-          type: string
-        original_balance:
-          description: The original balance associated with the `account`.
-          example: 10
-          type: number
-        payment_due_at:
-          description: The date and time at which the next payment is due on the `account`.
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        payoff_balance:
-          description: The payoff balance for a debt account. This will normally be a positive number.
-          example: 10
-          type: number
-        routing_number:
-          description: The routing number for the `account`.
-          example: '68899990000000'
-          type: string
-        started_on:
-          description: The date on which the loan from a debt account started.
-          example: '2015-10-13T17:57:37.000Z'
-          type: string
-        subtype:
-          description: The account's subtype, e.g., `PLAN_401_K`, `MONEY_MARKET`, or `HOME_EQUITY`.
-          example: NONE
-          type: string
-        type:
-          description: The general or parent type of the `account`.
-          example: SAVINGS
-          type: string
-      type: object
-    SupportedProducts:
-      type: string
-      enum:
-      - account_verification
-      - identity_verification
-      - transactions
-      - transaction_history
-      - statements
-      - investments
-      - rewards
-    ManagedMemberUpdateRequestBody:
-      properties:
-        member:
-          $ref: '#/components/schemas/ManagedMemberUpdateRequest'
-      type: object
-    ManagedAccountUpdateRequestBody:
+    AccountResponseBody:
       properties:
         account:
-          $ref: '#/components/schemas/ManagedAccountUpdateRequest'
-      type: object
-    TransactionResponse:
-      properties:
-        account_guid:
-          description: The unique identifier for an account. Defined by MX.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        account_id:
-          description: The unique client-defined identifier for the account.
-          example: account123
-          type:
-          - string
-          - 'null'
-        amount:
-          description: The monetary amount of the `transaction`.
-          example: 61.11
-          type:
-          - number
-          - 'null'
-        category:
-          description: The category of the `transaction`.
-          example: Paycheck
-          type:
-          - string
-          - 'null'
-        category_guid:
-          description: The unique identifier for the category. Defined by MX.
-          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
-          type:
-          - string
-          - 'null'
-        check_number_string:
-          description: The check number for the `transaction`.
-          example: null
-          type:
-          - string
-          - 'null'
-        created_at:
-          description: The date and time the transaction was created, represented in ISO 8601 format with a timestamp.
-          example: '2025-02-13T18:08:00+00:00'
-          type:
-          - string
-          - 'null'
-        currency_code:
-          description: The three-character ISO 4217 currency code, for example, `USD`.
-          example: USD
-          type:
-          - string
-          - 'null'
-        date:
-          description: The date on which the transaction took place. This is the field used when searching for transactions by date and is generally the same as `transacted_at`, but uses `posted_at` as a fallback.
-          example: '2024-12-20'
-          type:
-          - string
-          - 'null'
-        description:
-          description: A human-readable description of the transaction.
-          example: MX Technologies Payroll
-          type:
-          - string
-          - 'null'
-        extended_transaction_type:
-          description: The transaction type assigned by the partner.
-          example: null
-          type:
-          - string
-          - 'null'
-        guid:
-          description: The unique identifier for the transaction. Defined by MX.
-          example: TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1
-          type:
-          - string
-          - 'null'
-        id:
-          description: The unique partner-defined identifier for the transaction.
-          example: 1734681600000-178fa8095c154a55b9172f977b4c5f9a-0
-          type:
-          - string
-          - 'null'
-        is_bill_pay:
-          description: Indicates whether the transaction is a bill payment.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_direct_deposit:
-          description: Indicates whether the transaction is a direct deposit.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_expense:
-          description: Indicates whether the transaction is an expense.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_fee:
-          description: Indicates whether the transaction is a fee.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_income:
-          description: Indicates whether the transaction is income.
-          example: true
-          type:
-          - boolean
-          - 'null'
-        is_international:
-          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
-          example: false
-          type: boolean
-        is_manual:
-          description: Indicates whether the transaction was manually created or belongs to a manual account.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_overdraft_fee:
-          description: Indicates whether the transaction is an overdraft fee.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_payroll_advance:
-          description: Indicates whether the transaction is a payroll advance.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_recurring:
-          description: Deprecated. If required, reach out to MX to discuss an alternative.
-          example: null
-          type:
-          - boolean
-          - 'null'
-        is_subscription:
-          description: Indicates whether the transaction is a subscription payment.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        latitude:
-          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
-          example: null
-          type:
-          - number
-          - 'null'
-        localized_description:
-          description: A human-readable description of the transaction, provided in a local language.
-          example: This is a localized_description
-          type:
-          - string
-          - 'null'
-        localized_memo:
-          description: Additional descriptive information about the transaction, provided in a local language.
-          example: This is a localized_memo
-          type:
-          - string
-          - 'null'
-        longitude:
-          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
-          example: null
-          type:
-          - number
-          - 'null'
-        member_guid:
-          description: The unique identifier for the member. Defined by MX.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type:
-          - string
-          - 'null'
-        member_is_managed_by_user:
-          description: This indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to `false`.
-          example: true
-          type:
-          - boolean
-          - 'null'
-        memo:
-          description: Additional information about the transaction.
-          example: Transactions
-          type:
-          - string
-          - 'null'
-        merchant_category_code:
-          description: The ISO 18245 category code for the transaction.
-          example: null
-          type:
-          - integer
-          - 'null'
-        merchant_guid:
-          description: The unique identifier for the merchant. Defined by MX.
-          example: MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1
-          type:
-          - string
-          - 'null'
-        merchant_location_guid:
-          description: The unique identifier for the merchant location. Defined by MX.
-          example: null
-          type:
-          - string
-          - 'null'
-        metadata:
-          description: Additional information you stored about the `transaction`.
-          example: some metadata
-          type:
-          - string
-          - 'null'
-        original_description:
-          description: The original description of the transaction as provided by our data feed.
-          example: MX TECHNOLOGIES PAYMENT
-          type:
-          - string
-          - 'null'
-        posted_at:
-          description: The date and time the transaction was posted to the account.
-          example: '2024-12-20T12:00:00Z'
-          type:
-          - string
-          - 'null'
-        status:
-          description: 'The status of the transaction.
-
-
-            All transaction data on our systems represent what we get through our data feed which depends what institutions make available for aggregation. Many institutions do not provide data for pending transactions; transactions from those accounts always have a status of `POSTED`.
-
-
-            When we do receive data for pending transactions, a single transaction may be updated from `PENDING` to `POSTED` and keep the same `guid`. This is done through various matching methods performed automatically by MX.
-
-
-            If a single transaction can''t be updated, the `PENDING` transaction will often be deleted and replaced with a new `POSTED` transaction (with a new `guid`) when it is sent to us; this is the most common scenario when pending data is available.
-
-
-            In unusual circumstances, there may be separate `PENDING` and `POSTED` transactions on MX systems for up to 14 days. All `PENDING` transactions are deleted after 14 days as a failsafe.
-
-            '
-          example: POSTED
-          type:
-          - string
-          - 'null'
-          enum:
-          - POSTED
-          - PENDING
-        top_level_category:
-          description: The parent category assigned to this transaction's category.
-          example: Income
-          type:
-          - string
-          - 'null'
-        transacted_at:
-          description: The date and time the transaction took place.
-          example: '2024-12-20T12:00:00Z'
-          type:
-          - string
-          - 'null'
-        type:
-          description: The type of transaction.
-          example: CREDIT
-          type:
-          - string
-          - 'null'
-          enum:
-          - CREDIT
-          - DEBIT
-        updated_at:
-          description: 'The date and time the resource was last updated in ISO 8601 format with a timestamp.
-
-
-            For categories, this field will always be `null` when `is_default` is `true`.
-
-            '
-          example: '2025-02-13T18:09:00+00:00'
-          type:
-          - string
-          - 'null'
-        user_guid:
-          description: The unique identifier for the user. Defined by MX.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type:
-          - string
-          - 'null'
-        user_id:
-          description: The unique partner-defined identifier for the user.
-          example: u-1234
-          type:
-          - string
-          - 'null'
-      type: object
-    InstitutionsResponseBody:
-      properties:
-        institutions:
-          items:
-            $ref: '#/components/schemas/InstitutionResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      type: object
-    ManagedAccountCreateRequestBody:
-      properties:
-        account:
-          $ref: '#/components/schemas/ManagedAccountCreateRequest'
-      type: object
-    MembersResponseBody:
-      properties:
-        members:
-          items:
-            $ref: '#/components/schemas/MemberResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
+          $ref: '#/components/schemas/AccountResponse'
       type: object
     AccountResponse:
       properties:
@@ -1577,6 +1043,840 @@ components:
           - string
           - 'null'
       type: object
+    ManagedAccountUpdateRequest:
+      properties:
+        account_number:
+          description: The account number associated with the account. This will typically be a masked or partial account number.
+          example: '3331261'
+          type: string
+        apr:
+          description: The annual percentage rate associated with the `account`.
+          example: 5.25
+          type: number
+        apy:
+          description: The annual percentage yield associated with the `account`.
+          example: 2.35
+          type: number
+        available_balance:
+          description: 'The balance that is available for use in asset accounts like checking and savings.
+
+
+            `PENDING` transactions are typically (not always) taken into account with the available balance.
+
+
+            `available_balance` will usually be a positive value for all account types, determined in the same way as the balance field.
+
+            '
+          example: 1000
+          type: number
+        available_credit:
+          description: 'The amount of credit available for use in liability accounts like credit cards and lines of credit.
+
+
+            `PENDING` transactions are typically (not always) taken into account with available credit.
+
+
+            `available_credit` will usually be a positive value for all account types, determined in the same way as the `balance` field.
+
+            '
+          example: 4000
+          type:
+          - number
+          - 'null'
+        balance:
+          description: "The current balance of the account.\n\n`PENDING` transactions are typically not taken into account with the current balance, but this may not always be the case.\n    \nThe balance will usually be a positive value for all account types. Asset-type accounts (`CHECKING`, `SAVINGS`, `INVESTMENT`) may have a negative balance if they are in overdraft.\n\nDebt-type accounts (`CREDIT_CARD`, `LOAN`, `LINE_OF_CREDIT`, `MORTGAGE`) may have a negative balance if they are overpaid.\n"
+          example: 1000
+          type:
+          - number
+          - 'null'
+        cash_surrender_value:
+          description: Can only be updated for manual accounts. The sum of money paid to the policyholder or annuity holder in the event the policy is voluntarily terminated before it matures, or the insured event occurs.
+          example: 1000
+          type: number
+        credit_limit:
+          description: The credit limit associated with the `account`.
+          example: 5000
+          type: number
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        day_payment_is_due:
+          description: The day of the month the payment is due. For example, the 14th is passed as `14`.
+          example: 14
+          type:
+          - integer
+          - 'null'
+        death_benefit:
+          description: The amount paid to the beneficiary of the account upon death of the account owner.
+          example: 1000
+          type: integer
+        id:
+          description: The unique partner-defined identifier for the `account`.
+          example: '1040434698'
+          type: string
+        interest_rate:
+          description: The interest rate associated with the `account`.
+          example: 3.25
+          type: number
+        is_closed:
+          description: Indicates whether an account has been closed. Closed accounts will no longer update balance or transaction information.
+          example: false
+          type: boolean
+        is_hidden:
+          description: Indicates whether the account is hidden. Hidden accounts can still have an active balance and receive transactions. Defaults to `false`.
+          example: false
+          type: boolean
+        last_payment:
+          description: The amount of the most recent payment on the `account`.
+          example: 100
+          type: number
+        last_payment_at:
+          description: The date and time when the last payment was made, represented in ISO 8601 format with a timestamp.
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        loan_amount:
+          description: The amount of the loan associated with the `account`.
+          example: 1000
+          type: number
+        matures_on:
+          description: The date on which the `account` matures.
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        metadata:
+          description: Additional information you can store about the `account`.
+          example: some metadata
+          type: string
+        minimum_balance:
+          description: The minimum balance associated with the `account`.
+          example: 100
+          type: number
+        minimum_payment:
+          description: The minimum payment required for an `account`. This can apply to any debt `account`.
+          example: 10
+          type: number
+        name:
+          description: The name of the `account`.
+          example: Test account 2
+          type: string
+        nickname:
+          description: A short, informal name for the `account`.
+          example: Swiss Account
+          type: string
+        original_balance:
+          description: The original balance associated with the `account`.
+          example: 10
+          type: number
+        payment_due_at:
+          description: The date and time at which the next payment is due on the `account`.
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        payoff_balance:
+          description: The payoff balance for a debt account. This will normally be a positive number.
+          example: 10
+          type: number
+        routing_number:
+          description: The routing number for the `account`.
+          example: '68899990000000'
+          type: string
+        started_on:
+          description: The date on which the loan from a debt account started.
+          example: '2015-10-13T17:57:37.000Z'
+          type: string
+        subtype:
+          description: The account's subtype, e.g., `PLAN_401_K`, `MONEY_MARKET`, or `HOME_EQUITY`.
+          example: NONE
+          type: string
+        type:
+          description: The general or parent type of the `account`.
+          example: SAVINGS
+          type: string
+      type: object
+    AccountsResponseBody:
+      properties:
+        accounts:
+          items:
+            $ref: '#/components/schemas/AccountResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          description: The page delivered by the current response.
+          example: 1
+          type: integer
+        per_page:
+          description: The number of records delivered with each page.
+          example: 25
+          type: integer
+        total_entries:
+          description: The total number of records available.
+          example: 1
+          type: integer
+        total_pages:
+          description: The total number of pages available.
+          example: 1
+          type: integer
+      type: object
+    ManagedTransactionUpdateRequestBody:
+      properties:
+        transaction:
+          $ref: '#/components/schemas/ManagedTransactionUpdateRequest'
+      type: object
+    MembersResponseBody:
+      properties:
+        members:
+          items:
+            $ref: '#/components/schemas/MemberResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    ManagedTransactionCreateRequest:
+      properties:
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: '61.11'
+          type: string
+        category:
+          description: The category of the `transaction`.
+          example: Groceries
+          type:
+          - string
+          - 'null'
+        check_number_string:
+          description: The check number for the `transaction`.
+          example: '6812'
+          type:
+          - string
+          - 'null'
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        description:
+          description: A human-readable description of the transaction.
+          example: Whole Foods
+          type: string
+        id:
+          description: The unique partner-defined identifier for the `transaction`.
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          type: string
+        is_international:
+          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
+          example: false
+          type: boolean
+        latitude:
+          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
+          example: -43.2075
+          type: number
+        localized_description:
+          description: A human-readable description of the transaction, provided in a local language.
+          example: This is a localized_description
+          type: string
+        localized_memo:
+          description: Additional descriptive information about the transaction, provided in a local language.
+          example: This is a localized_memo
+          type: string
+        longitude:
+          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
+          example: 139.691706
+          type: number
+        memo:
+          description: A human-readable note about the transaction.
+          example: This is a memo
+          type: string
+        merchant_category_code:
+          description: The ISO 18245 category code for the transaction.
+          example: 5411
+          type: integer
+        merchant_guid:
+          description: The unique identifier for the `merchant`. Defined by MX.
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          description: The unique identifier for the `merchant_location`. Defined by MX.
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          description: Additional information you can store about the `transaction`.
+          example: some metadata
+          type: string
+        posted_at:
+          description: The date and time the transaction was posted to the account.
+          example: '2016-10-07T06:00:00.000Z'
+          type: string
+        status:
+          description: The status of the transaction. Can be either `POSTED` or `PENDING`.
+          example: POSTED
+          type: string
+          enum:
+          - POSTED
+          - PENDING
+        transacted_at:
+          description: The date and time the transaction took place.
+          example: '2016-10-06T13:00:00.000Z'
+          type: string
+        type:
+          description: The type of transaction. Can be either `CREDIT` or `DEBIT`.
+          example: DEBIT
+          type: string
+          enum:
+          - CREDIT
+          - DEBIT
+      required:
+      - amount
+      - description
+      - status
+      - posted_at
+      - transacted_at
+      - type
+      type: object
+    InstitutionResponse:
+      properties:
+        code:
+          description: The code identifying a financial institution.
+          example: mxbank
+          type:
+          - string
+          - 'null'
+        created_at:
+          description: The date and time the institution was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type: string
+        forgot_password_url:
+          description: URL for the forgot password page of the institution.
+          example: https://example.url.mxbank.com/forgot-password
+          type:
+          - string
+          - 'null'
+        forgot_username_url:
+          description: URL for the forgot username page of the institution.
+          example: https://example.url.mxbank.com/forgot-username
+          type:
+          - string
+          - 'null'
+        guid:
+          description: The unique identifier for the institution. Defined by MX.
+          example: INS-1572a04c-912b-59bf-5841-332c7dfafaef
+          type: string
+        instructional_text:
+          description: Render this text when end users are asked for their credentials, as it helps end users provide the correct credentials when creating a new member. May contain `<a></a>` tags to link to explanatory material.
+          example: Some instructional text <a href="https://example.url.mxbank.com/instructions" id="instructional_text">for end users</a>.
+          type:
+          - string
+          - 'null'
+        instructional_text_steps:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+          description: An array of instructional steps that may contain html elements.
+          example:
+          - 'Step 1: Do this.'
+          - 'Step 2: Do that.'
+        is_disabled_by_client:
+          description: Indicates whether the institution is disabled by the client.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_hidden:
+          example: true
+          type: boolean
+          description: If the institution is available for creating new member connections, this field will be `false`. Otherwise, this field will be `true`.
+        iso_country_code:
+          description: The ISO country code associated with the institution.
+          example: US
+          type: string
+          enum:
+          - US
+          - CA
+        medium_logo_url:
+          description: The URL for a 100px X 100px logo for each `institution`. A generic logo is returned for institutions that don't have one.
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
+          type:
+          - string
+          - 'null'
+        name:
+          description: The name of the institution.
+          example: MX Bank
+          type:
+          - string
+          - 'null'
+        small_logo_url:
+          description: The URL for a 50px X 50px logo for each `institution`. A generic logo is returned for institutions that don't have one.
+          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
+          type:
+          - string
+          - 'null'
+        supported_products:
+          items:
+            $ref: '#/components/schemas/SupportedProducts'
+        supports_oauth:
+          description: 'If true, this indicates that the institution supports OAuth and that you have been properly registered for OAuth with that institution.
+
+            '
+          example: true
+          type:
+          - boolean
+          - 'null'
+        supports_tax_document:
+          description: This indicates whether the institution supports tax documents.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        trouble_signing_in_url:
+          description: The URL of the institution for helping users troubleshoot any other sign-in issue.
+          example: https://example.url.mxbank.com/login-trouble
+          type:
+          - string
+          - 'null'
+        url:
+          description: The URL for an institution's website.
+          example: https://www.mxbank.com
+          type:
+          - string
+          - 'null'
+      type: object
+    ManagedMemberUpdateRequestBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/ManagedMemberUpdateRequest'
+      type: object
+    ManagedAccountUpdateRequestBody:
+      properties:
+        account:
+          $ref: '#/components/schemas/ManagedAccountUpdateRequest'
+      type: object
+    TransactionResponseBody:
+      properties:
+        transaction:
+          $ref: '#/components/schemas/TransactionResponse'
+      type: object
+    ManagedMemberUpdateRequest:
+      properties:
+        id:
+          description: The unique partner-defined identifier for the member.
+          example: member123
+          type: string
+        metadata:
+          description: Additional information you can store about the `member`.
+          example: some metadata
+          type: string
+        name:
+          description: The name of the `member`.
+          example: MX Bank
+          type: string
+      type: object
+    MemberResponseBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/MemberResponse'
+      type: object
+    TransactionResponse:
+      properties:
+        account_guid:
+          description: The unique identifier for an account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        account_id:
+          description: The unique client-defined identifier for the account.
+          example: account123
+          type:
+          - string
+          - 'null'
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: 61.11
+          type:
+          - number
+          - 'null'
+        category:
+          description: The category of the `transaction`.
+          example: Paycheck
+          type:
+          - string
+          - 'null'
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        check_number_string:
+          description: The check number for the `transaction`.
+          example: null
+          type:
+          - string
+          - 'null'
+        created_at:
+          description: The date and time the transaction was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type:
+          - string
+          - 'null'
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        date:
+          description: The date on which the transaction took place. This is the field used when searching for transactions by date and is generally the same as `transacted_at`, but uses `posted_at` as a fallback.
+          example: '2024-12-20'
+          type:
+          - string
+          - 'null'
+        description:
+          description: A human-readable description of the transaction.
+          example: MX Technologies Payroll
+          type:
+          - string
+          - 'null'
+        extended_transaction_type:
+          description: The transaction type assigned by the partner.
+          example: null
+          type:
+          - string
+          - 'null'
+        guid:
+          description: The unique identifier for the transaction. Defined by MX.
+          example: TRN-429ad9fe-a1d2-4559-8590-885b2603f0e1
+          type:
+          - string
+          - 'null'
+        id:
+          description: The unique partner-defined identifier for the transaction.
+          example: 1734681600000-178fa8095c154a55b9172f977b4c5f9a-0
+          type:
+          - string
+          - 'null'
+        is_bill_pay:
+          description: Indicates whether the transaction is a bill payment.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_direct_deposit:
+          description: Indicates whether the transaction is a direct deposit.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_expense:
+          description: Indicates whether the transaction is an expense.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_fee:
+          description: Indicates whether the transaction is a fee.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_income:
+          description: Indicates whether the transaction is income.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        is_international:
+          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
+          example: false
+          type: boolean
+        is_manual:
+          description: Indicates whether the transaction was manually created or belongs to a manual account.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_overdraft_fee:
+          description: Indicates whether the transaction is an overdraft fee.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_payroll_advance:
+          description: Indicates whether the transaction is a payroll advance.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_recurring:
+          description: Deprecated. If required, reach out to MX to discuss an alternative.
+          example: null
+          type:
+          - boolean
+          - 'null'
+        is_subscription:
+          description: Indicates whether the transaction is a subscription payment.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        latitude:
+          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
+          example: null
+          type:
+          - number
+          - 'null'
+        localized_description:
+          description: A human-readable description of the transaction, provided in a local language.
+          example: This is a localized_description
+          type:
+          - string
+          - 'null'
+        localized_memo:
+          description: Additional descriptive information about the transaction, provided in a local language.
+          example: This is a localized_memo
+          type:
+          - string
+          - 'null'
+        longitude:
+          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
+          example: null
+          type:
+          - number
+          - 'null'
+        member_guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        member_is_managed_by_user:
+          description: This indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to `false`.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        memo:
+          description: Additional information about the transaction.
+          example: Transactions
+          type:
+          - string
+          - 'null'
+        merchant_category_code:
+          description: The ISO 18245 category code for the transaction.
+          example: null
+          type:
+          - integer
+          - 'null'
+        merchant_guid:
+          description: The unique identifier for the merchant. Defined by MX.
+          example: MCH-8cc3b01a-1c52-47d4-970d-30f8ee5566f1
+          type:
+          - string
+          - 'null'
+        merchant_location_guid:
+          description: The unique identifier for the merchant location. Defined by MX.
+          example: null
+          type:
+          - string
+          - 'null'
+        metadata:
+          description: Additional information you stored about the `transaction`.
+          example: some metadata
+          type:
+          - string
+          - 'null'
+        original_description:
+          description: The original description of the transaction as provided by our data feed.
+          example: MX TECHNOLOGIES PAYMENT
+          type:
+          - string
+          - 'null'
+        posted_at:
+          description: The date and time the transaction was posted to the account.
+          example: '2024-12-20T12:00:00Z'
+          type:
+          - string
+          - 'null'
+        status:
+          description: 'The status of the transaction.
+
+
+            All transaction data on our systems represent what we get through our data feed which depends what institutions make available for aggregation. Many institutions do not provide data for pending transactions; transactions from those accounts always have a status of `POSTED`.
+
+
+            When we do receive data for pending transactions, a single transaction may be updated from `PENDING` to `POSTED` and keep the same `guid`. This is done through various matching methods performed automatically by MX.
+
+
+            If a single transaction can''t be updated, the `PENDING` transaction will often be deleted and replaced with a new `POSTED` transaction (with a new `guid`) when it is sent to us; this is the most common scenario when pending data is available.
+
+
+            In unusual circumstances, there may be separate `PENDING` and `POSTED` transactions on MX systems for up to 14 days. All `PENDING` transactions are deleted after 14 days as a failsafe.
+
+            '
+          example: POSTED
+          type:
+          - string
+          - 'null'
+          enum:
+          - POSTED
+          - PENDING
+        top_level_category:
+          description: The parent category assigned to this transaction's category.
+          example: Income
+          type:
+          - string
+          - 'null'
+        transacted_at:
+          description: The date and time the transaction took place.
+          example: '2024-12-20T12:00:00Z'
+          type:
+          - string
+          - 'null'
+        type:
+          description: The type of transaction.
+          example: CREDIT
+          type:
+          - string
+          - 'null'
+          enum:
+          - CREDIT
+          - DEBIT
+        updated_at:
+          description: 'The date and time the resource was last updated in ISO 8601 format with a timestamp.
+
+
+            For categories, this field will always be `null` when `is_default` is `true`.
+
+            '
+          example: '2025-02-13T18:09:00+00:00'
+          type:
+          - string
+          - 'null'
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+        user_id:
+          description: The unique partner-defined identifier for the user.
+          example: u-1234
+          type:
+          - string
+          - 'null'
+      type: object
+    ManagedTransactionUpdateRequest:
+      properties:
+        amount:
+          description: The monetary amount of the `transaction`.
+          example: '61.11'
+          type:
+          - string
+          - 'null'
+        category:
+          description: The category of the `transaction`.
+          example: Groceries
+          type:
+          - string
+          - 'null'
+        check_number_string:
+          description: The check number for the `transaction`.
+          example: '6812'
+          type:
+          - string
+          - 'null'
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        description:
+          description: A human-readable version of the `original_description` field.
+          example: Whole foods
+          type: string
+        id:
+          description: The unique partner-defined identifier for the `transaction`.
+          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          type: string
+        is_international:
+          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
+          example: false
+          type: boolean
+        latitude:
+          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
+          example: -43.2075
+          type: number
+        localized_description:
+          description: A human-readable description of the transaction, provided in a local language.
+          example: This is a localized_description
+          type: string
+        localized_memo:
+          description: Additional descriptive information about the transaction, provided in a local language.
+          example: This is a localized_memo
+          type: string
+        longitude:
+          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
+          example: 139.691706
+          type: number
+        memo:
+          description: Additional information about the `transaction`.
+          example: This is a memo
+          type: string
+        merchant_category_code:
+          description: The ISO 18245 category code for the transaction.
+          example: 5411
+          type: integer
+        merchant_guid:
+          description: The unique identifier for the merchant. Defined by MX.
+          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
+          type: string
+        merchant_location_guid:
+          description: The unique identifier for the merchant location. Defined by MX.
+          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
+          type: string
+        metadata:
+          description: Additional information you can store about the `transaction`.
+          example: some metadata
+          type: string
+        posted_at:
+          description: The date and time the transaction was posted to the account.
+          example: '2016-10-07T06:00:00.000Z'
+          type: string
+        status:
+          description: The status of the transaction. Can be either `POSTED` or `PENDING`.
+          example: POSTED
+          type: string
+          enum:
+          - POSTED
+          - PENDING
+        transacted_at:
+          description: The date and time the transaction took place.
+          example: '2016-10-06T13:00:00.000Z'
+          type: string
+        type:
+          description: The type of transaction. Can be either `CREDIT` or `DEBIT`.
+          example: DEBIT
+          type: string
+          enum:
+          - CREDIT
+          - DEBIT
+      type: object
+    SupportedProducts:
+      type: string
+      enum:
+      - account_verification
+      - identity_verification
+      - transactions
+      - transaction_history
+      - statements
+      - investments
+      - rewards
     MemberResponse:
       properties:
         aggregated_at:
@@ -1756,400 +2056,47 @@ components:
           - string
           - 'null'
       type: object
-    ManagedTransactionUpdateRequest:
+    ManagedTransactionCreateRequestBody:
       properties:
-        amount:
-          description: The monetary amount of the `transaction`.
-          example: '61.11'
-          type:
-          - string
-          - 'null'
-        category:
-          description: The category of the `transaction`.
-          example: Groceries
-          type:
-          - string
-          - 'null'
-        check_number_string:
-          description: The check number for the `transaction`.
-          example: '6812'
-          type:
-          - string
-          - 'null'
-        currency_code:
-          description: The three-character ISO 4217 currency code, for example, `USD`.
-          example: USD
-          type:
-          - string
-          - 'null'
-        description:
-          description: A human-readable version of the `original_description` field.
-          example: Whole foods
-          type: string
-        id:
-          description: The unique partner-defined identifier for the `transaction`.
-          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
-          type: string
-        is_international:
-          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
-          example: false
-          type: boolean
-        latitude:
-          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
-          example: -43.2075
-          type: number
-        localized_description:
-          description: A human-readable description of the transaction, provided in a local language.
-          example: This is a localized_description
-          type: string
-        localized_memo:
-          description: Additional descriptive information about the transaction, provided in a local language.
-          example: This is a localized_memo
-          type: string
-        longitude:
-          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
-          example: 139.691706
-          type: number
-        memo:
-          description: Additional information about the `transaction`.
-          example: This is a memo
-          type: string
-        merchant_category_code:
-          description: The ISO 18245 category code for the transaction.
-          example: 5411
-          type: integer
-        merchant_guid:
-          description: The unique identifier for the merchant. Defined by MX.
-          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-          type: string
-        merchant_location_guid:
-          description: The unique identifier for the merchant location. Defined by MX.
-          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
-          type: string
-        metadata:
-          description: Additional information you can store about the `transaction`.
-          example: some metadata
-          type: string
-        posted_at:
-          description: The date and time the transaction was posted to the account.
-          example: '2016-10-07T06:00:00.000Z'
-          type: string
-        status:
-          description: The status of the transaction. Can be either `POSTED` or `PENDING`.
-          example: POSTED
-          type: string
-          enum:
-          - POSTED
-          - PENDING
-        transacted_at:
-          description: The date and time the transaction took place.
-          example: '2016-10-06T13:00:00.000Z'
-          type: string
-        type:
-          description: The type of transaction. Can be either `CREDIT` or `DEBIT`.
-          example: DEBIT
-          type: string
-          enum:
-          - CREDIT
-          - DEBIT
+        transaction:
+          $ref: '#/components/schemas/ManagedTransactionCreateRequest'
       type: object
-    AccountResponseBody:
+    ManagedAccountCreateRequestBody:
       properties:
         account:
-          $ref: '#/components/schemas/AccountResponse'
+          $ref: '#/components/schemas/ManagedAccountCreateRequest'
       type: object
-    AccountsResponseBody:
+    ManagedMemberCreateRequest:
       properties:
-        accounts:
-          items:
-            $ref: '#/components/schemas/AccountResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      type: object
-    ManagedTransactionUpdateRequestBody:
-      properties:
-        transaction:
-          $ref: '#/components/schemas/ManagedTransactionUpdateRequest'
-      type: object
-    ManagedMemberCreateRequestBody:
-      properties:
-        member:
-          $ref: '#/components/schemas/ManagedMemberCreateRequest'
-      type: object
-    TransactionResponseBody:
-      properties:
-        transaction:
-          $ref: '#/components/schemas/TransactionResponse'
-      type: object
-    ManagedTransactionCreateRequest:
-      properties:
-        amount:
-          description: The monetary amount of the `transaction`.
-          example: '61.11'
-          type: string
-        category:
-          description: The category of the `transaction`.
-          example: Groceries
-          type:
-          - string
-          - 'null'
-        check_number_string:
-          description: The check number for the `transaction`.
-          example: '6812'
-          type:
-          - string
-          - 'null'
-        currency_code:
-          description: The three-character ISO 4217 currency code, for example, `USD`.
-          example: USD
-          type:
-          - string
-          - 'null'
-        description:
-          description: A human-readable description of the transaction.
-          example: Whole Foods
-          type: string
         id:
-          description: The unique partner-defined identifier for the `transaction`.
-          example: transaction-265abee9-889b-af6a-c69b-25157db2bdd9
+          description: The unique partner-defined identifier for the member.
+          example: member123
           type: string
-        is_international:
-          description: Indicates whether the transaction is international. If the data provider determines it isn't international then it will be `false`. It will be `null` if the data provider does not have this information.
-          example: false
-          type: boolean
-        latitude:
-          description: The latitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's latitude is -22.9027800 and Tokyo's latitude is 35.689488).
-          example: -43.2075
-          type: number
-        localized_description:
-          description: A human-readable description of the transaction, provided in a local language.
-          example: This is a localized_description
-          type: string
-        localized_memo:
-          description: Additional descriptive information about the transaction, provided in a local language.
-          example: This is a localized_memo
-          type: string
-        longitude:
-          description: The longitude of the location where the transaction occurred. The number is a signed decimal (for example, Rio de Janeiro's longitude is -43.2075000 and Tokyo's longitude is 139.691706).
-          example: 139.691706
-          type: number
-        memo:
-          description: A human-readable note about the transaction.
-          example: This is a memo
-          type: string
-        merchant_category_code:
-          description: The ISO 18245 category code for the transaction.
-          example: 5411
-          type: integer
-        merchant_guid:
-          description: The unique identifier for the `merchant`. Defined by MX.
-          example: MCH-7ed79542-884d-2b1b-dd74-501c5cc9d25b
-          type: string
-        merchant_location_guid:
-          description: The unique identifier for the `merchant_location`. Defined by MX.
-          example: MCL-00024e59-18b5-4d79-b879-2a7896726fea
-          type: string
-        metadata:
-          description: Additional information you can store about the `transaction`.
-          example: some metadata
-          type: string
-        posted_at:
-          description: The date and time the transaction was posted to the account.
-          example: '2016-10-07T06:00:00.000Z'
-          type: string
-        status:
-          description: The status of the transaction. Can be either `POSTED` or `PENDING`.
-          example: POSTED
-          type: string
-          enum:
-          - POSTED
-          - PENDING
-        transacted_at:
-          description: The date and time the transaction took place.
-          example: '2016-10-06T13:00:00.000Z'
-          type: string
-        type:
-          description: The type of transaction. Can be either `CREDIT` or `DEBIT`.
-          example: DEBIT
-          type: string
-          enum:
-          - CREDIT
-          - DEBIT
-      required:
-      - amount
-      - description
-      - status
-      - posted_at
-      - transacted_at
-      - type
-      type: object
-    TransactionsResponseBody:
-      properties:
-        transactions:
-          items:
-            $ref: '#/components/schemas/TransactionResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-    PaginationResponse:
-      properties:
-        current_page:
-          description: The page delivered by the current response.
-          example: 1
-          type: integer
-        per_page:
-          description: The number of records delivered with each page.
-          example: 25
-          type: integer
-        total_entries:
-          description: The total number of records available.
-          example: 1
-          type: integer
-        total_pages:
-          description: The total number of pages available.
-          example: 1
-          type: integer
-      type: object
-    MemberResponseBody:
-      properties:
-        member:
-          $ref: '#/components/schemas/MemberResponse'
-      type: object
-    InstitutionResponse:
-      properties:
-        code:
+        institution_code:
           description: The code identifying a financial institution.
           example: mxbank
-          type:
-          - string
-          - 'null'
-        created_at:
-          description: The date and time the institution was created, represented in ISO 8601 format with a timestamp.
-          example: '2025-02-13T18:08:00+00:00'
           type: string
-        forgot_password_url:
-          description: URL for the forgot password page of the institution.
-          example: https://example.url.mxbank.com/forgot-password
-          type:
-          - string
-          - 'null'
-        forgot_username_url:
-          description: URL for the forgot username page of the institution.
-          example: https://example.url.mxbank.com/forgot-username
-          type:
-          - string
-          - 'null'
-        guid:
-          description: The unique identifier for the institution. Defined by MX.
-          example: INS-1572a04c-912b-59bf-5841-332c7dfafaef
+        metadata:
+          description: Additional information you can store about the `member`.
+          example: some metadata
           type: string
-        instructional_text:
-          description: Render this text when end users are asked for their credentials, as it helps end users provide the correct credentials when creating a new member. May contain `<a></a>` tags to link to explanatory material.
-          example: Some instructional text <a href="https://example.url.mxbank.com/instructions" id="instructional_text">for end users</a>.
-          type:
-          - string
-          - 'null'
-        instructional_text_steps:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-          description: An array of instructional steps that may contain html elements.
-          example:
-          - 'Step 1: Do this.'
-          - 'Step 2: Do that.'
-        is_disabled_by_client:
-          description: Indicates whether the institution is disabled by the client.
-          example: false
-          type:
-          - boolean
-          - 'null'
-        is_hidden:
-          example: true
-          type: boolean
-          description: If the institution is available for creating new member connections, this field will be `false`. Otherwise, this field will be `true`.
-        iso_country_code:
-          description: The ISO country code associated with the institution.
-          example: US
-          type: string
-          enum:
-          - US
-          - CA
-        medium_logo_url:
-          description: The URL for a 100px X 100px logo for each `institution`. A generic logo is returned for institutions that don't have one.
-          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/100x100/default_100x100.png
-          type:
-          - string
-          - 'null'
         name:
-          description: The name of the institution.
+          description: The name of the `member`.
           example: MX Bank
-          type:
-          - string
-          - 'null'
-        small_logo_url:
-          description: The URL for a 50px X 50px logo for each `institution`. A generic logo is returned for institutions that don't have one.
-          example: https://content.moneydesktop.com/storage/MD_Assets/Ipad%20Logos/50x50/default_50x50.png
-          type:
-          - string
-          - 'null'
-        supported_products:
+          type: string
+      required:
+      - institution_code
+      type: object
+    InstitutionsResponseBody:
+      properties:
+        institutions:
           items:
-            $ref: '#/components/schemas/SupportedProducts'
-        supports_oauth:
-          description: 'If true, this indicates that the institution supports OAuth and that you have been properly registered for OAuth with that institution.
-
-            '
-          example: true
-          type:
-          - boolean
-          - 'null'
-        supports_tax_document:
-          description: This indicates whether the institution supports tax documents.
-          example: true
-          type:
-          - boolean
-          - 'null'
-        trouble_signing_in_url:
-          description: The URL of the institution for helping users troubleshoot any other sign-in issue.
-          example: https://example.url.mxbank.com/login-trouble
-          type:
-          - string
-          - 'null'
-        url:
-          description: The URL for an institution's website.
-          example: https://www.mxbank.com
-          type:
-          - string
-          - 'null'
+            $ref: '#/components/schemas/InstitutionResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
       type: object
   parameters:
-    toDate:
-      description: Filter transactions to this date (at midnight). This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 5 days forward from the day the request is made to capture pending transactions.
-      example: '2024-08-28'
-      in: query
-      name: to_date
-      schema:
-        type: string
-    memberGuid:
-      description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    acceptVersion:
-      name: Accept-Version
-      in: header
-      required: true
-      schema:
-        type: string
-        default: v20250224
-        example: v20250224
-      description: MX Platform API version.
     page:
       description: Results are paginated. Specify current page.
       example: 1
@@ -2157,11 +2104,19 @@ components:
       name: page
       schema:
         type: integer
-    fromDate:
-      description: Filter transactions from this date. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 120 days ago if not provided.
-      example: '2024-02-01'
+    acceptHeader:
+      description: Specifies the media type expected in the response.
+      in: header
+      name: Accept
+      required: true
+      schema:
+        type: string
+        example: application/json
+    toDate:
+      description: Filter transactions to this date (at midnight). This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 5 days forward from the day the request is made to capture pending transactions.
+      example: '2024-08-28'
       in: query
-      name: from_date
+      name: to_date
       schema:
         type: string
     accountGuid:
@@ -2172,14 +2127,6 @@ components:
       required: true
       schema:
         type: string
-    acceptHeader:
-      description: Specifies the media type expected in the response.
-      in: header
-      name: Accept
-      required: true
-      schema:
-        type: string
-        example: application/json
     recordsPerPageMax1000:
       description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
       example: 10
@@ -2187,12 +2134,20 @@ components:
       name: records_per_page
       schema:
         type: integer
-    transactionGuid:
-      description: The unique id for a `transaction`.
-      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-      in: path
-      name: transaction_guid
+    acceptVersion:
+      name: Accept-Version
+      in: header
       required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
+    fromDate:
+      description: Filter transactions from this date. This only supports ISO 8601 format without timestamp (YYYY-MM-DD). Defaults to 120 days ago if not provided.
+      example: '2024-02-01'
+      in: query
+      name: from_date
       schema:
         type: string
     userGuid:
@@ -2203,10 +2158,47 @@ components:
       required: true
       schema:
         type: string
+    transactionGuid:
+      description: The unique id for a `transaction`.
+      example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+      in: path
+      name: transaction_guid
+      required: true
+      schema:
+        type: string
+    memberGuid:
+      description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
     basicAuth:
       scheme: basic
       type: http
+      description: 'The MX Platform API requires basic access authentication using your `client_id` and `api_key`. These credentials must be Base64 encoded and included in the Authorization header of each API request to ensure secure access.
+
+
+        Here''s an example using curl to access `v20250224`. Replace `https://int-api.mx.com/endpoint` with the actual API endpoint you wish to access and your Base64 encoded `client_id` and `api_key`.
+
+
+        ```
+
+        curl -L -X POST `https://int-api.mx.com/endpoint'' \
+
+        -H ''Content-Type: application/json'' \
+
+        -H ''Accept: application/json'' \
+
+        -H ''Accept-Version: v20250224''
+
+        -H ''Authorization: Basic BASE_64_ENCODING_OF{client_id:api_key}''
+
+        ```
+
+        '
+    bearerAuth:
+      type: http
+      scheme: bearer

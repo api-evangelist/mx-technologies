@@ -1,23 +1,18 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies Taggings API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts Taggings API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged taggings across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
 security:
 - basicAuth: []
 tags:
-- name: taggings
+- name: Taggings
 paths:
   /users/{user_guid}/taggings:
     get:
@@ -36,7 +31,7 @@ paths:
           description: OK
       summary: List taggings
       tags:
-      - taggings
+      - Taggings
     post:
       description: Use this endpoint to create a new association between a tag and a particular transaction, according to their unique GUIDs.
       operationId: createTagging
@@ -58,7 +53,10 @@ paths:
           description: Accepted
       summary: Create tagging
       tags:
-      - taggings
+      - Taggings
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/taggings/{tagging_guid}:
     delete:
       description: Use this endpoint to delete a tagging according to its unique GUID. If successful, the API will respond with an empty body and a status of 204 NO Content.
@@ -71,7 +69,7 @@ paths:
           description: No Content
       summary: Delete tagging
       tags:
-      - taggings
+      - Taggings
     get:
       description: Use this endpoint to read the attributes of a `tagging` according to its unique GUID.
       operationId: readTagging
@@ -87,7 +85,7 @@ paths:
           description: OK
       summary: Read tagging
       tags:
-      - taggings
+      - Taggings
     put:
       description: Use this endpoint to update a tagging.
       operationId: updateTagging
@@ -110,26 +108,52 @@ paths:
           description: OK
       summary: Update tagging
       tags:
-      - taggings
+      - Taggings
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
+  parameters:
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    taggingGuid:
+      description: The unique id for a `tagging`.
+      example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+      in: path
+      name: tagging_guid
+      required: true
+      schema:
+        type: string
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
   schemas:
-    TaggingUpdateRequestBody:
-      properties:
-        tagging:
-          $ref: '#/components/schemas/TaggingUpdateRequest'
-      type: object
-    TaggingCreateRequest:
-      properties:
-        tag_guid:
-          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          type: string
-        transaction_guid:
-          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
-          type: string
-      required:
-      - tag_guid
-      - transaction_guid
-      type: object
     TaggingsResponseBody:
       properties:
         taggings:
@@ -138,39 +162,6 @@ components:
           type: array
         pagination:
           $ref: '#/components/schemas/PaginationResponse'
-      type: object
-    PaginationResponse:
-      properties:
-        current_page:
-          example: 1
-          type: integer
-        per_page:
-          example: 25
-          type: integer
-        total_entries:
-          example: 1
-          type: integer
-        total_pages:
-          example: 1
-          type: integer
-      type: object
-    TaggingResponseBody:
-      properties:
-        tagging:
-          $ref: '#/components/schemas/TaggingResponse'
-      type: object
-    TaggingCreateRequestBody:
-      properties:
-        tagging:
-          $ref: '#/components/schemas/TaggingCreateRequest'
-      type: object
-    TaggingUpdateRequest:
-      properties:
-        tag_guid:
-          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
-          type: string
-      required:
-      - tag_guid
       type: object
     TaggingResponse:
       properties:
@@ -200,37 +191,131 @@ components:
           - string
           - 'null'
       type: object
-  parameters:
-    taggingGuid:
-      description: The unique id for a `tagging`.
-      example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
-      in: path
-      name: tagging_guid
-      required: true
-      schema:
-        type: string
-    userGuid:
-      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
-      in: query
-      name: page
-      schema:
-        type: integer
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
+    TaggingResponseBody:
+      properties:
+        tagging:
+          $ref: '#/components/schemas/TaggingResponse'
+      type: object
+    TaggingCreateRequestBody:
+      properties:
+        tagging:
+          $ref: '#/components/schemas/TaggingCreateRequest'
+      type: object
+    TaggingUpdateRequestBody:
+      properties:
+        tagging:
+          $ref: '#/components/schemas/TaggingUpdateRequest'
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
+    TaggingUpdateRequest:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+      required:
+      - tag_guid
+      type: object
+    TaggingCreateRequest:
+      properties:
+        tag_guid:
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+        transaction_guid:
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type: string
+      required:
+      - tag_guid
+      - transaction_guid
+      type: object
+    TaggingResponse_2:
+      properties:
+        guid:
+          description: The unique identifier for the tagging. Defined by MX.
+          example: TGN-007f5486-17e1-45fc-8b87-8f03984430fe
+          type:
+          - string
+          - 'null'
+        member_is_managed_by_user:
+          description: This indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to `false`.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        tag_guid:
+          description: The unique identifier for the tag. Defined by MX.
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type:
+          - string
+          - 'null'
+        transaction_guid:
+          description: The unique identifier for the transaction. Defined by MX.
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type:
+          - string
+          - 'null'
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+      type: object
+    PaginationResponse_2:
+      properties:
+        current_page:
+          description: The page delivered by the current response.
+          example: 1
+          type: integer
+        per_page:
+          description: The number of records delivered with each page.
+          example: 25
+          type: integer
+        total_entries:
+          description: The total number of records available.
+          example: 1
+          type: integer
+        total_pages:
+          description: The total number of pages available.
+          example: 1
+          type: integer
+      type: object
+    TaggingUpdateRequest_2:
+      properties:
+        tag_guid:
+          description: The unique identifier for the tagging.
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+      required:
+      - tag_guid
+      type: object
+    TaggingCreateRequest_2:
+      properties:
+        tag_guid:
+          description: The unique identifier for the tag.
+          example: TAG-40faf068-abb4-405c-8f6a-e883ed541fff
+          type: string
+        transaction_guid:
+          description: The unique identifier for the `transaction`.
+          example: TRN-810828b0-5210-4878-9bd3-f4ce514f90c4
+          type: string
+      required:
+      - tag_guid
+      - transaction_guid
+      type: object
   securitySchemes:
     bearerAuth:
       type: http
@@ -238,3 +323,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml

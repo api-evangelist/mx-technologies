@@ -1,23 +1,18 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies Accounts API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform Accounts API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged accounts across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
 security:
 - basicAuth: []
 tags:
-- name: accounts
+- name: Accounts
 paths:
   /users/{user_guid}/accounts:
     get:
@@ -26,11 +21,9 @@ paths:
 
         :::warning
 
-        This request will not return the full account number. It may return the last four digits of the account number if that information has been provided during aggregation. If you need the full account number, please refer to [List account numbers by member](/api-reference/platform-api/reference/list-account-numbers-by-member/) or [List account numbers by account](/api-reference/platform-api/reference/list-account-numbers-by-account/).
+        This request will not return the full account number. It may return the last four digits of the account number if that information has been provided during aggregation. If you need the full account number, please refer to List account numbers by member or List account numbers by account.
 
-        :::
-
-        '
+        :::'
       operationId: listUserAccounts
       parameters:
       - $ref: '#/components/parameters/page'
@@ -48,7 +41,7 @@ paths:
           description: OK
       summary: List accounts
       tags:
-      - accounts
+      - Accounts
     post:
       description: This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed..
       operationId: createManualAccount
@@ -70,7 +63,10 @@ paths:
           description: OK
       summary: Create manual account
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/accounts/{account_guid}:
     get:
       description: This endpoint returns the specified `account` resource.
@@ -87,7 +83,7 @@ paths:
           description: OK
       summary: Read account
       tags:
-      - accounts
+      - Accounts
     delete:
       description: This endpoint deletes accounts that were manually created. The API will respond with an empty object and a status of `204 No Content`.
       operationId: deleteManualAccount
@@ -100,7 +96,10 @@ paths:
           description: No content.
       summary: Delete manual account
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/accounts/{account_guid}/account_numbers:
     get:
       description: This endpoint returns a list of account numbers associated with the specified `account`.
@@ -119,7 +118,10 @@ paths:
           description: OK
       summary: List account numbers by account
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/account_numbers:
     get:
       description: This endpoint returns a list of account numbers associated with the specified `member`.
@@ -138,7 +140,10 @@ paths:
           description: OK
       summary: List account numbers by member
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/account_owners:
     get:
       description: This endpoint returns an array with information about every account associated with a particular member.
@@ -157,7 +162,10 @@ paths:
           description: OK
       summary: List account owners by member
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/accounts:
     get:
       description: This endpoint returns a list of all the accounts associated with the specified `member`.
@@ -177,7 +185,10 @@ paths:
           description: OK
       summary: List accounts by member
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/members/{member_guid}/accounts/{account_guid}:
     get:
       description: This endpoint allows you to read the attributes of an `account` resource.
@@ -195,7 +206,7 @@ paths:
           description: OK
       summary: Read account by member
       tags:
-      - accounts
+      - Accounts
     put:
       description: This endpoint allows you to update certain attributes of an `account` resource, including manual accounts. For manual accounts, you can update every field listed. For aggregated accounts, you can only update `is_business`, `is_hidden` and `metadata`.
       operationId: updateAccountByMember
@@ -218,18 +229,19 @@ paths:
           description: OK
       summary: Update account by member
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/accounts:
     get:
       description: 'This endpoint returns a list of all the accounts associated with the specified `user`.
 
         :::warning Account Numbers
 
-        This request will not return the full account number. It may return the last four digits of the account number if that information has been provided during aggregation. If you need the full account number, please refer to [List account numbers by member](https://docs.mx.com/api-reference/platform-api/reference/list-account-numbers-by-member/), [List account numbers by account](https://docs.mx.com/api-reference/platform-api/reference/list-account-numbers-by-account/), or the [Fetch Account and Routing Numbers](https://docs.mx.com/products/connectivity/instant-account-verification/fetch-account-routing-number-api/#4-read-the-account-numbers) guide.
+        This request will not return the full account number. It may return the last four digits of the account number if that information has been provided during aggregation. If you need the full account number, please refer to List account numbers by member, List account numbers by account, or the Fetch Account and Routing Numbers guide.
 
-        :::
-
-        '
+        :::'
       operationId: listUserAccounts
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -249,7 +261,7 @@ paths:
           description: OK
       summary: List accounts
       tags:
-      - accounts
+      - Accounts
     post:
       description: 'This endpoint can only be used to create manual accounts. Creating a manual account will automatically create it under the Manual Institution member. Since a manual account has no credentials tied to the member, the account will never aggregate or include data from a data feed.
 
@@ -257,9 +269,7 @@ paths:
 
         You must use the user `guid` when setting `user_identifier` in the path.
 
-        :::
-
-        '
+        :::'
       operationId: createManualAccount
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
@@ -280,7 +290,10 @@ paths:
           description: OK
       summary: Create manual account
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/accounts/{account_identifier}/account_numbers:
     get:
       description: This endpoint returns a list of account numbers associated with the specified `account`.
@@ -300,14 +313,29 @@ paths:
           description: OK
       summary: List account numbers by account
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_guid}/accounts/merge:
     post:
       operationId: mergeAccounts
       tags:
-      - accounts
+      - Accounts
       summary: Merge accounts
-      description: "Merge two or more financial accounts that an end user has identified as duplicates. \nProvide at least two account GUIDs belonging to the same user. \n:::danger\n\nThe response will return a single consolidated account. Any other accounts you provided that were not included in the response will be deleted.\nThis is a destructive action and can't be undone.\n\n:::\n"
+      description: 'Merge two or more financial accounts that an end user has identified as duplicates.
+
+        Provide at least two account GUIDs belonging to the same user.
+
+        :::danger
+
+
+        The response will return a single consolidated account. Any other accounts you provided that were not included in the response will be deleted.
+
+        This is a destructive action and can''t be undone.
+
+
+        :::'
       parameters:
       - $ref: '#/components/parameters/acceptVersion'
       - $ref: '#/components/parameters/userGuid'
@@ -324,6 +352,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountResponseBody'
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/members/{member_identifier}/account_owners:
     get:
       description: This endpoint returns an array with information about every account associated with a particular member.
@@ -343,7 +374,10 @@ paths:
           description: OK
       summary: List account owners by member
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/members/{member_identifier}/accounts:
     get:
       description: This endpoint returns a list of all the accounts associated with the specified `member`.
@@ -364,7 +398,10 @@ paths:
           description: OK
       summary: List member accounts
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/members/{member_identifier}/accounts/{account_identifier}:
     get:
       description: This endpoint allows you to read the attributes of an `account` resource.
@@ -383,7 +420,7 @@ paths:
           description: OK
       summary: Read member account
       tags:
-      - accounts
+      - Accounts
     put:
       description: This endpoint allows you to update certain attributes of an `account` resource, including manual accounts. For manual accounts, you can update every field listed. For aggregated accounts, you can only update `is_business`, `is_hidden` and `metadata`.
       operationId: updateAccountByMember
@@ -407,23 +444,56 @@ paths:
           description: OK
       summary: Update account by member
       tags:
-      - accounts
+      - Accounts
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
   parameters:
-    memberIdentifier:
-      description: Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      name: member_identifier
-      in: path
+    memberIsManagedByUser:
+      description: List only accounts whose member is managed by the user.
+      example: true
+      in: query
+      name: member_is_managed_by_user
+      schema:
+        type: boolean
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    acceptHeader:
+      description: Specifies the media type expected in the response.
+      in: header
+      name: Accept
       required: true
       schema:
         type: string
-    useCase_2:
-      description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`.
-      required: false
-      in: query
-      name: use_case
+        example: application/vnd.mx.api.v1+json
+    accountGuid:
+      description: The unique id for an `account`.
+      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+      in: path
+      name: account_guid
+      required: true
       schema:
         type: string
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
+    accountIsManual:
+      description: List only accounts that were manually created.
+      example: true
+      in: query
+      name: is_manual
+      schema:
+        type: boolean
     useCase:
       description: The use case associated with the member. Valid values are `PFM` and `MONEY_MOVEMENT`. For example, you can append either `?use_case=PFM` or `?use_case=MONEY_MOVEMENT`.
       example: MONEY_MOVEMENT
@@ -432,19 +502,42 @@ components:
       name: use_case
       schema:
         type: string
-    accountIsManual:
-      description: List only accounts that were manually created.
-      example: true
-      in: query
-      name: is_manual
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
       schema:
-        type: boolean
+        type: string
     memberGuid:
       description: The unique id for a `member`.
       example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
       in: path
       name: member_guid
       required: true
+      schema:
+        type: string
+    memberIdentifier:
+      description: Use either the member `id` you defined or the MX-defined member `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      name: member_identifier
+      in: path
+      required: true
+      schema:
+        type: string
+    acceptHeader_2:
+      description: Specifies the media type expected in the response.
+      in: header
+      name: Accept
+      required: true
+      schema:
+        type: string
+        example: application/json
+    userIdentifier:
+      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      in: path
+      required: true
+      name: user_identifier
       schema:
         type: string
     acceptVersion:
@@ -456,13 +549,6 @@ components:
         default: v20250224
         example: v20250224
       description: MX Platform API version.
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
-      in: query
-      name: page
-      schema:
-        type: integer
     accountIdentifier:
       description: Use either the account `id` you defined or the MX-defined account `guid`. See [MX-Defined GUIDs vs IDs Defined by You](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
       in: path
@@ -470,68 +556,100 @@ components:
       name: account_identifier
       schema:
         type: string
-    acceptHeader_2:
-      description: Specifies the media type expected in the response.
-      in: header
-      name: Accept
-      required: true
-      schema:
-        type: string
-        example: application/json
-    accountGuid:
-      description: The unique id for an `account`.
-      example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-      in: path
-      name: account_guid
-      required: true
-      schema:
-        type: string
-    acceptHeader:
-      description: Specifies the media type expected in the response.
-      in: header
-      name: Accept
-      required: true
-      schema:
-        type: string
-        example: application/vnd.mx.api.v1+json
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
+    useCase_2:
+      description: The use case associated with the member. Valid values are `PFM` and/or `MONEY_MOVEMENT`.
+      required: false
       in: query
-      name: records_per_page
-      schema:
-        type: integer
-    memberIsManagedByUser:
-      description: List only accounts whose member is managed by the user.
-      example: true
-      in: query
-      name: member_is_managed_by_user
-      schema:
-        type: boolean
-    userGuid:
-      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
-    userIdentifier:
-      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      in: path
-      required: true
-      name: user_identifier
+      name: use_case
       schema:
         type: string
   schemas:
-    AccountNumbersResponseBody:
+    AccountUpdateRequest:
       properties:
-        account_numbers:
-          items:
-            $ref: '#/components/schemas/AccountNumberResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
+        account_subtype:
+          example: PERSONAL
+          type: string
+          description: Can only be updated for manual accounts.
+        account_type:
+          example: SAVINGS
+          type: string
+          description: Can only be updated for manual accounts.
+        apr:
+          example: 1
+          type: number
+          description: Can only be updated for manual accounts.
+        apy:
+          example: 1
+          type: number
+          description: Can only be updated for manual accounts.
+        available_balance:
+          example: 1000
+          type: number
+          description: Can only be updated for manual accounts.
+        balance:
+          example: 1000
+          type: number
+          description: Can only be updated for manual accounts.
+        cash_surrender_value:
+          example: 1000
+          type: number
+          description: Can only be updated for manual accounts.
+        credit_limit:
+          example: 100
+          type: number
+          description: Can only be updated for manual accounts.
+        currency_code:
+          example: USD
+          type: string
+          description: Can only be updated for manual accounts.
+        death_benefit:
+          example: 1000
+          type: integer
+          description: Can only be updated for manual accounts.
+        interest_rate:
+          example: 1
+          type: number
+          description: Can only be updated for manual accounts.
+        is_business:
+          example: false
+          type: boolean
+          description: Can be updated for manual accounts and aggregated accounts.
+        is_closed:
+          example: false
+          type: boolean
+          description: Can only be updated for manual accounts.
+        is_hidden:
+          example: false
+          type: boolean
+          description: Can be updated for manual accounts and aggregated accounts.
+        loan_amount:
+          example: 1000
+          type: number
+          description: Can only be updated for manual accounts.
+        metadata:
+          example: some metadata
+          type: string
+          description: Can only be updated for manual accounts.
+        name:
+          example: Test account 2
+          type: string
+          description: Can only be updated for manual accounts.
+        nickname:
+          example: Swiss Account
+          type: string
+          description: Can only be updated for manual accounts.
+        original_balance:
+          example: 10
+          type: number
+          description: Can only be updated for manual accounts.
+        property_type:
+          example: VEHICLE
+          type: string
+          description: Can only be updated for manual accounts.
+        skip_webhook:
+          example: true
+          type: boolean
+          description: If set to true, prevents sending an account webhook for the update if that webhook type is enabled for you.
       type: object
     AccountOwnersResponseBody:
       properties:
@@ -542,68 +660,79 @@ components:
         pagination:
           $ref: '#/components/schemas/PaginationResponse'
       type: object
-    AccountNumberResponse:
+    AccountResponseBody:
       properties:
-        account_guid:
-          example: ACT-06d7f45b-caae-0f6e-1384-01f52e75dcb1
-          type:
-          - string
-          - 'null'
-        account_number:
-          example: '10001'
-          type:
-          - string
-          - 'null'
-        guid:
-          example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
-          type:
-          - string
-          - 'null'
-        institution_number:
-          example: '123'
-          type:
-          - string
-          - 'null'
-        loan_guarantor:
-          example: U.S. DEPARTMENT OF EDUCATION (123456)
-          type:
-          - string
-          - 'null'
-        loan_reference_number:
-          example: '123456789012345'
-          type:
-          - string
-          - 'null'
-        member_guid:
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type:
-          - string
-          - 'null'
-        passed_validation:
+        account:
+          $ref: '#/components/schemas/AccountResponse'
+      type: object
+    AccountCreateRequest:
+      properties:
+        account_subtype:
+          example: PERSONAL
+          type: string
+        account_type:
+          example: SAVINGS
+          type: string
+        apr:
+          example: 1
+          type: number
+        apy:
+          example: 1
+          type: number
+        available_balance:
+          example: 1000
+          type: number
+        balance:
+          example: 1000
+          type: number
+        cash_surrender_value:
+          example: 1000
+          type: number
+        credit_limit:
+          example: 100
+          type: number
+        currency_code:
+          example: USD
+          type: string
+        death_benefit:
+          example: 1000
+          type: integer
+        interest_rate:
+          example: 1
+          type: number
+        is_business:
+          example: false
+          type: boolean
+        is_closed:
+          example: false
+          type: boolean
+        is_hidden:
+          example: false
+          type: boolean
+        loan_amount:
+          example: 1000
+          type: number
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Test account 2
+          type: string
+        nickname:
+          example: Swiss Account
+          type: string
+        original_balance:
+          example: 10
+          type: number
+        property_type:
+          example: VEHICLE
+          type: string
+        skip_webhook:
           example: true
-          type:
-          - boolean
-          - 'null'
-        routing_number:
-          example: '68899990000000'
-          type:
-          - string
-          - 'null'
-        sequence_number:
-          example: 1-01
-          type:
-          - string
-          - 'null'
-        transit_number:
-          example: '12345'
-          type:
-          - string
-          - 'null'
-        user_guid:
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type:
-          - string
-          - 'null'
+          type: boolean
+      required:
+      - name
+      - account_type
       type: object
     AccountResponse:
       properties:
@@ -1221,24 +1350,6 @@ components:
           - string
           - 'null'
       type: object
-    AccountsMergeRequest:
-      properties:
-        account_guids:
-          type: array
-          description: A list of account GUIDs to merge. Must include at least two GUIDs belonging to the same user.
-          items:
-            type: string
-          example:
-          - ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          - ACT-e1b1e9e7-9436-4720-a1b5-f02373433bd4
-      required:
-      - account_guids
-      type: object
-    AccountResponseBody:
-      properties:
-        account:
-          $ref: '#/components/schemas/AccountResponse'
-      type: object
     AccountsResponseBody:
       properties:
         accounts:
@@ -1248,92 +1359,20 @@ components:
         pagination:
           $ref: '#/components/schemas/PaginationResponse'
       type: object
-    AccountUpdateRequest:
+    PaginationResponse:
       properties:
-        account_subtype:
-          example: PERSONAL
-          type: string
-          description: Can only be updated for manual accounts.
-        account_type:
-          example: SAVINGS
-          type: string
-          description: Can only be updated for manual accounts.
-        apr:
+        current_page:
           example: 1
-          type: number
-          description: Can only be updated for manual accounts.
-        apy:
-          example: 1
-          type: number
-          description: Can only be updated for manual accounts.
-        available_balance:
-          example: 1000
-          type: number
-          description: Can only be updated for manual accounts.
-        balance:
-          example: 1000
-          type: number
-          description: Can only be updated for manual accounts.
-        cash_surrender_value:
-          example: 1000
-          type: number
-          description: Can only be updated for manual accounts.
-        credit_limit:
-          example: 100
-          type: number
-          description: Can only be updated for manual accounts.
-        currency_code:
-          example: USD
-          type: string
-          description: Can only be updated for manual accounts.
-        death_benefit:
-          example: 1000
           type: integer
-          description: Can only be updated for manual accounts.
-        interest_rate:
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
           example: 1
-          type: number
-          description: Can only be updated for manual accounts.
-        is_business:
-          example: false
-          type: boolean
-          description: Can be updated for manual accounts and aggregated accounts.
-        is_closed:
-          example: false
-          type: boolean
-          description: Can only be updated for manual accounts.
-        is_hidden:
-          example: false
-          type: boolean
-          description: Can be updated for manual accounts and aggregated accounts.
-        loan_amount:
-          example: 1000
-          type: number
-          description: Can only be updated for manual accounts.
-        metadata:
-          example: some metadata
-          type: string
-          description: Can only be updated for manual accounts.
-        name:
-          example: Test account 2
-          type: string
-          description: Can only be updated for manual accounts.
-        nickname:
-          example: Swiss Account
-          type: string
-          description: Can only be updated for manual accounts.
-        original_balance:
-          example: 10
-          type: number
-          description: Can only be updated for manual accounts.
-        property_type:
-          example: VEHICLE
-          type: string
-          description: Can only be updated for manual accounts.
-        skip_webhook:
-          example: true
-          type: boolean
-          description: If set to true, prevents sending an account webhook for the update if that webhook type is enabled for you.
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
       type: object
     AccountOwnerResponse:
       properties:
@@ -1408,104 +1447,933 @@ components:
           - string
           - 'null'
       type: object
-    PaginationResponse:
+    AccountNumberResponse:
       properties:
-        current_page:
-          example: 1
-          type: integer
-        per_page:
-          example: 25
-          type: integer
-        total_entries:
-          example: 1
-          type: integer
-        total_pages:
-          example: 1
-          type: integer
+        account_guid:
+          example: ACT-06d7f45b-caae-0f6e-1384-01f52e75dcb1
+          type:
+          - string
+          - 'null'
+        account_number:
+          example: '10001'
+          type:
+          - string
+          - 'null'
+        guid:
+          example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
+          type:
+          - string
+          - 'null'
+        institution_number:
+          example: '123'
+          type:
+          - string
+          - 'null'
+        loan_guarantor:
+          example: U.S. DEPARTMENT OF EDUCATION (123456)
+          type:
+          - string
+          - 'null'
+        loan_reference_number:
+          example: '123456789012345'
+          type:
+          - string
+          - 'null'
+        member_guid:
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        passed_validation:
+          example: true
+          type:
+          - boolean
+          - 'null'
+        routing_number:
+          example: '68899990000000'
+          type:
+          - string
+          - 'null'
+        sequence_number:
+          example: 1-01
+          type:
+          - string
+          - 'null'
+        transit_number:
+          example: '12345'
+          type:
+          - string
+          - 'null'
+        user_guid:
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
       type: object
     AccountUpdateRequestBody:
       properties:
         account:
           $ref: '#/components/schemas/AccountUpdateRequest'
       type: object
-    AccountsMergeRequestBody:
+    AccountNumbersResponseBody:
       properties:
-        account:
-          $ref: '#/components/schemas/AccountsMergeRequest'
+        account_numbers:
+          items:
+            $ref: '#/components/schemas/AccountNumberResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
       type: object
     AccountCreateRequestBody:
       properties:
         account:
           $ref: '#/components/schemas/AccountCreateRequest'
       type: object
-    AccountCreateRequest:
+    AccountUpdateRequest_2:
       properties:
         account_subtype:
+          description: Can only be updated for manual accounts.
           example: PERSONAL
-          type: string
+          type:
+          - string
+          - 'null'
         account_type:
-          example: SAVINGS
-          type: string
+          description: The type of account. Some account types may include subtypes. For a full list of account types and subtypes, see [Account Types](/api-reference/platform-api/reference/account-types).
+          example: CHECKING
+          type:
+          - string
+          - 'null'
+          enum:
+          - ANY
+          - CASH
+          - CHECKING
+          - CHECKING_LINE_OF_CREDIT
+          - CREDIT_CARD
+          - LOAN
+          - LINE_OF_CREDIT
+          - SAVINGS
+          - INVESTMENT
+          - MORTGAGE
+          - INSURANCE
+          - PREPAID
+          - PROPERTY
         apr:
-          example: 1
-          type: number
+          description: Can only be updated for manual accounts. The annual percentage rate associated with the `account`.
+          example: 5.25
+          type:
+          - number
+          - 'null'
         apy:
-          example: 1
+          description: Can only be updated for manual accounts. The annual percentage yield associated with the `account`.
+          example: 2.35
           type: number
         available_balance:
+          description: 'Can only be updated for manual accounts.
+
+
+            The balance that is available for use in asset accounts like checking and savings.
+
+            '
           example: 1000
           type: number
         balance:
+          description: Can only be updated for manual accounts. The current balance of the account.
           example: 1000
           type: number
         cash_surrender_value:
+          description: Can only be updated for manual accounts. The sum of money paid to the policyholder or annuity holder in the event the policy is voluntarily terminated before it matures, or the insured event occurs.
           example: 1000
           type: number
         credit_limit:
-          example: 100
-          type: number
+          description: Can only be updated for manual accounts. The credit limit associated with the `account`.
+          example: 5000
+          type:
+          - number
+          - 'null'
         currency_code:
+          description: Can only be updated for manual accounts. The three-character ISO 4217 currency code, for example, `USD`.
           example: USD
-          type: string
+          type:
+          - string
+          - 'null'
         death_benefit:
+          description: Can only be updated for manual accounts. The amount paid to the beneficiary of the account upon death of the account owner.
           example: 1000
           type: integer
         interest_rate:
           example: 1
           type: number
+          description: Can only be updated for manual accounts.
         is_business:
           example: false
           type: boolean
+          description: Can be updated for manual accounts and aggregated accounts.
         is_closed:
           example: false
           type: boolean
+          description: Can only be updated for manual accounts.
         is_hidden:
           example: false
           type: boolean
+          description: Can be updated for manual accounts and aggregated accounts.
         loan_amount:
           example: 1000
           type: number
+          description: Can only be updated for manual accounts.
         metadata:
           example: some metadata
           type: string
+          description: Can only be updated for manual accounts.
         name:
           example: Test account 2
           type: string
+          description: Can only be updated for manual accounts.
         nickname:
           example: Swiss Account
           type: string
+          description: Can only be updated for manual accounts.
         original_balance:
           example: 10
           type: number
+          description: Can only be updated for manual accounts.
         property_type:
           example: VEHICLE
           type: string
+          description: Can only be updated for manual accounts.
         skip_webhook:
+          example: true
+          type: boolean
+          description: If set to `true`, prevents sending an account webhook for the update if that webhook type is enabled for you.
+      type: object
+    AccountCreateRequest_2:
+      properties:
+        account_subtype:
+          description: The account's subtype, for example, `PLAN_401_K`, `MONEY_MARKET`, or `HOME_EQUITY`. Each subtype belongs to an account `type`. For a full list of account subtypes and types, see [Accounts](/api-reference/platform-api/reference/account-types).
+          example: CHECKING
+          type:
+          - string
+          - 'null'
+        account_type:
+          description: The type of account. Some account types may include subtypes. For a full list of account types and subtypes, see [Account Types](/api-reference/platform-api/reference/account-types).
+          example: CHECKING
+          type:
+          - string
+          - 'null'
+          enum:
+          - ANY
+          - CASH
+          - CHECKING
+          - CHECKING_LINE_OF_CREDIT
+          - CREDIT_CARD
+          - LOAN
+          - LINE_OF_CREDIT
+          - SAVINGS
+          - INVESTMENT
+          - MORTGAGE
+          - INSURANCE
+          - PREPAID
+          - PROPERTY
+        apr:
+          description: The annual percentage rate associated with the `account`.
+          example: 1
+          type: number
+        apy:
+          description: The annual percentage yield associated with the `account`.
+          example: 2.35
+          type: number
+        available_balance:
+          description: 'The balance that is available for use in asset accounts like checking and savings.
+
+
+            `PENDING` transactions are typically (not always) taken into account with the available balance.
+
+
+            `available_balance` will usually be a positive value for all account types, determined in the same way as the balance field.
+
+            '
+          example: 1000
+          type: number
+        balance:
+          description: "The current balance of the account.\n\n`PENDING` transactions are typically not taken into account with the current balance, but this may not always be the case.\n    \nThe balance will usually be a positive value for all account types. Asset-type accounts (`CHECKING`, `SAVINGS`, `INVESTMENT`) may have a negative balance if they are in overdraft.\n\nDebt-type accounts (`CREDIT_CARD`, `LOAN`, `LINE_OF_CREDIT`, `MORTGAGE`) may have a negative balance if they are overpaid.\n"
+          example: 1000
+          type: number
+        cash_surrender_value:
+          description: The sum of money paid to the policyholder or annuity holder in the event the policy is voluntarily terminated before it matures, or the insured event occurs.
+          example: 1000
+          type: number
+        credit_limit:
+          description: The credit limit associated with the `account`.
+          example: 100
+          type: number
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        death_benefit:
+          description: The amount paid to the beneficiary of the account upon death of the account owner.
+          example: 1000
+          type: integer
+        interest_rate:
+          description: The interest rate associated with the account.
+          example: 3.25
+          type: number
+        is_business:
+          description: Indicates whether the account is a business account.
+          example: false
+          type: boolean
+        is_closed:
+          description: Indicates whether an account has been closed. Closed accounts will no longer update balance or transaction information.
+          example: false
+          type: boolean
+        is_hidden:
+          description: Indicates whether the account is hidden. Hidden accounts can still have an active balance and receive transactions. Defaults to `false`.
+          example: false
+          type: boolean
+        loan_amount:
+          description: The amount of the loan associated with the `account`.
+          example: 1000
+          type: number
+        metadata:
+          description: Additional information you can store about the `account`.
+          example: some metadata
+          type: string
+        name:
+          description: The human-readable name for the `account`.
+          example: Test account 2
+          type: string
+        nickname:
+          description: An alternate name for the `account`.
+          example: Swiss Account
+          type: string
+        original_balance:
+          description: The original balance associated with the `account`. This will always be positive.
+          example: 10
+          type: number
+        property_type:
+          description: Subtype if the account type is `PROPERTY`. This field should be ignored unless the type is set to `PROPERTY`. For a full list of property types, see [Account Types](/api-reference/platform-api/reference/account-types).
+          example: VEHICLE
+          type: string
+          enum:
+          - APPLIANCES
+          - ART
+          - COMPUTER
+          - ELECTRONICS
+          - FURNITURE
+          - JEWELRY
+          - MISCELLANEOUS
+          - REAL_ESTATE
+          - SPORTS_EQUIPMENT
+          - VEHICLE
+        skip_webhook:
+          description: If set to `true`, prevents sending an account webhook for the update if that webhook type is enabled for you.
           example: true
           type: boolean
       required:
       - name
       - account_type
+      type: object
+    AccountResponse_2:
+      properties:
+        account_number:
+          description: The account number associated with the account. This will typically be a masked or partial account number.
+          example: '3331261'
+          type:
+          - string
+          - 'null'
+        account_ownership:
+          description: The type of ownership associated with the account. `NULL` is returned if not received in the data feed.
+          example: INDIVIDUAL
+          type:
+          - string
+          - 'null'
+          enum:
+          - UNKNOWN
+          - INDIVIDUAL
+          - JOINT
+          - MULTIPLE
+          - null
+        annuity_policy_to_date:
+          description: The date until which the policy is in effect.
+          example: '2025-12-31'
+          type:
+          - string
+          - 'null'
+        annuity_provider:
+          description: The provider of the insurance policy.
+          example: Metlife
+          type:
+          - string
+          - 'null'
+        annuity_term_year:
+          description: The effective duration of an insurance policy (one year, five years, etc.).
+          example: 30
+          type:
+          - integer
+          - 'null'
+        apr:
+          description: The annual percentage rate associated with the `account`.
+          example: 1
+          type:
+          - number
+          - 'null'
+        apy:
+          description: The annual percentage yield associated with the `account`.
+          example: 2.35
+          type:
+          - number
+          - 'null'
+        available_balance:
+          description: 'The balance that is available for use in asset accounts like checking and savings.
+
+
+            `PENDING` transactions are typically (not always) taken into account with the available balance.
+
+
+            `available_balance` will usually be a positive value for all account types, determined in the same way as the balance field.
+
+            '
+          example: 1000
+          type:
+          - number
+          - 'null'
+        available_credit:
+          description: 'The amount of credit available for use in liability accounts like credit cards and lines of credit.
+
+
+            `PENDING` transactions are typically (not always) taken into account with available credit.
+
+
+            `available_credit` will usually be a positive value for all account types, determined in the same way as the `balance` field.
+
+            '
+          example: 4000
+          type:
+          - number
+          - 'null'
+        balance:
+          description: "The current balance of the account.\n\n`PENDING` transactions are typically not taken into account with the current balance, but this may not always be the case.\n    \nThe balance will usually be a positive value for all account types. Asset-type accounts (`CHECKING`, `SAVINGS`, `INVESTMENT`) may have a negative balance if they are in overdraft.\n\nDebt-type accounts (`CREDIT_CARD`, `LOAN`, `LINE_OF_CREDIT`, `MORTGAGE`) may have a negative balance if they are overpaid.\n"
+          example: 1000
+          type:
+          - number
+          - 'null'
+        cash_balance:
+          description: The cash balance of the `account`.
+          example: 2500
+          type:
+          - number
+          - 'null'
+        cash_surrender_value:
+          description: The sum of money paid to the policyholder or annuity holder in the event the policy is voluntarily terminated before it matures, or the insured event occurs.
+          example: 1000
+          type:
+          - number
+          - 'null'
+        created_at:
+          description: The date and time the account was created, represented in ISO 8601 format with a timestamp.
+          example: '2025-02-13T18:08:00+00:00'
+          type: string
+        credit_limit:
+          description: The credit limit associated with the `account`.
+          example: 5000
+          type:
+          - number
+          - 'null'
+        currency_code:
+          description: The three-character ISO 4217 currency code, for example, `USD`.
+          example: USD
+          type:
+          - string
+          - 'null'
+        day_payment_is_due:
+          description: The day of the month the payment is due. For example, the 14th is passed as `14`.
+          example: 14
+          type:
+          - integer
+          - 'null'
+        death_benefit:
+          description: The amount paid to the beneficiary of the account upon death of the account owner.
+          example: 1000
+          type:
+          - integer
+          - 'null'
+        federal_insurance_status:
+          description: 'The federal insurance status of the account. Indicates whether the account is insured by the FDIC (banks) or NCUA (credit unions).
+
+
+            Returns an integer (`UNKNOWN_INSURED` = 0, `INSURED` = 1, `NOT_INSURED` = 2).
+
+            '
+          example: INSURED
+          type:
+          - string
+          - 'null'
+          enum:
+          - UNKNOWN_INSURED
+          - INSURED
+          - NOT_INSURED
+        guid:
+          description: Unique identifier for the account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type:
+          - string
+          - 'null'
+        id:
+          description: The unique partner-defined identifier for the account.
+          example: '1040434698'
+          type:
+          - string
+          - 'null'
+        imported_at:
+          description: The date and time at which the `account` was last successfully aggregated and received data.
+          example: '2015-10-13T17:57:37.000Z'
+          type:
+          - string
+          - 'null'
+        interest_rate:
+          description: The interest rate associated with the account.
+          example: 3.25
+          type:
+          - number
+          - 'null'
+        institution_code:
+          description: The code identifying a financial institution.
+          example: 3af3685e-05d9-7060-359f-008d0755e993
+          type:
+          - string
+          - 'null'
+        insured_name:
+          description: The name of the insured person.
+          example: Tommy Shelby
+          type:
+          - string
+          - 'null'
+        is_closed:
+          description: Indicates whether an account has been closed. Closed accounts will no longer update balance or transaction information.
+          example: false
+          type: boolean
+        is_hidden:
+          description: Indicates whether the account is hidden. Hidden accounts can still have an active balance and receive transactions. Defaults to `false`.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        is_manual:
+          description: Indicates whether the transaction was manually created or belongs to a manual account.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        last_payment:
+          description: The amount of the most recent payment on the `account`.
+          example: 100
+          type:
+          - number
+          - 'null'
+        last_payment_at:
+          description: The date and time when the last payment was made, represented in ISO 8601 format with a timestamp.
+          example: '2023-07-25T17:14:46Z'
+          type:
+          - string
+          - 'null'
+        loan_amount:
+          description: The amount of the loan associated with the `account`.
+          example: 1000
+          type:
+          - number
+          - 'null'
+        margin_balance:
+          description: Represents the amount of debt the investor owes to the broker for the use of margin. It can be positive or negative, depending on the performance of the investments made with the borrowed funds. A positive margin balance indicates that the securities purchased on margin have increased in value, whereas a negative margin balance signifies that the securities have decreased in value.
+          example: 1000
+          type:
+          - number
+          - 'null'
+        matures_on:
+          description: The date on which the `account` matures.
+          example: '2015-10-13T17:57:37.000Z'
+          type:
+          - string
+          - 'null'
+        member_guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        member_id:
+          description: The unique, partner-defined, identifier for the member associated with this `account`.
+          example: member123
+          type:
+          - string
+          - 'null'
+        member_is_managed_by_user:
+          description: This indicates whether the member is managed by the user or the MX partner. Members created with the managed member feature will have this field set to `false`.
+          example: false
+          type:
+          - boolean
+          - 'null'
+        metadata:
+          description: Additional information you stored about the `account`.
+          example: some metadata
+          type:
+          - string
+          - 'null'
+        minimum_balance:
+          description: The minimum balance associated with the `account`.
+          example: 100
+          type:
+          - number
+          - 'null'
+        minimum_payment:
+          description: The minimum payment required for an account. This can apply to any debt account.
+          example: 10
+          type:
+          - number
+          - 'null'
+        name:
+          description: The human-readable name for the resource.
+          example: Test account 2
+          type:
+          - string
+          - 'null'
+        nickname:
+          description: An alternate name for the `account`.
+          example: My Checking
+          type:
+          - string
+          - 'null'
+        original_balance:
+          description: The original balance associated with the `account`. This will always be positive.
+          example: 10
+          type:
+          - number
+          - 'null'
+        pay_out_amount:
+          description: The amount paid out to the insured individual or beneficiary under the conditions of the insurance policy.
+          example: 10
+          type:
+          - number
+          - 'null'
+        payment_due_at:
+          description: The date and time at which the next payment is due on the `account`.
+          example: '2015-10-13T17:57:37.000Z'
+          type:
+          - string
+          - 'null'
+        payoff_balance:
+          description: The payoff balance for a debt `account`. This will normally be a positive number.
+          example: 10
+          type:
+          - number
+          - 'null'
+        premium_amount:
+          description: The insurance policy's premium amount.
+          example: 1
+          type:
+          - number
+          - 'null'
+        property_type:
+          description: Subtype if the account type is `PROPERTY`. This field should be ignored unless the type is set to PROPERTY.
+          example: VEHICLE
+          type:
+          - string
+          - 'null'
+          enum:
+          - APPLIANCES
+          - ART
+          - COMPUTER
+          - ELECTRONICS
+          - FURNITURE
+          - JEWELRY
+          - MISCELLANEOUS
+          - REAL_ESTATE
+          - SPORTS_EQUIPMENT
+          - VEHICLE
+        routing_number:
+          description: The routing number for the `account`.
+          example: '68899990000000'
+          type:
+          - string
+          - 'null'
+        started_on:
+          description: The date on which the loan from a debt account started.
+          example: '2025-10-13T17:57:37.000Z'
+          type:
+          - string
+          - 'null'
+        statement_balance:
+          description: The balance at the end of the account's last statement period.
+          example: 1000.5
+          type:
+          - number
+          - 'null'
+        subtype:
+          description: The account's subtype, for example, `PLAN_401_K`, `MONEY_MARKET`, or `HOME_EQUITY`. Each subtype belongs to an account `type`. For a full list of account subtypes and types, see [Accounts](/api-reference/platform-api/reference/accounts).
+          example: MONEY_MARKET
+          type:
+          - string
+          - 'null'
+        today_ugl_amount:
+          description: The unrealized gain/loss amount for the day for the account.
+          example: 1000.5
+          type:
+          - number
+          - 'null'
+        today_ugl_percentage:
+          description: The unrealized gain/loss percentage for the date for the account.
+          example: 6.9
+          type:
+          - number
+          - 'null'
+        total_account_value:
+          description: The sum of the long and short positions, the sweep account and/or cash balance, and any margin debt associated with a particular account. This amount includes the market value of all positions held in the account and is reduced by any debit balance and the amount of short options positions that are "in the money". This may sum to a negative value, and it does not represent an account balance.
+          example: 1
+          type:
+          - number
+          - 'null'
+        total_account_value_ugl:
+          description: The unrealized gains and losses represent the amount the account has gained or lost based on the purchase price. This is calculated by subtracting the purchase price from the current market value. It does not affect the account until the positions are sold and "realized". This may sum to a negative value, and it does not represent an account balance.
+          example: 1
+          type:
+          - number
+          - 'null'
+        type:
+          description: The type of account. Some account types may include subtypes.
+          example: CHECKING
+          type:
+          - string
+          - 'null'
+          enum:
+          - ANY
+          - CASH
+          - CHECKING
+          - CHECKING_LINE_OF_CREDIT
+          - CREDIT_CARD
+          - LOAN
+          - LINE_OF_CREDIT
+          - SAVINGS
+          - INVESTMENT
+          - MORTGAGE
+          - INSURANCE
+          - PREPAID
+          - PROPERTY
+        updated_at:
+          description: 'The date and time the resource was last updated in ISO 8601 format with a timestamp.
+
+
+            For categories, this field will always be `null` when `is_default` is `true`.
+
+            '
+          example: '2025-02-13T18:09:00+00:00'
+          type:
+          - string
+          - 'null'
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+        user_id:
+          description: The unique partner-defined identifier for the user.
+          example: u-1234
+          type:
+          - string
+          - 'null'
+      type: object
+    PaginationResponse_2:
+      properties:
+        current_page:
+          description: The page delivered by the current response.
+          example: 1
+          type: integer
+        per_page:
+          description: The number of records delivered with each page.
+          example: 25
+          type: integer
+        total_entries:
+          description: The total number of records available.
+          example: 1
+          type: integer
+        total_pages:
+          description: The total number of pages available.
+          example: 1
+          type: integer
+      type: object
+    AccountOwnerResponse_2:
+      properties:
+        account_guid:
+          description: The unique identifier for an account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        address:
+          description: The account owner's street address.
+          example: 3541 Adrian Street
+          type:
+          - string
+          - 'null'
+        city:
+          description: The account owner's city.
+          example: Middlesex
+          type:
+          - string
+          - 'null'
+        country:
+          description: The account owner's country.
+          example: US
+          type:
+          - string
+          - 'null'
+        email:
+          description: The email address associated with the account.
+          example: example@example.com
+          type: string
+        first_name:
+          description: The account owner's first name. This may also include a middle name. This field will be `null` unless name splitting has been enabled. Contact MX to have this feature enabled.
+          example: Josh
+          type:
+          - string
+          - 'null'
+        guid:
+          description: Unique identifier for the account owner. Defined by MX.
+          example: ACO-63dc7714-6fc0-4aa2-a069-c06cdccd1af9
+          type:
+          - string
+          - 'null'
+        last_name:
+          description: The last name of the account holder.
+          example: Smith
+          type:
+          - string
+          - 'null'
+        member_guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        owner_name:
+          description: The account owner's name.
+          example: Josh Smith
+          type:
+          - string
+          - 'null'
+        phone:
+          description: The account owner's phone number.
+          example: 555-555-5555
+          type:
+          - string
+          - 'null'
+        postal_code:
+          description: The account owner's postal code.
+          example: 00000-0000
+          type:
+          - string
+          - 'null'
+        state:
+          description: The account owner's state.
+          example: VA
+          type:
+          - string
+          - 'null'
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+      type: object
+    AccountsMergeRequest:
+      properties:
+        account_guids:
+          type: array
+          description: A list of account GUIDs to merge. Must include at least two GUIDs belonging to the same user.
+          items:
+            type: string
+          example:
+          - ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          - ACT-e1b1e9e7-9436-4720-a1b5-f02373433bd4
+      required:
+      - account_guids
+      type: object
+    AccountNumberResponse_2:
+      properties:
+        account_guid:
+          description: The unique identifier for an account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        account_number:
+          description: The account number associated with the account. This will typically be a masked or partial account number.
+          example: '3331261'
+          type:
+          - string
+          - 'null'
+        guid:
+          description: Unique identifier for the account number. Defined by MX.
+          example: ACN-8899832e-e5b4-42cd-aa25-bbf1dc889a8f
+          type:
+          - string
+          - 'null'
+        institution_number:
+          description: The three-digit number identifying a Canadian banking institution.
+          example: '123'
+          type:
+          - string
+          - 'null'
+        loan_guarantor:
+          description: The guarantor of the student loan.
+          example: U.S. DEPARTMENT OF EDUCATION (123456)
+          type:
+          - string
+          - 'null'
+        loan_reference_number:
+          description: The reference number of the student loan.
+          example: '123456789012345'
+          type:
+          - string
+          - 'null'
+        member_guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type:
+          - string
+          - 'null'
+        passed_validation:
+          description: This indicates whether the account and routing numbers passed MX's internal validity checks. If true, the account and routing/transit numbers are likely (but not guaranteed) to be valid. If false, either the account number, routing/transit number, or both are likely invalid.
+          example: true
+          type:
+          - boolean
+          - 'null'
+        routing_number:
+          description: The routing number for the `account`.
+          example: '68899990000000'
+          type:
+          - string
+          - 'null'
+        sequence_number:
+          description: The sequence number of the student loan.
+          example: 1-01
+          type:
+          - string
+          - 'null'
+        transit_number:
+          description: The five-digit number identifying the branch of a Canadian financial institution.
+          example: '12345'
+          type:
+          - string
+          - 'null'
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type:
+          - string
+          - 'null'
+      type: object
+    AccountsMergeRequestBody:
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountsMergeRequest'
       type: object
   securitySchemes:
     bearerAuth:
@@ -1514,3 +2382,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml

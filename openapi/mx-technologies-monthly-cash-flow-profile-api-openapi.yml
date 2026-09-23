@@ -1,16 +1,11 @@
 openapi: 3.2.0
 info:
+  title: Mx Technologies monthly cash flow profile API
   contact:
     name: MX Platform API
     url: https://www.mx.com/products/platform-api
-  description: 'The MX Platform API is a powerful, fully-featured API designed to make aggregating and enhancing financial data easy and reliable. It can seamlessly connect your app or website to tens of thousands of financial institutions.
-
-
-    Just getting started? See our [use case guides](/use-cases/).
-
-    '
-  title: MX Platform accounts monthly cash flow profile API
-  version: '20111101'
+  version: '1.0'
+  description: 'Operations tagged monthly cash flow profile across 2 of this provider''s published API definitions: mx-technologies-platform-openapi.yml, mx-technologies-platform-v20250224-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://int-api.mx.com
 - url: https://api.mx.com
@@ -54,6 +49,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
   /users/{user_identifier}/monthly_cash_flow_profile:
     parameters:
     - $ref: '#/components/parameters/userIdentifier'
@@ -90,23 +88,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+    servers:
+    - url: https://int-api.mx.com
+    - url: https://api.mx.com
 components:
   schemas:
-    MonthlyCashFlowProfileRequestBody_2:
-      properties:
-        monthly_cash_flow_profile:
-          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest_2'
-      type: object
-    MonthlyCashFlowProfileRequest:
-      properties:
-        goals_contribution:
-          example: 150.01
-          type: number
-          description: The monthly dollar amount allocated for goals.
-        uses_estimated_goals_contribution:
-          example: false
-          type: boolean
-          description: Determines if the user uses estimated goals contribution.
     MonthlyCashFlowProfileRequestBody:
       properties:
         institution:
@@ -117,16 +103,6 @@ components:
         monthly_cash_flow_profile:
           $ref: '#/components/schemas/MonthlyCashFlowResponse'
       type: object
-    MonthlyCashFlowProfileRequest_2:
-      properties:
-        goals_contribution:
-          description: The monthly dollar amount allocated for goals.
-          example: 500
-          type: number
-        uses_estimated_goals_contribution:
-          example: false
-          type: boolean
-          description: Determines if the user uses estimated goals contribution.
     MonthlyCashFlowResponse:
       properties:
         guid:
@@ -158,6 +134,63 @@ components:
         uses_estimated_goals_contribution:
           example: false
           type: boolean
+    MonthlyCashFlowProfileRequest:
+      properties:
+        goals_contribution:
+          example: 150.01
+          type: number
+          description: The monthly dollar amount allocated for goals.
+        uses_estimated_goals_contribution:
+          example: false
+          type: boolean
+          description: Determines if the user uses estimated goals contribution.
+    MonthlyCashFlowProfileRequestBody_2:
+      properties:
+        monthly_cash_flow_profile:
+          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest_2'
+      type: object
+    MonthlyCashFlowResponse_2:
+      properties:
+        guid:
+          example: MCF-4e431124-4a29-abf9-f059-ab232ac14dbf
+          type: string
+          description: Unique identifier for the monthly cash flow profile. Defined by MX.
+        user_guid:
+          example: USR-6c83f63c-efcc-0189-3f14-100f0bad378a
+          type: string
+          description: Unique identifier for the user the monthly cash flow profile is attached to. Defined by MX.
+        budgeted_income:
+          description: The amount of the budgeted income for the user.
+          example: 5000
+          type: number
+        budgeted_expenses:
+          description: The amount of the budgeted expenses for the user.
+          example: 3500
+          type: number
+        goals_contribution:
+          description: The monthly dollar amount allocated for goals.
+          example: 500
+          type: number
+        estimated_goals_contribution:
+          example: null
+          type:
+          - number
+          - 'null'
+          description: The estimated monthly dollar amount allocated for goals calculated from income and budgets.
+        uses_estimated_goals_contribution:
+          description: Indicates if the user uses estimated goals contribution.
+          example: false
+          type: boolean
+    MonthlyCashFlowProfileRequest_2:
+      properties:
+        goals_contribution:
+          description: The monthly dollar amount allocated for goals.
+          example: 500
+          type: number
+        uses_estimated_goals_contribution:
+          example: false
+          type: boolean
+          description: Determines if the user uses estimated goals contribution.
   parameters:
     userGuid:
       description: The unique identifier for a `user`, beginning with the prefix `USR-`.
@@ -190,3 +223,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
+x-refined-from:
+- mx-technologies-platform-openapi.yml
+- mx-technologies-platform-v20250224-openapi.yml
