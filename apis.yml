@@ -140,7 +140,7 @@ apis:
   - type: Documentation
     url: https://docs.mx.com/
 - aid: mx-technologies:mx-technologies-accounts-api
-  name: MX Technologies accounts API
+  name: MX Technologies Accounts API
   description: The accounts API from MX Technologies — 13 operation(s) for accounts.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -157,8 +157,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-ach-return-api
   name: MX Technologies ach return API
   description: The ach return API from MX Technologies — 2 operation(s) for ach return.
@@ -175,10 +173,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-budgets-api
-  name: MX Technologies budgets API
+  name: MX Technologies Budgets API
   description: The budgets API from MX Technologies — 3 operation(s) for budgets.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -195,10 +191,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-categories-api
-  name: MX Technologies categories API
+  name: MX Technologies Categories API
   description: The categories API from MX Technologies — 5 operation(s) for categories.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -215,10 +209,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-goals-api
-  name: MX Technologies goals API
+  name: MX Technologies Goals API
   description: The goals API from MX Technologies — 3 operation(s) for goals.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -235,10 +227,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-insights-api
-  name: MX Technologies insights API
+  name: MX Technologies Insights API
   description: The insights API from MX Technologies — 9 operation(s) for insights.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -255,10 +245,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-institutions-api
-  name: MX Technologies institutions API
+  name: MX Technologies Institutions API
   description: The institutions API from MX Technologies — 5 operation(s) for institutions.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -275,8 +263,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-investment-holdings-api
   name: MX Technologies investment holdings API
   description: >-
@@ -294,8 +280,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-managed-data-api
   name: MX Technologies managed data API
   description: The managed data API from MX Technologies — 7 operation(s) for managed data.
@@ -312,8 +296,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-managed-data-deprecated-api
   name: MX Technologies managed data [deprecated] API
   description: >-
@@ -331,10 +313,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-members-api
-  name: MX Technologies members API
+  name: MX Technologies Members API
   description: The members API from MX Technologies — 20 operation(s) for members.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -351,10 +331,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-merchants-api
-  name: MX Technologies merchants API
+  name: MX Technologies Merchants API
   description: The merchants API from MX Technologies — 3 operation(s) for merchants.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -371,10 +349,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-microdeposits-api
-  name: MX Technologies microdeposits API
+  name: MX Technologies Microdeposits API
   description: The microdeposits API from MX Technologies — 4 operation(s) for microdeposits.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -391,8 +367,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-monthly-cash-flow-profile-api
   name: MX Technologies monthly cash flow profile API
   description: >-
@@ -412,10 +386,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-notifications-api
-  name: MX Technologies notifications API
+  name: MX Technologies Notifications API
   description: The notifications API from MX Technologies — 2 operation(s) for notifications.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -432,8 +404,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-processor-token-api
   name: MX Technologies processor token API
   description: The processor token API from MX Technologies — 7 operation(s) for processor token.
@@ -450,10 +420,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-rewards-api
-  name: MX Technologies rewards API
+  name: MX Technologies Rewards API
   description: The rewards API from MX Technologies — 5 operation(s) for rewards.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -470,8 +438,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-spending-plan-api
   name: MX Technologies spending plan API
   description: The spending plan API from MX Technologies — 9 operation(s) for spending plan.
@@ -490,10 +456,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-statements-api
-  name: MX Technologies statements API
+  name: MX Technologies Statements API
   description: The statements API from MX Technologies — 5 operation(s) for statements.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -510,10 +474,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-taggings-api
-  name: MX Technologies taggings API
+  name: MX Technologies Taggings API
   description: The taggings API from MX Technologies — 2 operation(s) for taggings.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -530,10 +492,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-tags-api
-  name: MX Technologies tags API
+  name: MX Technologies Tags API
   description: The tags API from MX Technologies — 2 operation(s) for tags.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -550,8 +510,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-transaction-rules-api
   name: MX Technologies transaction rules API
   description: The transaction rules API from MX Technologies — 2 operation(s) for transaction rules.
@@ -570,10 +528,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-transactions-api
-  name: MX Technologies transactions API
+  name: MX Technologies Transactions API
   description: The transactions API from MX Technologies — 19 operation(s) for transactions.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -590,10 +546,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-users-api
-  name: MX Technologies users API
+  name: MX Technologies Users API
   description: The users API from MX Technologies — 3 operation(s) for users.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -610,8 +564,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-verifiable-credentials-api
   name: MX Technologies verifiable credentials API
   description: >-
@@ -631,10 +583,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 - aid: mx-technologies:mx-technologies-widgets-api
-  name: MX Technologies widgets API
+  name: MX Technologies Widgets API
   description: The widgets API from MX Technologies — 4 operation(s) for widgets.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
@@ -651,8 +601,6 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-  - type: GraphQL
-    url: graphql/mx-graphql.md
 common:
 - type: X-MCPServerCandidate
   url: mcp/mx-technologies-mcp.yml
