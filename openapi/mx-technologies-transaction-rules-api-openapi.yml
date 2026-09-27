@@ -102,6 +102,31 @@ paths:
     - url: https://api.mx.com
 components:
   schemas:
+    TransactionRuleCreateRequest:
+      properties:
+        category_guid:
+          example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
+          type: string
+        description:
+          example: Wal-mart food storage
+          type: string
+        match_description:
+          example: Wal-mart
+          type: string
+      required:
+      - category_guid
+      - match_description
+      type: object
+    TransactionRuleUpdateRequestBody:
+      properties:
+        transaction_rule:
+          $ref: '#/components/schemas/TransactionRuleUpdateRequest'
+      type: object
+    TransactionRuleCreateRequestBody:
+      properties:
+        transaction_rule:
+          $ref: '#/components/schemas/TransactionRuleCreateRequest'
+      type: object
     TransactionRulesResponseBody:
       properties:
         transaction_rules:
@@ -149,26 +174,6 @@ components:
           - string
           - 'null'
       type: object
-    TransactionRuleCreateRequestBody:
-      properties:
-        transaction_rule:
-          $ref: '#/components/schemas/TransactionRuleCreateRequest'
-      type: object
-    TransactionRuleCreateRequest:
-      properties:
-        category_guid:
-          example: CAT-b1de2a04-db08-b6ed-f6fe-ca2f5b11c2d0
-          type: string
-        description:
-          example: Wal-mart food storage
-          type: string
-        match_description:
-          example: Wal-mart
-          type: string
-      required:
-      - category_guid
-      - match_description
-      type: object
     TransactionRuleUpdateRequest:
       properties:
         category_guid:
@@ -196,15 +201,28 @@ components:
           example: 1
           type: integer
       type: object
-    TransactionRuleUpdateRequestBody:
-      properties:
-        transaction_rule:
-          $ref: '#/components/schemas/TransactionRuleUpdateRequest'
-      type: object
     TransactionRuleResponseBody:
       properties:
         transaction_rule:
           $ref: '#/components/schemas/TransactionRuleResponse'
+      type: object
+    TransactionRuleCreateRequest_2:
+      properties:
+        category_guid:
+          description: The unique identifier for the category. Defined by MX.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type:
+          - string
+          - 'null'
+        description:
+          example: Wal-mart food storage
+          type: string
+        match_description:
+          example: Wal-mart
+          type: string
+      required:
+      - category_guid
+      - match_description
       type: object
     TransactionRuleResponse_2:
       properties:
@@ -255,24 +273,6 @@ components:
           type:
           - string
           - 'null'
-      type: object
-    TransactionRuleCreateRequest_2:
-      properties:
-        category_guid:
-          description: The unique identifier for the category. Defined by MX.
-          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
-          type:
-          - string
-          - 'null'
-        description:
-          example: Wal-mart food storage
-          type: string
-        match_description:
-          example: Wal-mart
-          type: string
-      required:
-      - category_guid
-      - match_description
       type: object
     TransactionRuleUpdateRequest_2:
       properties:

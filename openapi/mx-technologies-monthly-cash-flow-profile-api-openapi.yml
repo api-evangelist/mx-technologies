@@ -59,7 +59,7 @@ paths:
     get:
       tags:
       - monthly cash flow profile
-      operationId: readMonthlyCashFlowProfile
+      operationId: getUsersByUserIdentifierMonthlyCashFlowProfile
       summary: Read monthly cash flow profile
       description: Read monthly cash flow profile.
       responses:
@@ -69,10 +69,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+      x-operation-id-source: normalized
+      x-operation-id-original: readMonthlyCashFlowProfile
     put:
       tags:
       - monthly cash flow profile
-      operationId: updateMonthlyCashFlowProfile
+      operationId: putUsersByUserIdentifierMonthlyCashFlowProfile
       summary: Update monthly cash flow profile
       description: Use this endpoint to update the attributes of a `monthly_cash_flow_profile`.
       requestBody:
@@ -88,21 +90,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MonthlyCashFlowResponseBody'
+      x-operation-id-source: normalized
+      x-operation-id-original: updateMonthlyCashFlowProfile
     servers:
     - url: https://int-api.mx.com
     - url: https://api.mx.com
 components:
   schemas:
-    MonthlyCashFlowProfileRequestBody:
-      properties:
-        institution:
-          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest'
-      type: object
-    MonthlyCashFlowResponseBody:
-      properties:
-        monthly_cash_flow_profile:
-          $ref: '#/components/schemas/MonthlyCashFlowResponse'
-      type: object
     MonthlyCashFlowResponse:
       properties:
         guid:
@@ -134,6 +128,11 @@ components:
         uses_estimated_goals_contribution:
           example: false
           type: boolean
+    MonthlyCashFlowProfileRequestBody:
+      properties:
+        institution:
+          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest'
+      type: object
     MonthlyCashFlowProfileRequest:
       properties:
         goals_contribution:
@@ -144,10 +143,10 @@ components:
           example: false
           type: boolean
           description: Determines if the user uses estimated goals contribution.
-    MonthlyCashFlowProfileRequestBody_2:
+    MonthlyCashFlowResponseBody:
       properties:
         monthly_cash_flow_profile:
-          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest_2'
+          $ref: '#/components/schemas/MonthlyCashFlowResponse'
       type: object
     MonthlyCashFlowResponse_2:
       properties:
@@ -181,6 +180,11 @@ components:
           description: Indicates if the user uses estimated goals contribution.
           example: false
           type: boolean
+    MonthlyCashFlowProfileRequestBody_2:
+      properties:
+        monthly_cash_flow_profile:
+          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest_2'
+      type: object
     MonthlyCashFlowProfileRequest_2:
       properties:
         goals_contribution:
@@ -200,6 +204,13 @@ components:
       required: true
       schema:
         type: string
+    userIdentifier:
+      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      in: path
+      required: true
+      name: user_identifier
+      schema:
+        type: string
     acceptVersion:
       name: Accept-Version
       in: header
@@ -209,13 +220,6 @@ components:
         default: v20250224
         example: v20250224
       description: MX Platform API version.
-    userIdentifier:
-      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      in: path
-      required: true
-      name: user_identifier
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http
