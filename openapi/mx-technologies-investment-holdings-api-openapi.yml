@@ -120,35 +120,10 @@ paths:
     - url: https://api.mx.com
 components:
   schemas:
-    InvestmentHoldingsResponseBody:
+    InvestmentHoldingResponseBody:
       properties:
-        investment_holdings:
-          items:
-            $ref: '#/components/schemas/InvestmentHoldingResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      type: object
-    InvestmentHoldingsDeactivation:
-      properties:
-        message:
-          example: Successfully deactivated user from billing
-        status:
-          example: 200
-    PaginationResponse:
-      properties:
-        current_page:
-          example: 1
-          type: integer
-        per_page:
-          example: 25
-          type: integer
-        total_entries:
-          example: 1
-          type: integer
-        total_pages:
-          example: 1
-          type: integer
+        investment_holding:
+          $ref: '#/components/schemas/InvestmentHoldingResponse'
       type: object
     InvestmentHoldingResponse:
       properties:
@@ -338,27 +313,33 @@ components:
           - string
           - 'null'
       type: object
-    InvestmentHoldingResponseBody:
+    InvestmentHoldingsDeactivation:
       properties:
-        investment_holding:
-          $ref: '#/components/schemas/InvestmentHoldingResponse'
+        message:
+          example: Successfully deactivated user from billing
+        status:
+          example: 200
+    InvestmentHoldingsResponseBody:
+      properties:
+        investment_holdings:
+          items:
+            $ref: '#/components/schemas/InvestmentHoldingResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
       type: object
-    PaginationResponse_2:
+    PaginationResponse:
       properties:
         current_page:
-          description: The page delivered by the current response.
           example: 1
           type: integer
         per_page:
-          description: The number of records delivered with each page.
           example: 25
           type: integer
         total_entries:
-          description: The total number of records available.
           example: 1
           type: integer
         total_pages:
-          description: The total number of pages available.
           example: 1
           type: integer
       type: object
@@ -585,22 +566,26 @@ components:
           - string
           - 'null'
       type: object
+    PaginationResponse_2:
+      properties:
+        current_page:
+          description: The page delivered by the current response.
+          example: 1
+          type: integer
+        per_page:
+          description: The number of records delivered with each page.
+          example: 25
+          type: integer
+        total_entries:
+          description: The total number of records available.
+          example: 1
+          type: integer
+        total_pages:
+          description: The total number of pages available.
+          example: 1
+          type: integer
+      type: object
   parameters:
-    memberGuid:
-      description: The unique id for a `member`.
-      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-      in: path
-      name: member_guid
-      required: true
-      schema:
-        type: string
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
-      in: query
-      name: page
-      schema:
-        type: integer
     userGuid:
       description: The unique identifier for a `user`, beginning with the prefix `USR-`.
       example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
@@ -632,6 +617,21 @@ components:
       required: true
       schema:
         type: string
+    memberGuid:
+      description: The unique id for a `member`.
+      example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+      in: path
+      name: member_guid
+      required: true
+      schema:
+        type: string
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
     acceptVersion:
       name: Accept-Version
       in: header

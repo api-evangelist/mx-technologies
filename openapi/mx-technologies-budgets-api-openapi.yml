@@ -120,57 +120,6 @@ paths:
     - url: https://api.mx.com
 components:
   schemas:
-    BudgetCreateRequestBody:
-      properties:
-        budget:
-          $ref: '#/components/schemas/BudgetCreateRequest'
-      type: object
-    BudgetCreateRequest:
-      properties:
-        category_guid:
-          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
-          description: Unique identifier of the category.
-          type: string
-        parent_guid:
-          example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
-          description: Unique identifier of the parent budget. This is only required when creating a budget on a sub-category.
-          type: string
-        amount:
-          example: 1000
-          description: Amount of the budget.
-          type: integer
-        metadata:
-          example: Additional information
-          description: Additional information a partner can store on the budget.
-          type: string
-        skip_webhook:
-          example: true
-          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
-          type: boolean
-      required:
-      - category_guid
-      - parent_guid
-      type: object
-    BudgetUpdateRequestBody:
-      properties:
-        budget:
-          $ref: '#/components/schemas/BudgetUpdateRequest'
-      type: object
-    BudgetUpdateRequest:
-      properties:
-        amount:
-          example: 1000
-          description: Amount of the budget.
-          type: integer
-        metadata:
-          example: Additional information
-          description: Additional information a partner can store on the budget.
-          type: string
-        skip_webhook:
-          example: true
-          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
-          type: boolean
-      type: object
     BudgetResponse:
       properties:
         amount:
@@ -242,16 +191,16 @@ components:
         user_guid:
           description: Unique identifier for the user. Defined by MX.
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
-    BudgetResponseBody:
+    BudgetCreateRequestBody:
       properties:
         budget:
-          $ref: '#/components/schemas/BudgetResponse'
+          $ref: '#/components/schemas/BudgetCreateRequest'
       type: object
-    BudgetCreateRequest_2:
+    BudgetCreateRequest:
       properties:
         category_guid:
-          description: The unique identifier for the category.
-          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          example: CAT-bd56d35a-a9a7-6e10-66c1-5b9cc1b6c81a
+          description: Unique identifier of the category.
           type: string
         parent_guid:
           example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
@@ -263,7 +212,7 @@ components:
           type: integer
         metadata:
           example: Additional information
-          description: Additional information you can store on the `budget`.
+          description: Additional information a partner can store on the budget.
           type: string
         skip_webhook:
           example: true
@@ -273,7 +222,7 @@ components:
       - category_guid
       - parent_guid
       type: object
-    BudgetUpdateRequest_2:
+    BudgetUpdateRequest:
       properties:
         amount:
           example: 1000
@@ -281,12 +230,22 @@ components:
           type: integer
         metadata:
           example: Additional information
-          description: Additional information you can store on the `budget`.
+          description: Additional information a partner can store on the budget.
           type: string
         skip_webhook:
           example: true
           description: When set to true, this parameter will prevent a webhook from being triggered by the request.
           type: boolean
+      type: object
+    BudgetUpdateRequestBody:
+      properties:
+        budget:
+          $ref: '#/components/schemas/BudgetUpdateRequest'
+      type: object
+    BudgetResponseBody:
+      properties:
+        budget:
+          $ref: '#/components/schemas/BudgetResponse'
       type: object
     BudgetResponse_2:
       properties:
@@ -359,6 +318,47 @@ components:
         user_guid:
           description: Unique identifier for the user. Defined by MX.
           example: USR-11141024-90b3-1bce-cac9-c06ced52ab4c
+    BudgetCreateRequest_2:
+      properties:
+        category_guid:
+          description: The unique identifier for the category.
+          example: CAT-b6d61a19-30a7-e852-2703-bdfb4072289e
+          type: string
+        parent_guid:
+          example: BGT-6be44a91-e105-f68a-4770-8c7c0a5c9778
+          description: Unique identifier of the parent budget. This is only required when creating a budget on a sub-category.
+          type: string
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information you can store on the `budget`.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      required:
+      - category_guid
+      - parent_guid
+      type: object
+    BudgetUpdateRequest_2:
+      properties:
+        amount:
+          example: 1000
+          description: Amount of the budget.
+          type: integer
+        metadata:
+          example: Additional information
+          description: Additional information you can store on the `budget`.
+          type: string
+        skip_webhook:
+          example: true
+          description: When set to true, this parameter will prevent a webhook from being triggered by the request.
+          type: boolean
+      type: object
   parameters:
     userGuid:
       description: The unique identifier for a `user`, beginning with the prefix `USR-`.

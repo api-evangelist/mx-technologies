@@ -133,6 +133,11 @@ paths:
     - url: https://api.mx.com
 components:
   schemas:
+    InstitutionResponseBody:
+      properties:
+        institution:
+          $ref: '#/components/schemas/InstitutionResponse'
+      type: object
     CredentialsResponseBody:
       properties:
         credentials:
@@ -141,6 +146,21 @@ components:
           type: array
         pagination:
           $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
       type: object
     CredentialResponse:
       properties:
@@ -183,11 +203,6 @@ components:
           type: array
         pagination:
           $ref: '#/components/schemas/PaginationResponse'
-      type: object
-    InstitutionResponseBody:
-      properties:
-        institution:
-          $ref: '#/components/schemas/InstitutionResponse'
       type: object
     InstitutionResponse:
       properties:
@@ -286,18 +301,22 @@ components:
           - string
           - 'null'
       type: object
-    PaginationResponse:
+    PaginationResponse_2:
       properties:
         current_page:
+          description: The page delivered by the current response.
           example: 1
           type: integer
         per_page:
+          description: The number of records delivered with each page.
           example: 25
           type: integer
         total_entries:
+          description: The total number of records available.
           example: 1
           type: integer
         total_pages:
+          description: The total number of pages available.
           example: 1
           type: integer
       type: object
@@ -420,25 +439,6 @@ components:
           - string
           - 'null'
       type: object
-    PaginationResponse_2:
-      properties:
-        current_page:
-          description: The page delivered by the current response.
-          example: 1
-          type: integer
-        per_page:
-          description: The number of records delivered with each page.
-          example: 25
-          type: integer
-        total_entries:
-          description: The total number of records available.
-          example: 1
-          type: integer
-        total_pages:
-          description: The total number of pages available.
-          example: 1
-          type: integer
-      type: object
   parameters:
     supportsAccountStatement:
       description: Filter only institutions which support account statements.
@@ -447,27 +447,14 @@ components:
       name: supports_account_statement
       schema:
         type: boolean
-    supportsAccountVerification:
-      description: Filter only institutions which support account verification.
-      example: true
-      in: query
-      name: supports_account_verification
+    institutionCode:
+      description: The institution_code of the institution.
+      example: mxbank
+      in: path
+      name: institution_code
+      required: true
       schema:
-        type: boolean
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
-    page:
-      description: Results are paginated. Specify current page.
-      example: 1
-      in: query
-      name: page
-      schema:
-        type: integer
+        type: string
     isoCountryCode:
       description: An array of strings that filters institutions in the widget by the specified country code. Acceptable codes include `US`, `CA`, and `MX` (Mexico).
       required: false
@@ -480,21 +467,13 @@ components:
         type: array
         items:
           type: string
-    institutionCode:
-      description: The institution_code of the institution.
-      example: mxbank
-      in: path
-      name: institution_code
-      required: true
-      schema:
-        type: string
-    institutionName:
-      description: This will list only institutions in which the appended string appears.
-      example: mxbank
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
       in: query
-      name: name
+      name: records_per_page
       schema:
-        type: string
+        type: integer
     supportsAccountIdentification:
       description: Filter only institutions which support account identification.
       example: true
@@ -502,6 +481,13 @@ components:
       name: supports_account_identification
       schema:
         type: boolean
+    institutionName:
+      description: This will list only institutions in which the appended string appears.
+      example: mxbank
+      in: query
+      name: name
+      schema:
+        type: string
     supportsTransactionHistory:
       description: Filter only institutions which support extended transaction history.
       example: true
@@ -509,6 +495,27 @@ components:
       name: supports_transaction_history
       schema:
         type: boolean
+    supportsAccountVerification:
+      description: Filter only institutions which support account verification.
+      example: true
+      in: query
+      name: supports_account_verification
+      schema:
+        type: boolean
+    page:
+      description: Results are paginated. Specify current page.
+      example: 1
+      in: query
+      name: page
+      schema:
+        type: integer
+    recordsPerPage:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
     institutionIdentifier:
       description: The identifier for the institution. For this identifier, use either the `institution_code` or the institution `guid`.
       example: mxbank
@@ -517,21 +524,15 @@ components:
       required: true
       schema:
         type: string
-    institutionCode_2:
-      description: A unique identifier for each institution, defined by MX.
-      example: mxbank
-      in: path
-      name: institution_code
+    acceptVersion:
+      name: Accept-Version
+      in: header
       required: true
       schema:
         type: string
-    recordsPerPage:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
     supportedProducts:
       name: supported_products
       in: query
@@ -551,15 +552,14 @@ components:
       description: Filters institutions that support specific products. Values may include account_verification, identity_verification, transactions, history, statements, investments.
       example:
       - account_verification
-    acceptVersion:
-      name: Accept-Version
-      in: header
+    institutionCode_2:
+      description: A unique identifier for each institution, defined by MX.
+      example: mxbank
+      in: path
+      name: institution_code
       required: true
       schema:
         type: string
-        default: v20250224
-        example: v20250224
-      description: MX Platform API version.
   securitySchemes:
     bearerAuth:
       type: http
