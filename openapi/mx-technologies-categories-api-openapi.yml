@@ -174,29 +174,25 @@ paths:
     - url: https://api.mx.com
 components:
   schemas:
-    CategoryUpdateRequestBody:
+    CategoryCreateRequest:
       properties:
-        category:
-          $ref: '#/components/schemas/CategoryUpdateRequest'
+        metadata:
+          example: some metadata
+          type: string
+        name:
+          example: Online Shopping
+          type: string
+        parent_guid:
+          example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
+          type: string
+      required:
+      - name
+      - parent_guid
       type: object
     CategoryResponseBody:
       properties:
         category:
           $ref: '#/components/schemas/CategoryResponse'
-      type: object
-    CategoryCreateRequestBody:
-      properties:
-        category:
-          $ref: '#/components/schemas/CategoryCreateRequest'
-      type: object
-    CategoriesResponseBody:
-      properties:
-        categories:
-          items:
-            $ref: '#/components/schemas/CategoryResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
       type: object
     PaginationResponse:
       properties:
@@ -257,6 +253,16 @@ components:
           - string
           - 'null'
       type: object
+    CategoryCreateRequestBody:
+      properties:
+        category:
+          $ref: '#/components/schemas/CategoryCreateRequest'
+      type: object
+    CategoryUpdateRequestBody:
+      properties:
+        category:
+          $ref: '#/components/schemas/CategoryUpdateRequest'
+      type: object
     CategoryUpdateRequest:
       properties:
         metadata:
@@ -266,17 +272,29 @@ components:
           example: Web shopping
           type: string
       type: object
-    CategoryCreateRequest:
+    CategoriesResponseBody:
+      properties:
+        categories:
+          items:
+            $ref: '#/components/schemas/CategoryResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    CategoryCreateRequest_2:
       properties:
         metadata:
+          description: Additional information you can store on the `category`.
           example: some metadata
           type: string
         name:
           example: Online Shopping
           type: string
+          description: The name of the category.
         parent_guid:
           example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
           type: string
+          description: The unique identifier for the parent category.
       required:
       - name
       - parent_guid
@@ -367,25 +385,14 @@ components:
           type: string
           description: The name of the category.
       type: object
-    CategoryCreateRequest_2:
-      properties:
-        metadata:
-          description: Additional information you can store on the `category`.
-          example: some metadata
-          type: string
-        name:
-          example: Online Shopping
-          type: string
-          description: The name of the category.
-        parent_guid:
-          example: CAT-aad51b46-d6f7-3da5-fd6e-492328b3023f
-          type: string
-          description: The unique identifier for the parent category.
-      required:
-      - name
-      - parent_guid
-      type: object
   parameters:
+    recordsPerPage:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
+      schema:
+        type: integer
     categoryGuid:
       name: category_guid
       description: The unique id for a `category`.
@@ -402,25 +409,18 @@ components:
       required: true
       schema:
         type: string
-    recordsPerPageMax1000:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
-    recordsPerPage:
-      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `100`. If the value exceeds `100`, the default value of `25` will be used instead.
-      example: 10
-      in: query
-      name: records_per_page
-      schema:
-        type: integer
     page:
       description: Results are paginated. Specify current page.
       example: 1
       in: query
       name: page
+      schema:
+        type: integer
+    recordsPerPageMax1000:
+      description: This specifies the number of records to be returned on each page. Defaults to `25`. The valid range is from `10` to `1000`. If the value exceeds `1000`, the default value of `25` will be used instead.
+      example: 10
+      in: query
+      name: records_per_page
       schema:
         type: integer
     acceptVersion:

@@ -97,10 +97,10 @@ paths:
     - url: https://api.mx.com
 components:
   schemas:
-    MonthlyCashFlowProfileRequestBody:
+    MonthlyCashFlowResponseBody:
       properties:
-        institution:
-          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest'
+        monthly_cash_flow_profile:
+          $ref: '#/components/schemas/MonthlyCashFlowResponse'
       type: object
     MonthlyCashFlowProfileRequest:
       properties:
@@ -143,15 +143,10 @@ components:
         uses_estimated_goals_contribution:
           example: false
           type: boolean
-    MonthlyCashFlowResponseBody:
+    MonthlyCashFlowProfileRequestBody:
       properties:
-        monthly_cash_flow_profile:
-          $ref: '#/components/schemas/MonthlyCashFlowResponse'
-      type: object
-    MonthlyCashFlowProfileRequestBody_2:
-      properties:
-        monthly_cash_flow_profile:
-          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest_2'
+        institution:
+          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest'
       type: object
     MonthlyCashFlowProfileRequest_2:
       properties:
@@ -195,6 +190,11 @@ components:
           description: Indicates if the user uses estimated goals contribution.
           example: false
           type: boolean
+    MonthlyCashFlowProfileRequestBody_2:
+      properties:
+        monthly_cash_flow_profile:
+          $ref: '#/components/schemas/MonthlyCashFlowProfileRequest_2'
+      type: object
   parameters:
     userGuid:
       description: The unique identifier for a `user`, beginning with the prefix `USR-`.
@@ -202,6 +202,13 @@ components:
       in: path
       name: user_guid
       required: true
+      schema:
+        type: string
+    userIdentifier:
+      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      in: path
+      required: true
+      name: user_identifier
       schema:
         type: string
     acceptVersion:
@@ -213,13 +220,6 @@ components:
         default: v20250224
         example: v20250224
       description: MX Platform API version.
-    userIdentifier:
-      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      in: path
-      required: true
-      name: user_identifier
-      schema:
-        type: string
   securitySchemes:
     bearerAuth:
       type: http

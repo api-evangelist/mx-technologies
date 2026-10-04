@@ -171,166 +171,6 @@ paths:
     - url: https://api.mx.com
 components:
   schemas:
-    PaymentAccount:
-      properties:
-        account_name:
-          example: MX Bank Checking
-        account_number:
-          example: 6366816006
-        account_type:
-          example: CHECKING
-        available_balance:
-          example: 1000
-        balance:
-          example: 1000
-        created_at:
-          example: '2022-03-17T20:38:58Z'
-        routing_number:
-          example: 242722023
-        transit_number:
-          example: null
-        updated_at:
-          example: '2022-11-29T08:02:07Z'
-    AuthorizationCodeRequestBody:
-      properties:
-        authorization_code:
-          $ref: '#/components/schemas/AuthorizationCodeRequest'
-      type: object
-    PaymentAccountBody:
-      properties:
-        payment_account:
-          allOf:
-          - $ref: '#/components/schemas/MemberElements'
-          - $ref: '#/components/schemas/PaymentAccount'
-      type: object
-    TokenRequestBody:
-      properties:
-        scope:
-          $ref: '#/components/schemas/MemberElements'
-      type: object
-    AuthorizationCodeResponse:
-      properties:
-        code:
-          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
-          type:
-          - string
-          - 'null'
-      type: object
-    AuthorizationCodeResponseBody:
-      properties:
-        authorization_code:
-          $ref: '#/components/schemas/AuthorizationCodeResponse'
-      type: object
-    PaymentProcessorAuthorizationCodeResponse:
-      properties:
-        authorization_code:
-          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
-          type:
-          - string
-          - 'null'
-      type: object
-    PaymentProcessorAuthorizationCodeRequestBody:
-      properties:
-        payment_processor_authorization_code:
-          $ref: '#/components/schemas/PaymentProcessorAuthorizationCodeRequest'
-      type: object
-    AuthorizationCodeRequest:
-      properties:
-        scope:
-          example: user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected
-          type:
-          - string
-          - 'null'
-      type: object
-    PaginationResponse:
-      properties:
-        current_page:
-          example: 1
-          type: integer
-        per_page:
-          example: 25
-          type: integer
-        total_entries:
-          example: 1
-          type: integer
-        total_pages:
-          example: 1
-          type: integer
-      type: object
-    ProcessorOwner:
-      properties:
-        guid:
-          example: ACO-a06b74ec-6a58-4c0b-b437-8de5e03194ac
-        owner_name:
-          example: Janita Pollich
-        address:
-          example: 3541 Adrian Street
-        city:
-          example: North Kishaberg
-        state:
-          example: Maine
-        postal_code:
-          example: 45054-7764
-        country:
-          example: null
-        email:
-          example: janita.pollich823@beerpowlowski.ca
-        phone:
-          example: 676-932-5861
-    ProcessorAccountNumberBody:
-      properties:
-        account_numbers:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/MemberElements'
-            - $ref: '#/components/schemas/ProcessorAccountNumber'
-      type: object
-    ProcessorOwnerBody:
-      properties:
-        account_owners:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/MemberElements'
-            - $ref: '#/components/schemas/ProcessorOwner'
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      type: object
-    TokenResponse:
-      properties:
-        payment_processor_guid:
-          example: PPR-084aa709-8218-4b5a-b3ab-70ffc7483daf
-          type: string
-        expires_at:
-          example: 2023-04-19T15:38:2800:00
-          type: string
-        access_token:
-          example: i8FnF...
-          type: string
-        active:
-          example: true
-          type: boolean
-    TokenResponseBody:
-      properties:
-        tokens:
-          items:
-            $ref: '#/components/schemas/TokenResponse'
-      type: object
-    PaymentProcessorAuthorizationCodeRequest:
-      properties:
-        account_guid:
-          example: ACT-4d4c0068-33bc-4d06-bbd6-cd270fd0135c
-          type: string
-        member_guid:
-          example: MBR-46637bc5-942d-4229-9370-ddd858bf805e
-          type: string
-        user_guid:
-          example: USR-f12b1f5a-7cbe-467c-aa30-0a10d0b2f549
-          type: string
-      required:
-      - account_guid
-      - member_guid
-      - user_guid
-      type: object
     ProcessorAccountNumber:
       properties:
         account_number:
@@ -354,6 +194,160 @@ components:
           example: null
         transit_number:
           example: null
+    PaymentProcessorAuthorizationCodeRequest:
+      properties:
+        account_guid:
+          example: ACT-4d4c0068-33bc-4d06-bbd6-cd270fd0135c
+          type: string
+        member_guid:
+          example: MBR-46637bc5-942d-4229-9370-ddd858bf805e
+          type: string
+        user_guid:
+          example: USR-f12b1f5a-7cbe-467c-aa30-0a10d0b2f549
+          type: string
+      required:
+      - account_guid
+      - member_guid
+      - user_guid
+      type: object
+    PaymentProcessorAuthorizationCodeResponse:
+      properties:
+        authorization_code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          type:
+          - string
+          - 'null'
+      type: object
+    TokenRequestBody:
+      properties:
+        scope:
+          $ref: '#/components/schemas/MemberElements'
+      type: object
+    PaymentAccountBody:
+      properties:
+        payment_account:
+          allOf:
+          - $ref: '#/components/schemas/MemberElements'
+          - $ref: '#/components/schemas/PaymentAccount'
+      type: object
+    AuthorizationCodeResponseBody:
+      properties:
+        authorization_code:
+          $ref: '#/components/schemas/AuthorizationCodeResponse'
+      type: object
+    ProcessorOwner:
+      properties:
+        guid:
+          example: ACO-a06b74ec-6a58-4c0b-b437-8de5e03194ac
+        owner_name:
+          example: Janita Pollich
+        address:
+          example: 3541 Adrian Street
+        city:
+          example: North Kishaberg
+        state:
+          example: Maine
+        postal_code:
+          example: 45054-7764
+        country:
+          example: null
+        email:
+          example: janita.pollich823@beerpowlowski.ca
+        phone:
+          example: 676-932-5861
+    PaymentProcessorAuthorizationCodeRequestBody:
+      properties:
+        payment_processor_authorization_code:
+          $ref: '#/components/schemas/PaymentProcessorAuthorizationCodeRequest'
+      type: object
+    AuthorizationCodeRequestBody:
+      properties:
+        authorization_code:
+          $ref: '#/components/schemas/AuthorizationCodeRequest'
+      type: object
+    TokenResponseBody:
+      properties:
+        tokens:
+          items:
+            $ref: '#/components/schemas/TokenResponse'
+      type: object
+    AuthorizationCodeResponse:
+      properties:
+        code:
+          example: 9nN-9D8_4Z3WYazx7-zXfmqsD3jwgL_2W927Sb3otI
+          type:
+          - string
+          - 'null'
+      type: object
+    PaymentProcessorAuthorizationCodeResponseBody:
+      properties:
+        payment_processor_authorization_code:
+          $ref: '#/components/schemas/PaymentProcessorAuthorizationCodeResponse'
+      type: object
+    TokenResponse:
+      properties:
+        payment_processor_guid:
+          example: PPR-084aa709-8218-4b5a-b3ab-70ffc7483daf
+          type: string
+        expires_at:
+          example: 2023-04-19T15:38:2800:00
+          type: string
+        access_token:
+          example: i8FnF...
+          type: string
+        active:
+          example: true
+          type: boolean
+    ProcessorOwnerBody:
+      properties:
+        account_owners:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/MemberElements'
+            - $ref: '#/components/schemas/ProcessorOwner'
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
+    MemberResponseBody:
+      properties:
+        member:
+          $ref: '#/components/schemas/MemberResponse'
+      type: object
+    PaymentAccount:
+      properties:
+        account_name:
+          example: MX Bank Checking
+        account_number:
+          example: 6366816006
+        account_type:
+          example: CHECKING
+        available_balance:
+          example: 1000
+        balance:
+          example: 1000
+        created_at:
+          example: '2022-03-17T20:38:58Z'
+        routing_number:
+          example: 242722023
+        transit_number:
+          example: null
+        updated_at:
+          example: '2022-11-29T08:02:07Z'
+    PaginationResponse:
+      properties:
+        current_page:
+          example: 1
+          type: integer
+        per_page:
+          example: 25
+          type: integer
+        total_entries:
+          example: 1
+          type: integer
+        total_pages:
+          example: 1
+          type: integer
+      type: object
     MemberElements:
       properties:
         account_guid:
@@ -365,15 +359,13 @@ components:
         user_guid:
           example: USR-101ad774-288b-44ed-ad16-da87d522ea20
           type: string
-    PaymentProcessorAuthorizationCodeResponseBody:
+    ProcessorAccountNumberBody:
       properties:
-        payment_processor_authorization_code:
-          $ref: '#/components/schemas/PaymentProcessorAuthorizationCodeResponse'
-      type: object
-    MemberResponseBody:
-      properties:
-        member:
-          $ref: '#/components/schemas/MemberResponse'
+        account_numbers:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/MemberElements'
+            - $ref: '#/components/schemas/ProcessorAccountNumber'
       type: object
     MemberResponse:
       properties:
@@ -494,6 +486,46 @@ components:
           - string
           - 'null'
       type: object
+    AuthorizationCodeRequest:
+      properties:
+        scope:
+          example: user-guid:USR-101ad774-288b-44ed-ad16-da87d522ea20 member-guid:MBR-54feffb9-8474-47bd-8442-de003910113a account-guid:ACT-32a64160-582a-4f00-ab34-5f49cc35ed35 read-protected
+          type:
+          - string
+          - 'null'
+      type: object
+    ProcessorAccountNumber_2:
+      properties:
+        account_number:
+          description: The banking account number associated with a particular account.
+          example: 6366816006
+          type: integer
+        guid:
+          description: The unique identifier for the account number. Defined by MX.
+          example: ACN-68c0b681-78c2-4731-9b41-d6e8ae2846cf
+          type: string
+        institution_number:
+          description: The three-digit number identifying a Canadian banking institution.
+          example: null
+        loan_guarantor:
+          description: The guarantor of the student loan.
+          example: null
+        loan_reference_number:
+          description: The reference number for the student loan.
+          example: null
+        passed_validation:
+          description: Indicates whether the account number has passed validation.
+          example: true
+        routing_number:
+          description: The routing number for the `account`.
+          example: 242564563
+          type: integer
+        sequence_number:
+          description: The sequence number for the account.
+          example: null
+        transit_number:
+          description: The five-digit number identifying the branch of a Canadian financial institution.
+          example: null
     PaymentAccount_2:
       properties:
         account_name:
@@ -560,92 +592,6 @@ components:
           type:
           - string
           - 'null'
-    ProcessorOwner_2:
-      properties:
-        guid:
-          description: The unique identifier for an account owner. Defined by MX.
-          example: AOW-e9f9cd45-7d14-4fbf-b23c-7f4a6d7671d6
-          type: string
-        owner_name:
-          description: The account owner's name.
-          example: Janita Pollich
-          type: string
-        address:
-          description: The account owner's street address.
-          example: 3541 Adrian Street
-          type: string
-        city:
-          description: The account owner's city.
-          example: North Kishaberg
-          type: string
-        state:
-          description: The account owner's state.
-          example: Maine
-          type: string
-        postal_code:
-          description: The account owner's postal code.
-          example: 45054-7764
-          type: string
-        country:
-          description: The country name.
-          example: US
-          type:
-          - string
-          - 'null'
-        email:
-          description: The email address associated with the account.
-          example: example@example.com
-          type: string
-        phone:
-          description: The phone number associated with the account owner.
-          example: 676-932-5861
-          type: string
-    ProcessorAccountNumber_2:
-      properties:
-        account_number:
-          description: The banking account number associated with a particular account.
-          example: 6366816006
-          type: integer
-        guid:
-          description: The unique identifier for the account number. Defined by MX.
-          example: ACN-68c0b681-78c2-4731-9b41-d6e8ae2846cf
-          type: string
-        institution_number:
-          description: The three-digit number identifying a Canadian banking institution.
-          example: null
-        loan_guarantor:
-          description: The guarantor of the student loan.
-          example: null
-        loan_reference_number:
-          description: The reference number for the student loan.
-          example: null
-        passed_validation:
-          description: Indicates whether the account number has passed validation.
-          example: true
-        routing_number:
-          description: The routing number for the `account`.
-          example: 242564563
-          type: integer
-        sequence_number:
-          description: The sequence number for the account.
-          example: null
-        transit_number:
-          description: The five-digit number identifying the branch of a Canadian financial institution.
-          example: null
-    MemberElements_2:
-      properties:
-        account_guid:
-          description: The unique identifier for an account. Defined by MX.
-          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
-          type: string
-        member_guid:
-          description: The unique identifier for the member. Defined by MX.
-          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
-          type: string
-        user_guid:
-          description: The unique identifier for the user. Defined by MX.
-          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-          type: string
     PaginationResponse_2:
       properties:
         current_page:
@@ -665,6 +611,20 @@ components:
           example: 1
           type: integer
       type: object
+    MemberElements_2:
+      properties:
+        account_guid:
+          description: The unique identifier for an account. Defined by MX.
+          example: ACT-06d7f44b-caae-0f6e-1384-01f52e75dcb1
+          type: string
+        member_guid:
+          description: The unique identifier for the member. Defined by MX.
+          example: MBR-7c6f361b-e582-15b6-60c0-358f12466b4b
+          type: string
+        user_guid:
+          description: The unique identifier for the user. Defined by MX.
+          example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+          type: string
     MemberResponse_2:
       properties:
         aggregated_at:
@@ -864,6 +824,46 @@ components:
           description: Indicates whether the token is active.
           example: true
           type: boolean
+    ProcessorOwner_2:
+      properties:
+        guid:
+          description: The unique identifier for an account owner. Defined by MX.
+          example: AOW-e9f9cd45-7d14-4fbf-b23c-7f4a6d7671d6
+          type: string
+        owner_name:
+          description: The account owner's name.
+          example: Janita Pollich
+          type: string
+        address:
+          description: The account owner's street address.
+          example: 3541 Adrian Street
+          type: string
+        city:
+          description: The account owner's city.
+          example: North Kishaberg
+          type: string
+        state:
+          description: The account owner's state.
+          example: Maine
+          type: string
+        postal_code:
+          description: The account owner's postal code.
+          example: 45054-7764
+          type: string
+        country:
+          description: The country name.
+          example: US
+          type:
+          - string
+          - 'null'
+        email:
+          description: The email address associated with the account.
+          example: example@example.com
+          type: string
+        phone:
+          description: The phone number associated with the account owner.
+          example: 676-932-5861
+          type: string
   parameters:
     acceptVersion:
       name: Accept-Version
