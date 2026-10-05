@@ -1,0 +1,12 @@
+{
+ "url": "https://raw.githubusercontent.com/mxenabled/openapi/HEAD/openapi/mx_platform_api.yml",
+ "requested_url": "https://raw.githubusercontent.com/mxenabled/openapi/HEAD/openapi/mx_platform_api.yml",
+ "status": 200,
+ "content_type": "text/plain; charset=utf-8",
+ "bytes": 296011,
+ "sha256": "b6632646ee896422d200b366e4aee7d26a6940438fff2049e18d9b9f685249bb",
+ "fetched_at": "2026-10-04",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the archived file is byte-identical to what the provider serves."
+}
