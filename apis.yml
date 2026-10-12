@@ -28,19 +28,10 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/mx-technologies.png
 url: https://raw.githubusercontent.com/api-evangelist/mx-technologies/refs/heads/main/apis.yml
-created: 2026-06-12
-modified: 2026-06-12
+created: '2026-06-12'
+modified: '2026-06-12'
 specificationVersion: '0.23'
-description: 'MX Technologies is a financial data connectivity platform that provides
-  REST APIs for account aggregation, data cleansing, transaction categorization, and
-  open banking connectivity across more than 16,000 financial institutions. The platform
-  powers money experiences for over 2,000 banks, credit unions, and fintechs by turning
-  raw, unstructured financial data into actionable intelligence. MX offers a suite
-  of APIs including the Platform API for core aggregation and data services, the Atrium
-  legacy API, SSO and authentication APIs, and a Data Access API built to FDX standards
-  for permissioned open banking data sharing. Developers have access to OpenAPI specifications,
-  SDKs in Node.js, Python, Java, Ruby, and Go, plus a hosted Connect Widget for rapid
-  integration.
+description: 'MX Technologies is a financial data connectivity platform that provides REST APIs for account aggregation, data cleansing, transaction categorization, and open banking connectivity across more than 16,000 financial institutions. The platform powers money experiences for over 2,000 banks, credit unions, and fintechs by turning raw, unstructured financial data into actionable intelligence. MX offers a suite of APIs including the Platform API for core aggregation and data services, the Atrium legacy API, SSO and authentication APIs, and a Data Access API built to FDX standards for permissioned open banking data sharing. Developers have access to OpenAPI specifications, SDKs in Node.js, Python, Java, Ruby, and Go, plus a hosted Connect Widget for rapid integration.
 
   '
 tags:
@@ -55,12 +46,121 @@ tags:
 - Account Verification
 - Personal Finance
 - Data Aggregation
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+common:
+- type: Spectral
+  url: rules/mx-technologies-rules.yml
+- type: Spectral
+  url: rules/mx-technologies-jsonschema-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/mx-technologies-context.jsonld
+- type: AgentCard
+  url: a2a/mx-technologies-a2a.yml
+- type: Hosts
+  url: hosts/mx-technologies-hosts.yml
+- type: Vendors
+  url: vendors/mx-technologies-vendors.yml
+- type: Newsroom
+  url: https://www.mx.com/news/
+- type: APIReference
+  url: https://docs.mx.com/api-reference/platform-api/v20260929/overview/introduction
+- type: X-MCPServerCandidate
+  url: mcp/mx-technologies-mcp.yml
+- type: Overlay
+  url: overlays/mx-technologies-platform-api-overlay.yaml
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/mx/overview
+- type: DeveloperPortal
+  url: https://developer.mx.com/
+- type: TermsOfService
+  url: https://www.mx.com/terms/
+- type: PrivacyPolicy
+  url: https://www.mx.com/privacy/
+- type: Support
+  url: https://support.mx.com/
+- type: Deprecation
+  url: https://docs.mx.com/api-reference/platform-api/overview/versioning
+- type: Security
+  url: https://mx.com/security-policy/
+- type: SecurityTxt
+  url: well-known/mx-technologies-security.txt
+- type: WellKnown
+  url: well-known/mx-technologies-well-known.yml
+- type: Compliance
+  url: https://www.mx.com/trust/
+- type: Packages
+  url: packages/mx-technologies-packages.yml
+- type: SDKs
+  url: packages/mx-technologies-packages.yml
+- type: LLMsTxt
+  url: llms/mx-technologies-llms.txt
+- type: Conventions
+  url: conventions/mx-technologies-conventions.yml
+- type: ErrorCatalog
+  url: errors/mx-technologies-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/mx-technologies-lifecycle.yml
+- type: ChangeLog
+  url: changelog/mx-technologies-changelog.yml
+- type: Sandbox
+  url: sandbox/mx-technologies-sandbox.yml
+- type: Components
+  url: components/mx-technologies-components.yml
+- type: DataModel
+  url: data-model/mx-technologies-data-model.yml
+- type: Conformance
+  url: conformance/mx-technologies-conformance.yml
+- type: Webhooks
+  url: asyncapi/mx-technologies-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: SignUp
+  url: https://dashboard.mx.com/sign_up
+- type: AgenticAccess
+  url: agentic-access/mx-technologies-agentic-access.yml
+- type: TrustCenter
+  url: security/mx-technologies-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/mx-technologies-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/mx-technologies-domain-security.yml
+- type: Authentication
+  url: authentication/mx-technologies-authentication.yml
+- type: Website
+  url: https://www.mx.com/
+- type: Documentation
+  url: https://docs.mx.com/
+- type: GitHubOrganization
+  url: https://github.com/mxenabled
+- type: OpenAPI
+  url: https://github.com/mxenabled/openapi
+- type: LinkedIn
+  url: https://www.linkedin.com/company/mxenabled
+- type: X
+  url: https://x.com/mX
+- type: Blog
+  url: https://www.mx.com/blog/
+- type: Pricing
+  url: https://www.mx.com/company/
+- type: StatusPage
+  url: https://status.mx.com
+- type: Plans
+  url: plans/mx-technologies-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/mx-technologies-rate-limits.yml
+- type: FinOps
+  url: finops/mx-technologies-finops.yml
+- type: Vocabulary
+  url: vocabulary/mx-technologies-vocabulary.yml
+- type: JSONLDContext
+  url: json-ld/mx-technologies-context.jsonld
 apis:
 - name: MX Atrium API
-  description: >
-    The legacy MX financial data connectivity API supporting over 48,000 data connections to thousands
-    of financial institutions. Provides secure access to user accounts and transactions with industry-leading
-    cleansing, categorization, and classification. Available for existing integrations.
+  description: 'The legacy MX financial data connectivity API supporting over 48,000 data connections to thousands of financial institutions. Provides secure access to user accounts and transactions with industry-leading cleansing, categorization, and classification. Available for existing integrations.
+
+    '
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/api-reference/atrium/
   baseURL: https://atrium.mx.com
@@ -77,10 +177,11 @@ apis:
   properties:
   - type: Documentation
     url: https://docs.mx.com/api-reference/atrium/
+  aid: mx-technologies:mx-atrium-api
 - name: MX SSO API
-  description: >
-    A RESTful authentication API used to authenticate users on the MX Platform and generate widget URLs
-    for Personal Finance Management and Financial Insights widgets. Supports both XML and JSON encoding.
+  description: 'A RESTful authentication API used to authenticate users on the MX Platform and generate widget URLs for Personal Finance Management and Financial Insights widgets. Supports both XML and JSON encoding.
+
+    '
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/api-reference/sso/v3/
   baseURL: https://api.mx.com
@@ -91,11 +192,11 @@ apis:
   properties:
   - type: Documentation
     url: https://docs.mx.com/api-reference/sso/v3/
+  aid: mx-technologies:mx-sso-api
 - name: MX Data Access API
-  description: >
-    An open finance API built to FDX standards enabling permissioned data sharing with consumer consent
-    management. Supports Account Owner Identity, statements, transaction history, account verifications,
-    and OAuth-based data sharing. Processes over 500K connections with 70% through OAuth APIs.
+  description: 'An open finance API built to FDX standards enabling permissioned data sharing with consumer consent management. Supports Account Owner Identity, statements, transaction history, account verifications, and OAuth-based data sharing. Processes over 500K connections with 70% through OAuth APIs.
+
+    '
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/products/data/data-access/
   baseURL: https://api.mx.com
@@ -114,10 +215,11 @@ apis:
   properties:
   - type: Documentation
     url: https://docs.mx.com/products/data/data-access/
+  aid: mx-technologies:mx-data-access-api
 - name: MX Batch API
-  description: >
-    Enables processing of bulk operations and batch requests on the MX platform, supporting large-scale
-    data operations for financial institutions and fintech partners.
+  description: 'Enables processing of bulk operations and batch requests on the MX platform, supporting large-scale data operations for financial institutions and fintech partners.
+
+    '
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/
   baseURL: https://api.mx.com
@@ -127,10 +229,11 @@ apis:
   properties:
   - type: Documentation
     url: https://docs.mx.com/
+  aid: mx-technologies:mx-batch-api
 - name: MX Reporting API
-  description: >
-    Supports reporting functionality and analytics for financial institutions and fintech partners integrating
-    with the MX platform.
+  description: 'Supports reporting functionality and analytics for financial institutions and fintech partners integrating with the MX platform.
+
+    '
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: https://docs.mx.com/
   baseURL: https://api.mx.com
@@ -140,6 +243,7 @@ apis:
   properties:
   - type: Documentation
     url: https://docs.mx.com/
+  aid: mx-technologies:mx-reporting-api
 - aid: mx-technologies:mx-technologies-accounts-api
   name: MX Technologies Accounts API
   description: The accounts API from MX Technologies — 13 operation(s) for accounts.
@@ -266,8 +370,7 @@ apis:
     url: examples/mx-technologies-platform-api-examples.json
 - aid: mx-technologies:mx-technologies-investment-holdings-api
   name: MX Technologies investment holdings API
-  description: >-
-    The investment holdings API from MX Technologies — 5 operation(s) for investment holdings.
+  description: The investment holdings API from MX Technologies — 5 operation(s) for investment holdings.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
@@ -299,8 +402,7 @@ apis:
     url: examples/mx-technologies-platform-api-examples.json
 - aid: mx-technologies:mx-technologies-managed-data-deprecated-api
   name: MX Technologies managed data [deprecated] API
-  description: >-
-    The managed data [deprecated] API from MX Technologies — 7 operation(s) for managed data [deprecated].
+  description: The managed data [deprecated] API from MX Technologies — 7 operation(s) for managed data [deprecated].
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
@@ -370,8 +472,7 @@ apis:
     url: examples/mx-technologies-platform-api-examples.json
 - aid: mx-technologies:mx-technologies-monthly-cash-flow-profile-api
   name: MX Technologies monthly cash flow profile API
-  description: >-
-    The monthly cash flow profile API from MX Technologies — 2 operation(s) for monthly cash flow profile.
+  description: The monthly cash flow profile API from MX Technologies — 2 operation(s) for monthly cash flow profile.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
@@ -567,8 +668,7 @@ apis:
     url: examples/mx-technologies-platform-api-examples.json
 - aid: mx-technologies:mx-technologies-verifiable-credentials-api
   name: MX Technologies verifiable credentials API
-  description: >-
-    The verifiable credentials API from MX Technologies — 3 operation(s) for verifiable credentials.
+  description: The verifiable credentials API from MX Technologies — 3 operation(s) for verifiable credentials.
   humanURL: https://docs.mx.com/api-reference/platform-api/overview/
   baseURL: https://api.mx.com
   tags:
@@ -602,97 +702,8 @@ apis:
     url: json-schema/mx-technologies-platform-api.json
   - type: Examples
     url: examples/mx-technologies-platform-api-examples.json
-common:
-- type: X-MCPServerCandidate
-  url: mcp/mx-technologies-mcp.yml
-- type: Overlay
-  url: overlays/mx-technologies-platform-api-overlay.yaml
-- type: PostmanWorkspace
-  url: https://www.postman.com/kinlaneapi/mx/overview
-- type: DeveloperPortal
-  url: https://developer.mx.com/
-- type: TermsOfService
-  url: https://www.mx.com/terms/
-- type: PrivacyPolicy
-  url: https://www.mx.com/privacy/
-- type: Support
-  url: https://support.mx.com/
-- type: Deprecation
-  url: https://docs.mx.com/api-reference/platform-api/overview/versioning
-- type: Security
-  url: https://mx.com/security-policy/
-- type: SecurityTxt
-  url: well-known/mx-technologies-security.txt
-- type: WellKnown
-  url: well-known/mx-technologies-well-known.yml
-- type: Compliance
-  url: https://www.mx.com/trust/
-- type: Packages
-  url: packages/mx-technologies-packages.yml
-- type: SDKs
-  url: packages/mx-technologies-packages.yml
-- type: LLMsTxt
-  url: llms/mx-technologies-llms.txt
-- type: Conventions
-  url: conventions/mx-technologies-conventions.yml
-- type: ErrorCatalog
-  url: errors/mx-technologies-problem-types.yml
-- type: Lifecycle
-  url: lifecycle/mx-technologies-lifecycle.yml
-- type: ChangeLog
-  url: changelog/mx-technologies-changelog.yml
-- type: Sandbox
-  url: sandbox/mx-technologies-sandbox.yml
-- type: Components
-  url: components/mx-technologies-components.yml
-- type: DataModel
-  url: data-model/mx-technologies-data-model.yml
-- type: Conformance
-  url: conformance/mx-technologies-conformance.yml
-- type: Webhooks
-  url: asyncapi/mx-technologies-webhooks.yml
-- type: AgentSkill
-  url: skills/_index.yml
-- type: SignUp
-  url: https://dashboard.mx.com/sign_up
-- type: AgenticAccess
-  url: agentic-access/mx-technologies-agentic-access.yml
-- type: TrustCenter
-  url: security/mx-technologies-trust-center.yml
-- type: VulnerabilityDisclosure
-  url: security/mx-technologies-vulnerability-disclosure.yml
-- type: DomainSecurity
-  url: security/mx-technologies-domain-security.yml
-- type: Authentication
-  url: authentication/mx-technologies-authentication.yml
-- type: Website
-  url: https://www.mx.com/
-- type: Documentation
-  url: https://docs.mx.com/
-- type: GitHubOrganization
-  url: https://github.com/mxenabled
-- type: OpenAPI
-  url: https://github.com/mxenabled/openapi
-- type: LinkedIn
-  url: https://www.linkedin.com/company/mxenabled
-- type: X
-  url: https://x.com/mX
-- type: Blog
-  url: https://www.mx.com/blog/
-- type: Pricing
-  url: https://www.mx.com/company/
-- type: StatusPage
-  url: https://status.mx.com
-- type: Plans
-  url: plans/mx-technologies-plans-pricing.yml
-- type: RateLimits
-  url: rate-limits/mx-technologies-rate-limits.yml
-- type: FinOps
-  url: finops/mx-technologies-finops.yml
-- type: Vocabulary
-  url: vocabulary/mx-technologies-vocabulary.yml
-- type: JSONLDContext
-  url: json-ld/mx-technologies-context.jsonld
-maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-10-12'
+  status: enriched
+  artifacts_added: 2
+  pass: local-v5

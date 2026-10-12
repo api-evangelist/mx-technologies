@@ -1,0 +1,43 @@
+generated: '2026-10-12'
+method: probed
+generator: harvest-agent-card.py
+source: https://docs.mx.com/.well-known/agent-card.json
+card:
+  file: a2a/mx-technologies-agent-card.json
+  name: MX Documentation
+  version: 1.0.0
+discovery:
+  path: /.well-known/agent-card.json
+  canonical: true
+  host: docs.mx.com
+x-evidence:
+  fetched: '2026-10-12'
+  url: https://docs.mx.com/.well-known/agent-card.json
+  http_status: 200
+  content_type: application/json
+  body_bytes: 1074
+  body_parses_as: json object
+conformance:
+  spec: A2A 1.0.0
+  grade: conformant
+  protocol_version: '0.3'
+  transport: HTTP+JSON
+  card_shape: 0.3 (top-level protocolVersion)
+  hard_checks:
+    capabilities_is_object: true
+    protocol_version_present: true
+    skills_is_array: true
+  optional_fields:
+    transport_declared: true
+    defaultInputModes: true
+    defaultOutputModes: true
+  deviations: &id001 []
+cards:
+- file: a2a/mx-technologies-agent-card.json
+  primary: true
+  host: docs.mx.com
+  url: https://docs.mx.com/.well-known/agent-card.json
+  http_status: 200
+  name: MX Documentation
+  grade: conformant
+  deviations: *id001

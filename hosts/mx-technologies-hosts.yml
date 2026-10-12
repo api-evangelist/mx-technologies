@@ -1,0 +1,162 @@
+generated: '2026-10-12'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 13
+  own: 9
+  other_domain: 0
+  platform: 4
+  roles:
+  - api
+  - docs
+  - identity
+  - other
+  - portal
+  - security
+  - source
+  - status
+  - support
+  - website
+hosts:
+- host: api.mx.com
+  found_by:
+  - apis[]
+  types: []
+  serves:
+  - api
+  registrable_domain: mx.com
+  role: api
+  relation: own
+- host: atrium.mx.com
+  found_by:
+  - apis[]
+  - vendor-detect
+  types: []
+  serves:
+  - api
+  - cdn
+  vendor: fastly
+  registrable_domain: mx.com
+  role: other
+  relation: own
+- host: dashboard.mx.com
+  found_by:
+  - pointer
+  types:
+  - SignUp
+  serves: []
+  registrable_domain: mx.com
+  role: identity
+  relation: own
+- host: developer.mx.com
+  found_by:
+  - pointer
+  types:
+  - DeveloperPortal
+  serves: []
+  registrable_domain: mx.com
+  role: portal
+  relation: own
+- host: docs.mx.com
+  found_by:
+  - pointer
+  - apis[]
+  - vendor-detect
+  types:
+  - APIReference
+  - Deprecation
+  - Documentation
+  serves:
+  - docs
+  - cdn
+  - hosting
+  vendor: cloudflare
+  registrable_domain: mx.com
+  role: docs
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  - OpenAPI
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: mx.com
+  found_by:
+  - pointer
+  types:
+  - Security
+  serves: []
+  registrable_domain: mx.com
+  role: security
+  relation: own
+- host: status.mx.com
+  found_by:
+  - pointer
+  - vendor-detect
+  types:
+  - StatusPage
+  serves:
+  - status-page
+  vendor: incident-io
+  registrable_domain: mx.com
+  role: status
+  relation: own
+- host: support.mx.com
+  found_by:
+  - pointer
+  - vendor-detect
+  types:
+  - Support
+  serves:
+  - cdn
+  vendor: cloudfront
+  registrable_domain: mx.com
+  role: support
+  relation: own
+- host: www.linkedin.com
+  found_by:
+  - pointer
+  types:
+  - LinkedIn
+  serves: []
+  registrable_domain: linkedin.com
+  role: other
+  relation: platform
+- host: www.mx.com
+  found_by:
+  - pointer
+  types:
+  - Newsroom
+  - TermsOfService
+  - PrivacyPolicy
+  - Compliance
+  - Website
+  - Blog
+  - Pricing
+  serves: []
+  registrable_domain: mx.com
+  role: website
+  relation: own
+- host: www.postman.com
+  found_by:
+  - pointer
+  types:
+  - PostmanWorkspace
+  serves: []
+  registrable_domain: postman.com
+  role: other
+  relation: platform
+- host: x.com
+  found_by:
+  - pointer
+  types:
+  - X
+  serves: []
+  registrable_domain: x.com
+  role: other
+  relation: platform

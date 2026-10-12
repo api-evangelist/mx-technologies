@@ -1,0 +1,20 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/mx-technologies/integrations
+- https://n8n.io/integrations/mx-technologies/
+- https://composio.dev/toolkits/mx-technologies
+- https://monid.ai/tools/mx-technologies
+checked:
+- https://composio.dev/toolkits/mx-technologies
+- https://monid.ai/tools/mx-technologies
+- https://n8n.io/integrations/mx-technologies/
+- https://www.mx.com/partners/
+- https://zapier.com/apps/mx-technologies/integrations
+- https://zapier.com/apps/mx/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
+note: ' mx.com/partners/ (200) describes the MX Partner Network program and links a partner login (mxenabled.my.site.com/partner/s/)
+  but names no partners in its served HTML; zapier.com/apps/mx/integrations returned 404.'
