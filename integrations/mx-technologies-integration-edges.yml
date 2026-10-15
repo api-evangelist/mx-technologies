@@ -7,6 +7,7 @@ source:
 - https://monid.ai/tools/mx-technologies
 checked:
 - https://composio.dev/toolkits/mx-technologies
+- https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://monid.ai/tools/mx-technologies
 - https://n8n.io/integrations/mx-technologies/
 - https://registry.financialdataexchange.org/
@@ -40,6 +41,32 @@ edges:
     detected: '2026-10-14'
   detected_by: sweep-fdx.py
   first_seen: '2026-10-14'
+- partner_name: Pipedream
+  partner: pipedream
+  partner_match: aggregator
+  type: marketplace
+  marketplace: pipedream-components
+  channel: open-source-node
+  relationship: ipaas-bridge
+  direction: third-party
+  evidence: https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/mx_technologies
+  category: null
+  contract_reference:
+    register: Pipedream components (PipedreamHQ/pipedream components/)
+    spec_file: null
+    role: ipaas-connector:pipedream
+    registered_name: mx technologies
+    matched_domain: mx.com
+    matched_by: domain
+    detected_by: sweep-workflow-automation.py
+    detected: '2026-10-15'
+    signal_note: one edge per (provider, platform); actions, triggers and usage counts are context, never read
+    app_slug: mx_technologies
+    actions: true
+    sources: true
+    builder: Pipedream repo (component)
+  detected_by: sweep-workflow-automation.py
+  first_seen: '2026-10-15'
 templates: []
 note: ' mx.com/partners/ (200) describes the MX Partner Network program and links a partner login (mxenabled.my.site.com/partner/s/)
   but names no partners in its served HTML; zapier.com/apps/mx/integrations returned 404.'
