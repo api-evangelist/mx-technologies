@@ -136,33 +136,20 @@ paths:
     - url: https://int-api.mx.com
     - url: https://api.mx.com
 components:
-  parameters:
-    microDepositGuid:
-      name: micro_deposit_guid
-      description: The unique identifier for the microdeposit. Defined by MX.
-      in: path
-      required: true
-      example: MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb
-      schema:
-        type: string
-    userGuid:
-      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
-    acceptVersion:
-      name: Accept-Version
-      in: header
-      required: true
-      schema:
-        type: string
-        default: v20250224
-        example: v20250224
-      description: MX Platform API version.
   schemas:
+    MicrodepositResponseBody:
+      properties:
+        micro_deposit:
+          items:
+            allOf:
+            - $ref: '#/components/schemas/MicrodepositElements'
+            - $ref: '#/components/schemas/MicrodepositResponse'
+      type: object
+    MicrodepositRequestBody:
+      properties:
+        micro_deposit:
+          $ref: '#/components/schemas/MicrodepositElements'
+      type: object
     MicrodepositElements:
       properties:
         account_name:
@@ -205,6 +192,15 @@ components:
           example: 1
           type: integer
       type: object
+    MicrodepositsResponseBody:
+      properties:
+        micro_deposits:
+          items:
+            $ref: '#/components/schemas/MicrodepositResponse'
+          type: array
+        pagination:
+          $ref: '#/components/schemas/PaginationResponse'
+      type: object
     MicrodepositResponse:
       properties:
         error_message:
@@ -232,28 +228,6 @@ components:
           type:
           - string
           - 'null'
-      type: object
-    MicrodepositResponseBody:
-      properties:
-        micro_deposit:
-          items:
-            allOf:
-            - $ref: '#/components/schemas/MicrodepositElements'
-            - $ref: '#/components/schemas/MicrodepositResponse'
-      type: object
-    MicrodepositsResponseBody:
-      properties:
-        micro_deposits:
-          items:
-            $ref: '#/components/schemas/MicrodepositResponse'
-          type: array
-        pagination:
-          $ref: '#/components/schemas/PaginationResponse'
-      type: object
-    MicrodepositRequestBody:
-      properties:
-        micro_deposit:
-          $ref: '#/components/schemas/MicrodepositElements'
       type: object
     MicrodepositVerifyRequest:
       properties:
@@ -389,6 +363,32 @@ components:
           example: 0.15
           type: number
       type: object
+  parameters:
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    microDepositGuid:
+      name: micro_deposit_guid
+      description: The unique identifier for the microdeposit. Defined by MX.
+      in: path
+      required: true
+      example: MIC-09ba578e-8448-4f7f-89e1-b62ff2517edb
+      schema:
+        type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
   securitySchemes:
     bearerAuth:
       type: http

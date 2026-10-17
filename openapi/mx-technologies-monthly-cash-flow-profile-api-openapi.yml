@@ -96,22 +96,32 @@ paths:
     - url: https://int-api.mx.com
     - url: https://api.mx.com
 components:
+  parameters:
+    userGuid:
+      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
+      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
+      in: path
+      name: user_guid
+      required: true
+      schema:
+        type: string
+    userIdentifier:
+      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
+      in: path
+      required: true
+      name: user_identifier
+      schema:
+        type: string
+    acceptVersion:
+      name: Accept-Version
+      in: header
+      required: true
+      schema:
+        type: string
+        default: v20250224
+        example: v20250224
+      description: MX Platform API version.
   schemas:
-    MonthlyCashFlowResponseBody:
-      properties:
-        monthly_cash_flow_profile:
-          $ref: '#/components/schemas/MonthlyCashFlowResponse'
-      type: object
-    MonthlyCashFlowProfileRequest:
-      properties:
-        goals_contribution:
-          example: 150.01
-          type: number
-          description: The monthly dollar amount allocated for goals.
-        uses_estimated_goals_contribution:
-          example: false
-          type: boolean
-          description: Determines if the user uses estimated goals contribution.
     MonthlyCashFlowResponse:
       properties:
         guid:
@@ -148,16 +158,21 @@ components:
         institution:
           $ref: '#/components/schemas/MonthlyCashFlowProfileRequest'
       type: object
-    MonthlyCashFlowProfileRequest_2:
+    MonthlyCashFlowProfileRequest:
       properties:
         goals_contribution:
-          description: The monthly dollar amount allocated for goals.
-          example: 500
+          example: 150.01
           type: number
+          description: The monthly dollar amount allocated for goals.
         uses_estimated_goals_contribution:
           example: false
           type: boolean
           description: Determines if the user uses estimated goals contribution.
+    MonthlyCashFlowResponseBody:
+      properties:
+        monthly_cash_flow_profile:
+          $ref: '#/components/schemas/MonthlyCashFlowResponse'
+      type: object
     MonthlyCashFlowResponse_2:
       properties:
         guid:
@@ -195,31 +210,16 @@ components:
         monthly_cash_flow_profile:
           $ref: '#/components/schemas/MonthlyCashFlowProfileRequest_2'
       type: object
-  parameters:
-    userGuid:
-      description: The unique identifier for a `user`, beginning with the prefix `USR-`.
-      example: USR-fa7537f3-48aa-a683-a02a-b18940482f54
-      in: path
-      name: user_guid
-      required: true
-      schema:
-        type: string
-    userIdentifier:
-      description: Use either the user `id` you defined or the MX-defined user `guid`. See [MX-Defined GUIDs vs IDs Defined by You​](https://docs.mx.com/products/connectivity/overview/held-data/#mx-defined-guids-vs-ids-defined-by-you).
-      in: path
-      required: true
-      name: user_identifier
-      schema:
-        type: string
-    acceptVersion:
-      name: Accept-Version
-      in: header
-      required: true
-      schema:
-        type: string
-        default: v20250224
-        example: v20250224
-      description: MX Platform API version.
+    MonthlyCashFlowProfileRequest_2:
+      properties:
+        goals_contribution:
+          description: The monthly dollar amount allocated for goals.
+          example: 500
+          type: number
+        uses_estimated_goals_contribution:
+          example: false
+          type: boolean
+          description: Determines if the user uses estimated goals contribution.
   securitySchemes:
     bearerAuth:
       type: http
