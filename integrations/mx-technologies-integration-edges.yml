@@ -6,11 +6,18 @@ source:
 - https://composio.dev/toolkits/mx-technologies
 - https://monid.ai/tools/mx-technologies
 checked:
+- https://api.nuget.org/v3
 - https://composio.dev/toolkits/mx-technologies
+- https://crates.io/api/v1
 - https://github.com/PipedreamHQ/pipedream/tree/94800dd6de6640b942c65ea7ee655f71ac56d438/components/
 - https://monid.ai/tools/mx-technologies
 - https://n8n.io/integrations/mx-technologies/
+- https://proxy.golang.org
+- https://pypi.org/pypi
 - https://registry.financialdataexchange.org/
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://www.mx.com/partners/
 - https://zapier.com/apps/mx-technologies/integrations
 - https://zapier.com/apps/mx/integrations
@@ -67,6 +74,36 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Go module proxy
+  partner: null
+  partner_match: null
+  type: register
+  direction: provider-built
+  category: official SDK (Go)
+  evidence: https://pkg.go.dev/github.com/mxenabled/mx-platform-go
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: Go module proxy (public registry JSON)
+    spec_file: null
+    language: Go
+    packages:
+    - name: github.com/mxenabled/mx-platform-go
+      version: v1.13.0
+      released: '2026-01-29'
+      released_field: Time
+      lapsed: false
+      page: https://pkg.go.dev/github.com/mxenabled/mx-platform-go
+      repo_leg: github-org:mxenabled
+      publisher_leg: org:mxenabled
+      matched_by: github-org
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 templates: []
 note: ' mx.com/partners/ (200) describes the MX Partner Network program and links a partner login (mxenabled.my.site.com/partner/s/)
   but names no partners in its served HTML; zapier.com/apps/mx/integrations returned 404.'
