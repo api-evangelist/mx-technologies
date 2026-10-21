@@ -22,6 +22,12 @@ checked:
 - https://www.mx.com/partners/
 - https://zapier.com/apps/mx-technologies/integrations
 - https://zapier.com/apps/mx/integrations
+- https://a16z.com/portfolio/
+- https://www.battery.com/company/
+- https://www.battery.com/wp-admin/admin-ajax.php
+- https://www.indexventures.com/companies/
+- https://www.sequoiacap.com/our-companies/
+- https://www.sequoiacap.com/sitemap.xml
 summary: null
 marketplace_apps: []
 edges:
@@ -105,6 +111,33 @@ edges:
     builder: Pipedream repo (component)
   detected_by: sweep-workflow-automation.py
   first_seen: '2026-10-15'
+- partner_name: Battery Ventures
+  partner: battery-ventures
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.battery.com/company/mx-technologies/
+  category: vc portfolio participation
+  contract_reference:
+    register: Battery Ventures companies (battery.com/company/, the page's own admin-ajax list + company pages)
+    standard: null
+    spec_file: null
+    role: vc-portfolio-company
+    registered_name: MX Technologies
+    register_id: https://www.battery.com/company/mx-technologies/
+    register_country: Lehi, Utah
+    register_website: https://www.mx.com/
+    matched_domain: mx.com
+    matched_by: domain
+    signal_note: 'participation only: the venture firm''s own published portfolio lists the company (investment);
+      an ownership and participation record, not conformance or certification'
+    detected_by: sweep-vc-portfolios.py
+    detected: '2026-10-21'
+    status: Active
+  detected_by: sweep-vc-portfolios.py
+  first_seen: '2026-10-21'
 templates: []
 note: ' mx.com/partners/ (200) describes the MX Partner Network program and links a partner login (mxenabled.my.site.com/partner/s/)
   but names no partners in its served HTML; zapier.com/apps/mx/integrations returned 404.'
