@@ -775,3 +775,9 @@ components:
 x-refined-from:
 - mx-technologies-platform-openapi.yml
 - mx-technologies-platform-v20250224-openapi.yml
+x-provenance:
+  method: harvested
+  publisher: MX Technologies
+  source: https://raw.githubusercontent.com/mxenabled/openapi/HEAD/openapi/mx_platform_api.yml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
